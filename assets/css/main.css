@@ -659,6 +659,7 @@ footer {
 	.modal-card h3 { font-size: 22px; }
 	
 	.container2, .ministry-row, .ministry-row.reverse { grid-template-columns: 1fr; flex-direction: column; gap: 30px; text-align: center; }
+	.ministry-visual { flex: none; width: 100%; }
 	.text2, .ministry-content { text-align: center; }
 	.text2 p, .ministry-content p { text-align: center; }
 	.ministry-content h2 { text-align: center; }
