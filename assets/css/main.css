@@ -225,31 +225,24 @@ footer {
 	border-bottom: 2px solid var(--gold);
 }
 
-.slider ul { 
-	position: relative; 
-	list-style: none; 
-	display: flex; 
-	width: max-content; 
-	height: 100%; 
-	animation: slide-infinite 40s linear infinite;
-}
-
-.slider li { 
-	position: relative; 
-	flex: 0 0 100vw; 
-	height: 100%; 
+.slider ul {
+	position: relative;
+	list-style: none;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden; 
+	width: max-content;
+	height: 100%;
+	animation: slide-infinite 90s linear infinite;
 }
 
-.slide-fg { 
-	position: relative; 
-	width: 100%; 
-	height: 100%; 
-	object-fit: contain; 
-	display: block; 
+.slider li {
+	height: 100%;
+	flex: 0 0 auto;
+}
+
+.slide-fg {
+	height: 100%;
+	width: auto;
+	display: block;
 }
 
 @keyframes slide-infinite {
@@ -357,21 +350,6 @@ footer {
 	max-width: 600px;
 	aspect-ratio: 1 / 1; 
 	margin: 0 auto;
-}
-
-/* Smog of Light Background Effect */
-.bubble-cluster::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 45%;
-	width: 120%;
-	height: 120%;
-	transform: translate(-50%, -50%);
-	background: radial-gradient(circle, rgba(199, 151, 63, 0.45) 0%, rgba(199, 151, 63, 0) 65%);
-	filter: blur(40px);
-	z-index: 0;
-	pointer-events: none;
 }
 
 .bubble {
@@ -620,7 +598,7 @@ footer {
 	.text2, .ministry-content { text-align: center; }
 	.text2 p, .ministry-content p { text-align: center; }
 	.ministry-content h2 { text-align: center; }
-	.slider { height: 260px; }
+	.slider { height: 280px; }
 	.lightbox-nav { display: none; }
 	
 	.ministry-nav-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
