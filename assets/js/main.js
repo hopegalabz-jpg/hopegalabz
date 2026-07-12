@@ -248,6 +248,38 @@ function initContactModal() {
 }
 
 /* =====================================================================
+   SAVE THE DATE — Countdown Calculation
+   ===================================================================== */
+
+const GALA_DATE = new Date(2026, 9, 17); // October 17th, 2026 (month is 0-indexed: 9 = October)
+
+function updateSaveTheDateCountdown() {
+	const daysEl = document.getElementById('std-days');
+	const hoursEl = document.getElementById('std-hours');
+	if (!daysEl || !hoursEl) return; // this page has no Save the Date card — nothing to do
+
+	const now = new Date();
+	const msRemaining = GALA_DATE - now;
+
+	if (msRemaining <= 0) {
+		daysEl.textContent = '0';
+		hoursEl.textContent = '0';
+		return;
+	}
+
+	const msPerHour = 1000 * 60 * 60;
+	const msPerDay = msPerHour * 24;
+
+	const daysRemaining = Math.floor(msRemaining / msPerDay);
+	const hoursRemaining = Math.floor((msRemaining % msPerDay) / msPerHour);
+
+	daysEl.textContent = daysRemaining;
+	hoursEl.textContent = hoursRemaining;
+}
+
+document.addEventListener('DOMContentLoaded', updateSaveTheDateCountdown);
+
+/* =====================================================================
    GALLERY LOGIC & DATA
    ===================================================================== */
 
