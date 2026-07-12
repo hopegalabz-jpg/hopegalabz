@@ -387,19 +387,17 @@ footer {
 
 /* ==========================================================================
    SAVE THE DATE CARD
-   Scoped entirely to .std-row / .std-card so the Faithful Stewardship
-   section (which shares the plain .ministry-row/.ministry-content/
-   .ministry-visual classes) is never affected by anything below.
+   Positioned absolutely within its section, entirely outside .ministry-row's
+   flex layout. This does not add a column, does not compete for width, and
+   does not affect .ministry-content, .ministry-visual, or the bubble
+   cluster's sizing in any way — it occupies space that was already blank.
    ========================================================================== */
-
-/* This row alone gets a third column added; every other .ministry-row on
-   the page keeps its original two-column flex behavior untouched. */
-.std-row { gap: 40px; }
-.std-row .ministry-content { flex: 1.4; }
-
 .std-card {
-	flex: 0 0 200px;
-	position: relative;
+	position: absolute;
+	top: 10px;
+	left: 24px;
+	width: 260px;
+	z-index: 2;
 	border-radius: 6px;
 	overflow: hidden;
 	padding: 2px;
@@ -409,26 +407,27 @@ footer {
 .std-card-inner {
 	background: #faf7f0;
 	border-radius: 5px;
-	padding: 28px 20px;
+	padding: 34px 24px;
 	text-align: center;
 	position: relative;
+	overflow: hidden;
 }
 /* Gold streamer accents with a hint of green, echoing the gala's own
    banner artwork, drawn as soft curved sweeps rather than a photograph */
 .std-card-inner::before, .std-card-inner::after {
 	content: '';
 	position: absolute;
-	width: 90px;
-	height: 90px;
+	width: 110px;
+	height: 110px;
 	border-radius: 50%;
 	background: radial-gradient(circle, rgba(199,151,63,0.35) 0%, rgba(20,84,76,0.15) 60%, transparent 75%);
 	pointer-events: none;
 }
-.std-card-inner::before { top: -35px; left: -35px; }
-.std-card-inner::after { bottom: -35px; right: -35px; }
+.std-card-inner::before { top: -40px; left: -40px; }
+.std-card-inner::after { bottom: -40px; right: -40px; }
 
 .std-flourish-line {
-	width: 34px;
+	width: 40px;
 	height: 2px;
 	background: var(--gold);
 	opacity: 0.7;
@@ -437,9 +436,9 @@ footer {
 	z-index: 1;
 }
 .std-label-top {
-	margin: 14px 0 0;
+	margin: 16px 0 0;
 	font-family: var(--font-body);
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: 600;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
@@ -448,9 +447,9 @@ footer {
 	z-index: 1;
 }
 .std-label-bottom {
-	margin: 2px 0 14px;
+	margin: 2px 0 16px;
 	font-family: var(--font-display);
-	font-size: 26px;
+	font-size: 30px;
 	font-style: italic;
 	font-weight: 500;
 	color: var(--ink);
@@ -460,8 +459,8 @@ footer {
 .std-countdown-row {
 	display: flex;
 	justify-content: center;
-	gap: 10px;
-	margin-top: 18px;
+	gap: 14px;
+	margin-top: 20px;
 	position: relative;
 	z-index: 1;
 }
@@ -469,7 +468,7 @@ footer {
 .std-countdown-number {
 	display: block;
 	font-family: var(--font-display);
-	font-size: 22px;
+	font-size: 26px;
 	font-weight: 600;
 	color: var(--ink);
 	line-height: 1;
@@ -477,20 +476,26 @@ footer {
 .std-countdown-unit-label {
 	display: block;
 	font-family: var(--font-body);
-	font-size: 8px;
+	font-size: 9px;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: #888;
-	margin-top: 3px;
+	margin-top: 4px;
 }
 .std-countdown-divider {
 	width: 1px;
 	background: #ddd;
 }
 
+/* Below 1024px the blank space this card relies on may not reliably exist
+   next to the stacked, centered text column, so it drops out of absolute
+   positioning and sits centered in normal flow above the row instead. */
 @media (max-width: 1024px) {
-	.std-row { flex-direction: column; }
-	.std-card { flex-basis: auto; width: 220px; margin: 0 auto 20px; }
+	.std-card {
+		position: static;
+		width: 260px;
+		margin: 0 auto 30px;
+	}
 }
 
 /* ==========================================================================
