@@ -386,146 +386,86 @@ footer {
 .sponsor-grid img:hover { transform: translateY(-4px); }
 
 /* ==========================================================================
-   SAVE THE DATE (Calendar + Countdown + Add to Calendar)
+   SAVE THE DATE (Small calendar in the hero's left margin)
    ========================================================================== */
-.save-the-date-section {
-	background-color: var(--ink);
-	padding: 60px 24px;
-}
-.std-container {
-	max-width: 900px;
+.hero-wrap {
+	position: relative;
+	max-width: 1400px;
 	margin: 0 auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 60px;
 }
 
 .std-calendar {
-	flex: 0 0 260px;
-	background: var(--white);
-	border-radius: 14px;
-	box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+	position: absolute;
+	top: 40px;
+	left: 5%;
+	width: 220px;
+	background: var(--ink);
 	overflow: hidden;
+	box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+	/* Asymmetric corners for the "sweep" shape — tucked tight top-left,
+	   flowing outward at the bottom-right, rather than a plain rectangle */
+	border-radius: 60% 12% 24% 12% / 30% 12% 60% 12%;
+	padding: 22px 20px 26px;
 }
 .std-calendar-header {
-	background: var(--gold);
-	color: var(--ink);
+	color: var(--gold-premium);
 	font-family: var(--font-display);
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	font-weight: 600;
 	text-align: center;
 	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	padding: 14px 0;
+	letter-spacing: 0.1em;
+	margin-bottom: 12px;
 }
 .std-calendar-grid {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	gap: 4px;
-	padding: 16px;
+	gap: 3px;
 }
 .std-day-label {
 	font-family: var(--font-body);
-	font-size: 0.7rem;
+	font-size: 0.62rem;
 	font-weight: 600;
-	color: var(--charcoal);
-	opacity: 0.5;
+	color: var(--gold);
+	opacity: 0.6;
 	text-align: center;
-	padding-bottom: 6px;
+	padding-bottom: 5px;
 }
 .std-calendar-grid span:not(.std-day-label) {
 	font-family: var(--font-body);
-	font-size: 0.85rem;
-	color: var(--ink);
+	font-size: 0.72rem;
+	color: rgba(255,255,255,0.65);
 	text-align: center;
-	padding: 6px 0;
+	padding: 4px 0;
 	border-radius: 50%;
 }
 .std-circled {
-	background: var(--ink);
-	color: var(--gold-premium) !important;
+	background: var(--gold);
+	color: var(--ink) !important;
 	font-weight: 700;
-	box-shadow: 0 0 0 3px var(--gold);
-}
-
-.std-details {
-	flex: 0 0 auto;
-	text-align: left;
-	color: var(--white);
+	box-shadow: 0 0 0 2px var(--gold-premium);
 }
 .std-eyebrow {
 	font-family: var(--font-display);
-	font-size: 0.95rem;
+	font-size: 0.8rem;
 	font-weight: 600;
 	text-transform: uppercase;
-	letter-spacing: 0.16em;
+	letter-spacing: 0.14em;
 	color: var(--gold-premium);
-	margin-bottom: 8px;
-}
-.std-date {
-	font-family: var(--font-display);
-	font-size: clamp(1.8rem, 4vw, 2.6rem);
-	font-weight: 500;
-	color: var(--white);
-	margin-bottom: 6px;
-	line-height: 1.15;
-}
-.std-location {
-	font-family: var(--font-body);
-	font-size: 0.95rem;
-	color: rgba(255,255,255,0.7);
-	margin-bottom: 25px;
+	text-align: center;
+	margin-top: 16px;
 }
 
-.std-countdown {
-	display: inline-flex;
-	flex-direction: column;
-	align-items: center;
-	background: rgba(255,255,255,0.06);
-	border: 1px solid rgba(212,175,55,0.3);
-	border-radius: 12px;
-	padding: 14px 28px;
-	margin-bottom: 25px;
-}
-.std-countdown-number {
-	font-family: var(--font-display);
-	font-size: 2.4rem;
-	font-weight: 600;
-	color: var(--gold-premium);
-	line-height: 1;
-}
-.std-countdown-label {
-	font-family: var(--font-body);
-	font-size: 0.75rem;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	color: rgba(255,255,255,0.6);
-	margin-top: 4px;
-}
-
-.std-calendar-btn {
-	display: block;
-	background: var(--gold);
-	color: var(--ink);
-	font-family: var(--font-display);
-	font-size: 14px;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-	border: none;
-	border-radius: 6px;
-	padding: 12px 28px;
-	cursor: pointer;
-	transition: background 0.2s ease;
-}
-.std-calendar-btn:hover { background: var(--gold-premium); }
-
-@media (max-width: 768px) {
-	.std-container { flex-direction: column; gap: 35px; text-align: center; }
-	.std-calendar { flex-basis: auto; width: 100%; max-width: 300px; }
-	.std-details { text-align: center; }
-	.std-countdown { margin-left: auto; margin-right: auto; }
+/* Below 1024px there isn't reliable margin space beside the centered
+   hero-intro for an absolutely-positioned element to sit in without
+   overlapping the title text, so the calendar returns to the normal
+   document flow and stacks above the hero instead. */
+@media (max-width: 1024px) {
+	.std-calendar {
+		position: static;
+		width: 220px;
+		margin: 0 auto 30px;
+	}
 }
 
 /* ==========================================================================
