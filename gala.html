@@ -6,14 +6,16 @@
 	<meta name="description" content="Join us for the 2026 Hope Gala in Belize. A premier fundraising event supporting local ministries.">
 	<title>Hope Gala | The Belize Project</title>
 	
+	<!-- Global Core Stylesheet -->
 	<link rel="stylesheet" href="assets/css/main.css">
 	
+	<!-- Page-Specific Styles (Spaced 5-Bubble Cluster) -->
 	<style>
 		.bubble-cluster {
 			position: relative;
 			width: 100%;
-			max-width: 650px; /* Gives the collage room to breathe */
-			aspect-ratio: 1.15 / 1; /* Perfect rectangular ratio for the 6-image spread */
+			max-width: 500px; /* Keeps the cluster perfectly contained */
+			aspect-ratio: 1 / 1; /* Perfect square container */
 			margin: 0 auto;
 		}
 		
@@ -21,15 +23,15 @@
 			position: absolute;
 			border-radius: 50%;
 			border: 5px solid #ffffff; /* Crisp white border */
-			box-shadow: 0 10px 20px rgba(0,0,0,0.12); /* Soft shadow */
+			box-shadow: 0 12px 25px rgba(0,0,0,0.15); /* Elegant shadow behind each */
 			overflow: hidden;
 			background-color: var(--offwhite);
 			aspect-ratio: 1 / 1; /* Guarantees they stay perfect circles */
-			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+			transition: transform 0.3s ease;
 		}
 		
 		.bubble:hover {
-			transform: scale(1.05);
+			transform: scale(1.08); /* Pops the image out slightly on hover */
 			z-index: 10 !important; 
 		}
 		
@@ -40,29 +42,29 @@
 			display: block;
 		}
 		
-		/* EXACT 6-Image coordinates matching your reference photo */
-		/* 1. Top Left (Ref: Face wash) */
-		.bubble-1 { width: 34%; top: 0; left: 0; z-index: 1; }
+		/* EXACT 5-Image Spaced-Out Layout */
 		
-		/* 2. Top Center (Ref: Pink background) */
-		.bubble-2 { width: 26%; top: 4%; left: 28%; z-index: 3; }
+		/* 1. Center (The Largest) */
+		.bubble-1 { width: 44%; top: 28%; left: 28%; z-index: 5; }
 		
-		/* 3. Top Right (Ref: Sunset) */
-		.bubble-3 { width: 44%; top: 0; right: 0; z-index: 1; }
+		/* 2. Top Left */
+		.bubble-2 { width: 25%; top: 1%; left: 1%; z-index: 2; }
 		
-		/* 4. Bottom Left (Ref: Sunglasses) */
-		.bubble-4 { width: 42%; top: 28%; left: 2%; z-index: 2; }
+		/* 3. Top Right */
+		.bubble-3 { width: 25%; top: 1%; right: 1%; z-index: 2; }
 		
-		/* 5. Bottom Center (Ref: Denim laughing) */
-		.bubble-5 { width: 50%; top: 35%; left: 28%; z-index: 4; }
+		/* 4. Bottom Left */
+		.bubble-4 { width: 25%; bottom: 1%; left: 1%; z-index: 2; }
 		
-		/* 6. Bottom Right (Ref: Hat) */
-		.bubble-6 { width: 30%; top: 48%; right: 2%; z-index: 1; }
+		/* 5. Bottom Right */
+		.bubble-5 { width: 25%; bottom: 1%; right: 1%; z-index: 2; }
 	</style>
 </head>
 <body>
+	<!-- Hook for Main Navigation -->
 	<div id="site-header"></div>
 
+	<!-- 2026 Gala Hero Section -->
 	<div class="slider" style="height: clamp(300px, 45vh, 480px);">
 		<ul id="slider-list">
 			<li class="active">
@@ -72,6 +74,7 @@
 		</ul>
 	</div>
 
+	<!-- Page Heading & Direct Pledge Action -->
 	<div class="hero-intro">
 		<h1>The 2026 Hope Gala</h1>
 		<p style="font-size: 1.2rem; margin-top: 10px; color: var(--gold);">October 24th, 2026 | Belize City</p>
@@ -79,6 +82,7 @@
 		<button class="modal-submit" style="width: auto; display: inline-block; padding: 12px 35px;" onclick="openPledge()">Make a Pledge</button>
 	</div>
 
+	<!-- Section 1: Core Mission & Spiritual Impact -->
 	<section class="ministry-section bg-white" style="padding: 50px 24px;">
 		<div class="ministry-row">
 			<div class="ministry-content">
@@ -88,31 +92,35 @@
 				<p>Join us in witnessing how faith, community, and stewardship can rewrite stories and build a brighter, God-honoring future for Belize.</p>
 			</div>
 			
+			<!-- SPACED 5-BUBBLE CLUSTER -->
 			<div class="ministry-visual">
 				<div class="bubble-cluster">
+					<!-- 1. Center -->
 					<div class="bubble bubble-1">
-						<img src="assets/images/bubble1.jpg" alt="Gala Highlight 1" onerror="this.src='https://placehold.co/400x400/1a1a1a/c7973f?text=1'">
+						<img src="assets/images/bubble1.jpg" alt="Gala Highlight 1" onerror="this.src='https://placehold.co/500x500/1a1a1a/c7973f?text=Center'">
 					</div>
+					<!-- 2. Top Left -->
 					<div class="bubble bubble-2">
-						<img src="assets/images/bubble2.jpg" alt="Gala Highlight 2" onerror="this.src='https://placehold.co/300x300/f4f4f4/3d3d3d?text=2'">
+						<img src="assets/images/bubble2.jpg" alt="Gala Highlight 2" onerror="this.src='https://placehold.co/300x300/f4f4f4/3d3d3d?text=Top+Left'">
 					</div>
+					<!-- 3. Top Right -->
 					<div class="bubble bubble-3">
-						<img src="assets/images/bubble3.jpg" alt="Gala Highlight 3" onerror="this.src='https://placehold.co/500x500/e0e0e0/1a1a1a?text=3'">
+						<img src="assets/images/bubble3.jpg" alt="Gala Highlight 3" onerror="this.src='https://placehold.co/300x300/e0e0e0/1a1a1a?text=Top+Right'">
 					</div>
+					<!-- 4. Bottom Left -->
 					<div class="bubble bubble-4">
-						<img src="assets/images/bubble4.jpg" alt="Gala Highlight 4" onerror="this.src='https://placehold.co/400x400/c7973f/ffffff?text=4'">
+						<img src="assets/images/bubble4.jpg" alt="Gala Highlight 4" onerror="this.src='https://placehold.co/300x300/c7973f/ffffff?text=Bottom+Left'">
 					</div>
+					<!-- 5. Bottom Right -->
 					<div class="bubble bubble-5">
-						<img src="assets/images/bubble5.jpg" alt="Gala Highlight 5" onerror="this.src='https://placehold.co/600x600/111111/c7973f?text=5'">
-					</div>
-					<div class="bubble bubble-6">
-						<img src="assets/images/bubble6.jpg" alt="Gala Highlight 6" onerror="this.src='https://placehold.co/300x300/f4f4f4/1a1a1a?text=6'">
+						<img src="assets/images/bubble5.jpg" alt="Gala Highlight 5" onerror="this.src='https://placehold.co/300x300/111111/c7973f?text=Bottom+Right'">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
+	<!-- Section 2: Sponsorship Tiers -->
 	<section class="ministry-section bg-offwhite" style="padding: 60px 24px; text-align: center;">
 		<div class="container">
 			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin-bottom: 35px;">Become a Sponsor</h2>
@@ -125,6 +133,7 @@
 		</div>
 	</section>
 
+	<!-- Section 3: Budget Distribution & Transparency -->
 	<section class="ministry-section bg-white" style="padding: 50px 24px;">
 		<div class="ministry-row reverse">
 			<div class="ministry-content">
@@ -138,6 +147,7 @@
 		</div>
 	</section>
 
+	<!-- Section 4: Ministries Navigation Grid -->
 	<section class="ministry-section bg-offwhite" style="padding: 50px 24px;">
 		<div class="container">
 			<h2 style="font-family: var(--font-display); font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 35px;">Ministries You Support</h2>
@@ -150,6 +160,7 @@
 		</div>
 	</section>
 
+	<!-- ELEGANT HORIZONTAL LEAFLET PLEDGE MODAL -->
 	<div class="modal-overlay" id="pledge-overlay" onclick="closePledge()">
 		<div class="pledge-leaflet" onclick="event.stopPropagation()">
 			<button type="button" class="pledge-leaflet-close" onclick="closePledge()">&times;</button>
@@ -188,9 +199,11 @@
 		</div>
 	</div>
 
+	<!-- Hooks for Global Footer and Global Contact Modal -->
 	<div id="site-footer"></div>
 	<div id="site-modal"></div>
 
+	<!-- Modal Toggle Scripts -->
 	<script>
 		function openPledge() {
 			const overlay = document.getElementById('pledge-overlay');
@@ -208,6 +221,7 @@
 		}
 	</script>
 	
+	<!-- Shared Site Functionality Logic Script -->
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
