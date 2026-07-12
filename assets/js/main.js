@@ -9,7 +9,7 @@ const EMAILJS_PUBLIC_KEY = 'Ynw4v3pMwaJjIgZkT';
 // NOTE: this is currently identical to EMAILJS_PUBLIC_KEY above. Public Key
 // and Template ID come from two different places on the EmailJS dashboard
 // and shouldn't match — double check this value before testing the form.
-const EMAILJS_TEMPLATE_ID = 'Ynw4v3pMwaJjIgZkT';
+const EMAILJS_TEMPLATE_ID = 'template_jnqat86';
 
 if (typeof emailjs !== 'undefined') {
 	emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
