@@ -297,28 +297,21 @@ function openLightbox(index) {
 	currentImageIndex = index;
 	const lightboxImg = document.getElementById('lightboxImg');
 	
-	// Set the initial image immediately upon opening — no flip on first open
+	// Set the initial image immediately upon opening without fade
 	lightboxImg.src = `${currentFolderPath}/${currentAlbumList[currentImageIndex]}`;
-	lightboxImg.classList.remove('flip-next', 'flip-prev');
+	lightboxImg.classList.remove('fade-out');
 	
 	document.getElementById('lightbox').classList.add('active');
 }
 
-// direction: 1 = next (flips away to the left, like turning a page forward)
-//           -1 = prev (flips away to the right, like turning a page back)
-function updateLightboxImage(direction) {
+function updateLightboxImage() {
 	const lightboxImg = document.getElementById('lightboxImg');
-	const flipOutClass = direction === -1 ? 'flip-prev' : 'flip-next';
 	
-	lightboxImg.classList.add(flipOutClass);
+	lightboxImg.classList.add('fade-out');
 	
-	// Swap the source at the rotation's midpoint — the moment the "page" is
-	// edge-on and invisible to the viewer — matching the 0.4s transform
-	// duration set on .lightbox img in main.css. Swapping earlier or later
-	// than the midpoint shows the new photo arriving from the wrong side.
 	setTimeout(() => {
 		lightboxImg.src = `${currentFolderPath}/${currentAlbumList[currentImageIndex]}`;
-		lightboxImg.classList.remove(flipOutClass);
+		lightboxImg.classList.remove('fade-out');
 	}, 200);
 }
 
@@ -333,14 +326,16 @@ function changeImage(direction, event) {
 		currentImageIndex = 0;
 	}
 	
-	updateLightboxImage(direction);
+	updateLightboxImage();
 }
 
-// Closes only via the explicit close button or Escape — clicking the
-// backdrop or the image no longer closes the lightbox, so a person
-// navigating near the end of an album can't lose their place by mis-click.
+// Closes ONLY via the explicit close button or Escape. The lightbox div's
+// onclick in gallery.html still calls this function on every click inside
+// it (backdrop, photo, everywhere) — so this function refuses to act
+// unless it was called with no event at all (Escape key) or an event
+// whose target is exactly the close button itself.
 function closeLightbox(event) {
-	if (event) event.stopPropagation();
+	if (event && event.target.className !== 'lightbox-close') return;
 	document.getElementById('lightbox').classList.remove('active');
 }
 
