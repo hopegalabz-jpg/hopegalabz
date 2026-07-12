@@ -258,7 +258,7 @@ const gala2022 = [ "HopeGala22-1.png", "HopeGala22-10.png", "HopeGala22-15.png",
 const jacobsFarm = [ "1000037511.jpg", "1000037513.jpg", "IMG-20250701-WA0036.jpg", "IMG-20250701-WA0037.jpg", "IMG-20250701-WA0040.jpg", "IMG-20250701-WA0041.jpg", "IMG-20250701-WA0042.jpg" ];
 const dorcas = [ "1.jpg", "2.jpg", "3.png", "IMG-20250701-WA0038.jpg", "IMG-20250701-WA0039.jpg" ];
 const restore = [ "4.jpg", "5.jpg", "6.jpg", "1000037531.jpg", "1000000215.jpg", "1000000356.jpg", "1000037529.jpg", "IMG-20250701-WA0043.jpg", "IMG-20250701-WA0044.jpg" ];
-const bit = [ "1.png", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "7.jpg", "11.jpg", "33.jpg", "55.jpg", "77.jpg" ];
+const bit = [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "7.jpg", "11.jpg", "33.jpg", "55.jpg", "77.jpg" ];
 
 // State memory for Gallery Navigation
 let currentAlbumList = [];
