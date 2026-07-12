@@ -324,6 +324,47 @@ footer {
 .sponsor-grid img:hover { transform: translateY(-4px); }
 
 /* ==========================================================================
+   GALA BUBBLE CLUSTER (Overlapping Circles)
+   ========================================================================== */
+.bubble-cluster {
+	position: relative;
+	width: 100%;
+	max-width: 500px;
+	aspect-ratio: 1 / 1; /* Keeps the container perfectly square */
+	margin: 0 auto;
+}
+
+.bubble {
+	position: absolute;
+	border-radius: 50%;
+	border: 6px solid #ffffff; /* Thick white border */
+	box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* Soft, pristine shadow */
+	overflow: hidden;
+	background-color: var(--offwhite);
+	transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover effect brings the image to life */
+.bubble:hover {
+	transform: scale(1.05);
+	z-index: 10 !important; 
+}
+
+.bubble img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* Staggered Sizes and Positions for the Overlap Effect */
+.bubble-1 { width: 55%; top: 15%; left: 22%; z-index: 3; } /* Center/Main image */
+.bubble-2 { width: 38%; top: 0; right: 2%; z-index: 2; }   /* Top Right */
+.bubble-3 { width: 48%; bottom: 5%; left: 0; z-index: 4; } /* Bottom Left */
+.bubble-4 { width: 30%; top: 10%; left: 0; z-index: 1; }   /* Top Left */
+.bubble-5 { width: 42%; bottom: 12%; right: 0; z-index: 2; } /* Bottom Right */
+
+/* ==========================================================================
    ELEGANT HORIZONTAL LEAFLET PLEDGE MODAL
    ========================================================================== */
 .pledge-leaflet {
@@ -528,7 +569,7 @@ footer {
 	.text2 p, .ministry-content p { text-align: center; }
 	.ministry-content h2 { text-align: center; }
 	.slider { height: 260px; }
-	.lightbox-nav { display: none; } 
+	.lightbox-nav { display: none; }
 	
 	.ministry-nav-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
 	.ministry-nav-tile { padding: 25px 15px; }
