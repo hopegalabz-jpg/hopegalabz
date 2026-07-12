@@ -14,34 +14,38 @@
 		.bubble-cluster {
 			position: relative;
 			width: 100%;
-			max-width: 500px;
-			aspect-ratio: 1 / 1;
+			max-width: 600px; /* Slightly wider to accommodate the full collage layout */
+			aspect-ratio: 1.25 / 1; /* Creates a rectangular space for the collage */
 			margin: 0 auto;
 		}
 		.bubble {
 			position: absolute;
 			border-radius: 50%;
 			border: 6px solid #ffffff;
-			box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+			box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 			overflow: hidden;
 			background-color: var(--offwhite);
 			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+			aspect-ratio: 1 / 1; /* THIS IS THE FIX: Forces perfect circles always */
 		}
 		.bubble:hover {
 			transform: scale(1.05);
-			z-index: 10 !important; 
+			z-index: 20 !important; 
 		}
 		.bubble img {
 			width: 100%;
 			height: 100%;
-			object-fit: cover;
+			object-fit: cover; /* Ensures the image fills the circle without stretching */
 			display: block;
 		}
-		.bubble-1 { width: 55%; top: 15%; left: 22%; z-index: 3; }
-		.bubble-2 { width: 38%; top: 0; right: 2%; z-index: 2; }
-		.bubble-3 { width: 48%; bottom: 5%; left: 0; z-index: 4; }
-		.bubble-4 { width: 30%; top: 10%; left: 0; z-index: 1; }
-		.bubble-5 { width: 42%; bottom: 12%; right: 0; z-index: 2; }
+		
+		/* 6-Circle Layout matching your exact reference image */
+		.bubble-1 { width: 32%; top: 2%; left: 5%; z-index: 2; }    /* Top Left */
+		.bubble-2 { width: 24%; top: 0; left: 32%; z-index: 1; }    /* Top Center Small */
+		.bubble-3 { width: 42%; top: 5%; right: 2%; z-index: 3; }   /* Top Right Large */
+		.bubble-4 { width: 38%; bottom: 2%; left: 2%; z-index: 4; } /* Bottom Left */
+		.bubble-5 { width: 48%; bottom: 0; left: 30%; z-index: 5; } /* Bottom Center Largest */
+		.bubble-6 { width: 28%; bottom: 8%; right: 4%; z-index: 2; }/* Bottom Right Small */
 	</style>
 </head>
 <body>
@@ -61,7 +65,7 @@
 	<!-- Page Heading & Direct Pledge Action -->
 	<div class="hero-intro">
 		<h1>The 2026 Hope Gala</h1>
-		<p style="font-size: 1.2rem; margin-top: 10px; color: var(--gold);">October 17th, 2026 | Belize City</p>
+		<p style="font-size: 1.2rem; margin-top: 10px; color: var(--gold);">October 24th, 2026 | Belize City</p>
 		<div class="divider" style="margin-top: 25px;"></div>
 		<button class="modal-submit" style="width: auto; display: inline-block; padding: 12px 35px;" onclick="openPledge()">Make a Pledge</button>
 	</div>
@@ -79,25 +83,29 @@
 			<!-- Bubble Cluster Visuals -->
 			<div class="ministry-visual">
 				<div class="bubble-cluster">
-					<!-- Image 1 (Center - Largest) -->
+					<!-- Top Left -->
 					<div class="bubble bubble-1">
-						<img src="assets/images/bubble1.png" alt="Gala Highlight 1">
+						<img src="assets/images/bubble1.jpg" alt="Gala Highlight 1" onerror="this.src='https://placehold.co/400x400/1a1a1a/c7973f?text=Top+Left'">
 					</div>
-					<!-- Image 2 (Top Right) -->
+					<!-- Top Center Small -->
 					<div class="bubble bubble-2">
-						<img src="assets/images/bubble2.jpg" alt="Gala Highlight 1">
+						<img src="assets/images/bubble2.jpg" alt="Gala Highlight 2" onerror="this.src='https://placehold.co/300x300/f4f4f4/3d3d3d?text=Top+Mid'">
 					</div>
-					<!-- Image 3 (Bottom Left - Brought to front) -->
+					<!-- Top Right Large -->
 					<div class="bubble bubble-3">
-						<img src="assets/images/bubble3.png" alt="Gala Highlight 1">
+						<img src="assets/images/bubble3.jpg" alt="Gala Highlight 3" onerror="this.src='https://placehold.co/500x500/e0e0e0/1a1a1a?text=Top+Right'">
 					</div>
-					<!-- Image 4 (Top Left - Tucked behind) -->
+					<!-- Bottom Left -->
 					<div class="bubble bubble-4">
-						<img src="assets/images/bubble4.jpg" alt="Gala Highlight 1">
+						<img src="assets/images/bubble4.jpg" alt="Gala Highlight 4" onerror="this.src='https://placehold.co/400x400/c7973f/ffffff?text=Bottom+Left'">
 					</div>
-					<!-- Image 5 (Bottom Right) -->
+					<!-- Bottom Center Largest -->
 					<div class="bubble bubble-5">
-						<img src="assets/images/bubble5.jpg" alt="Gala Highlight 1">
+						<img src="assets/images/bubble5.jpg" alt="Gala Highlight 5" onerror="this.src='https://placehold.co/600x600/111111/c7973f?text=Bottom+Mid'">
+					</div>
+					<!-- Bottom Right Small -->
+					<div class="bubble bubble-6">
+						<img src="assets/images/bubble6.jpg" alt="Gala Highlight 6" onerror="this.src='https://placehold.co/300x300/f4f4f4/1a1a1a?text=Bottom+Right'">
 					</div>
 				</div>
 			</div>
@@ -138,10 +146,10 @@
 		<div class="container">
 			<h2 style="font-family: var(--font-display); font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 35px;">Ministries You Support</h2>
 			<div class="ministry-nav-grid" style="margin-bottom: 0;">
-				<a href="ministries.html#jacob" class="ministry-nav-tile"><img src="assets/images/logos/jacob-logo.jpg" alt="Jacob's Farm"><h4>Jacob's Farm</h4></a>
+				<a href="ministries.html#jacob" class="ministry-nav-tile"><img src="assets/images/logos/jacob-logo.png" alt="Jacob's Farm"><h4>Jacob's Farm</h4></a>
 				<a href="ministries.html#dorcas" class="ministry-nav-tile"><img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas"><h4>House of Dorcas</h4></a>
 				<a href="ministries.html#restore" class="ministry-nav-tile"><img src="assets/images/logos/restore-logo.png" alt="Restore Small Groups"><h4>Restore Groups</h4></a>
-				<a href="ministries.html#bit" class="ministry-nav-tile"><img src="assets/images/logos/bit-logo.jpg" alt="Believe In Them"><h4>Believe In Them</h4></a>
+				<a href="ministries.html#bit" class="ministry-nav-tile"><img src="assets/images/logos/bit-logo.png" alt="Believe In Them"><h4>Believe In Them</h4></a>
 			</div>
 		</div>
 	</section>
