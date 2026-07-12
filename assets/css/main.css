@@ -394,6 +394,26 @@ footer {
 	max-width: 600px;
 	aspect-ratio: 1 / 1; 
 	margin: 0 auto;
+	z-index: 0;
+}
+
+/* Glow behind the bubble cluster — a soft, smudgy warmth radiating outward.
+   z-index: -1 forces this behind every .bubble (which start at z-index: 1),
+   and it needs .bubble-cluster to have its own z-index (set above) to
+   create an isolated stacking context — otherwise -1 could slip behind
+   unrelated page content instead of just the bubbles. */
+.bubble-cluster::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 160%;
+	height: 160%;
+	transform: translate(-50%, -50%);
+	background: radial-gradient(circle, rgba(199, 151, 63, 0.65) 0%, rgba(199, 151, 63, 0.35) 35%, rgba(199, 151, 63, 0) 70%);
+	filter: blur(60px);
+	z-index: -1;
+	pointer-events: none;
 }
 
 .bubble {
