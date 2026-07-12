@@ -68,6 +68,7 @@ header {
 	align-items: center;
 	list-style: none;
 	gap: 28px;
+	padding-left: 190px; /* keeps nav links roughly two inches clear of the logo on desktop */
 }
 .nav-menu li a {
 	color: var(--ink);
@@ -1091,7 +1092,7 @@ footer {
 @media (max-width: 1024px) {
 	.navegacion { grid-template-columns: 1fr; gap: 15px; padding: 15px; }
 	.nav-spacer { display: none; }
-	.nav-menu { justify-content: center; flex-wrap: wrap; gap: 18px; }
+	.nav-menu { justify-content: center; flex-wrap: wrap; gap: 18px; padding-left: 0; }
 	.ministry-row { max-width: 900px; gap: 35px; }
 }
 
