@@ -6,7 +6,6 @@
 	<meta name="description" content="Discover the ministries supported by The Belize Project: Jacob's Farm, House of Dorcas, Restore Small Groups, and Believe in Them.">
 	<title>Ministries | The Belize Project</title>
 	
-	<!-- THIS IS THE ONLY CSS FILE YOU NEED -->
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -15,71 +14,72 @@
 
 	<!-- Page Header -->
 	<div class="container">
-		<div class="heading" style="text-align: center; margin-bottom: 20px; padding-top: 60px;">
+		<div class="heading" style="text-align: center; margin-bottom: 40px; padding-top: 60px;">
 			<h3 style="font-family: var(--font-display); font-size: 3rem; color: var(--ink);">Our <span style="color: var(--gold);">Ministries</span></h3>
-			<div class="divider" style="margin-top: 20px;"></div>
+			<div class="divider" style="margin-top: 20px; margin-bottom: 40px;"></div>
+		</div>
+
+		<!-- THE NEW DIRECTORY GRID -->
+		<div class="ministry-nav-grid">
+			<a href="#jacob" class="ministry-nav-tile">
+				<img src="assets/images/logos/jacob-logo.jpg" alt="Jacob's Farm Logo" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Jacob+Logo'">
+				<h4>Jacob's Farm</h4>
+			</a>
+			
+			<a href="#dorcas" class="ministry-nav-tile">
+				<img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas Logo" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Dorcas+Logo'">
+				<h4>House of Dorcas</h4>
+			</a>
+			
+			<a href="#restore" class="ministry-nav-tile">
+				<img src="assets/images/logos/restore-logo.png" alt="Restore Small Groups Logo" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Restore+Logo'">
+				<h4>Restore Groups</h4>
+			</a>
+			
+			<a href="#bit" class="ministry-nav-tile">
+				<img src="assets/images/logos/bit-logo.jpg" alt="BIT Logo" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=BIT+Logo'">
+				<h4>Believe In Them</h4>
+			</a>
 		</div>
 	</div>
 
-	<!-- MINISTRY 1: Jacob's Farm (Image Left, Text Right, White BG) -->
-	<section class="ministry-section bg-white">
+	<!-- THE EXCERPTS (Linked to the tiles above via IDs) -->
+	
+	<section id="jacob" class="ministry-section bg-white">
 		<div class="ministry-row">
-			<div class="ministry-visual">
-				<img class="ministry-main-img" src="assets/images/ministries/jacobsfarm/1000037511.jpg" alt="Jacob's Farm" loading="lazy">
-			</div>
 			<div class="ministry-content">
-				<img class="ministry-logo" src="assets/images/logos/jacobs-logo.png" alt="Jacob's Farm Logo" onerror="this.style.display='none'">
 				<h2>Jacob's Rehabilitation Farm Center</h2>
 				<p>Jacob's Rehabilitation Farm Center is a Non-Profit Organization that brings hope, recovery, and restoration to men. Its mission is to assist men who are suffering from drug and alcohol addiction. We have a core curriculum that we teach weekly and then many additional courses which we teach often.</p>
-				<p>The core courses are Journey to Freedom, Alcoholics Anonymous 12 Steps, Teen Challenge, and The Science of Addiction. Some of the additional courses cover topics like Personal Finance, How to be a good father and husband, and How to treat women respectfully.</p>
-				<p>It provides a therapeutic six-month residential program and assists them to reintegrate into society as productive citizens in their communities, giving them a second chance and a hope for a new tomorrow.</p>
+				<p>The core courses are Journey to Freedom, Alcoholics Anonymous 12 Steps, Teen Challenge, and The Science of Addiction. Some of the additional courses cover topics like Personal Finance, How to be a good father and husband, and How to treat women respectfully. It provides a therapeutic six-month residential program and assists them to reintegrate into society as productive citizens in their communities, giving them a second chance and a hope for a new tomorrow.</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- MINISTRY 2: House of Dorcas (Text Left, Image Right, Off-White BG) -->
-	<section class="ministry-section bg-offwhite">
-		<div class="ministry-row reverse">
-			<div class="ministry-visual">
-				<img class="ministry-main-img" src="assets/images/ministries/Dorcas/1.jpg" alt="House of Dorcas" loading="lazy">
-			</div>
-			<div class="ministry-content">
-				<img class="ministry-logo" src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas Logo" onerror="this.style.display='none'">
-				<h2>House of Dorcas</h2>
-				<p>The House of Dorcas is a Christian Organization dedicated to assisting women in Domestic Violence and Human Trafficking situations. Our main goal is to provide vulnerable victims a safe place for them to spend time while their case is reviewed and addressed.</p>
-				<p>Our ministry also assists women through Journey to Freedom and other educational programs that will equip them to become a productive force in our society.</p>
-			</div>
-		</div>
-	</section>
-
-	<!-- MINISTRY 3: Restore Small Groups (Image Left, Text Right, White BG) -->
-	<section class="ministry-section bg-white">
+	<section id="dorcas" class="ministry-section bg-offwhite">
 		<div class="ministry-row">
-			<div class="ministry-visual">
-				<img class="ministry-main-img" src="assets/images/ministries/restore/4.jpg" alt="Restore Small Groups" loading="lazy">
-			</div>
 			<div class="ministry-content">
-				<img class="ministry-logo" src="assets/images/logos/restore-logo.png" alt="Restore Small Groups Logo" onerror="this.style.display='none'">
+				<h2>House of Dorcas</h2>
+				<p>The House of Dorcas is a Christian Organization dedicated to assisting women in Domestic Violence and Human Trafficking situations. Our main goal is to provide vulnerable victims a safe place for them to spend time while their case is reviewed and addressed. Our ministry also assists women through Journey to Freedom and other educational programs that will equip them to become a productive force in our society.</p>
+			</div>
+		</div>
+	</section>
+
+	<section id="restore" class="ministry-section bg-white">
+		<div class="ministry-row">
+			<div class="ministry-content">
 				<h2>Restore Small Groups</h2>
-				<p>Restore Small Groups helps us deal with life-controlling issues and guides us through a life-transforming process. Our mission is to be a healing community supporting each individual's unique path of transformation and well-being.</p>
-				<p>One of our main focuses has been Kolbe Prison where we lead Journey to Freedom sessions and training. Over 1800 men and women have gone through their life-transforming process and we hope we can reach out to as many as we can.</p>
+				<p>Restore Small Groups helps us deal with life-controlling issues and guides us through a life-transforming process. Our mission is to be a healing community supporting each individual's unique path of transformation and well-being. One of our main focuses has been Kolbe Prison where we lead Journey to Freedom sessions and training. Over 1800 men and women have gone through their life-transforming process and we hope we can reach out to as many as we can.</p>
 				<p>Other ministries served through Journey to Freedom are: Jacob's Rehabilitation Farm Center, Youth Hostel Foundation, Tubal Vocational School, Excelsior High School, Sadie Vernon High School, to name a few. Restore Small Groups has been and will continue to be committed to serving and supporting anyone desiring a change in his/her life.</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- MINISTRY 4: Believe in Them [BIT] (Text Left, Image Right, Off-White BG) -->
-	<section class="ministry-section bg-offwhite">
-		<div class="ministry-row reverse">
-			<div class="ministry-visual">
-				<img class="ministry-main-img" src="assets/images/ministries/bit/1.png" alt="Believe in Them Ministry" loading="lazy">
-			</div>
+	<section id="bit" class="ministry-section bg-offwhite">
+		<div class="ministry-row">
 			<div class="ministry-content">
-				<img class="ministry-logo" src="assets/images/logos/bit-logo.png" alt="BIT Logo" onerror="this.style.display='none'">
 				<h2>Believe in Them Ministry</h2>
 				<h4 style="color: var(--gold); font-weight: 600; margin-top: -15px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">Meet God Halfway Rehabilitation & Recovery</h4>
-				<p>The Believe in Them Ministry, Meet God Halfway Rehabilitation & Recovery Program exists to guide incarcerated men through a process of spiritual renewal, personal accountability, and behavioral transformation.</p>
-				<p>Its mission is to provide participants with a structured environment where they can reflect on their past choices, confront destructive habits, and develop the spiritual and practical tools necessary to rebuild their lives.</p>
+				<p>The Believe in Them Ministry, Meet God Halfway Rehabilitation & Recovery Program exists to guide incarcerated men through a process of spiritual renewal, personal accountability, and behavioral transformation. Its mission is to provide participants with a structured environment where they can reflect on their past choices, confront destructive habits, and develop the spiritual and practical tools necessary to rebuild their lives.</p>
 				<p>Through faith-based guidance, mentorship, and group discussion, the program equips these men for a productive, responsible, and purpose-driven future both inside the facility and upon their return to society.</p>
 			</div>
 		</div>
@@ -89,7 +89,6 @@
 	<div id="site-footer"></div>
 	<div id="site-modal"></div>
 
-	<!-- THE FIX: Pointing to the correct main JS file -->
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
