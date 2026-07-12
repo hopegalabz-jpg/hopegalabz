@@ -248,6 +248,95 @@ function initContactModal() {
 }
 
 /* =====================================================================
+   SAVE THE DATE — Countdown & Add to Calendar
+   ===================================================================== */
+
+const GALA_DATE = new Date(2026, 9, 17); // October 17th, 2026 (month is 0-indexed, so 9 = October)
+const GALA_LOCATION = 'Belize City, Belize';
+const GALA_TITLE = 'The 2026 Hope Gala';
+const GALA_DESCRIPTION = 'An Evening of Purpose & Praise — join The Belize Project for our premier fundraising gala supporting local ministries.';
+
+function updateCountdown() {
+	const daysEl = document.getElementById('std-countdown-days');
+	if (!daysEl) return; // this page has no Save the Date section — nothing to do
+
+	const today = new Date();
+	today.setHours(0, 0, 0, 0);
+	const msPerDay = 1000 * 60 * 60 * 24;
+	const daysRemaining = Math.ceil((GALA_DATE - today) / msPerDay);
+
+	if (daysRemaining > 0) {
+		daysEl.textContent = daysRemaining;
+	} else if (daysRemaining === 0) {
+		daysEl.textContent = 'Today!';
+	} else {
+		daysEl.textContent = '0';
+	}
+}
+
+// Builds a standard .ics calendar file as plain text. This format is
+// recognized by Apple Calendar, Google Calendar, and Outlook alike, so one
+// file covers "whatever calendar app the visitor already has" on both iOS
+// and Android — there's no single universal link that works across all of
+// them any other way.
+function buildGalaIcsFile() {
+	function formatIcsDate(date) {
+		// .ics dates need YYYYMMDD with no separators
+		const year = date.getFullYear();
+		const month = String(date.getMonth() + 1).padStart(2, '0');
+		const day = String(date.getDate()).padStart(2, '0');
+		return `${year}${month}${day}`;
+	}
+
+	const startDate = formatIcsDate(GALA_DATE);
+	const endDateObj = new Date(GALA_DATE);
+	endDateObj.setDate(endDateObj.getDate() + 1); // all-day events need the following day as the exclusive end
+	const endDate = formatIcsDate(endDateObj);
+
+	const icsLines = [
+		'BEGIN:VCALENDAR',
+		'VERSION:2.0',
+		'PRODID:-//The Belize Project//Hope Gala//EN',
+		'BEGIN:VEVENT',
+		`UID:hopegala2026@thebelizeproject`,
+		`DTSTART;VALUE=DATE:${startDate}`,
+		`DTEND;VALUE=DATE:${endDate}`,
+		`SUMMARY:${GALA_TITLE}`,
+		`DESCRIPTION:${GALA_DESCRIPTION}`,
+		`LOCATION:${GALA_LOCATION}`,
+		'END:VEVENT',
+		'END:VCALENDAR'
+	];
+
+	// .ics requires CRLF (\r\n) line endings, not plain \n
+	return icsLines.join('\r\n');
+}
+
+function initAddToCalendar() {
+	const btn = document.getElementById('std-add-to-calendar');
+	if (!btn) return; // this page has no Save the Date section — nothing to do
+
+	btn.addEventListener('click', () => {
+		const icsContent = buildGalaIcsFile();
+		const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+		const url = URL.createObjectURL(blob);
+
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = 'hope-gala-2026.ics';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+		URL.revokeObjectURL(url);
+	});
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+	updateCountdown();
+	initAddToCalendar();
+});
+
+/* =====================================================================
    GALLERY LOGIC & DATA
    ===================================================================== */
 
