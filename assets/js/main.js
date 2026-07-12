@@ -17,7 +17,7 @@ const SITE_HEADER = `
 			</a>
 			<ul class="nav-menu">
 				<li><a href="index.html">Home</a></li>
-				<li><a href="gala.html">Hope Gala</a></li>
+				<li><a href="gala.html">Gala</a></li>
 				<li><a href="ministries.html">Ministries</a></li>
 				<li><a href="gallery.html">Gallery</a></li>
 				<li><a href="resources.html">Resources</a></li>
@@ -375,6 +375,19 @@ function closeLightbox(event) {
 function closeAlbum() {
 	document.getElementById('sidebarOverlay').classList.remove('active');
 	document.body.style.overflow = ''; 
+}
+
+// Click-outside-to-close for the sidebar (shared by Gallery and Resources,
+// since both use the same #sidebarOverlay element and closeAlbum()).
+// Only closes when the click lands on the backdrop itself — e.target is
+// the overlay element, not something nested inside .premium-sidebar —
+// so clicking a photo, a resource link, or anything else inside the panel
+// does not trigger this.
+const sidebarOverlayEl = document.getElementById('sidebarOverlay');
+if (sidebarOverlayEl) {
+	sidebarOverlayEl.addEventListener('click', function(e) {
+		if (e.target === sidebarOverlayEl) closeAlbum();
+	});
 }
 
 // Touch swipe navigation for the lightbox (mobile only in practice, since
