@@ -663,7 +663,9 @@ footer {
 	.text2 p, .ministry-content p { text-align: center; }
 	.ministry-content h2 { text-align: center; }
 	.slider { height: 280px; }
-	.lightbox-nav { display: none; }
+	.lightbox-nav { padding: 8px 12px; font-size: 1.3rem; background: rgba(0, 0, 0, 0.3); border-color: rgba(212, 175, 55, 0.1); }
+	.lightbox-nav.prev { left: 10px; }
+	.lightbox-nav.next { right: 10px; }
 	.lightbox-close { top: 14px; right: 14px; width: 42px; height: 42px; font-size: 2rem; }
 	
 	.ministry-nav-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
