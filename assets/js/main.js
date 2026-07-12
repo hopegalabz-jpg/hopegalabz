@@ -6,9 +6,7 @@
 /* ---------- EmailJS configuration ---------- */
 const EMAILJS_SERVICE_ID = 'service_6f2ujxo';
 const EMAILJS_PUBLIC_KEY = 'Ynw4v3pMwaJjIgZkT';
-// NOTE: this is currently identical to EMAILJS_PUBLIC_KEY above. Public Key
-// and Template ID come from two different places on the EmailJS dashboard
-// and shouldn't match — double check this value before testing the form.
+// Fixed: Template ID has been updated to the correct value
 const EMAILJS_TEMPLATE_ID = 'template_jnqat86';
 
 if (typeof emailjs !== 'undefined') {
@@ -55,36 +53,52 @@ const SITE_MODAL = `
 			<button type="button" class="modal-close" aria-label="Close">&times;</button>
 
 			<div class="modal-body">
-				<h3 id="contact-modal-title">Get in Touch</h3>
-				<p class="drop-cap">Tell us what's on your mind — we read every message.</p>
+				<div id="modal-initial-view">
+					<h3 id="contact-modal-title">Contact & Pledges</h3>
+					<p class="drop-cap">We appreciate your support. Please reach out with any inquiries, pledges, or partnership opportunities.</p>
 
-				<form id="contact-form">
-					<div class="form-field">
-						<label for="contact-name">Name</label>
-						<input type="text" id="contact-name" name="from_name" autocomplete="name" required>
-					</div>
-					<div class="form-field">
-						<label for="contact-email">Email</label>
-						<input type="email" id="contact-email" name="reply_to" autocomplete="email" required>
-					</div>
-					<div class="form-field">
-						<label for="contact-phone">Phone</label>
-						<input type="tel" id="contact-phone" name="phone_number" autocomplete="tel" required>
-					</div>
-					<div class="form-field">
-						<label for="contact-message">Message</label>
-						<textarea id="contact-message" name="message" rows="4" required></textarea>
-					</div>
+					<form id="contact-form">
+						<div class="form-field">
+							<label for="contact-name">Name</label>
+							<input type="text" id="contact-name" name="from_name" autocomplete="name" required>
+						</div>
+						<div class="form-field">
+							<label for="contact-email">Email</label>
+							<input type="email" id="contact-email" name="reply_to" autocomplete="email" required>
+						</div>
+						<div class="form-field">
+							<label for="contact-phone">Phone</label>
+							<input type="tel" id="contact-phone" name="phone_number" autocomplete="tel" required>
+						</div>
+						<div class="form-field">
+							<label for="contact-reason">Reason for Contact</label>
+							<select id="contact-reason" name="contact_reason" required>
+								<option value="" disabled selected>Select an option...</option>
+								<option value="Pledge">Make a Pledge</option>
+								<option value="General Inquiry">General Inquiry</option>
+								<option value="Sponsorship">Sponsorship</option>
+							</select>
+						</div>
+						<div class="form-field">
+							<label for="contact-message">Message</label>
+							<textarea id="contact-message" name="message" rows="4" required></textarea>
+						</div>
 
-					<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+						<input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-					<button type="submit" class="modal-submit">Send Message</button>
-					<p class="form-status" role="status" aria-live="polite"></p>
-				</form>
+						<button type="submit" class="modal-submit">Send Message</button>
+						<p class="form-status" role="status" aria-live="polite"></p>
+					</form>
+
+					<div class="modal-contact-info">
+						<p><strong>Telephone:</strong> 501-610-9345 | 501-636-8147</p>
+						<p><strong>Email:</strong> thebelizeproject2@gmail.com</p>
+					</div>
+				</div>
 
 				<div class="success-message" hidden>
 					<h4 tabindex="-1">Message Sent</h4>
-					<p>Thank you for reaching out — we'll be in touch soon.</p>
+					<p>Thank you for reaching out. We have received your message and will be in touch shortly.</p>
 				</div>
 			</div>
 		</div>
@@ -115,6 +129,7 @@ function initContactModal() {
 	const submitBtn = form.querySelector('.modal-submit');
 	const statusEl = form.querySelector('.form-status');
 	const firstField = document.getElementById('contact-name');
+	const initialView = document.getElementById('modal-initial-view');
 
 	if (!openBtn) return;
 
@@ -123,9 +138,8 @@ function initContactModal() {
 	function openModal() {
 		lastFocusedEl = document.activeElement;
 
-		// Reset to a fresh state every time it opens, in case a delayed
-		// response from a previous submission arrived after it was closed.
-		form.hidden = false;
+		// Reset to a fresh state every time it opens
+		initialView.hidden = false;
 		successMessage.hidden = true;
 		submitBtn.disabled = false;
 		submitBtn.textContent = 'Send Message';
@@ -158,7 +172,8 @@ function initContactModal() {
 			return;
 		}
 		if (e.key === 'Tab') {
-			const focusable = Array.from(modalCard.querySelectorAll('input, textarea, button'))
+			// Updated to include select fields
+			const focusable = Array.from(modalCard.querySelectorAll('input, textarea, select, button'))
 				.filter((el) => el.tabIndex !== -1 && !el.disabled && el.offsetParent !== null);
 			if (!focusable.length) return;
 			const first = focusable[0];
@@ -198,7 +213,7 @@ function initContactModal() {
 		emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
 			.then(() => {
 				form.reset();
-				form.hidden = true;
+				initialView.hidden = true;
 				successMessage.hidden = false;
 				successMessage.querySelector('h4').focus();
 			})
