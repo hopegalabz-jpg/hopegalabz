@@ -12,19 +12,19 @@
 		.bubble-cluster {
 			position: relative;
 			width: 100%;
-			max-width: 650px; /* Gives the collage room to breathe */
-			aspect-ratio: 1.15 / 1; /* Perfect rectangular ratio for the 5-image spread */
+			max-width: 650px; 
+			aspect-ratio: 1.15 / 1; 
 			margin: 0 auto;
 		}
 		
 		.bubble {
 			position: absolute;
 			border-radius: 50%;
-			border: 5px solid #ffffff; /* Crisp white border */
-			box-shadow: 0 10px 20px rgba(0,0,0,0.12); /* Soft shadow */
+			border: 5px solid #ffffff; 
+			box-shadow: 0 10px 20px rgba(0,0,0,0.12); 
 			overflow: hidden;
 			background-color: var(--offwhite);
-			aspect-ratio: 1 / 1; /* Guarantees they stay perfect circles */
+			aspect-ratio: 1 / 1; 
 			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 		}
 		
@@ -40,20 +40,10 @@
 			display: block;
 		}
 		
-		/* 5-Image cluster: varied sizes, staggered so nothing collides */
-		/* 1. Top Left (small) */
 		.bubble-1 { width: 26%; top: 0; left: 4%; z-index: 2; }
-		
-		/* 2. Top Right (largest) */
 		.bubble-3 { width: 46%; top: 0; right: 0; z-index: 1; }
-		
-		/* 3. Middle Left (medium, tucked lower-left) */
 		.bubble-4 { width: 34%; top: 30%; left: 0; z-index: 3; }
-		
-		/* 4. Bottom Center (hero image, biggest, main focal point) */
 		.bubble-5 { width: 52%; bottom: 0; left: 26%; z-index: 4; }
-		
-		/* 5. Bottom Right (small-medium) */
 		.bubble-6 { width: 28%; bottom: 4%; right: 0; z-index: 2; }
 	</style>
 </head>
@@ -62,9 +52,12 @@
 
 	<div class="slider" style="height: clamp(300px, 45vh, 480px);">
 		<ul id="slider-list">
-			<li class="active">
-				<div class="slide-bg" style="background-image: url('assets/images/slideshow/gala2026banner1.png');"></div>
+			<li>
 				<img class="slide-fg" src="assets/images/slideshow/gala2026banner1.png" alt="Hope Gala 2026">
+			</li>
+
+			<li aria-hidden="true">
+				<img class="slide-fg" src="assets/images/slideshow/gala2026banner1.png" alt="">
 			</li>
 		</ul>
 	</div>
