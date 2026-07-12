@@ -743,6 +743,294 @@ footer {
 }
 
 /* ==========================================================================
+   RESOURCES PAGE (Category Tiles → Sidebar → Preview Modal)
+   ========================================================================== */
+.resources-hero {
+	text-align: center;
+	padding: 60px 24px 10px;
+}
+.resources-hero h1 {
+	font-family: var(--font-display);
+	font-size: clamp(34px, 5vw, 50px);
+	font-weight: 500;
+	color: var(--ink);
+	line-height: 1.1;
+}
+.resources-hero p {
+	max-width: 620px;
+	margin: 20px auto 0;
+	color: #444;
+	font-size: 16px;
+	line-height: 1.7;
+}
+
+.resources-section {
+	padding: 20px 24px 80px;
+}
+
+/* ---------- Category Tiles (mirrors .album-tile visual language) ---------- */
+.resource-tile-grid {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 25px;
+}
+
+.resource-tile {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: var(--dark-bg);
+	border: 1px solid rgba(212, 175, 55, 0.3);
+	border-radius: 4px;
+	padding: 50px 30px;
+	cursor: pointer;
+	overflow: hidden;
+	transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+	box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+.resource-tile::before, .resource-tile::after {
+	content: '';
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border: 2px solid var(--gold-premium);
+	z-index: 2;
+	opacity: 0.6;
+	transition: all 0.4s ease;
+}
+.resource-tile::before { top: 5px; left: 5px; border-right: 0; border-bottom: 0; }
+.resource-tile::after { bottom: 5px; right: 5px; border-left: 0; border-top: 0; }
+.resource-tile:hover {
+	transform: translateY(-4px);
+	border-color: var(--gold-premium);
+	box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+}
+.resource-tile:hover::before, .resource-tile:hover::after {
+	opacity: 1;
+	width: 14px;
+	height: 14px;
+}
+.resource-tile:focus-visible {
+	outline: 2px solid var(--gold-premium);
+	outline-offset: 4px;
+}
+
+.resource-tile-icon {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: rgba(212, 175, 55, 0.1);
+	color: var(--gold-premium);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	transition: background 0.3s ease, transform 0.3s ease;
+}
+.resource-tile-icon svg { width: 30px; height: 30px; }
+.resource-tile:hover .resource-tile-icon {
+	background: var(--gold-premium);
+	color: var(--dark-bg);
+	transform: scale(1.05);
+}
+
+.resource-tile h3 {
+	font-family: var(--font-display);
+	font-size: 1.4rem;
+	font-weight: 500;
+	color: #ffffff;
+	margin-bottom: 8px;
+}
+.resource-tile p {
+	font-size: 0.85rem;
+	color: #aaa;
+	line-height: 1.5;
+	max-width: 240px;
+}
+.resource-tile-count {
+	margin-top: 16px;
+	font-family: var(--font-body);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--gold-premium);
+	opacity: 0.85;
+}
+
+/* ---------- Sidebar Link List (populates the shared .premium-sidebar) ---------- */
+.resource-link-list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.resource-link-item {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	width: 100%;
+	background: rgba(255,255,255,0.03);
+	border: 1px solid rgba(255,255,255,0.08);
+	border-radius: 8px;
+	padding: 14px 16px;
+	text-align: left;
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+.resource-link-item:hover {
+	background: rgba(212, 175, 55, 0.08);
+	border-color: rgba(212, 175, 55, 0.35);
+	transform: translateX(3px);
+}
+.resource-link-item:focus-visible {
+	outline: 2px solid var(--gold-premium);
+	outline-offset: 2px;
+}
+
+.resource-link-icon {
+	flex: 0 0 auto;
+	width: 38px;
+	height: 38px;
+	border-radius: 8px;
+	background: rgba(212, 175, 55, 0.12);
+	color: var(--gold-premium);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.resource-link-icon svg { width: 20px; height: 20px; }
+
+.resource-link-text { flex: 1; min-width: 0; }
+.resource-link-text h4 {
+	margin: 0 0 3px;
+	font-family: var(--font-display);
+	font-size: 1rem;
+	font-weight: 500;
+	color: #ffffff;
+}
+.resource-link-text p {
+	margin: 0;
+	font-size: 0.78rem;
+	color: #999;
+	line-height: 1.4;
+}
+
+.resource-link-filetype {
+	flex: 0 0 auto;
+	font-family: var(--font-body);
+	font-size: 0.65rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--gold-premium);
+	background: rgba(212, 175, 55, 0.1);
+	border: 1px solid rgba(212, 175, 55, 0.3);
+	border-radius: 4px;
+	padding: 3px 8px;
+}
+
+/* ---------- Preview Modal (document icon + filename + open-in-new-tab) ---------- */
+.resource-preview-overlay {
+	position: fixed;
+	inset: 0;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background: rgba(17, 17, 17, 0.85);
+	backdrop-filter: blur(6px);
+	padding: 24px;
+	z-index: 3500;
+}
+.resource-preview-overlay.is-visible { display: flex; }
+
+.resource-preview-card {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	background: var(--offwhite);
+	border-top: 4px solid var(--gold);
+	border-radius: 12px;
+	padding: 45px 35px 35px;
+	text-align: center;
+	box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+	opacity: 0;
+	transform: translateY(15px);
+	transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.resource-preview-overlay.is-open .resource-preview-card {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.resource-preview-close {
+	position: absolute;
+	top: 14px;
+	right: 18px;
+	background: none;
+	border: none;
+	font-size: 28px;
+	color: var(--charcoal);
+	cursor: pointer;
+}
+.resource-preview-close:hover { color: var(--gold); }
+
+.resource-preview-icon {
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	background: rgba(199, 151, 63, 0.1);
+	color: var(--gold);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 20px;
+}
+.resource-preview-icon svg { width: 34px; height: 34px; }
+
+.resource-preview-card h3 {
+	font-family: var(--font-display);
+	font-size: 20px;
+	font-weight: 500;
+	color: var(--ink);
+	margin-bottom: 6px;
+}
+.resource-preview-card p {
+	font-size: 13px;
+	color: var(--charcoal);
+	line-height: 1.5;
+	margin-bottom: 26px;
+}
+
+.resource-preview-open {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: 100%;
+	padding: 12px 24px;
+	background: var(--ink);
+	color: var(--gold);
+	font-family: var(--font-display);
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	text-decoration: none;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+.resource-preview-open:hover { background: var(--gold); color: var(--ink); }
+.resource-preview-open svg { width: 16px; height: 16px; }
+
+/* ==========================================================================
    RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -795,4 +1083,31 @@ footer {
 	.ministry-nav-tile { padding: 25px 15px; }
 	.ministry-nav-tile img { width: 80px; height: 80px; }
 	.contact-grid { grid-template-columns: 1fr; gap: 8px; }
+
+	.resources-hero { padding: 40px 20px 5px; }
+	.resources-hero p { font-size: 15px; }
+
+	.resources-section { padding: 15px 20px 60px; }
+
+	.resource-tile-grid {
+		grid-template-columns: 1fr;
+		gap: 18px;
+	}
+	.resource-tile { padding: 40px 24px; }
+	.resource-tile-icon { width: 56px; height: 56px; margin-bottom: 16px; }
+	.resource-tile-icon svg { width: 26px; height: 26px; }
+	.resource-tile h3 { font-size: 1.2rem; }
+	.resource-tile p { font-size: 0.82rem; }
+
+	.resource-link-item { padding: 12px 14px; gap: 12px; }
+	.resource-link-icon { width: 34px; height: 34px; }
+	.resource-link-icon svg { width: 18px; height: 18px; }
+	.resource-link-text h4 { font-size: 0.92rem; }
+	.resource-link-text p { font-size: 0.74rem; }
+	.resource-link-filetype { font-size: 0.6rem; padding: 2px 6px; }
+
+	.resource-preview-card { padding: 40px 26px 28px; max-width: 340px; }
+	.resource-preview-icon { width: 60px; height: 60px; }
+	.resource-preview-icon svg { width: 28px; height: 28px; }
+	.resource-preview-card h3 { font-size: 18px; }
 }
