@@ -218,7 +218,7 @@ footer {
    ========================================================================== */
 .slider {
 	width: 100%;
-	background-color: #042522; /* Clean, deep teal replacing the black */
+	background-color: #042522;
 	position: relative;
 	overflow: hidden;
 	height: clamp(280px, 35vh, 400px);
@@ -231,7 +231,7 @@ footer {
 	display: flex; 
 	width: max-content; 
 	height: 100%; 
-	animation: slide-infinite 40s linear infinite; /* Slowed down to 40 seconds */
+	animation: slide-infinite 40s linear infinite;
 }
 
 .slider li { 
@@ -349,12 +349,12 @@ footer {
 .sponsor-grid img:hover { transform: translateY(-4px); }
 
 /* ==========================================================================
-   GALA BUBBLE CLUSTER (Overlapping Circles)
+   GALA BUBBLE CLUSTER (Hub & Spoke Perfect Circle)
    ========================================================================== */
 .bubble-cluster {
 	position: relative;
 	width: 100%;
-	max-width: 500px;
+	max-width: 600px;
 	aspect-ratio: 1 / 1; 
 	margin: 0 auto;
 }
@@ -362,15 +362,17 @@ footer {
 .bubble {
 	position: absolute;
 	border-radius: 50%;
-	border: 6px solid #ffffff; 
-	box-shadow: 0 12px 30px rgba(0,0,0,0.15); 
+	border: 5px solid #ffffff;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 	overflow: hidden;
 	background-color: var(--offwhite);
-	transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+	aspect-ratio: 1 / 1;
+	transform: translate(-50%, -50%);
+	transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.4s;
 }
 
 .bubble:hover {
-	transform: scale(1.05);
+	transform: translate(-50%, -50%) scale(1.08);
 	z-index: 10 !important; 
 }
 
@@ -381,11 +383,20 @@ footer {
 	display: block;
 }
 
-.bubble-1 { width: 55%; top: 15%; left: 22%; z-index: 3; } 
-.bubble-2 { width: 38%; top: 0; right: 2%; z-index: 2; }   
-.bubble-3 { width: 48%; bottom: 5%; left: 0; z-index: 4; } 
-.bubble-4 { width: 30%; top: 10%; left: 0; z-index: 1; }   
-.bubble-5 { width: 42%; bottom: 12%; right: 0; z-index: 2; } 
+/* 0 degrees (3 o'clock - Right) */
+.bubble-3 { width: 35%; top: 50%; left: 82%; z-index: 5; }
+
+/* 72 degrees (Top Right) */
+.bubble-1 { width: 25%; top: 19.57%; left: 59.88%; z-index: 4; }
+
+/* 144 degrees (Top Left) */
+.bubble-4 { width: 30%; top: 31.20%; left: 24.12%; z-index: 3; }
+
+/* 216 degrees (Bottom Left) */
+.bubble-5 { width: 30%; top: 68.80%; left: 24.12%; z-index: 2; }
+
+/* 288 degrees (Bottom Right) */
+.bubble-2 { width: 25%; top: 80.43%; left: 59.88%; z-index: 1; }
 
 /* ==========================================================================
    ELEGANT HORIZONTAL LEAFLET PLEDGE MODAL
