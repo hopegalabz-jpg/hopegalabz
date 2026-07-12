@@ -19,6 +19,7 @@
 	</div>
 
 	<section class="ministry-section bg-white" style="padding: 50px 24px; position: relative;">
+		
 		<div class="std-card" aria-hidden="true">
 			<div class="std-card-inner">
 				<div class="std-flourish-line"></div>
@@ -74,7 +75,6 @@
 							<img src="assets/images/bubble5.jpg" alt="Gala Highlight 5" onerror="this.src='https://placehold.co/300x300/f4f4f4/1a1a1a?text=5'">
 						</a>
 					</div>
-					<!-- NEW CENTER PIECE -->
 					<div class="bubble bubble-6">
 						<a href="javascript:void(0);" style="display: block; width: 100%; height: 100%;">
 							<img src="assets/images/bubble6.png" alt="Gala Highlight Center" onerror="this.src='https://placehold.co/400x400/1a1a1a/c7973f?text=Center'">
@@ -271,6 +271,36 @@
 		}
 	</script>
 	
+	<script>
+		function updateGalaCountdown() {
+			// Set the target date here (October 17, 2026 at 6:00 PM)
+			const targetDate = new Date("October 17, 2026 18:00:00").getTime();
+			const now = new Date().getTime();
+			const timeDifference = targetDate - now;
+
+			// If the event has passed, stop the countdown at zero
+			if (timeDifference < 0) {
+				document.getElementById("std-days").innerText = "0";
+				document.getElementById("std-hours").innerText = "0";
+				return;
+			}
+
+			// Calculate days and hours remaining
+			const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+			// Inject the numbers into the HTML
+			document.getElementById("std-days").innerText = days;
+			document.getElementById("std-hours").innerText = hours;
+		}
+
+		// Run immediately so there's no delay on page load
+		updateGalaCountdown();
+
+		// Update the numbers every 1 second
+		setInterval(updateGalaCountdown, 1000);
+	</script>
+
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
