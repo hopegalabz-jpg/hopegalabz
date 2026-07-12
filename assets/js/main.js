@@ -344,6 +344,34 @@ function closeAlbum() {
 	document.body.style.overflow = ''; 
 }
 
+// Touch swipe navigation for the lightbox (mobile only in practice, since
+// desktop pointers don't fire touch events). Reuses changeImage() — the
+// same function the desktop prev/next arrows call — so swiping and
+// clicking always stay in sync with no separate navigation logic to
+// maintain.
+let swipeStartX = 0;
+const SWIPE_MIN_DISTANCE = 50; // px — below this, treat it as a tap, not a swipe
+
+const lightboxEl = document.getElementById('lightbox');
+if (lightboxEl) {
+	lightboxEl.addEventListener('touchstart', function(event) {
+		swipeStartX = event.changedTouches[0].clientX;
+	}, { passive: true });
+
+	lightboxEl.addEventListener('touchend', function(event) {
+		const swipeEndX = event.changedTouches[0].clientX;
+		const distance = swipeEndX - swipeStartX;
+
+		if (Math.abs(distance) < SWIPE_MIN_DISTANCE) return; // was a tap, not a swipe
+
+		if (distance < 0) {
+			changeImage(1); // swiped left → next photo
+		} else {
+			changeImage(-1); // swiped right → previous photo
+		}
+	}, { passive: true });
+}
+
 // Keyboard Navigation for Lightbox & Album
 document.addEventListener('keydown', function(event) {
 	const lightbox = document.getElementById('lightbox');
