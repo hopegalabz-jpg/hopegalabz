@@ -522,8 +522,13 @@ function openResourceCategory(categoryKey) {
 	currentResourceCategory = categoryKey;
 
 	const overlay = document.getElementById('sidebarOverlay');
+	const sidebarPanel = overlay.querySelector('.premium-sidebar');
 	const titleContainer = document.getElementById('sidebarTitle');
 	const listContainer = document.getElementById('sidebarGalleryItems');
+
+	// White theme for Resources only — Gallery's openAlbum() never adds
+	// this class, so the dark sidebar used there is untouched.
+	sidebarPanel.classList.add('is-light');
 
 	titleContainer.innerHTML = category.titleGold
 		? `${category.titleFirst} <span>${category.titleGold}</span>`
