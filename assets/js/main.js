@@ -20,6 +20,7 @@ const SITE_HEADER = `
 				<li><a href="gala.html">Hope Gala</a></li>
 				<li><a href="ministries.html">Ministries</a></li>
 				<li><a href="gallery.html">Gallery</a></li>
+				<li><a href="resources.html">Resources</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -420,4 +421,187 @@ document.addEventListener('keydown', function(event) {
 	} else if (sidebarOverlay && sidebarOverlay.classList.contains('active')) {
 	    if (event.key === 'Escape') closeAlbum();
 	}
+});
+
+/* =====================================================================
+   RESOURCES PAGE — Category Tiles, Sidebar Links & Preview Modal
+   ===================================================================== */
+
+// Each entry: filename (the actual PDF/image in assets/documents/<category>/),
+// a display title, a short description, and the file type shown as a badge.
+// Update the filename/title/description fields once real files are uploaded —
+// the structure below does not need to change.
+
+const resourceCategories = {
+	brochures: {
+		titleFirst: 'Brochures',
+		titleGold: '',
+		folderPath: 'assets/documents/brochures',
+		items: [
+			{
+				filename: 'organization-overview.pdf',
+				title: 'Organization Overview',
+				description: 'A general introduction to our mission, ministries, and impact in Belize.',
+				fileType: 'PDF'
+			},
+			{
+				filename: 'hope-gala-overview.pdf',
+				title: 'Hope Gala Overview',
+				description: 'What the Hope Gala is, who it supports, and how to get involved.',
+				fileType: 'PDF'
+			}
+		]
+	},
+	letters: {
+		titleFirst: 'Printable',
+		titleGold: 'Letters',
+		folderPath: 'assets/documents/letters',
+		items: [
+			{
+				filename: 'sponsorship-letter-2026.pdf',
+				title: '2026 Sponsorship Letter',
+				description: 'Our formal invitation to partner with the Hope Gala as a sponsor this year.',
+				fileType: 'PDF'
+			},
+			{
+				filename: 'donor-solicitation-letter.pdf',
+				title: 'Donor Solicitation Letter',
+				description: 'A direct appeal for individual giving and pledge support.',
+				fileType: 'PDF'
+			}
+		]
+	},
+	sponsorship: {
+		titleFirst: 'Sponsorship',
+		titleGold: 'Material',
+		folderPath: 'assets/documents/sponsorship',
+		items: [
+			{
+				filename: 'sponsorship-package-2026.pdf',
+				title: '2026 Sponsorship Package',
+				description: 'Sponsorship tiers, benefits, and recognition levels for partners.',
+				fileType: 'PDF'
+			}
+		]
+	}
+};
+
+// Two small inline icon sets, reused for both the sidebar link rows and the
+// preview modal icon — keeps every PDF-type item visually consistent with
+// the icon already used on the tile it came from.
+const RESOURCE_ICON_DOCUMENT = `
+	<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+		<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+		<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+	</svg>
+`;
+
+const RESOURCE_ICON_IMAGE = `
+	<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+		<circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+		<path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+	</svg>
+`;
+
+// State memory for the currently open Resources category (parallels the
+// currentAlbumList / currentFolderPath pattern used by the Gallery above).
+let currentResourceCategory = null;
+
+function getResourceIcon(item) {
+	const ext = item.filename.split('.').pop().toLowerCase();
+	const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext);
+	return isImage ? RESOURCE_ICON_IMAGE : RESOURCE_ICON_DOCUMENT;
+}
+
+function openResourceCategory(categoryKey) {
+	const category = resourceCategories[categoryKey];
+	if (!category) return;
+
+	currentResourceCategory = categoryKey;
+
+	const overlay = document.getElementById('sidebarOverlay');
+	const titleContainer = document.getElementById('sidebarTitle');
+	const listContainer = document.getElementById('sidebarGalleryItems');
+
+	titleContainer.innerHTML = category.titleGold
+		? `${category.titleFirst} <span>${category.titleGold}</span>`
+		: category.titleFirst;
+
+	listContainer.innerHTML = '';
+
+	category.items.forEach((item, index) => {
+		const btn = document.createElement('button');
+		btn.type = 'button';
+		btn.className = 'resource-link-item';
+		btn.innerHTML = `
+			<div class="resource-link-icon" aria-hidden="true">${getResourceIcon(item)}</div>
+			<div class="resource-link-text">
+				<h4>${item.title}</h4>
+				<p>${item.description}</p>
+			</div>
+			<span class="resource-link-filetype">${item.fileType}</span>
+		`;
+		btn.onclick = function() {
+			openResourcePreview(categoryKey, index);
+		};
+		listContainer.appendChild(btn);
+	});
+
+	overlay.classList.add('active');
+	document.body.style.overflow = 'hidden';
+}
+
+// Resources reuses the exact close behavior Gallery already uses for this
+// same sidebar shell (hide overlay, restore body scroll) — no need for a
+// second implementation of identical logic.
+function closeResourceSidebar() {
+	closeAlbum();
+}
+
+function openResourcePreview(categoryKey, itemIndex) {
+	const category = resourceCategories[categoryKey];
+	if (!category) return;
+	const item = category.items[itemIndex];
+	if (!item) return;
+
+	const overlay = document.getElementById('resourcePreviewOverlay');
+	const iconEl = document.getElementById('resourcePreviewIcon');
+	const titleEl = document.getElementById('resourcePreviewTitle');
+	const descriptionEl = document.getElementById('resourcePreviewDescription');
+	const linkEl = document.getElementById('resourcePreviewLink');
+
+	iconEl.innerHTML = getResourceIcon(item);
+	titleEl.textContent = item.title;
+	descriptionEl.textContent = item.description;
+	linkEl.href = `${category.folderPath}/${item.filename}`;
+
+	overlay.classList.add('is-visible');
+	void overlay.offsetHeight;
+	overlay.classList.add('is-open');
+	document.addEventListener('keydown', onKeydownResourcePreview);
+}
+
+function closeResourcePreview() {
+	const overlay = document.getElementById('resourcePreviewOverlay');
+	overlay.classList.remove('is-open');
+	document.removeEventListener('keydown', onKeydownResourcePreview);
+	setTimeout(() => {
+		overlay.classList.remove('is-visible');
+	}, 250);
+}
+
+function onKeydownResourcePreview(event) {
+	if (event.key === 'Escape') closeResourcePreview();
+}
+
+// Populate each tile's item count once the page and its data are ready.
+document.addEventListener('DOMContentLoaded', function() {
+	Object.keys(resourceCategories).forEach(function(key) {
+		const countEl = document.getElementById(`count-${key}`);
+		if (!countEl) return; // this page has no Resources tiles — nothing to do
+		const count = resourceCategories[key].items.length;
+		countEl.textContent = `${count} ${count === 1 ? 'Document' : 'Documents'}`;
+	});
 });
