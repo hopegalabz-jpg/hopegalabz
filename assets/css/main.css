@@ -386,6 +386,114 @@ footer {
 .sponsor-grid img:hover { transform: translateY(-4px); }
 
 /* ==========================================================================
+   SAVE THE DATE CARD
+   Scoped entirely to .std-row / .std-card so the Faithful Stewardship
+   section (which shares the plain .ministry-row/.ministry-content/
+   .ministry-visual classes) is never affected by anything below.
+   ========================================================================== */
+
+/* This row alone gets a third column added; every other .ministry-row on
+   the page keeps its original two-column flex behavior untouched. */
+.std-row { gap: 40px; }
+.std-row .ministry-content { flex: 1.4; }
+
+.std-card {
+	flex: 0 0 200px;
+	position: relative;
+	border-radius: 6px;
+	overflow: hidden;
+	padding: 2px;
+	background: linear-gradient(135deg, #0d3b36 0%, #14544c 35%, #c7973f 65%, #d4af37 78%, #14544c 100%);
+	box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
+.std-card-inner {
+	background: #faf7f0;
+	border-radius: 5px;
+	padding: 28px 20px;
+	text-align: center;
+	position: relative;
+}
+/* Gold streamer accents with a hint of green, echoing the gala's own
+   banner artwork, drawn as soft curved sweeps rather than a photograph */
+.std-card-inner::before, .std-card-inner::after {
+	content: '';
+	position: absolute;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(199,151,63,0.35) 0%, rgba(20,84,76,0.15) 60%, transparent 75%);
+	pointer-events: none;
+}
+.std-card-inner::before { top: -35px; left: -35px; }
+.std-card-inner::after { bottom: -35px; right: -35px; }
+
+.std-flourish-line {
+	width: 34px;
+	height: 2px;
+	background: var(--gold);
+	opacity: 0.7;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+}
+.std-label-top {
+	margin: 14px 0 0;
+	font-family: var(--font-body);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--charcoal);
+	position: relative;
+	z-index: 1;
+}
+.std-label-bottom {
+	margin: 2px 0 14px;
+	font-family: var(--font-display);
+	font-size: 26px;
+	font-style: italic;
+	font-weight: 500;
+	color: var(--ink);
+	position: relative;
+	z-index: 1;
+}
+.std-countdown-row {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 18px;
+	position: relative;
+	z-index: 1;
+}
+.std-countdown-unit { text-align: center; }
+.std-countdown-number {
+	display: block;
+	font-family: var(--font-display);
+	font-size: 22px;
+	font-weight: 600;
+	color: var(--ink);
+	line-height: 1;
+}
+.std-countdown-unit-label {
+	display: block;
+	font-family: var(--font-body);
+	font-size: 8px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #888;
+	margin-top: 3px;
+}
+.std-countdown-divider {
+	width: 1px;
+	background: #ddd;
+}
+
+@media (max-width: 1024px) {
+	.std-row { flex-direction: column; }
+	.std-card { flex-basis: auto; width: 220px; margin: 0 auto 20px; }
+}
+
+/* ==========================================================================
    GALA BUBBLE CLUSTER (Massive Hub & Spoke Perfect Circle)
    ========================================================================== */
 .bubble-cluster {
