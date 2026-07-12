@@ -6,7 +6,6 @@
 	<meta name="description" content="Join us for the 2026 Hope Gala in Belize. A premier fundraising event supporting local ministries and community restoration.">
 	<title>Hope Gala | The Belize Project</title>
 	
-	<!-- THIS IS THE ONLY CSS FILE YOU NEED -->
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -17,22 +16,20 @@
 	<div class="slider" style="height: clamp(300px, 45vh, 500px);">
 		<ul id="slider-list">
 			<li class="active">
-				<!-- High-quality placeholder for the 2026 Gala Banner -->
 				<div class="slide-bg" style="background-image: url('assets/images/slideshow/gala2026banner1.png');"></div>
 				<img class="slide-fg" src="assets/images/slideshow/gala2026banner1.png" alt="Hope Gala 2026" onerror="this.src='https://placehold.co/1200x500/1a1a1a/c7973f?text=Hope+Gala+2026+Banner'">
 			</li>
 		</ul>
 	</div>
 
-	<!-- Page Intro -->
-	<div class="container">
-		<div class="heading" style="text-align: center; margin-bottom: 20px; padding-top: 60px;">
-			<h3 style="font-family: var(--font-display); font-size: 3rem; color: var(--ink);">The 2026 <span style="color: var(--gold);">Hope Gala</span></h3>
-			<div class="divider" style="margin-top: 20px;"></div>
-		</div>
+	<!-- Page Intro & First Pledge Button -->
+	<div class="container" style="text-align: center; padding-top: 60px;">
+		<h3 style="font-family: var(--font-display); font-size: 3rem; color: var(--ink);">The 2026 <span style="color: var(--gold);">Hope Gala</span></h3>
+		<div class="divider" style="margin-top: 20px; margin-bottom: 30px;"></div>
+		<button class="modal-submit" style="width: auto; display: inline-block; padding: 12px 30px;" onclick="openPledge()">Make a Pledge</button>
 	</div>
 
-	<!-- Section 1: About the Event (Text Left, Image Right) -->
+	<!-- Section 1: About the Event -->
 	<section class="ministry-section bg-white">
 		<div class="ministry-row">
 			<div class="ministry-content">
@@ -41,43 +38,29 @@
 				<p>More than just a gathering, it is a vital fundraiser. The generous contributions gathered during this event allow us to continue providing resources, education, and rehabilitation to those who need it most, giving them a second chance and a hope for a new tomorrow.</p>
 			</div>
 			<div class="ministry-visual">
-				<!-- Placeholder for an updated image of attendees/people of color at the Gala -->
 				<img class="ministry-main-img" src="assets/images/2025.jpg" alt="Hope Gala Attendees" onerror="this.src='https://placehold.co/600x400/f4f4f4/3d3d3d?text=Updated+Gala+Photo'">
 			</div>
 		</div>
 	</section>
 
-	<!-- Section 2: Who We Support (Reusing the interactive logo grid) -->
-	<section class="ministry-section bg-offwhite">
+	<!-- Section 2: Sponsorship Tiers (Side-by-Side Images) -->
+	<section class="ministry-section bg-offwhite" style="text-align: center;">
 		<div class="container">
-			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); text-align: center; margin-bottom: 40px;">Ministries You Support</h2>
+			<h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--ink); margin-bottom: 15px;">Become a Sponsor</h2>
+			<p style="color: var(--charcoal); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;">Choose a sponsorship level and make a lasting impact on communities across Belize.</p>
 			
-			<div class="ministry-nav-grid" style="margin-bottom: 0;">
-				<!-- These link directly to the specific sections on the Ministries page! -->
-				<a href="ministries.html#jacob" class="ministry-nav-tile">
-					<img src="assets/images/logos/jacob-logo.png" alt="Jacob's Farm" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=Jacob+Logo'">
-					<h4>Jacob's Farm</h4>
-				</a>
-				
-				<a href="ministries.html#dorcas" class="ministry-nav-tile">
-					<img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=Dorcas+Logo'">
-					<h4>House of Dorcas</h4>
-				</a>
-				
-				<a href="ministries.html#restore" class="ministry-nav-tile">
-					<img src="assets/images/logos/restore-logo.png" alt="Restore Small Groups" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=Restore+Logo'">
-					<h4>Restore Groups</h4>
-				</a>
-				
-				<a href="ministries.html#bit" class="ministry-nav-tile">
-					<img src="assets/images/logos/bit-logo.png" alt="Believe In Them" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=BIT+Logo'">
-					<h4>Believe In Them</h4>
-				</a>
+			<div class="sponsor-grid">
+				<!-- Placeholders for your beautiful tier graphics -->
+				<img src="assets/images/sponsor-gold.png" alt="Gold Sponsor Tier" onerror="this.src='https://placehold.co/300x400/1a1a1a/c7973f?text=Gold+Sponsor'">
+				<img src="assets/images/sponsor-silver.png" alt="Silver Sponsor Tier" onerror="this.src='https://placehold.co/300x400/e0e0e0/3d3d3d?text=Silver+Sponsor'">
+				<img src="assets/images/sponsor-bronze.png" alt="Bronze Sponsor Tier" onerror="this.src='https://placehold.co/300x400/8c6b5d/ffffff?text=Bronze+Sponsor'">
 			</div>
+
+			<button class="modal-submit" style="width: auto; display: inline-block; padding: 18px 40px; font-size: 16px; margin-top: 30px;" onclick="openPledge()">Make a Pledge</button>
 		</div>
 	</section>
 
-	<!-- Section 3: The Budget/Donations (Image Left, Text Right) -->
+	<!-- Section 3: The Budget/Donations -->
 	<section class="ministry-section bg-white">
 		<div class="ministry-row reverse">
 			<div class="ministry-content">
@@ -91,24 +74,66 @@
 		</div>
 	</section>
 
-	<!-- Section 4: Make a Pledge CTA -->
-	<section style="background-color: var(--ink); padding: 80px 24px; text-align: center; border-bottom: 2px solid var(--gold);">
-		<h2 style="font-family: var(--font-display); color: var(--gold); font-size: clamp(32px, 4vw, 42px); margin-bottom: 20px; font-weight: 500;">Become a Sponsor. Make a Lasting Impact.</h2>
-		<p style="color: var(--white); max-width: 600px; margin: 0 auto 40px; font-size: 18px; opacity: 0.9;">
-			Your pledges directly support the healing, education, and restoration of communities across Belize.
-		</p>
-		
-		<!-- This button secretly clicks the footer's contact button to open your global modal! -->
-		<button class="modal-submit" style="width: auto; display: inline-block; padding: 18px 40px; font-size: 16px;" onclick="document.getElementById('open-contact-modal').click()">
-			Make a Pledge
-		</button>
+	<!-- Section 4: Ministries You Support -->
+	<section class="ministry-section bg-offwhite">
+		<div class="container">
+			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); text-align: center; margin-bottom: 40px;">Ministries You Support</h2>
+			<div class="ministry-nav-grid" style="margin-bottom: 0;">
+				<a href="ministries.html#jacob" class="ministry-nav-tile"><img src="assets/images/logos/jacob-logo.png" alt="Jacob's Farm" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=Jacob+Logo'"><h4>Jacob's Farm</h4></a>
+				<a href="ministries.html#dorcas" class="ministry-nav-tile"><img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=Dorcas+Logo'"><h4>House of Dorcas</h4></a>
+				<a href="ministries.html#restore" class="ministry-nav-tile"><img src="assets/images/logos/restore-logo.png" alt="Restore Small Groups" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=Restore+Logo'"><h4>Restore Groups</h4></a>
+				<a href="ministries.html#bit" class="ministry-nav-tile"><img src="assets/images/logos/bit-logo.png" alt="Believe In Them" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=BIT+Logo'"><h4>Believe In Them</h4></a>
+			</div>
+		</div>
 	</section>
+
+	<!-- ==========================================
+	     THE BEAUTIFUL PLEDGE MODAL (GALA ONLY) 
+	     ========================================== -->
+	<div class="modal-overlay" id="pledge-overlay">
+		<div class="modal-card pledge-card">
+			<button type="button" class="modal-close" onclick="closePledge()">&times;</button>
+			
+			<!-- The Dove Crest -->
+			<img src="assets/images/dove.png" alt="Peace Dove" class="pledge-dove" onerror="this.style.display='none'">
+			
+			<h3 class="pledge-title">Make a Pledge</h3>
+			<p class="pledge-subtitle">We thank you in advance for your kind contribution.</p>
+			
+			<div class="pledge-bank-box">
+				<h4>Atlantic Bank</h4>
+				<p>Account Name: <strong>The Belize Project</strong></p>
+				<p>Account #: <strong>100279146</strong></p>
+			</div>
+			
+			<p class="pledge-note">Please make checks payable to <strong>The Belize Project</strong>.</p>
+			
+			<div class="pledge-contacts">
+				<h5>For additional information, please contact:</h5>
+				<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
+				<p><strong>Mrs. Ruth Williams</strong> (Chairperson)<br>+501-636-8147</p>
+				<p style="margin-top: 10px;"><strong>Email:</strong> thebelizeproject2@gmail.com</p>
+			</div>
+		</div>
+	</div>
 
 	<!-- Hooks for Footer and Contact Modal -->
 	<div id="site-footer"></div>
 	<div id="site-modal"></div>
 
-	<!-- THE FIX: Pointing to the correct main JS file -->
+	<!-- Modal Logic & Global JS -->
+	<script>
+		function openPledge() {
+			const overlay = document.getElementById('pledge-overlay');
+			overlay.classList.add('is-visible');
+			setTimeout(() => overlay.classList.add('is-open'), 10);
+		}
+		function closePledge() {
+			const overlay = document.getElementById('pledge-overlay');
+			overlay.classList.remove('is-open');
+			setTimeout(() => overlay.classList.remove('is-visible'), 250);
+		}
+	</script>
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
