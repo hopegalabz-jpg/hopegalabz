@@ -13,6 +13,7 @@
 
 	<div class="slider" style="height: clamp(300px, 45vh, 480px);">
 		<ul id="slider-list">
+			<!-- Main Slider Images -->
 			<li>
 				<img class="slide-fg" src="assets/images/slideshow/gala2026banner1.png" alt="Hope Gala 2026 Banner 1">
 			</li>
@@ -23,6 +24,7 @@
 				<img class="slide-fg" src="assets/images/slideshow/gala2026banner3.png" alt="Hope Gala 2026 Banner 3">
 			</li>
 
+			<!-- Duplicated for seamless infinite looping -->
 			<li aria-hidden="true">
 				<img class="slide-fg" src="assets/images/slideshow/gala2026banner1.png" alt="">
 			</li>
@@ -83,13 +85,88 @@
 		</div>
 	</section>
 
-	<section class="ministry-section bg-offwhite" style="padding: 60px 24px; text-align: center;">
+	<section class="ministry-section bg-offwhite" style="padding: 40px 24px 50px; text-align: center;">
 		<div class="container">
-			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin-bottom: 35px;">Become a Sponsor</h2>
+			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin-bottom: 20px;">Become a Sponsor</h2>
 			
-			<img src="assets/images/gala2026banner2.png" alt="Hope Gala 2026 Sponsorship Tiers" style="width: 100%; max-width: 1000px; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
+			<div class="sponsor-tiers-grid">
+				<!-- Gold Sponsor -->
+				<div class="sponsor-card gold">
+					<div class="sponsor-header">
+						<div class="sponsor-badge">
+							<svg viewBox="0 0 24 24" width="20" height="20" fill="rgba(0,0,0,0.15)"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+						</div>
+						<h3>Gold Sponsor</h3>
+					</div>
+					<div class="sponsor-price">$5000</div>
+					<ul class="sponsor-features">
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							8 Hope Gala Tickets
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							Large Print on Promo Materials
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							Name Mentioned on Night of Event
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							Award of Appreciation
+						</li>
+					</ul>
+				</div>
+
+				<!-- Silver Sponsor -->
+				<div class="sponsor-card silver">
+					<div class="sponsor-header">
+						<div class="sponsor-badge">
+							<svg viewBox="0 0 24 24" width="20" height="20" fill="rgba(0,0,0,0.15)"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+						</div>
+						<h3>Silver Sponsor</h3>
+					</div>
+					<div class="sponsor-price">$2500</div>
+					<ul class="sponsor-features">
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							6 Hope Gala Tickets
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							Medium Print on Promo Materials
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							Name Mentioned on Night of Event
+						</li>
+					</ul>
+				</div>
+
+				<!-- Bronze Sponsor -->
+				<div class="sponsor-card bronze">
+					<div class="sponsor-header">
+						<div class="sponsor-badge">
+							<svg viewBox="0 0 24 24" width="20" height="20" fill="rgba(0,0,0,0.15)"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+						</div>
+						<h3>Bronze Sponsor</h3>
+					</div>
+					<div class="sponsor-price">$1000</div>
+					<ul class="sponsor-features">
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							4 Hope Gala Tickets
+						</li>
+						<li>
+							<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+							Small Print on Promo Materials
+						</li>
+					</ul>
+				</div>
+			</div>
 			
-			<div style="margin-top: 40px;">
+			<div style="margin-top: 35px;">
 				<button class="modal-submit" style="width: auto; display: inline-block; padding: 14px 40px; font-size: 15px;" onclick="openPledge()">Make a Pledge</button>
 			</div>
 		</div>
