@@ -23,20 +23,6 @@ const SITE_FOOTER = `
 	<footer>
 		<div class="footer-contact">
 			<h3>Contact Us</h3>
-			<ul class="contact-list">
-				<li>
-					<span class="contact-label">Email</span>
-					<a href="mailto:info@thebelizeproject.org">info@thebelizeproject.org</a> <!-- TODO: real email -->
-				</li>
-				<li>
-					<span class="contact-label">Phone</span>
-					<a href="tel:+5010000000">+501 000-0000</a> <!-- TODO: real phone -->
-				</li>
-				<li>
-					<span class="contact-label">Location</span>
-					<span>Belize City, Belize</span> <!-- TODO: real location -->
-				</li>
-			</ul>
 		</div>
 		<div class="foot">
 			<img src="assets/images/logos/hplogo.png" alt="Hope Gala">
