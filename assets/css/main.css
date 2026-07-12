@@ -8,6 +8,7 @@
 	--gold: #c7973f;
 	--white: #ffffff;
 	--offwhite: #f4f4f4;
+	--error: #b03a2e;
 	--font-display: 'Fraunces', Georgia, serif;
 	--font-body: 'Work Sans', 'Open Sans', sans-serif;
 }
@@ -21,6 +22,8 @@ body {
 	line-height: 1.8;
 	-webkit-font-smoothing: antialiased;
 }
+
+body.modal-open { overflow: hidden; }
 
 /* ---------- Header / Nav ---------- */
 header {
@@ -80,6 +83,18 @@ header {
 .nav-menu li a:hover { color: var(--gold); }
 .nav-menu li a:hover::after { transform: scaleX(1); transform-origin: left; }
 
+/* Reused by the belize-section drop cap on index.html, and by the
+   contact modal's intro line — kept here since it's shared across pages. */
+.drop-cap::first-letter {
+	font-family: var(--font-display);
+	color: var(--gold);
+	font-size: 4rem;
+	float: left;
+	line-height: 0.8;
+	padding-right: 10px;
+	padding-top: 6px;
+}
+
 /* ---------- Footer ---------- */
 footer {
 	background-color: var(--ink);
@@ -97,18 +112,191 @@ footer {
 	padding-bottom: 40px;
 	border-bottom: 1px solid rgba(255,255,255,0.15);
 }
-.footer-contact h3 {
+.footer-contact-trigger {
+	background: none;
+	border: none;
+	padding: 0;
 	font-family: var(--font-display);
 	font-size: 22px;
 	font-weight: 500;
 	text-transform: uppercase;
 	color: var(--gold);
-	margin-bottom: 24px;
+	cursor: pointer;
+	position: relative;
+}
+.footer-contact-trigger::after {
+	content: "";
+	position: absolute;
+	left: 0; right: 0; bottom: -6px;
+	height: 1px;
+	background: var(--white);
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.footer-contact-trigger:hover::after,
+.footer-contact-trigger:focus-visible::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+.footer-contact-trigger:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 4px;
 }
 
 .foot { margin-bottom: 24px; }
 .foot img { height: 96px; width: auto; opacity: 0.95; }
 .footer-text { opacity: 0.7; line-height: 2; }
+
+/* ---------- Contact modal ---------- */
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background: rgba(26, 26, 26, 0.75);
+	padding: 24px;
+	z-index: 1000;
+}
+.modal-overlay.is-visible { display: flex; }
+
+.modal-card {
+	position: relative;
+	width: 100%;
+	max-width: 480px;
+	max-height: 90vh;
+	overflow-y: auto;
+	background: var(--offwhite);
+	border-top: 4px solid var(--gold);
+	border-radius: 16px;
+	padding: 48px 40px 40px;
+	box-shadow: 0 20px 40px -10px rgba(0,0,0,0.25);
+	opacity: 0;
+	transform: translateY(12px) scale(0.98);
+	transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.modal-overlay.is-open .modal-card {
+	opacity: 1;
+	transform: translateY(0) scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+	.modal-card { transition: none; }
+}
+
+.modal-close {
+	position: absolute;
+	top: 14px;
+	right: 18px;
+	background: none;
+	border: none;
+	font-size: 28px;
+	line-height: 1;
+	color: var(--charcoal);
+	cursor: pointer;
+	padding: 4px;
+}
+.modal-close:hover { color: var(--gold); }
+.modal-close:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 2px;
+}
+
+.modal-card h3 {
+	font-family: var(--font-display);
+	font-size: 28px;
+	font-weight: 500;
+	color: var(--ink);
+	margin-bottom: 16px;
+}
+.modal-card .drop-cap {
+	font-size: 16px;
+	color: var(--charcoal);
+	margin-bottom: 28px;
+}
+
+.modal-card .form-field { margin-bottom: 18px; }
+.modal-card label {
+	display: block;
+	font-family: var(--font-display);
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--charcoal);
+	margin-bottom: 6px;
+}
+.modal-card input,
+.modal-card textarea {
+	width: 100%;
+	font-family: var(--font-body);
+	font-size: 15px;
+	color: var(--ink);
+	padding: 10px 12px;
+	border: 1px solid #d8d3c8;
+	border-radius: 6px;
+	background: var(--white);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.modal-card input:focus,
+.modal-card textarea:focus {
+	outline: none;
+	border-color: var(--gold);
+	box-shadow: 0 0 0 3px rgba(199, 151, 63, 0.15);
+}
+.modal-card textarea {
+	resize: vertical;
+	min-height: 90px;
+}
+
+.hp-field {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.modal-submit {
+	display: block;
+	width: 100%;
+	margin-top: 8px;
+	padding: 14px 24px;
+	background: var(--ink);
+	color: var(--gold);
+	font-family: var(--font-display);
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+.modal-submit:hover { background: #2a2a2a; }
+.modal-submit:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 2px;
+}
+.modal-submit:disabled { opacity: 0.6; cursor: default; }
+
+.form-status {
+	margin-top: 14px;
+	font-size: 14px;
+	min-height: 1.2em;
+	color: var(--charcoal);
+}
+.form-status.is-error { color: var(--error); }
+
+.success-message { text-align: center; padding: 20px 0; }
+.success-message h4 {
+	font-family: var(--font-display);
+	font-size: 22px;
+	font-weight: 500;
+	color: var(--ink);
+	margin-bottom: 10px;
+}
+.success-message p { color: var(--charcoal); font-size: 15px; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
@@ -118,4 +306,7 @@ footer {
 }
 @media (max-width: 768px) {
 	.nav-menu li a { font-size: 14px; }
+	.drop-cap::first-letter { padding-top: 4px; }
+	.modal-card { padding: 40px 24px 32px; }
+	.modal-card h3 { font-size: 24px; }
 }
