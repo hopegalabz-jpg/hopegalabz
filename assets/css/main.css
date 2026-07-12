@@ -282,10 +282,7 @@ footer {
 .album-tile:hover { transform: translateY(-4px); border-color: var(--gold-premium); box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15); }
 .album-tile:hover::before, .album-tile:hover::after { opacity: 1; width: 14px; height: 14px; }
 
-/* Staggered entrance — each tile rises in slightly after the previous one */
-@keyframes tile-rise {
-	to { opacity: 1; transform: translateY(0); }
-}
+@keyframes tile-rise { to { opacity: 1; transform: translateY(0); } }
 .album-tile:nth-child(1) { animation-delay: 0.05s; }
 .album-tile:nth-child(2) { animation-delay: 0.1s; }
 .album-tile:nth-child(3) { animation-delay: 0.15s; }
@@ -300,31 +297,18 @@ footer {
 .album-cover-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .album-tile:hover .album-cover-wrapper img { transform: scale(1.05); }
 
-/* Hover overlay — darkens the cover and reveals a "View Gallery" prompt */
 .album-cover-wrapper::after {
-	content: '';
-	position: absolute;
-	inset: 0;
+	content: ''; position: absolute; inset: 0;
 	background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0) 100%);
-	opacity: 0;
-	transition: opacity 0.4s ease;
+	opacity: 0; transition: opacity 0.4s ease;
 }
 .album-tile:hover .album-cover-wrapper::after { opacity: 1; }
 .album-cover-wrapper .view-gallery-prompt {
-	position: absolute;
-	left: 0; right: 0; bottom: 18px;
-	text-align: center;
-	color: var(--gold-premium);
-	font-family: var(--font-display);
-	font-size: 0.85rem;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.14em;
-	opacity: 0;
-	transform: translateY(8px);
-	transition: opacity 0.4s ease, transform 0.4s ease;
-	z-index: 1;
-	pointer-events: none;
+	position: absolute; left: 0; right: 0; bottom: 18px; text-align: center;
+	color: var(--gold-premium); font-family: var(--font-display); font-size: 0.85rem;
+	font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em;
+	opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease;
+	z-index: 1; pointer-events: none;
 }
 .album-tile:hover .view-gallery-prompt { opacity: 1; transform: translateY(0); }
 
@@ -386,79 +370,111 @@ footer {
 .sponsor-grid img:hover { transform: translateY(-4px); }
 
 /* ==========================================================================
-   SAVE THE DATE CARD
+   SAVE THE DATE CARD - CIRCULAR THEME
    ========================================================================== */
 .std-card {
 	position: absolute;
 	top: -230px;
 	left: calc(50% - 600px);
 	width: 260px;
+	height: 260px; /* Perfect Circle */
 	z-index: 2;
-	border-radius: 6px;
+	border-radius: 50%;
 	overflow: hidden;
-	padding: 3px;
-	background: linear-gradient(135deg, #0d3b36 0%, #14544c 30%, #c7973f 55%, #d4af37 70%, #0d3b36 100%);
-	box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+	padding: 6px; /* Metallic Gold Border Thickness */
+	background: linear-gradient(135deg, #c7973f 0%, #f9f295 40%, #d4af37 60%, #8a6327 100%);
+	box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
+
 .std-card-inner {
-	background: #faf7f0;
-	border-radius: 5px;
-	padding: 34px 24px;
+	background: radial-gradient(circle at bottom right, #02201d 0%, #05403a 60%, #08554d 100%); /* Deep Teal matching image */
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
 	text-align: center;
 	position: relative;
 	overflow: hidden;
+	box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
 }
-/* Gold streamer accents with a hint of green, echoing the gala's own
-   banner artwork, drawn as soft curved sweeps rather than a photograph.
-   Strengthened opacity so the gala's palette actually reads at this size
-   instead of fading into a plain cream box. */
-.std-card-inner::before, .std-card-inner::after {
+
+/* Golden Streamer Swoosh 1 */
+.std-card-inner::before {
 	content: '';
 	position: absolute;
-	width: 130px;
-	height: 130px;
+	width: 120%;
+	height: 120%;
 	border-radius: 50%;
-	background: radial-gradient(circle, rgba(199,151,63,0.55) 0%, rgba(20,84,76,0.3) 55%, transparent 75%);
+	border-bottom: 4px solid var(--gold-premium);
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px solid transparent;
+	transform: rotate(15deg);
+	top: -15%;
+	left: -10%;
+	opacity: 0.85;
 	pointer-events: none;
 }
-.std-card-inner::before { top: -40px; left: -40px; }
-.std-card-inner::after { bottom: -40px; right: -40px; }
+
+/* Golden Streamer Swoosh 2 */
+.std-card-inner::after {
+	content: '';
+	position: absolute;
+	width: 135%;
+	height: 135%;
+	border-radius: 50%;
+	border-top: 2px solid var(--gold);
+	border-left: 2px solid transparent;
+	border-right: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+	transform: rotate(-35deg);
+	bottom: -20%;
+	right: -15%;
+	opacity: 0.5;
+	pointer-events: none;
+}
 
 .std-flourish-line {
-	width: 40px;
-	height: 2px;
-	background: var(--gold);
-	opacity: 0.7;
+	width: 50px;
+	height: 1px;
+	background: var(--gold-premium);
+	opacity: 0.8;
 	margin: 0 auto;
 	position: relative;
 	z-index: 1;
 }
 .std-label-top {
-	margin: 16px 0 0;
+	margin: 12px 0 0;
 	font-family: var(--font-body);
-	font-size: 13px;
-	font-weight: 600;
-	letter-spacing: 0.18em;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.25em;
 	text-transform: uppercase;
-	color: var(--charcoal);
+	color: var(--gold-premium);
 	position: relative;
 	z-index: 1;
 }
 .std-label-bottom {
-	margin: 2px 0 16px;
+	margin: 0 0 12px;
 	font-family: var(--font-display);
-	font-size: 30px;
+	font-size: 32px;
 	font-style: italic;
 	font-weight: 500;
-	color: var(--ink);
+	color: var(--white);
 	position: relative;
 	z-index: 1;
+	text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 .std-countdown-row {
 	display: flex;
 	justify-content: center;
-	gap: 14px;
-	margin-top: 20px;
+	align-items: center;
+	gap: 18px;
+	margin-top: 15px;
 	position: relative;
 	z-index: 1;
 }
@@ -466,32 +482,30 @@ footer {
 .std-countdown-number {
 	display: block;
 	font-family: var(--font-display);
-	font-size: 26px;
+	font-size: 38px;
 	font-weight: 600;
-	color: var(--ink);
+	color: var(--gold-premium);
 	line-height: 1;
+	text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 .std-countdown-unit-label {
 	display: block;
 	font-family: var(--font-body);
-	font-size: 9px;
-	letter-spacing: 0.08em;
+	font-size: 10px;
+	letter-spacing: 0.15em;
 	text-transform: uppercase;
-	color: #888;
-	margin-top: 4px;
+	color: #e0e0e0;
+	margin-top: 6px;
 }
 .std-countdown-divider {
 	width: 1px;
-	background: #ddd;
+	height: 40px;
+	background: rgba(212, 175, 55, 0.4);
 }
 
-/* Below 1024px the blank space this card relies on may not reliably exist
-   next to the stacked, centered text column, so it drops out of absolute
-   positioning and sits centered in normal flow above the row instead. */
 @media (max-width: 1024px) {
 	.std-card {
 		position: static;
-		width: 260px;
 		margin: 0 auto 30px;
 	}
 }
@@ -508,11 +522,6 @@ footer {
 	z-index: 0;
 }
 
-/* Glow behind the bubble cluster — a soft, smudgy warmth radiating outward.
-   z-index: -1 forces this behind every .bubble (which start at z-index: 1),
-   and it needs .bubble-cluster to have its own z-index (set above) to
-   create an isolated stacking context — otherwise -1 could slip behind
-   unrelated page content instead of just the bubbles. */
 .bubble-cluster::before {
 	content: '';
 	position: absolute;
@@ -551,26 +560,16 @@ footer {
 	display: block;
 }
 
-/* --- MAXIMUM SIZED COORDINATES --- */
-/* Center shifted slightly left so massive bubbles don't get cut off on the right */
-/* Sizes increased ~15% and cluster shifted right, relative proportions and
-   circular arrangement preserved from the original working layout */
-
 /* 0 degrees (3 o'clock - Right) */
 .bubble-3 { width: 50%; top: 50%; left: 84%; z-index: 5; }
-
 /* 72 degrees (Top Right) */
 .bubble-1 { width: 38%; top: 16.7%; left: 61%; z-index: 4; }
-
 /* 144 degrees (Top Left) */
 .bubble-4 { width: 44%; top: 29.4%; left: 22%; z-index: 3; }
-
 /* 216 degrees (Bottom Left) */
 .bubble-5 { width: 44%; top: 70.6%; left: 22%; z-index: 2; }
-
 /* 288 degrees (Bottom Right) */
 .bubble-2 { width: 38%; top: 83.3%; left: 61%; z-index: 1; }
-
 /* Center Piece */
 .bubble-6 { width: 44%; top: 50%; left: 50%; z-index: 6; }
 
