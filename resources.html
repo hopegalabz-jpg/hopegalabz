@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resources — The Belize Project</title>
+	<meta name="description" content="Brochures, sponsorship materials, and printable letters for The Belize Project and the Hope Gala.">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+	<div id="site-header"></div>
+
+	<main>
+		<section class="resources-hero">
+			<div class="container">
+				<h1>Resources</h1>
+				<div class="divider"></div>
+				<p>Brochures, sponsorship materials, and printable letters for The Belize Project and the Hope Gala. Tap a category below to browse and preview.</p>
+			</div>
+		</section>
+
+		<section class="resources-section">
+			<div class="container">
+				<div class="resource-tile-grid">
+
+					<button type="button" class="resource-tile" onclick="openResourceCategory('brochures')">
+						<div class="resource-tile-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+							</svg>
+						</div>
+						<h3>Brochures</h3>
+						<p>General overviews of our mission and programs.</p>
+						<span class="resource-tile-count" id="count-brochures"></span>
+					</button>
+
+					<button type="button" class="resource-tile" onclick="openResourceCategory('letters')">
+						<div class="resource-tile-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
+						<h3>Printable Letters</h3>
+						<p>Solicitation and donor appeal letters, ready to print.</p>
+						<span class="resource-tile-count" id="count-letters"></span>
+					</button>
+
+					<button type="button" class="resource-tile" onclick="openResourceCategory('sponsorship')">
+						<div class="resource-tile-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M12 2l2.6 6.6L21 9.3l-5 4.6L17.4 21 12 17.3 6.6 21 8 13.9l-5-4.6 6.4-.7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+							</svg>
+						</div>
+						<h3>Sponsorship Material</h3>
+						<p>Packages and materials for partners and sponsors.</p>
+						<span class="resource-tile-count" id="count-sponsorship"></span>
+					</button>
+
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- Shared sidebar shell (same IDs/structure as the Gallery sidebar; content is swapped by openResourceCategory) -->
+	<div class="sidebar-overlay" id="sidebarOverlay">
+		<div class="premium-sidebar">
+			<div class="sidebar-header">
+				<h3 id="sidebarTitle"></h3>
+				<button type="button" class="close-sidebar-btn" onclick="closeResourceSidebar()" aria-label="Close">&times;</button>
+			</div>
+			<div class="sidebar-content">
+				<div class="resource-link-list" id="sidebarGalleryItems"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Preview modal: shown when a sidebar link is clicked -->
+	<div class="resource-preview-overlay" id="resourcePreviewOverlay">
+		<div class="resource-preview-card">
+			<button type="button" class="resource-preview-close" onclick="closeResourcePreview()" aria-label="Close">&times;</button>
+			<div class="resource-preview-icon" id="resourcePreviewIcon" aria-hidden="true"></div>
+			<h3 id="resourcePreviewTitle"></h3>
+			<p id="resourcePreviewDescription"></p>
+			<a href="#" id="resourcePreviewLink" class="resource-preview-open" target="_blank" rel="noopener">
+				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M14 3h7v7M21 3l-9 9M19 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				Open Full Preview
+			</a>
+		</div>
+	</div>
+
+	<div id="site-footer"></div>
+	<div id="site-modal"></div>
+
+	<script src="assets/js/main.js"></script>
+</body>
+</html>
