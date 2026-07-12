@@ -5,9 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Join us for the 2026 Hope Gala in Belize. A premier fundraising event supporting local ministries.">
 	<title>Hope Gala | The Belize Project</title>
+	
+	<!-- Global Core Stylesheet -->
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
+	<!-- Hook for Main Navigation -->
 	<div id="site-header"></div>
 
 	<!-- 2026 Gala Hero Section -->
@@ -85,51 +88,55 @@
 	</section>
 
 	<!-- =======================================================
-	     ELEGANT TWO-COLUMN LEAFLET PLEDGE MODAL
+	     ELEGANT RECTANGLE PLEDGE MODAL
 	     ======================================================= -->
 	<div class="modal-overlay" id="pledge-overlay" onclick="closePledge()">
-		<div class="pledge-leaflet" onclick="event.stopPropagation()">
+		<div class="clean-rect-modal" onclick="event.stopPropagation()">
 			<button type="button" class="pledge-leaflet-close" onclick="closePledge()">&times;</button>
 			
-			<!-- Left Panel: Emotional/Spiritual Connection -->
-			<div class="pledge-side-panel">
-				<div class="pledge-dove-wrapper">
-					<img src="assets/images/dove.png" alt="Peace Dove" onerror="this.style.display='none'">
-				</div>
-				<div class="pledge-verse">
-					<p class="verse-text">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
-					<p class="verse-ref">— 2 Corinthians 9:7</p>
-				</div>
+			<!-- Elegant Dove in the Top Left Corner -->
+			<div class="modal-top-left-dove">
+				<img src="assets/images/dove.png" alt="Peace Dove" onerror="this.style.display='none'">
 			</div>
 			
-			<!-- Right Panel: Core Directives & Data -->
-			<div class="pledge-main-panel">
-				<h3>Make a Pledge</h3>
-				<p class="pledge-thanks">We thank you in advance for your kind contribution and await your favorable response.</p>
+			<!-- Main Structured Content -->
+			<div class="rect-modal-body">
+				<h3 class="pledge-title">Make a Pledge</h3>
+				<p class="pledge-thanks">We thank you in advance for your kind contribution and look forward to partnering together to bring hope and restoration to communities in Belize.</p>
 				
+				<!-- Beautifully Sectioned Bank Details -->
 				<div class="bank-details-card">
-					<h5>Atlantic Bank Transfer</h5>
+					<h5>Atlantic Bank Electronic Transfer</h5>
 					<p>Account Name: <strong>The Belize Project</strong></p>
 					<p>Account Number: <strong>100279146</strong></p>
 				</div>
 				
-				<p class="check-instruction">Please make checks payable to <strong>The Belize Project</strong>.</p>
+				<p class="check-instruction">Checks can also be made payable directly to <strong>The Belize Project</strong>.</p>
 				
+				<!-- Structured Contact Directory -->
 				<div class="pledge-contact-footer">
-					<p class="contact-title">Should you require additional information:</p>
+					<p class="contact-title">Should you require additional information, please contact us:</p>
 					<div class="contact-grid">
 						<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
-						<p><strong>Mrs. Ruth Williams</strong> (Chair)<br>+501-636-8147</p>
+						<p><strong>Mrs. Ruth Williams</strong> (Chairperson)<br>+501-636-8147</p>
 					</div>
 					<p class="email-line"><strong>Email:</strong> thebelizeproject2@gmail.com</p>
+				</div>
+				
+				<!-- Heart-Warming Bible Verse at the Very Bottom -->
+				<div class="rect-modal-verse-footer">
+					<p class="verse-text">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+					<p class="verse-ref">— 2 Corinthians 9:7</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<!-- Hooks for Global Footer and Global Contact Modal -->
 	<div id="site-footer"></div>
 	<div id="site-modal"></div>
 
+	<!-- Modal Toggle Scripts -->
 	<script>
 		function openPledge() {
 			const overlay = document.getElementById('pledge-overlay');
@@ -146,6 +153,8 @@
 			}, 250);
 		}
 	</script>
+	
+	<!-- Shared Site Functionality Logic Script -->
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
