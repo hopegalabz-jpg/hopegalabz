@@ -935,6 +935,61 @@ footer {
 	padding: 3px 8px;
 }
 
+/* ---------- Resources Sidebar: White Theme Override ----------
+   Applied only when .premium-sidebar carries .is-light (added by
+   openResourceCategory() in main.js). The shared sidebar shell used by
+   Gallery never gets this class, so Gallery's dark sidebar is completely
+   unaffected — this block only ever applies on the Resources page. */
+.premium-sidebar.is-light {
+	background: var(--white);
+	border-left: 1px solid rgba(199, 151, 63, 0.25);
+	box-shadow: -10px 0 35px rgba(0,0,0,0.15);
+}
+.premium-sidebar.is-light .sidebar-header {
+	background: var(--offwhite);
+	border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.premium-sidebar.is-light .sidebar-header h3 {
+	color: var(--ink);
+}
+.premium-sidebar.is-light .sidebar-header h3 span {
+	color: var(--gold);
+}
+.premium-sidebar.is-light .close-sidebar-btn {
+	color: var(--charcoal);
+}
+.premium-sidebar.is-light .close-sidebar-btn:hover {
+	color: var(--gold);
+}
+.premium-sidebar.is-light .sidebar-content::-webkit-scrollbar-thumb {
+	background: rgba(199, 151, 63, 0.3);
+}
+
+.premium-sidebar.is-light .resource-link-item {
+	background: var(--offwhite);
+	border: 1px solid rgba(199, 151, 63, 0.2);
+}
+.premium-sidebar.is-light .resource-link-item:hover {
+	background: var(--white);
+	border-color: var(--gold);
+	box-shadow: 0 6px 16px rgba(199, 151, 63, 0.12);
+}
+.premium-sidebar.is-light .resource-link-icon {
+	background: rgba(199, 151, 63, 0.12);
+	color: var(--gold);
+}
+.premium-sidebar.is-light .resource-link-text h4 {
+	color: var(--ink);
+}
+.premium-sidebar.is-light .resource-link-text p {
+	color: #666;
+}
+.premium-sidebar.is-light .resource-link-filetype {
+	color: var(--gold);
+	background: rgba(199, 151, 63, 0.1);
+	border: 1px solid rgba(199, 151, 63, 0.3);
+}
+
 /* ---------- Preview Modal (document icon + filename + open-in-new-tab) ---------- */
 .resource-preview-overlay {
 	position: fixed;
