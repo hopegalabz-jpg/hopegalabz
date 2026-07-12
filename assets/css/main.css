@@ -394,8 +394,8 @@ footer {
    ========================================================================== */
 .std-card {
 	position: absolute;
-	top: 30px;
-	left: 160px;
+	top: 340px;
+	left: 20px;
 	width: 260px;
 	z-index: 2;
 	border-radius: 6px;
