@@ -12,39 +12,42 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 	<style>
-		/* Hero slideshow: blur-fill so ANY image shape displays with no gaps, no resizing needed */
+		/* Hero slideshow: Updated to match the clean, horizontal continuous loop */
 		.slider {
 			width: 100%;
-			background-color: var(--ink);
+			background-color: #042522; /* Clean, deep teal */
 			position: relative;
 			overflow: hidden;
 			height: clamp(280px, 35vh, 400px);
 			border-bottom: 2px solid var(--gold);
 		}
-		.slider ul { position: relative; list-style: none; width: 100%; height: 100%; }
-		.slider li {
-			position: absolute;
-			inset: 0;
-			opacity: 0;
-			transition: opacity 1.2s ease-in-out;
-			overflow: hidden;
+		.slider ul { 
+			position: relative; 
+			list-style: none; 
+			display: flex; 
+			width: max-content; 
+			height: 100%; 
+			animation: slide-infinite 40s linear infinite; 
 		}
-		.slider li.active { opacity: 1; }
-		.slide-bg{
-			position: absolute;
-			inset: -20px;
-			background-size: cover;
-			background-position: center;
-			filter: blur(30px) brightness(0.55);
-			transform: scale(1.15);
+		.slider li { 
+			position: relative; 
+			flex: 0 0 100vw; 
+			height: 100%; 
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden; 
 		}
-		.slide-fg{
-			position: relative;
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-			display: block;
-			z-index: 1;
+		.slide-fg { 
+			position: relative; 
+			width: 100%; 
+			height: 100%; 
+			object-fit: contain; 
+			display: block; 
+		}
+		@keyframes slide-infinite {
+			0% { transform: translateX(0); }
+			100% { transform: translateX(-50%); }
 		}
 
 		.hero-intro {
@@ -174,39 +177,35 @@
 	</div>
 	<script>
 		// Add or remove filenames here to change the slideshow.
-		// Each one must exist inside assets/images/slideshow/
 		const slides = ["gala2026banner1.png", "gala2026banner2.png"];
-
 		const list = document.getElementById("slider-list");
-		slides.forEach((filename, i) => {
+
+		// Helper function to build a single slide
+		function createSlide(filename, isClone) {
 			const path = "assets/images/slideshow/" + filename;
-
 			const li = document.createElement("li");
-			if (i === 0) li.className = "active";
-
-			const bg = document.createElement("div");
-			bg.className = "slide-bg";
-			bg.style.backgroundImage = "url('" + path + "')";
+			
+			// If it's the cloned set, we hide it from screen readers
+			if (isClone) li.setAttribute("aria-hidden", "true");
 
 			const img = document.createElement("img");
 			img.className = "slide-fg";
 			img.src = path;
-			img.alt = "Hope Gala";
+			img.alt = isClone ? "" : "Hope Gala";
 
-			li.appendChild(bg);
 			li.appendChild(img);
-			list.appendChild(li);
+			return li;
+		}
+
+		// 1. Build the ORIGINAL set of images
+		slides.forEach(filename => {
+			list.appendChild(createSlide(filename, false));
 		});
 
-		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-		if (slides.length > 1 && !prefersReducedMotion) {
-			let current = 0;
-			setInterval(() => {
-				list.children[current].classList.remove("active");
-				current = (current + 1) % slides.length;
-				list.children[current].classList.add("active");
-			}, 5000);
-		}
+		// 2. Build the CLONED set of images to create the infinite loop
+		slides.forEach(filename => {
+			list.appendChild(createSlide(filename, true));
+		});
 	</script>
 
 	<div class="hero-intro">
@@ -231,7 +230,6 @@
 	<section class="belize-section">
 		<div class="container2">
 			<div class="map-container">
-				<!-- PLACEHOLDER: swap belize-map.png for your real map file -->
 				<img src="assets/images/map.png" alt="Map of Belize">
 			</div>
 
