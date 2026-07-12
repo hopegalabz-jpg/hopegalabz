@@ -359,6 +359,21 @@ footer {
 	margin: 0 auto;
 }
 
+/* Smog of Light Background Effect */
+.bubble-cluster::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 45%;
+	width: 120%;
+	height: 120%;
+	transform: translate(-50%, -50%);
+	background: radial-gradient(circle, rgba(199, 151, 63, 0.45) 0%, rgba(199, 151, 63, 0) 65%);
+	filter: blur(40px);
+	z-index: 0;
+	pointer-events: none;
+}
+
 .bubble {
 	position: absolute;
 	border-radius: 50%;
