@@ -7,6 +7,226 @@
 	<title>Hope Gala | The Belize Project</title>
 	
 	<link rel="stylesheet" href="assets/css/main.css">
+
+	<!-- ==========================================================================
+	     GALA-ONLY STYLES — Save the Date countdown card & bubble cluster
+	     ==========================================================================
+	     Moved out of main.css because these rules are used by this page only.
+	     main.css holds only styling shared across the whole site (header,
+	     footer, nav, modal, typography, etc). Anything specific to a single
+	     page's content belongs in that page, not in the shared stylesheet.
+	     ========================================================================== -->
+	<style>
+		/* ---------- Dynamic Countdown Card ---------- */
+		@keyframes pulse-glow {
+			0% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 15px 35px rgba(0,0,0,0.3); }
+			50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 15px 35px rgba(0,0,0,0.3); }
+			100% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 15px 35px rgba(0,0,0,0.3); }
+		}
+
+		@keyframes slow-spin-streamer {
+			from { transform: rotate(0deg); }
+			to { transform: rotate(360deg); }
+		}
+
+		.std-card {
+			position: absolute;
+			top: -230px;
+			left: calc(50% - 600px);
+			width: 260px;
+			height: 260px; /* Perfect Circle */
+			z-index: 2;
+			border-radius: 50%;
+			padding: 6px; /* Metallic Gold Border Thickness */
+			background: linear-gradient(135deg, #c7973f 0%, #f9f295 40%, #d4af37 60%, #8a6327 100%);
+			/* THE NEW GLOWING "SMUDGE" AURA */
+			animation: pulse-glow 3.5s infinite ease-in-out;
+		}
+
+		.std-card-inner {
+			background: radial-gradient(circle at bottom right, #02201d 0%, #05403a 60%, #08554d 100%); /* Deep Teal matching image */
+			border-radius: 50%;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+			box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+		}
+
+		/* Golden Streamer Swoosh 1 - Now Animated */
+		.std-card-inner::before {
+			content: '';
+			position: absolute;
+			width: 130%;
+			height: 130%;
+			border-radius: 50%;
+			border-bottom: 5px solid rgba(212, 175, 55, 0.9);
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 5px solid transparent;
+			top: -15%;
+			left: -15%;
+			pointer-events: none;
+			animation: slow-spin-streamer 20s linear infinite;
+		}
+
+		/* Golden Streamer Swoosh 2 - Now Animated */
+		.std-card-inner::after {
+			content: '';
+			position: absolute;
+			width: 140%;
+			height: 140%;
+			border-radius: 50%;
+			border-top: 3px solid rgba(199, 151, 63, 0.7);
+			border-left: 3px solid transparent;
+			border-right: 3px solid transparent;
+			border-bottom: 3px solid transparent;
+			bottom: -20%;
+			right: -20%;
+			pointer-events: none;
+			animation: slow-spin-streamer 15s linear infinite reverse;
+		}
+
+		.std-flourish-line {
+			width: 60px;
+			height: 2px;
+			background: linear-gradient(90deg, transparent, var(--gold-premium), transparent);
+			margin: 0 auto;
+			position: relative;
+			z-index: 1;
+		}
+		.std-label-top {
+			margin: 14px 0 0;
+			font-family: var(--font-body);
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 0.25em;
+			text-transform: uppercase;
+			color: var(--gold-premium);
+			position: relative;
+			z-index: 1;
+			text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+		}
+		.std-label-bottom {
+			margin: -2px 0 12px;
+			font-family: var(--font-display);
+			font-size: 34px;
+			font-style: italic;
+			font-weight: 600;
+			color: var(--white);
+			position: relative;
+			z-index: 1;
+			text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+		}
+		.std-countdown-row {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 18px;
+			margin-top: 10px;
+			position: relative;
+			z-index: 1;
+		}
+		.std-countdown-unit { text-align: center; }
+		.std-countdown-number {
+			display: block;
+			font-family: var(--font-display);
+			font-size: 42px;
+			font-weight: 600;
+			color: var(--gold-premium);
+			line-height: 1;
+			text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+		}
+		.std-countdown-unit-label {
+			display: block;
+			font-family: var(--font-body);
+			font-size: 11px;
+			font-weight: 600;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			color: #e0e0e0;
+			margin-top: 6px;
+		}
+		.std-countdown-divider {
+			width: 2px;
+			height: 40px;
+			background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.6), transparent);
+		}
+
+		@media (max-width: 1024px) {
+			.std-card {
+				position: static;
+				margin: 0 auto 40px;
+			}
+		}
+
+		/* ---------- Gala Bubble Cluster (Massive Hub & Spoke Perfect Circle) ---------- */
+		.bubble-cluster {
+			position: relative;
+			width: 100%;
+			max-width: 600px;
+			aspect-ratio: 1 / 1; 
+			margin: 0 auto;
+			z-index: 0;
+		}
+
+		.bubble-cluster::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 160%;
+			height: 160%;
+			transform: translate(-50%, -50%);
+			background: radial-gradient(circle, rgba(199, 151, 63, 0.65) 0%, rgba(199, 151, 63, 0.35) 35%, rgba(199, 151, 63, 0) 70%);
+			filter: blur(60px);
+			z-index: -1;
+			pointer-events: none;
+		}
+
+		.bubble {
+			position: absolute;
+			border-radius: 50%;
+			border: 5px solid #ffffff;
+			box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+			overflow: hidden;
+			background-color: var(--offwhite);
+			aspect-ratio: 1 / 1;
+			transform: translate(-50%, -50%);
+			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.4s;
+		}
+
+		.bubble:hover {
+			transform: translate(-50%, -50%) scale(1.08);
+			z-index: 10 !important; 
+		}
+
+		.bubble img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		/* 0 degrees (3 o'clock - Right) */
+		.bubble-3 { width: 50%; top: 50%; left: 84%; z-index: 5; }
+		/* 72 degrees (Top Right) */
+		.bubble-1 { width: 38%; top: 16.7%; left: 61%; z-index: 4; }
+		/* 144 degrees (Top Left) */
+		.bubble-4 { width: 44%; top: 29.4%; left: 22%; z-index: 3; }
+		/* 216 degrees (Bottom Left) */
+		.bubble-5 { width: 44%; top: 70.6%; left: 22%; z-index: 2; }
+		/* 288 degrees (Bottom Right) */
+		.bubble-2 { width: 38%; top: 83.3%; left: 61%; z-index: 1; }
+		/* Center Piece */
+		.bubble-6 { width: 44%; top: 50%; left: 50%; z-index: 6; }
+	</style>
 </head>
 <body>
 	<div id="site-header"></div>
