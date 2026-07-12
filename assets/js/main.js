@@ -440,64 +440,47 @@ document.addEventListener('keydown', function(event) {
    RESOURCES PAGE — Category Tiles, Sidebar Links & Preview Modal
    ===================================================================== */
 
-// Each entry: filename (the actual PDF/image in assets/documents/<category>/),
-// a display title, a short description, and the file type shown as a badge.
-// Update the filename/title/description fields once real files are uploaded —
-// the structure below does not need to change.
+// Resources content is NOT defined here. It lives in resources.html, inside
+// the #resource-data block, as plain data- attributes on simple divs. This
+// function reads that HTML once at page load and builds the same
+// {titleFirst, titleGold, folderPath, items: [...]} shape the rest of this
+// file already knows how to use — so adding, editing, or removing a
+// document only ever means editing resources.html, never this file.
+//
+// This file (main.js) stays universal: it has zero knowledge of any
+// specific brochure, letter, or filename. It only knows how to read
+// whatever categories/documents currently exist in the HTML.
+function readResourceDataFromPage() {
+	const categories = {};
+	const dataRoot = document.getElementById('resource-data');
+	if (!dataRoot) return categories; // this page has no resource data — nothing to read
 
-const resourceCategories = {
-	brochures: {
-		titleFirst: 'Brochures',
-		titleGold: '',
-		folderPath: 'assets/documents/brochures',
-		items: [
-			{
-				filename: 'organization-overview.pdf',
-				title: 'Organization Overview',
-				description: 'A general introduction to our mission, ministries, and impact in Belize.',
-				fileType: 'PDF'
-			},
-			{
-				filename: 'hope-gala-overview.pdf',
-				title: 'Hope Gala Overview',
-				description: 'What the Hope Gala is, who it supports, and how to get involved.',
-				fileType: 'PDF'
-			}
-		]
-	},
-	letters: {
-		titleFirst: 'Printable',
-		titleGold: 'Letters',
-		folderPath: 'docs',
-		items: [
-			{
-				filename: 'sl2026.pdf',
-				title: '2026 Sponsorship Letter',
-				description: 'Our formal invitation to partner with the Hope Gala as a sponsor this year.',
-				fileType: 'PDF'
-			},
-			{
-				filename: 'donor-solicitation-letter.pdf',
-				title: 'Donor Solicitation Letter',
-				description: 'A direct appeal for individual giving and pledge support.',
-				fileType: 'PDF'
-			}
-		]
-	},
-	sponsorship: {
-		titleFirst: 'Sponsorship',
-		titleGold: 'Material',
-		folderPath: 'assets/documents/sponsorship',
-		items: [
-			{
-				filename: 'sponsorship-package-2026.pdf',
-				title: '2026 Sponsorship Package',
-				description: 'Sponsorship tiers, benefits, and recognition levels for partners.',
-				fileType: 'PDF'
-			}
-		]
-	}
-};
+	const categoryEls = dataRoot.querySelectorAll('.resource-category');
+	categoryEls.forEach(function(categoryEl) {
+		const key = categoryEl.dataset.category;
+		if (!key) return; // malformed block missing data-category — skip rather than crash
+
+		const items = [];
+		const itemEls = categoryEl.querySelectorAll('.resource-item');
+		itemEls.forEach(function(itemEl) {
+			items.push({
+				filename: itemEl.dataset.filename || '',
+				title: itemEl.dataset.title || '',
+				description: itemEl.dataset.description || '',
+				fileType: itemEl.dataset.filetype || ''
+			});
+		});
+
+		categories[key] = {
+			titleFirst: categoryEl.dataset.titleFirst || '',
+			titleGold: categoryEl.dataset.titleGold || '',
+			folderPath: categoryEl.dataset.folder || '',
+			items: items
+		};
+	});
+
+	return categories;
+}
 
 // Two small inline icon sets, reused for both the sidebar link rows and the
 // preview modal icon — keeps every PDF-type item visually consistent with
@@ -520,7 +503,11 @@ const RESOURCE_ICON_IMAGE = `
 
 // State memory for the currently open Resources category (parallels the
 // currentAlbumList / currentFolderPath pattern used by the Gallery above).
+// resourceCategories itself is populated once, from the HTML, the moment
+// the page finishes loading — see the DOMContentLoaded listener near the
+// bottom of this section.
 let currentResourceCategory = null;
+let resourceCategories = {};
 
 function getResourceIcon(item) {
 	const ext = item.filename.split('.').pop().toLowerCase();
@@ -614,8 +601,11 @@ function onKeydownResourcePreview(event) {
 	if (event.key === 'Escape') closeResourcePreview();
 }
 
-// Populate each tile's item count once the page and its data are ready.
+// Read the resource data from the page, then populate each tile's item
+// count — both need to happen once the page and its data blocks exist.
 document.addEventListener('DOMContentLoaded', function() {
+	resourceCategories = readResourceDataFromPage();
+
 	Object.keys(resourceCategories).forEach(function(key) {
 		const countEl = document.getElementById(`count-${key}`);
 		if (!countEl) return; // this page has no Resources tiles — nothing to do
