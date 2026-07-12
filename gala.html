@@ -83,17 +83,18 @@
 		</div>
 	</section>
 
-	<section class="ministry-section bg-offwhite" style="padding: 60px 24px; text-align: center;">
+	<section class="ministry-section bg-offwhite" style="padding: 25px 24px 35px; text-align: center;">
 		<div class="container">
-			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin-bottom: 35px;">Become a Sponsor</h2>
+			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin-bottom: 20px;">Become a Sponsor</h2>
 			
+			<!-- NEW SPONSOR 3-COLUMN REPLACEMENT STARTS HERE -->
 			<style>
 				.sponsor-inline-grid {
 					display: grid;
 					grid-template-columns: repeat(3, 1fr);
-					gap: 20px;
+					gap: 60px; /* Increased gap to ~2 inches */
 					width: 100%;
-					max-width: 1000px;
+					max-width: 1150px; /* Increased width so the cards don't shrink */
 					margin: 0 auto;
 					text-align: left;
 				}
@@ -126,12 +127,16 @@
 				.sponsor-inline-list li { font-family: var(--font-body); font-size: 13.5px; color: #3d3d3d; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.3; font-weight: 500; }
 				.sponsor-inline-list li svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
 				
+				@media (max-width: 900px) {
+					.sponsor-inline-grid { gap: 30px; max-width: 900px; }
+				}
 				@media (max-width: 768px) {
 					.sponsor-inline-grid { grid-template-columns: 1fr; max-width: 400px; }
 				}
 			</style>
 			
 			<div class="sponsor-inline-grid">
+				<!-- Gold -->
 				<div class="sponsor-inline-card gold">
 					<div class="sponsor-inline-header">
 						<div class="sponsor-inline-badge badge-gold"></div>
@@ -146,6 +151,7 @@
 					</ul>
 				</div>
 
+				<!-- Silver -->
 				<div class="sponsor-inline-card silver">
 					<div class="sponsor-inline-header">
 						<div class="sponsor-inline-badge badge-silver"></div>
@@ -159,6 +165,7 @@
 					</ul>
 				</div>
 
+				<!-- Bronze -->
 				<div class="sponsor-inline-card bronze">
 					<div class="sponsor-inline-header">
 						<div class="sponsor-inline-badge badge-bronze"></div>
@@ -171,7 +178,9 @@
 					</ul>
 				</div>
 			</div>
-			<div style="margin-top: 40px;">
+			<!-- NEW SPONSOR 3-COLUMN REPLACEMENT ENDS HERE -->
+			
+			<div style="margin-top: 30px;">
 				<button class="modal-submit" style="width: auto; display: inline-block; padding: 14px 40px; font-size: 15px;" onclick="openPledge()">Make a Pledge</button>
 			</div>
 		</div>
