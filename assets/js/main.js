@@ -7,12 +7,6 @@ const EMAILJS_SERVICE_ID = 'service_6f2ujxo';
 const EMAILJS_PUBLIC_KEY = 'Ynw4v3pMwaJjIgZkT';
 const EMAILJS_TEMPLATE_ID = 'template_jnqat86';
 
-if (typeof emailjs !== 'undefined') {
-	emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-} else {
-	console.warn('EmailJS SDK not loaded — the contact form will not be able to send.');
-}
-
 /* ---------- Shared markup ---------- */
 const SITE_HEADER = `
 	<header>
@@ -103,8 +97,9 @@ const SITE_MODAL = `
 	</div>
 `;
 
-/* ---------- Inject shared markup ---------- */
+/* ---------- Inject shared markup and Global Head Elements ---------- */
 document.addEventListener('DOMContentLoaded', () => {
+	// 1. Inject UI Elements (Header, Footer, Modal)
 	const headerSlot = document.getElementById('site-header');
 	const footerSlot = document.getElementById('site-footer');
 	const modalSlot = document.getElementById('site-modal');
@@ -115,6 +110,36 @@ document.addEventListener('DOMContentLoaded', () => {
 		modalSlot.innerHTML = SITE_MODAL;
 		initContactModal();
 	}
+
+	// 2. Inject Favicon Globally
+	const favicon = document.createElement('link');
+	favicon.rel = 'icon';
+	favicon.href = 'assets/images/logos/favicon.ico';
+	document.head.appendChild(favicon);
+
+	// 3. Inject Google Fonts Globally
+	const preconnect1 = document.createElement('link');
+	preconnect1.rel = 'preconnect';
+	preconnect1.href = 'https://fonts.googleapis.com';
+
+	const preconnect2 = document.createElement('link');
+	preconnect2.rel = 'preconnect';
+	preconnect2.href = 'https://fonts.gstatic.com';
+	preconnect2.crossOrigin = 'anonymous';
+
+	const fontLink = document.createElement('link');
+	fontLink.rel = 'stylesheet';
+	fontLink.href = 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&display=swap';
+
+	document.head.append(preconnect1, preconnect2, fontLink);
+
+	// 4. Inject and Initialize EmailJS Globally
+	const emailJsScript = document.createElement('script');
+	emailJsScript.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+	emailJsScript.onload = () => {
+		emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+	};
+	document.head.appendChild(emailJsScript);
 });
 
 function initContactModal() {
@@ -195,7 +220,7 @@ function initContactModal() {
 		if (form.website.value) return; 
 
 		if (typeof emailjs === 'undefined') {
-			statusEl.textContent = 'Something went wrong loading the contact form. Please email us directly.';
+			statusEl.textContent = 'Contact system is still loading. Please wait a moment and try again.';
 			statusEl.classList.add('is-error');
 			return;
 		}
