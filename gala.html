@@ -8,6 +8,41 @@
 	
 	<!-- Global Core Stylesheet -->
 	<link rel="stylesheet" href="assets/css/main.css">
+	
+	<!-- Page-Specific Styles (Bubble Cluster) -->
+	<style>
+		.bubble-cluster {
+			position: relative;
+			width: 100%;
+			max-width: 500px;
+			aspect-ratio: 1 / 1;
+			margin: 0 auto;
+		}
+		.bubble {
+			position: absolute;
+			border-radius: 50%;
+			border: 6px solid #ffffff;
+			box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+			overflow: hidden;
+			background-color: var(--offwhite);
+			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+		}
+		.bubble:hover {
+			transform: scale(1.05);
+			z-index: 10 !important; 
+		}
+		.bubble img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.bubble-1 { width: 55%; top: 15%; left: 22%; z-index: 3; }
+		.bubble-2 { width: 38%; top: 0; right: 2%; z-index: 2; }
+		.bubble-3 { width: 48%; bottom: 5%; left: 0; z-index: 4; }
+		.bubble-4 { width: 30%; top: 10%; left: 0; z-index: 1; }
+		.bubble-5 { width: 42%; bottom: 12%; right: 0; z-index: 2; }
+	</style>
 </head>
 <body>
 	<!-- Hook for Main Navigation -->
@@ -40,8 +75,31 @@
 				<p>Through your faithful generosity, we are empowered to be the hands and feet of Christ—bringing healing to the broken, shelter to the vulnerable, and a renewed sense of dignity to those seeking a second chance. Every ticket purchased and every pledge made ripples into eternity, funding critical resources, education, and life-changing rehabilitation programs.</p>
 				<p>Join us in witnessing how faith, community, and stewardship can rewrite stories and build a brighter, God-honoring future for Belize.</p>
 			</div>
+			
+			<!-- Bubble Cluster Visuals -->
 			<div class="ministry-visual">
-				<img class="ministry-main-img" src="assets/images/2025.jpg" alt="Hope Gala Attendees">
+				<div class="bubble-cluster">
+					<!-- Image 1 (Center - Largest) -->
+					<div class="bubble bubble-1">
+						<img src="https://placehold.co/400x400/1a1a1a/c7973f?text=Image+1" alt="Gala Highlight 1">
+					</div>
+					<!-- Image 2 (Top Right) -->
+					<div class="bubble bubble-2">
+						<img src="https://placehold.co/300x300/f4f4f4/3d3d3d?text=Image+2" alt="Gala Highlight 2">
+					</div>
+					<!-- Image 3 (Bottom Left - Brought to front) -->
+					<div class="bubble bubble-3">
+						<img src="https://placehold.co/350x350/e0e0e0/1a1a1a?text=Image+3" alt="Gala Highlight 3">
+					</div>
+					<!-- Image 4 (Top Left - Tucked behind) -->
+					<div class="bubble bubble-4">
+						<img src="https://placehold.co/200x200/c7973f/ffffff?text=Image+4" alt="Gala Highlight 4">
+					</div>
+					<!-- Image 5 (Bottom Right) -->
+					<div class="bubble bubble-5">
+						<img src="https://placehold.co/300x300/111111/c7973f?text=Image+5" alt="Gala Highlight 5">
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -66,7 +124,7 @@
 			<div class="ministry-content">
 				<h2>Faithful Stewardship</h2>
 				<p>Transparency and stewardship are at the core of our ministry. We believe in honoring God with every gift received, ensuring that your generosity is carefully and intentionally allocated.</p>
-				<p>As illustrated in our distribution model, half of all funds directly support Rehabilitation and Reintegration programs. Another 40% is powerfully invested into Education, Youth Intervention, and Economic Development, equipping the next generation with the tools they need to thrive. With only 10% dedicated to administration, you can be confident that your giving translates directly into tangible, life-changing impact on the ground.</p>
+				<p>As illustrated in our distribution model, <strong>50%</strong> of all funds directly support <strong>Rehabilitation and Reintegration</strong> programs. We powerfully invest <strong>20%</strong> into <strong>Education and Youth Intervention</strong>, and another <strong>20%</strong> into <strong>Economic Development and Entrepreneurship</strong>, equipping the next generation and local leaders with the tools they need to thrive. With only <strong>10%</strong> dedicated to <strong>Administration</strong>, you can be confident that your giving translates directly into tangible, life-changing impact on the ground.</p>
 			</div>
 			<div class="ministry-visual">
 				<!-- Integrated Chart Graphic -->
@@ -80,10 +138,10 @@
 		<div class="container">
 			<h2 style="font-family: var(--font-display); font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 35px;">Ministries You Support</h2>
 			<div class="ministry-nav-grid" style="margin-bottom: 0;">
-				<a href="ministries.html#jacob" class="ministry-nav-tile"><img src="assets/images/logos/jacob-logo.jpg" alt="Jacob's Farm"><h4>Jacob's Farm</h4></a>
+				<a href="ministries.html#jacob" class="ministry-nav-tile"><img src="assets/images/logos/jacob-logo.png" alt="Jacob's Farm"><h4>Jacob's Farm</h4></a>
 				<a href="ministries.html#dorcas" class="ministry-nav-tile"><img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas"><h4>House of Dorcas</h4></a>
 				<a href="ministries.html#restore" class="ministry-nav-tile"><img src="assets/images/logos/restore-logo.png" alt="Restore Small Groups"><h4>Restore Groups</h4></a>
-				<a href="ministries.html#bit" class="ministry-nav-tile"><img src="assets/images/logos/bit-logo.jpg" alt="Believe In Them"><h4>Believe In Them</h4></a>
+				<a href="ministries.html#bit" class="ministry-nav-tile"><img src="assets/images/logos/bit-logo.png" alt="Believe In Them"><h4>Believe In Them</h4></a>
 			</div>
 		</div>
 	</section>
