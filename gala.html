@@ -3,17 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Join us for the 2026 Hope Gala in Belize. A premier fundraising event supporting local ministries and community restoration.">
+	<meta name="description" content="Join us for the 2026 Hope Gala in Belize. A premier fundraising event supporting local ministries.">
 	<title>Hope Gala | The Belize Project</title>
-	
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-	<!-- Hook for Main Navigation -->
 	<div id="site-header"></div>
 
-	<!-- 2026 Gala Hero Banner -->
-	<div class="slider" style="height: clamp(300px, 45vh, 500px);">
+	<!-- 2026 Gala Hero Section -->
+	<div class="slider" style="height: clamp(300px, 45vh, 480px);">
 		<ul id="slider-list">
 			<li class="active">
 				<div class="slide-bg" style="background-image: url('assets/images/slideshow/gala2026banner1.png');"></div>
@@ -22,15 +20,15 @@
 		</ul>
 	</div>
 
-	<!-- Page Intro & First Pledge Button -->
-	<div class="container" style="text-align: center; padding-top: 60px;">
-		<h3 style="font-family: var(--font-display); font-size: 3rem; color: var(--ink);">The 2026 <span style="color: var(--gold);">Hope Gala</span></h3>
-		<div class="divider" style="margin-top: 20px; margin-bottom: 30px;"></div>
-		<button class="modal-submit" style="width: auto; display: inline-block; padding: 12px 30px;" onclick="openPledge()">Make a Pledge</button>
+	<!-- Page Heading & Direct Pledge Action -->
+	<div class="container" style="text-align: center; padding-top: 50px;">
+		<h3 style="font-family: var(--font-display); font-size: 2.8rem; color: var(--ink);">The 2026 <span style="color: var(--gold);">Hope Gala</span></h3>
+		<div class="divider" style="margin-top: 15px; margin-bottom: 25px;"></div>
+		<button class="modal-submit" style="width: auto; display: inline-block; padding: 12px 35px;" onclick="openPledge()">Make a Pledge</button>
 	</div>
 
-	<!-- Section 1: About the Event -->
-	<section class="ministry-section bg-white">
+	<!-- Section 1: Core Mission -->
+	<section class="ministry-section bg-white" style="padding: 50px 24px;">
 		<div class="ministry-row">
 			<div class="ministry-content">
 				<h2>An Evening of Purpose</h2>
@@ -38,30 +36,29 @@
 				<p>More than just a gathering, it is a vital fundraiser. The generous contributions gathered during this event allow us to continue providing resources, education, and rehabilitation to those who need it most, giving them a second chance and a hope for a new tomorrow.</p>
 			</div>
 			<div class="ministry-visual">
-				<img class="ministry-main-img" src="assets/images/2025.jpg" alt="Hope Gala Attendees" onerror="this.src='https://placehold.co/600x400/f4f4f4/3d3d3d?text=Updated+Gala+Photo'">
+				<img class="ministry-main-img" src="assets/images/2025.jpg" alt="Hope Gala Attendees" onerror="this.src='https://placehold.co/600x400/f4f4f4/3d3d3d?text=Gala+Attendees'">
 			</div>
 		</div>
 	</section>
 
-	<!-- Section 2: Sponsorship Tiers (Side-by-Side Images) -->
-	<section class="ministry-section bg-offwhite" style="text-align: center;">
+	<!-- Section 2: Sponsorship Levels (Side-by-Side Grid) -->
+	<section class="ministry-section bg-offwhite" style="padding: 60px 24px; text-align: center;">
 		<div class="container">
-			<h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--ink); margin-bottom: 15px;">Become a Sponsor</h2>
-			<p style="color: var(--charcoal); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;">Choose a sponsorship level and make a lasting impact on communities across Belize.</p>
+			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin-bottom: 10px;">Become a Sponsor</h2>
+			<p style="color: var(--charcoal); margin-bottom: 35px; font-size: 1rem;">Choose a sponsorship level and help make a lasting impact.</p>
 			
 			<div class="sponsor-grid">
-				<!-- Placeholders for your beautiful tier graphics -->
 				<img src="assets/images/sponsor-gold.png" alt="Gold Sponsor Tier" onerror="this.src='https://placehold.co/300x400/1a1a1a/c7973f?text=Gold+Sponsor'">
 				<img src="assets/images/sponsor-silver.png" alt="Silver Sponsor Tier" onerror="this.src='https://placehold.co/300x400/e0e0e0/3d3d3d?text=Silver+Sponsor'">
 				<img src="assets/images/sponsor-bronze.png" alt="Bronze Sponsor Tier" onerror="this.src='https://placehold.co/300x400/8c6b5d/ffffff?text=Bronze+Sponsor'">
 			</div>
-
-			<button class="modal-submit" style="width: auto; display: inline-block; padding: 18px 40px; font-size: 16px; margin-top: 30px;" onclick="openPledge()">Make a Pledge</button>
+			
+			<button class="modal-submit" style="width: auto; display: inline-block; padding: 14px 40px; font-size: 15px; margin-top: 35px;" onclick="openPledge()">Make a Pledge</button>
 		</div>
 	</section>
 
-	<!-- Section 3: The Budget/Donations -->
-	<section class="ministry-section bg-white">
+	<!-- Section 3: Budget Distribution -->
+	<section class="ministry-section bg-white" style="padding: 50px 24px;">
 		<div class="ministry-row reverse">
 			<div class="ministry-content">
 				<h2>How Your Giving Helps</h2>
@@ -69,15 +66,15 @@
 				<p>Funds are carefully divided and allocated according to specific, pressing ministry needs—whether that is funding Journey to Freedom curriculums, supporting the rehabilitation farm, or providing safe shelter for vulnerable women.</p>
 			</div>
 			<div class="ministry-visual">
-				<img class="ministry-main-img" style="border: none; box-shadow: none; object-fit: contain;" src="assets/images/Budget.png" alt="Budget Distribution Graph">
+				<img class="ministry-main-img" style="border: none; box-shadow: none; object-fit: contain; max-height: 320px;" src="assets/images/Budget.png" alt="Budget Distribution Graph" onerror="this.src='https://placehold.co/500x300/ffffff/3d3d3d?text=Budget+Chart'">
 			</div>
 		</div>
 	</section>
 
-	<!-- Section 4: Ministries You Support -->
-	<section class="ministry-section bg-offwhite">
+	<!-- Section 4: Ministries Navigation Grid -->
+	<section class="ministry-section bg-offwhite" style="padding: 50px 24px;">
 		<div class="container">
-			<h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); text-align: center; margin-bottom: 40px;">Ministries You Support</h2>
+			<h2 style="font-family: var(--font-display); font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 35px;">Ministries You Support</h2>
 			<div class="ministry-nav-grid" style="margin-bottom: 0;">
 				<a href="ministries.html#jacob" class="ministry-nav-tile"><img src="assets/images/logos/jacob-logo.png" alt="Jacob's Farm" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=Jacob+Logo'"><h4>Jacob's Farm</h4></a>
 				<a href="ministries.html#dorcas" class="ministry-nav-tile"><img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas" onerror="this.src='https://placehold.co/150x150/ffffff/c7973f?text=Dorcas+Logo'"><h4>House of Dorcas</h4></a>
@@ -87,51 +84,66 @@
 		</div>
 	</section>
 
-	<!-- ==========================================
-	     THE BEAUTIFUL PLEDGE MODAL (GALA ONLY) 
-	     ========================================== -->
-	<div class="modal-overlay" id="pledge-overlay">
-		<div class="modal-card pledge-card">
-			<button type="button" class="modal-close" onclick="closePledge()">&times;</button>
+	<!-- =======================================================
+	     ELEGANT TWO-COLUMN LEAFLET PLEDGE MODAL
+	     ======================================================= -->
+	<div class="modal-overlay" id="pledge-overlay" onclick="closePledge()">
+		<div class="pledge-leaflet" onclick="event.stopPropagation()">
+			<button type="button" class="pledge-leaflet-close" onclick="closePledge()">&times;</button>
 			
-			<!-- The Dove Crest -->
-			<img src="assets/images/dove.png" alt="Peace Dove" class="pledge-dove" onerror="this.style.display='none'">
-			
-			<h3 class="pledge-title">Make a Pledge</h3>
-			<p class="pledge-subtitle">We thank you in advance for your kind contribution.</p>
-			
-			<div class="pledge-bank-box">
-				<h4>Atlantic Bank</h4>
-				<p>Account Name: <strong>The Belize Project</strong></p>
-				<p>Account #: <strong>100279146</strong></p>
+			<!-- Left Panel: Emotional/Spiritual Connection -->
+			<div class="pledge-side-panel">
+				<div class="pledge-dove-wrapper">
+					<img src="assets/images/dove.png" alt="Peace Dove" onerror="this.style.display='none'">
+				</div>
+				<div class="pledge-verse">
+					<p class="verse-text">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+					<p class="verse-ref">— 2 Corinthians 9:7</p>
+				</div>
 			</div>
 			
-			<p class="pledge-note">Please make checks payable to <strong>The Belize Project</strong>.</p>
-			
-			<div class="pledge-contacts">
-				<h5>For additional information, please contact:</h5>
-				<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
-				<p><strong>Mrs. Ruth Williams</strong> (Chairperson)<br>+501-636-8147</p>
-				<p style="margin-top: 10px;"><strong>Email:</strong> thebelizeproject2@gmail.com</p>
+			<!-- Right Panel: Core Directives & Data -->
+			<div class="pledge-main-panel">
+				<h3>Make a Pledge</h3>
+				<p class="pledge-thanks">We thank you in advance for your kind contribution and await your favorable response.</p>
+				
+				<div class="bank-details-card">
+					<h5>Atlantic Bank Transfer</h5>
+					<p>Account Name: <strong>The Belize Project</strong></p>
+					<p>Account Number: <strong>100279146</strong></p>
+				</div>
+				
+				<p class="check-instruction">Please make checks payable to <strong>The Belize Project</strong>.</p>
+				
+				<div class="pledge-contact-footer">
+					<p class="contact-title">Should you require additional information:</p>
+					<div class="contact-grid">
+						<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
+						<p><strong>Mrs. Ruth Williams</strong> (Chair)<br>+501-636-8147</p>
+					</div>
+					<p class="email-line"><strong>Email:</strong> thebelizeproject2@gmail.com</p>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Hooks for Footer and Contact Modal -->
 	<div id="site-footer"></div>
 	<div id="site-modal"></div>
 
-	<!-- Modal Logic & Global JS -->
 	<script>
 		function openPledge() {
 			const overlay = document.getElementById('pledge-overlay');
 			overlay.classList.add('is-visible');
 			setTimeout(() => overlay.classList.add('is-open'), 10);
+			document.body.style.overflow = 'hidden';
 		}
 		function closePledge() {
 			const overlay = document.getElementById('pledge-overlay');
 			overlay.classList.remove('is-open');
-			setTimeout(() => overlay.classList.remove('is-visible'), 250);
+			setTimeout(() => {
+				overlay.classList.remove('is-visible');
+				document.body.style.overflow = '';
+			}, 250);
 		}
 	</script>
 	<script src="assets/js/main.js"></script>
