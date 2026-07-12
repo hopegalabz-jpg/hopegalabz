@@ -401,6 +401,9 @@ footer {
 /* 288 degrees (Bottom Right) */
 .bubble-2 { width: 33%; top: 83.3%; left: 55.8%; z-index: 1; }
 
+/* Center Piece */
+.bubble-6 { width: 38%; top: 50%; left: 45%; z-index: 6; }
+
 /* ==========================================================================
    ELEGANT HORIZONTAL LEAFLET PLEDGE MODAL
    ========================================================================== */
