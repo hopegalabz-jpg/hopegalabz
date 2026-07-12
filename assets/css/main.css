@@ -225,8 +225,11 @@ footer {
 	color: var(--charcoal);
 	margin-bottom: 6px;
 }
+
+/* Updated to include select */
 .modal-card input,
-.modal-card textarea {
+.modal-card textarea,
+.modal-card select {
 	width: 100%;
 	font-family: var(--font-body);
 	font-size: 15px;
@@ -237,8 +240,11 @@ footer {
 	background: var(--white);
 	transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* Updated to include select */
 .modal-card input:focus,
-.modal-card textarea:focus {
+.modal-card textarea:focus,
+.modal-card select:focus {
 	outline: none;
 	border-color: var(--gold);
 	box-shadow: 0 0 0 3px rgba(199, 151, 63, 0.15);
@@ -287,6 +293,22 @@ footer {
 	color: var(--charcoal);
 }
 .form-status.is-error { color: var(--error); }
+
+/* New classes for the contact info footer */
+.modal-contact-info {
+	margin-top: 24px;
+	padding-top: 20px;
+	border-top: 1px solid #d8d3c8;
+	font-family: var(--font-body);
+	font-size: 14px;
+	color: var(--charcoal);
+	text-align: center;
+	line-height: 1.6;
+}
+.modal-contact-info strong {
+	color: var(--ink);
+	font-weight: 600;
+}
 
 .success-message { text-align: center; padding: 20px 0; }
 .success-message h4 {
