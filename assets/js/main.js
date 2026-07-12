@@ -336,13 +336,11 @@ function changeImage(direction, event) {
 	updateLightboxImage(direction);
 }
 
-// Closes ONLY via the explicit close button or Escape. The lightbox div's
-// onclick in gallery.html still calls this function on every click inside
-// it (backdrop, photo, everywhere) — so this function refuses to act
-// unless it was called with no event at all (Escape key) or an event
-// whose target is exactly the close button itself.
+// Closes only via the explicit close button or Escape — clicking the
+// backdrop or the image no longer closes the lightbox, so a person
+// navigating near the end of an album can't lose their place by mis-click.
 function closeLightbox(event) {
-	if (event && event.target.className !== 'lightbox-close') return;
+	if (event) event.stopPropagation();
 	document.getElementById('lightbox').classList.remove('active');
 }
 
