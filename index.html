@@ -5,26 +5,182 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="The Belize Project supports rehabilitation, recovery, and community restoration across Belize. Join us at the Hope Gala.">
 	<title>The Belize Project | Hope Gala</title>
-	
-	<!-- THIS IS THE ONLY CSS FILE YOU NEED -->
+	<link rel="icon" href="assets/images/logos/favicon.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	<style>
+		/* Hero slideshow: blur-fill so ANY image shape displays with no gaps, no resizing needed */
+		.slider {
+			width: 100%;
+			background-color: var(--ink);
+			position: relative;
+			overflow: hidden;
+			height: clamp(280px, 35vh, 400px);
+			border-bottom: 2px solid var(--gold);
+		}
+		.slider ul { position: relative; list-style: none; width: 100%; height: 100%; }
+		.slider li {
+			position: absolute;
+			inset: 0;
+			opacity: 0;
+			transition: opacity 1.2s ease-in-out;
+			overflow: hidden;
+		}
+		.slider li.active { opacity: 1; }
+		.slide-bg{
+			position: absolute;
+			inset: -20px;
+			background-size: cover;
+			background-position: center;
+			filter: blur(30px) brightness(0.55);
+			transform: scale(1.15);
+		}
+		.slide-fg{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			display: block;
+			z-index: 1;
+		}
+
+		.hero-intro {
+			text-align: center;
+			padding: 60px 24px 30px;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+		.hero-intro h1 {
+			font-family: var(--font-display);
+			font-size: clamp(36px, 5vw, 56px);
+			font-weight: 500;
+			color: var(--ink);
+			line-height: 1.1;
+			margin-bottom: 12px;
+		}
+		.hero-intro p {
+			color: var(--gold);
+			font-size: 18px;
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+		.divider {
+			height: 2px;
+			max-width: 100px;
+			margin: 0 auto 50px;
+			background: var(--gold);
+			opacity: 0.8;
+			border-radius: 2px;
+		}
+
+		.story {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 0 24px 70px;
+			text-align: center;
+		}
+		.story h2 {
+			font-family: var(--font-display);
+			font-size: clamp(30px, 4vw, 40px);
+			font-weight: 500;
+			color: var(--ink);
+			margin-bottom: 30px;
+		}
+		.video-wrap {
+			position: relative;
+			width: 100%;
+			padding-bottom: 56.25%;
+			height: 0;
+			border-radius: 16px;
+			overflow: hidden;
+			box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+			border: 4px solid var(--gold);
+		}
+		.video-wrap iframe {
+			position: absolute;
+			top: 0; left: 0;
+			width: 100%; height: 100%;
+			border: 0;
+		}
+
+		.belize-section {
+			background-color: var(--offwhite);
+			padding: 90px 24px;
+			border-top: 1px solid rgba(0,0,0,0.05);
+			border-bottom: 1px solid rgba(0,0,0,0.05);
+		}
+		.container2 {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			align-items: center;
+			gap: 60px;
+		}
+		.map-container{ position: relative; }
+		.map-container img {
+			width: 100%;
+			height: auto;
+			border-radius: 16px;
+			box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+			object-fit: cover;
+			display: block;
+		}
+		.flag-badge{
+			position: absolute;
+			bottom: 24px;
+			left: 24px;
+			width: 72px;
+			height: 72px;
+			border-radius: 50%;
+			background: var(--white);
+			border: 3px solid var(--gold);
+			padding: 10px;
+			box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+		}
+		.flag-badge img{
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			border-radius: 0;
+			box-shadow: none;
+		}
+		.text2 h2 {
+			font-family: var(--font-display);
+			color: var(--ink);
+			font-size: 40px;
+			font-weight: 500;
+			margin-bottom: 24px;
+		}
+		.text2 p { font-size: 17px; color: #4a4a4a; margin-bottom: 20px; }
+		.text2 p:last-child { margin-bottom: 0; font-weight: 600; color: var(--ink); }
+
+		@media (max-width: 768px) {
+			.container2 { grid-template-columns: 1fr; gap: 40px; }
+			.text2 { text-align: center; }
+			.slider { height: 280px; }
+		}
+	</style>
 </head>
 <body>
-	<!-- Hook for Main Navigation -->
 	<div id="site-header"></div>
 
-	<!-- Hero Slideshow -->
 	<div class="slider">
 		<ul id="slider-list"></ul>
 	</div>
-	
-	<!-- Homepage Slider Logic (Kept inline since it only runs on this page) -->
 	<script>
+		// Add or remove filenames here to change the slideshow.
+		// Each one must exist inside assets/images/slideshow/
 		const slides = ["gala2026banner1.png", "gala2026banner2.png"];
+
 		const list = document.getElementById("slider-list");
-		
 		slides.forEach((filename, i) => {
 			const path = "assets/images/slideshow/" + filename;
+
 			const li = document.createElement("li");
 			if (i === 0) li.className = "active";
 
@@ -97,11 +253,10 @@
 		</div>
 	</section>
 
-	<!-- Hooks for Footer and Contact Modal -->
 	<div id="site-footer"></div>
+
 	<div id="site-modal"></div>
 
-	<!-- THE FIX: Pointing to the correct main JS file -->
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
