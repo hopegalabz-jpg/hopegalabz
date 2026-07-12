@@ -1,7 +1,9 @@
-/* The Belize Project — shared header, footer, and base layout.
-   Page-specific styles (slider, story section, gallery grid, etc.)
-   stay in hoja.css or each page's own <style> block. */
+/* ==========================================================================
+   THE BELIZE PROJECT — GLOBAL STYLESHEET
+   Contains Header, Footer, Contact Modal, Homepage, Gallery, & Ministries
+   ========================================================================== */
 
+/* ---------- VARIABLES & BASE ---------- */
 :root {
 	--ink: #1a1a1a;
 	--charcoal: #3d3d3d;
@@ -19,6 +21,11 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 100px; /* Prevents the sticky header from covering titles */
+}
+
 body {
 	background-color: var(--white);
 	color: var(--charcoal);
@@ -29,7 +36,7 @@ body {
 
 body.modal-open { overflow: hidden; }
 
-/* ---------- Header / Nav ---------- */
+/* ---------- HEADER / NAV ---------- */
 header {
 	background-color: var(--white);
 	position: sticky;
@@ -97,7 +104,7 @@ header {
 	padding-top: 6px;
 }
 
-/* ---------- Footer ---------- */
+/* ---------- FOOTER ---------- */
 footer {
 	background-color: var(--ink);
 	color: var(--white);
@@ -150,7 +157,7 @@ footer {
 .foot img { height: 96px; width: auto; opacity: 0.95; }
 .footer-text { opacity: 0.7; line-height: 2; }
 
-/* ---------- Contact modal ---------- */
+/* ---------- CONTACT MODAL ---------- */
 .modal-overlay {
 	position: fixed;
 	inset: 0;
@@ -159,7 +166,7 @@ footer {
 	justify-content: center;
 	background: rgba(26, 26, 26, 0.75);
 	padding: 24px;
-	z-index: 3000; /* Ensure this is above the gallery lightbox */
+	z-index: 3000;
 }
 .modal-overlay.is-visible { display: flex; }
 
@@ -233,31 +240,84 @@ footer {
 .success-message h4 { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
 .success-message p { color: var(--charcoal); font-size: 15px; }
 
-/* ---------- GALLERY & PREMIUM SIDEBAR ---------- */
-.container {
-	max-width: 1400px;
-	margin: 0 auto;
-	padding: 0 40px;
+
+/* ==========================================================================
+   HOMEPAGE SPECIFIC STYLES
+   ========================================================================== */
+
+/* Hero slideshow */
+.slider {
+	width: 100%;
+	background-color: var(--ink);
+	position: relative;
+	overflow: hidden;
+	height: clamp(280px, 35vh, 400px);
+	border-bottom: 2px solid var(--gold);
+}
+.slider ul { position: relative; list-style: none; width: 100%; height: 100%; }
+.slider li {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	transition: opacity 1.2s ease-in-out;
+	overflow: hidden;
+}
+.slider li.active { opacity: 1; }
+.slide-bg {
+	position: absolute;
+	inset: -20px;
+	background-size: cover;
+	background-position: center;
+	filter: blur(30px) brightness(0.55);
+	transform: scale(1.15);
+}
+.slide-fg {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+	z-index: 1;
 }
 
-.album-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 30px;
-	padding: 20px 0 50px 0;
+.hero-intro { text-align: center; padding: 60px 24px 30px; max-width: 800px; margin: 0 auto; }
+.hero-intro h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 12px; }
+.hero-intro p { color: var(--gold); font-size: 18px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+.divider { height: 2px; max-width: 100px; margin: 0 auto 50px; background: var(--gold); opacity: 0.8; border-radius: 2px; }
+
+.story { max-width: 1000px; margin: 0 auto; padding: 0 24px 70px; text-align: center; }
+.story h2 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 40px); font-weight: 500; color: var(--ink); margin-bottom: 30px; }
+.video-wrap {
+	position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); border: 4px solid var(--gold);
 }
+.video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+.belize-section { background-color: var(--offwhite); padding: 90px 24px; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05); }
+.container2 { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
+.map-container { position: relative; }
+.map-container img { width: 100%; height: auto; border-radius: 16px; box-shadow: 0 12px 35px rgba(0,0,0,0.1); object-fit: cover; display: block; }
+.flag-badge {
+	position: absolute; bottom: 24px; left: 24px; width: 72px; height: 72px; border-radius: 50%; background: var(--white); border: 3px solid var(--gold); padding: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+.flag-badge img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; box-shadow: none; }
+
+.text2 h2 { font-family: var(--font-display); color: var(--ink); font-size: 40px; font-weight: 500; margin-bottom: 24px; }
+.text2 p { font-size: 17px; color: #4a4a4a; margin-bottom: 20px; }
+.text2 p:last-child { margin-bottom: 0; font-weight: 600; color: var(--ink); }
+
+
+/* ==========================================================================
+   GALLERY PAGE STYLES (Tiles, Sidebar & Lightbox)
+   ========================================================================== */
+
+.container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+.album-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 20px 0 50px 0; }
 
 .album-tile {
-	position: relative;
-	background: var(--dark-bg);
-	border: 1px solid rgba(212, 175, 55, 0.3);
-	padding: 10px;
-	cursor: pointer;
-	overflow: hidden;
-	transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-	box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+	position: relative; background: var(--dark-bg); border: 1px solid rgba(212, 175, 55, 0.3); padding: 10px; cursor: pointer; overflow: hidden; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
 .album-tile::before, .album-tile::after {
 	content: ''; position: absolute; width: 10px; height: 10px; border: 2px solid var(--gold-premium); z-index: 2; opacity: 0.6; transition: all 0.4s ease;
 }
@@ -302,15 +362,13 @@ footer {
 .sidebar-gallery img { width: 100%; height: auto; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.3s ease; }
 .sidebar-gallery img:hover { transform: scale(1.02); border-color: var(--gold-premium); }
 
-/* ---------- LIGHTBOX NAVIGATION ---------- */
 .lightbox {
 	position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.95); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease;
 }
 .lightbox.active { opacity: 1; visibility: visible; }
 .lightbox img {
 	max-width: 90%; max-height: 85%; box-shadow: 0 0 30px rgba(0,0,0,0.8); border: 1px solid rgba(212, 175, 55, 0.5);
-	transition: opacity 0.3s ease-in-out, transform 0.3s ease;
-	opacity: 1;
+	transition: opacity 0.3s ease-in-out, transform 0.3s ease; opacity: 1;
 }
 .lightbox img.fade-out { opacity: 0; transform: scale(0.98); }
 
@@ -324,16 +382,136 @@ footer {
 .lightbox-nav.prev { left: 30px; }
 .lightbox-nav.next { right: 30px; }
 
-/* ---------- Responsive ---------- */
+
+/* ==========================================================================
+   MINISTRIES PAGE - LOGO DIRECTORY & EXCERPTS
+   ========================================================================== */
+
+/* Top Logo Directory Grid */
+.ministry-nav-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 30px;
+	margin-bottom: 80px;
+}
+
+.ministry-nav-tile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 20px;
+	background: var(--offwhite);
+	border: 1px solid rgba(212, 175, 55, 0.3);
+	border-radius: 12px;
+	text-decoration: none;
+	transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+	box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.ministry-nav-tile:hover {
+	transform: translateY(-5px);
+	border-color: var(--gold-premium);
+	box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+	background: var(--white);
+}
+
+.ministry-nav-tile img {
+	width: 120px;
+	height: 120px;
+	object-fit: contain; /* Ensures logos aren't stretched */
+	margin-bottom: 20px;
+	transition: transform 0.4s ease;
+}
+
+.ministry-nav-tile:hover img {
+	transform: scale(1.05);
+}
+
+.ministry-nav-tile h4 {
+	margin: 0;
+	font-family: var(--font-display);
+	font-size: 1.3rem;
+	color: var(--ink);
+	text-align: center;
+	transition: color 0.3s ease;
+}
+
+.ministry-nav-tile:hover h4 {
+	color: var(--gold);
+}
+
+/* Excerpt Layout Sections */
+.ministry-section {
+	width: 100%;
+	padding: 80px 24px;
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.bg-white { background-color: var(--white); }
+.bg-offwhite { background-color: var(--offwhite); }
+
+.ministry-row {
+	max-width: 900px; /* Narrower for comfortable reading */
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.ministry-content h2 {
+	font-family: var(--font-display);
+	font-size: clamp(32px, 4vw, 42px);
+	font-weight: 500;
+	color: var(--ink);
+	margin-bottom: 24px;
+	line-height: 1.2;
+}
+
+.ministry-content p {
+	font-size: 17px;
+	color: #4a4a4a;
+	margin-bottom: 20px;
+	line-height: 1.8;
+}
+
+.ministry-content p:last-child {
+	margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES (Applies globally)
+   ========================================================================== */
+
 @media (max-width: 1024px) {
+	/* Header overrides */
 	.navegacion { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
 	.nav-spacer { display: none; }
 	.nav-menu { justify-content: center; flex-wrap: wrap; gap: 20px; }
 }
+
 @media (max-width: 768px) {
+	/* Header & Layout overrides */
 	.nav-menu li a { font-size: 14px; }
 	.drop-cap::first-letter { padding-top: 4px; }
+	.container { padding: 0 20px; }
+	
+	/* Modal overrides */
 	.modal-card { padding: 40px 24px 32px; }
 	.modal-card h3 { font-size: 24px; }
-	.lightbox-nav { display: none; } /* Hide navigation arrows on smaller devices, rely on tapping */
+	
+	/* Homepage overrides */
+	.container2 { grid-template-columns: 1fr; gap: 40px; }
+	.text2 { text-align: center; }
+	.slider { height: 280px; }
+
+	/* Gallery overrides */
+	.lightbox-nav { display: none; } /* Hide arrows on mobile, rely on tap/swipe */
+	
+	/* Ministries overrides */
+	.ministry-nav-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
+	.ministry-nav-tile { padding: 30px 15px; }
+	.ministry-nav-tile img { width: 90px; height: 90px; }
 }
