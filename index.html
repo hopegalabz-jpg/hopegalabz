@@ -12,44 +12,6 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 	<style>
-		/* Hero slideshow: Updated to match the clean, horizontal continuous loop */
-		.slider {
-			width: 100%;
-			background-color: #042522; /* Clean, deep teal */
-			position: relative;
-			overflow: hidden;
-			height: clamp(280px, 35vh, 400px);
-			border-bottom: 2px solid var(--gold);
-		}
-		.slider ul { 
-			position: relative; 
-			list-style: none; 
-			display: flex; 
-			width: max-content; 
-			height: 100%; 
-			animation: slide-infinite 40s linear infinite; 
-		}
-		.slider li { 
-			position: relative; 
-			flex: 0 0 100vw; 
-			height: 100%; 
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			overflow: hidden; 
-		}
-		.slide-fg { 
-			position: relative; 
-			width: 100%; 
-			height: 100%; 
-			object-fit: contain; 
-			display: block; 
-		}
-		@keyframes slide-infinite {
-			0% { transform: translateX(0); }
-			100% { transform: translateX(-50%); }
-		}
-
 		.hero-intro {
 			text-align: center;
 			padding: 60px 24px 30px;
@@ -175,23 +137,24 @@
 	<div class="slider">
 		<ul id="slider-list"></ul>
 	</div>
+	
 	<script>
 		// Add or remove filenames here to change the slideshow.
 		const slides = ["gala2026banner1.png", "gala2026banner2.png"];
 		const list = document.getElementById("slider-list");
 
-		// Helper function to build a single slide
+		// Helper function to build a single slide (No fade classes, no blurry shadow divs)
 		function createSlide(filename, isClone) {
 			const path = "assets/images/slideshow/" + filename;
 			const li = document.createElement("li");
 			
-			// If it's the cloned set, we hide it from screen readers
+			// Hide the cloned set from screen readers for accessibility
 			if (isClone) li.setAttribute("aria-hidden", "true");
 
 			const img = document.createElement("img");
 			img.className = "slide-fg";
 			img.src = path;
-			img.alt = isClone ? "" : "Hope Gala";
+			img.alt = isClone ? "" : "The Belize Project";
 
 			li.appendChild(img);
 			return li;
