@@ -297,21 +297,28 @@ function openLightbox(index) {
 	currentImageIndex = index;
 	const lightboxImg = document.getElementById('lightboxImg');
 	
-	// Set the initial image immediately upon opening without fade
+	// Set the initial image immediately upon opening — no flip on first open
 	lightboxImg.src = `${currentFolderPath}/${currentAlbumList[currentImageIndex]}`;
-	lightboxImg.classList.remove('fade-out');
+	lightboxImg.classList.remove('flip-next', 'flip-prev');
 	
 	document.getElementById('lightbox').classList.add('active');
 }
 
-function updateLightboxImage() {
+// direction: 1 = next (flips away to the left, like turning a page forward)
+//           -1 = prev (flips away to the right, like turning a page back)
+function updateLightboxImage(direction) {
 	const lightboxImg = document.getElementById('lightboxImg');
+	const flipOutClass = direction === -1 ? 'flip-prev' : 'flip-next';
 	
-	lightboxImg.classList.add('fade-out');
+	lightboxImg.classList.add(flipOutClass);
 	
+	// Swap the source at the rotation's midpoint — the moment the "page" is
+	// edge-on and invisible to the viewer — matching the 0.4s transform
+	// duration set on .lightbox img in main.css. Swapping earlier or later
+	// than the midpoint shows the new photo arriving from the wrong side.
 	setTimeout(() => {
 		lightboxImg.src = `${currentFolderPath}/${currentAlbumList[currentImageIndex]}`;
-		lightboxImg.classList.remove('fade-out');
+		lightboxImg.classList.remove(flipOutClass);
 	}, 200);
 }
 
@@ -326,11 +333,14 @@ function changeImage(direction, event) {
 		currentImageIndex = 0;
 	}
 	
-	updateLightboxImage();
+	updateLightboxImage(direction);
 }
 
+// Closes only via the explicit close button or Escape — clicking the
+// backdrop or the image no longer closes the lightbox, so a person
+// navigating near the end of an album can't lose their place by mis-click.
 function closeLightbox(event) {
-	if (event && event.target.id === 'lightboxImg') return;
+	if (event) event.stopPropagation();
 	document.getElementById('lightbox').classList.remove('active');
 }
 
