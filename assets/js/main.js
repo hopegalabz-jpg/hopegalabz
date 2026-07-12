@@ -468,10 +468,10 @@ const resourceCategories = {
 	letters: {
 		titleFirst: 'Printable',
 		titleGold: 'Letters',
-		folderPath: 'assets/documents/letters',
+		folderPath: 'docs',
 		items: [
 			{
-				filename: 'sponsorship-letter-2026.pdf',
+				filename: 'sl2026.pdf',
 				title: '2026 Sponsorship Letter',
 				description: 'Our formal invitation to partner with the Hope Gala as a sponsor this year.',
 				fileType: 'PDF'
