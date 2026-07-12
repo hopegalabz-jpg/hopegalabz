@@ -63,6 +63,93 @@
 				</div>
 			</div>
 		</section>
+
+		<!-- ==================================================================
+		     RESOURCE DOCUMENTS — edit here, not in main.js
+		     ==================================================================
+		     Everything below this line is hidden (never shown to visitors).
+		     main.js reads it at page load to build the sidebar and preview
+		     modal. To add a document: copy one <div class="resource-item">
+		     block and change its four data- values. To add a whole new
+		     category, copy one <div class="resource-category"> block, give
+		     it a new data-category name, and add a matching tile + onclick
+		     above (see the three .resource-tile buttons in the section above).
+
+		     data-category   must exactly match the onclick value on its tile
+		                     button above (e.g. openResourceCategory('letters')
+		                     needs a data-category="letters" block below).
+		     data-folder     the folder these files live in, e.g. "docs" or
+		                     "docs/brochures" — whatever matches your repo.
+		     data-title-first / data-title-gold
+		                     the sidebar heading. title-gold is the part shown
+		                     in gold; leave title-gold empty for a plain
+		                     single-color heading.
+
+		     Each document needs:
+		     data-filename     exact filename in that folder, incl. extension
+		     data-title        shown as the document's heading
+		     data-description  shown as the document's short description
+		     data-filetype     badge text only (e.g. "PDF", "JPG") — the icon
+		                       shown is chosen automatically from the file
+		                       extension in data-filename, not from this field
+		-->
+		<div id="resource-data" hidden>
+
+			<div class="resource-category"
+				data-category="brochures"
+				data-folder="docs"
+				data-title-first="Brochures"
+				data-title-gold="">
+
+				<div class="resource-item"
+					data-filename="organization-overview.pdf"
+					data-title="Organization Overview"
+					data-description="A general introduction to our mission, ministries, and impact in Belize."
+					data-filetype="PDF"></div>
+
+				<div class="resource-item"
+					data-filename="hope-gala-overview.pdf"
+					data-title="Hope Gala Overview"
+					data-description="What the Hope Gala is, who it supports, and how to get involved."
+					data-filetype="PDF"></div>
+
+			</div>
+
+			<div class="resource-category"
+				data-category="letters"
+				data-folder="docs"
+				data-title-first="Printable"
+				data-title-gold="Letters">
+
+				<div class="resource-item"
+					data-filename="sl2026.pdf"
+					data-title="2026 Sponsorship Letter"
+					data-description="Our formal invitation to partner with the Hope Gala as a sponsor this year."
+					data-filetype="PDF"></div>
+
+				<div class="resource-item"
+					data-filename="donor-solicitation-letter.pdf"
+					data-title="Donor Solicitation Letter"
+					data-description="A direct appeal for individual giving and pledge support."
+					data-filetype="PDF"></div>
+
+			</div>
+
+			<div class="resource-category"
+				data-category="sponsorship"
+				data-folder="docs"
+				data-title-first="Sponsorship"
+				data-title-gold="Material">
+
+				<div class="resource-item"
+					data-filename="sponsorship-package-2026.pdf"
+					data-title="2026 Sponsorship Package"
+					data-description="Sponsorship tiers, benefits, and recognition levels for partners."
+					data-filetype="PDF"></div>
+
+			</div>
+
+		</div>
 	</main>
 
 	<!-- Shared sidebar shell (same IDs/structure as the Gallery sidebar; content is swapped by openResourceCategory) -->
