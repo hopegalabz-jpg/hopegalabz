@@ -1,265 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gallery | The Belize Project</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/site-layout.css"> 
-	<link rel="stylesheet" type="text/css" href="assets/css/hoja.css">
 	
-	<style>
-		/* PREMIUM TILE & SIDEBAR CSS STYLING */
-		:root {
-			--gold-premium: #d4af37;
-			--dark-bg: #111111;
-			--sidebar-bg: rgba(20, 20, 20, 0.95);
-			--glass-blur: blur(12px);
-		}
-
-		/* Album Grid Layout */
-		.album-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 30px;
-			padding: 20px 0 50px 0;
-		}
-
-		/* Custom Elegant Border & Tile Decor */
-		.album-tile {
-			position: relative;
-			background: var(--dark-bg);
-			border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle gold border */
-			padding: 10px;
-			cursor: pointer;
-			overflow: hidden;
-			transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-		}
-
-		/* Decorative Corner Accents for Gala Style */
-		.album-tile::before, .album-tile::after {
-			content: '';
-			position: absolute;
-			width: 10px;
-			height: 10px;
-			border: 2px solid var(--gold-premium);
-			z-index: 2;
-			opacity: 0.6;
-			transition: all 0.4s ease;
-		}
-		.album-tile::before { top: 5px; left: 5px; border-right: 0; border-bottom: 0; }
-		.album-tile::after { bottom: 5px; right: 5px; border-left: 0; border-top: 0; }
-
-		.album-tile:hover {
-			transform: translateY(-5px);
-			border-color: var(--gold-premium);
-			box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
-		}
-
-		.album-tile:hover::before, .album-tile:hover::after {
-			opacity: 1;
-			width: 15px;
-			height: 15px;
-		}
-
-		.album-cover-wrapper {
-			width: 100%;
-			height: 250px;
-			overflow: hidden;
-			position: relative;
-		}
-
-		.album-cover-wrapper img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			transition: transform 0.6s ease;
-		}
-
-		.album-tile:hover .album-cover-wrapper img {
-			transform: scale(1.06);
-		}
-
-		/* Tile Text Styles */
-		.album-info {
-			padding: 15px 5px 5px 5px;
-			text-align: center;
-		}
-
-		.album-info h4 {
-			margin: 0;
-			font-size: 1.2rem;
-			letter-spacing: 1px;
-			color: #ffffff;
-		}
-
-		.album-info h4 span {
-			color: var(--gold-premium);
-			font-weight: bold;
-		}
-
-		.album-info p {
-			margin: 5px 0 0 0;
-			font-size: 0.85rem;
-			color: #aaaaaa;
-			text-transform: uppercase;
-			letter-spacing: 2px;
-		}
-
-		/* Premium Slide-Out Sidebar */
-		.sidebar-overlay {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0, 0, 0, 0.0);
-			backdrop-filter: blur(0px);
-			-webkit-backdrop-filter: blur(0px);
-			z-index: 999;
-			visibility: hidden;
-			transition: all 0.5s ease;
-		}
-
-		.sidebar-overlay.active {
-			visibility: visible;
-			background: rgba(0, 0, 0, 0.7);
-			backdrop-filter: var(--glass-blur);
-			-webkit-backdrop-filter: var(--glass-blur);
-		}
-
-		.premium-sidebar {
-			position: fixed;
-			top: 0;
-			right: -500px; /* Hidden off-screen initially */
-			width: 100%;
-			max-width: 460px;
-			height: 100%;
-			background: var(--sidebar-bg);
-			border-left: 1px solid rgba(212, 175, 55, 0.4);
-			box-shadow: -10px 0 40px rgba(0,0,0,0.8);
-			z-index: 1000;
-			display: flex;
-			flex-direction: column;
-			transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-		}
-
-		.sidebar-overlay.active .premium-sidebar {
-			right: 0;
-		}
-
-		/* Sidebar Header */
-		.sidebar-header {
-			padding: 25px;
-			border-bottom: 1px solid rgba(255,255,255,0.1);
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			background: rgba(10, 10, 10, 0.5);
-		}
-
-		.sidebar-header h3 {
-			margin: 0;
-			color: #fff;
-			font-size: 1.4rem;
-			letter-spacing: 1px;
-		}
-
-		.sidebar-header h3 span {
-			color: var(--gold-premium);
-		}
-
-		.close-sidebar-btn {
-			background: none;
-			border: none;
-			color: #ffffff;
-			font-size: 2rem;
-			cursor: pointer;
-			line-height: 1;
-			transition: color 0.3s;
-		}
-
-		.close-sidebar-btn:hover {
-			color: var(--gold-premium);
-		}
-
-		/* Sidebar Image Stream Container */
-		.sidebar-content {
-			flex: 1;
-			overflow-y: auto;
-			padding: 20px;
-		}
-
-		/* Custom Smooth, Elegant Sidebar Scrollbar */
-		.sidebar-content::-webkit-scrollbar {
-			width: 5px;
-		}
-		.sidebar-content::-webkit-scrollbar-track {
-			background: transparent;
-		}
-		.sidebar-content::-webkit-scrollbar-thumb {
-			background: rgba(212, 175, 55, 0.3);
-			border-radius: 10px;
-		}
-		.sidebar-content::-webkit-scrollbar-thumb:hover {
-			background: var(--gold-premium);
-		}
-
-		/* Images Layout Inside the Panel */
-		.sidebar-gallery {
-			display: flex;
-			flex-direction: column;
-			gap: 15px;
-		}
-
-		.sidebar-gallery img {
-			width: 100%;
-			height: auto;
-			border: 1px solid rgba(255,255,255,0.05);
-			cursor: pointer;
-			transition: all 0.3s ease;
-		}
-
-		.sidebar-gallery img:hover {
-			transform: scale(1.02);
-			border-color: var(--gold-premium);
-		}
-
-		/* Full Screen Lightbox Zoom Effect */
-		.lightbox {
-			position: fixed;
-			top:0; left:0; width:100%; height:100%;
-			background: rgba(0,0,0,0.95);
-			z-index: 2000;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			opacity: 0; visibility: hidden;
-			transition: all 0.3s ease;
-		}
-		.lightbox.active {
-			opacity: 1; visibility: visible;
-		}
-		.lightbox img {
-			max-width: 90%;
-			max-height: 85%;
-			box-shadow: 0 0 30px rgba(0,0,0,0.8);
-			border: 1px solid rgba(212, 175, 55, 0.5);
-		}
-		.lightbox-close {
-			position: absolute;
-			top: 20px; right: 30px;
-			color: #fff; font-size: 2.5rem;
-			cursor: pointer;
-		}
-		.lightbox-close:hover { color: var(--gold-premium); }
-	</style>
+	<!-- Using your main stylesheet -->
+	<link rel="stylesheet" type="text/css" href="assets/css/hoja.css">
 </head>
 <body>
+	<!-- Hook for Main Navigation -->
 	<div id="site-header"></div>
 	
 	<div class="container">
 		<!-- Beautiful Top Section Header -->
-		<div class="heading" style="text-align: center; margin-bottom: 40px;">
-			<h3>The Belize Project <span>Media Galleries</span></h3>
+		<div class="heading" style="text-align: center; margin-bottom: 40px; padding-top: 40px;">
+			<h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--ink);">The Belize Project <span style="color: var(--gold);">Media Galleries</span></h3>
 		</div>
 
 		<!-- ELEGANT ALBUM TILE GRID -->
@@ -360,125 +116,23 @@
 		</div>
 	</div>
 
-	<!-- LIGHTBOX ZOOM OVERLAY COMPONENT -->
-	<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-		<span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+	<!-- LIGHTBOX ZOOM OVERLAY COMPONENT (With updated Navigation) -->
+	<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+		<span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+		
+		<!-- Navigation Arrows -->
+		<button class="lightbox-nav prev" onclick="changeImage(-1, event)">&#10094;</button>
+		
 		<img id="lightboxImg" src="" alt="Expanded View">
+		
+		<button class="lightbox-nav next" onclick="changeImage(1, event)">&#10095;</button>
 	</div>
 
+	<!-- Hooks for Footer and Contact Modal -->
 	<div id="site-footer"></div>
+	<div id="site-modal"></div>
 	
-	<script src="assets/js/site-layout.js"></script> 
-	
-	<script>
-		// 1. EXACT FILE LISTS FROM GITHUB
-		const gala2025 = [
-			"1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg"
-		];
-		const gala2024 = [
-			"1.jpg", "IMG-20241020-WA0017.jpg", "20241019_163342.jpg", "20241019_210912.jpg", 
-			"IMG-20241020-WA0009.jpg", "20241019_163312.jpg", "IMG-20241020-WA0014.jpg", 
-			"IMG-20241020-WA0002.jpg", "IMG-20241020-WA0019.jpg", "20241019_185200.jpg", 
-			"20241019_210925.jpg", "IMG-20241020-WA0012.jpg", "20241019_163306.jpg", 
-			"20241019_210822.jpg", "IMG-20241020-WA0024.jpg", "IMG-20241020-WA0010.jpg", 
-			"IMG-20241020-WA0007.jpg", "2.jpg", "IMG-20241020-WA0004.jpg", "IMG-20241020-WA0018.jpg", 
-			"20241019_185219.jpg", "IMG-20241020-WA0011.jpg", "IMG-20241020-WA0005.jpg"
-		];
-		const gala2023 = [
-			"3 (1).png", "3 (2).png", "3 (3).png", "3 (4).png", "3 (5).png", "3 (6).png", "3 (7).png", 
-			"3 (8).png", "3 (9).png", "3 (10).png", "3 (11).png", "3 (12).png", "3 (13).png", "3 (14).png", 
-			"3 (15).png", "3 (16).png", "3 (17).png", "3 (18).png", "3 (19).png", "3 (20).png", "3 (21).png", 
-			"3 (22).png", "3 (23).png", "3 (24).png", "3 (25).png", "3 (26).png", "3 (27).png", "3 (28).png", 
-			"3 (29).png", "3 (30).png", "3 (31).png", "3 (32).png", "3 (33).png", "3 (34).png", "3 (35).png", 
-			"3 (36).png", "3 (37).png", "3 (38).png", "3 (39).png", "3 (40).png", "3 (41).png", "3 (42).png", 
-			"3 (43).png", "3 (44).png", "3 (45).png", "3 (46).png", "3 (47).png", "3 (48).png", "3 (49).png", 
-			"3 (50).png", "3 (51).png", "3 (52).png", "3 (53).png", "3 (54).png", "3 (55).png", "3 (56).png", 
-			"3 (57).png", "3 (58).png", "3 (59).png", "3 (60).png", "3 (61).png", "3 (62).png", "3 (63).png", 
-			"3 (64).png", "3 (65).png", "3 (66).png", "3 (67).png", "3 (68).png", "3 (69).png", "3 (70).png", 
-			"3 (71).png", "3 (72).png", "3 (73).png", "3 (74).png", "3 (75).png", "3 (76).png", "3 (77).png", 
-			"3 (78).png", "3 (79).png", "3 (80).png"
-		];
-		const gala2022 = [
-			"HopeGala22-1.png", "HopeGala22-10.png", "HopeGala22-15.png", "HopeGala22-16.png", 
-			"HopeGala22-17.png", "HopeGala22-19.png", "HopeGala22-20.png", "HopeGala22-21.png", 
-			"HopeGala22-22.png", "HopeGala22-24.png", "HopeGala22-25.png", "HopeGala22-28.png", 
-			"HopeGala22-29.png", "HopeGala22-3.png", "HopeGala22-30.png", "HopeGala22-31.png", 
-			"HopeGala22-32.jpg", "HopeGala22-33.png", "HopeGala22-35.png", "HopeGala22-36.png", 
-			"HopeGala22-37.jpg", "HopeGala22-38.png", "HopeGala22-4.png", "HopeGala22-40.png", 
-			"HopeGala22-41.png", "HopeGala22-42.png", "HopeGala22-43.png", "HopeGala22-44.png", 
-			"HopeGala22-45.png", "HopeGala22-46.png", "HopeGala22-47.png", "HopeGala22-48.png", 
-			"HopeGala22-49.png", "HopeGala22-5.png", "HopeGala22-50.png", "HopeGala22-51.png", 
-			"HopeGala22-52.png", "HopeGala22-53.png", "HopeGala22-54.png", "HopeGala22-55.png", 
-			"HopeGala22-57.png", "HopeGala22-58.png", "HopeGala22-59.png", "HopeGala22-6.png", 
-			"HopeGala22-60.png", "HopeGala22-61.png", "HopeGala22-63.png", "HopeGala22-64.png", 
-			"HopeGala22-65.png", "HopeGala22-67.png", "HopeGala22-68.png", "HopeGala22-69.png", 
-			"HopeGala22-7.png", "HopeGala22-70.png", "HopeGala22-71.png", "HopeGala22-72.png", 
-			"HopeGala22-73.png", "HopeGala22-74.png", "HopeGala22-75.png", "HopeGala22-76.png", 
-			"HopeGala22-78.png", "HopeGala22-79.png", "HopeGala22-8.png", "HopeGala22-80.png", 
-			"HopeGala22-81.png", "HopeGala22-82.png", "HopeGala22-83.png", "HopeGala22-84.png", 
-			"HopeGala22-85.png", "HopeGala22-86.png", "HopeGala22-87.jpg", "HopeGala22-89.jpg", 
-			"HopeGala22-9.png", "HopeGala22-90.jpg"
-		];
-		const jacobsFarm = [
-			"1000037511.jpg", "1000037513.jpg", "IMG-20250701-WA0036.jpg", 
-			"IMG-20250701-WA0037.jpg", "IMG-20250701-WA0040.jpg", "IMG-20250701-WA0041.jpg", 
-			"IMG-20250701-WA0042.jpg"
-		];
-		const dorcas = [
-			"1.jpg", "2.jpg", "3.png", "IMG-20250701-WA0038.jpg", "IMG-20250701-WA0039.jpg"
-		];
-		const restore = [
-			"4.jpg", "5.jpg", "6.jpg", "1000037531.jpg", "1000000215.jpg", "1000000356.jpg", 
-			"1000037529.jpg", "IMG-20250701-WA0043.jpg", "IMG-20250701-WA0044.jpg"
-		];
-
-		// 2. INTERACTIVE SIDEBAR & LIGHTBOX JAVASCRIPT
-		function openAlbum(titleFirst, titleGold, folderPath, imageList) {
-			const overlay = document.getElementById('sidebarOverlay');
-			const titleContainer = document.getElementById('sidebarTitle');
-			const galleryContainer = document.getElementById('sidebarGalleryItems');
-			
-			// Set Title dynamically with gold styling accent
-			titleContainer.innerHTML = `${titleFirst} <span>${titleGold}</span>`;
-			
-			// Clear any previously injected sidebar images
-			galleryContainer.innerHTML = '';
-			
-			// Inject album specific pictures into sidebar stream
-			imageList.forEach(filename => {
-				const img = document.createElement('img');
-				img.src = `${folderPath}/${filename}`;
-				img.loading = "lazy";
-				img.alt = "Gala Media File";
-				
-				// Expand image to light-box when clicked
-				img.onclick = function() {
-					expandImage(this.src);
-				};
-				
-				galleryContainer.appendChild(img);
-			});
-			
-			// Activate Sidebar animation sequence
-			overlay.classList.add('active');
-			document.body.style.overflow = 'hidden'; // Stop background scrolling
-		}
-
-		function closeAlbum() {
-			document.getElementById('sidebarOverlay').classList.remove('active');
-			document.body.style.overflow = ''; // Restore background scrolling
-		}
-
-		function expandImage(srcPath) {
-			const lightbox = document.getElementById('lightbox');
-			const lightboxImg = document.getElementById('lightboxImg');
-			lightboxImg.src = srcPath;
-			lightbox.classList.add('active');
-		}
-
-		function closeLightbox() {
-			document.getElementById('lightbox').classList.remove('active');
-		}
-	</script>
+	<!-- Using your main JavaScript -->
+	<script src="assets/js/main.js"></script>
 </body>
 </html>
