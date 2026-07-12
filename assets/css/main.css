@@ -74,7 +74,7 @@ header {
 	color: var(--ink);
 	font-family: var(--font-display);
 	font-size: 15px;
-	font-weight: 600;
+	font-weight: 500;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
 	text-decoration: none;
@@ -88,12 +88,11 @@ header {
 	left: 0; right: 0; bottom: -2px;
 	height: 2px;
 	background: var(--gold);
-	transform: scaleX(0);
-	transform-origin: right;
+	transform: scaleX(1); /* permanent underline, always visible */
+	transform-origin: left;
 	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .nav-menu li a:hover { color: var(--gold); }
-.nav-menu li a:hover::after { transform: scaleX(1); transform-origin: left; }
 
 .drop-cap::first-letter {
 	font-family: var(--font-display);
