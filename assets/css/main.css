@@ -390,8 +390,8 @@ footer {
    ========================================================================== */
 .std-card {
 	position: absolute;
-	top: -200px;
-	left: calc(50% - 650px);
+	top: -230px;
+	left: calc(50% - 600px);
 	width: 260px;
 	z-index: 2;
 	border-radius: 6px;
