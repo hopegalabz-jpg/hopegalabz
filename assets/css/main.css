@@ -387,15 +387,11 @@ footer {
 
 /* ==========================================================================
    SAVE THE DATE CARD
-   Positioned absolutely within its section, entirely outside .ministry-row's
-   flex layout. This does not add a column, does not compete for width, and
-   does not affect .ministry-content, .ministry-visual, or the bubble
-   cluster's sizing in any way — it occupies space that was already blank.
    ========================================================================== */
 .std-card {
 	position: absolute;
 	top: 90px;
-	left: 340px;
+	left: calc(50% - 450px);
 	width: 260px;
 	z-index: 2;
 	border-radius: 6px;
