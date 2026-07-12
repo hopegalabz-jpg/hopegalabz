@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 	<style>
-		/* Hero slideshow: No gaps between images, slowed down to 90 seconds */
+		/* Hero slideshow: Edge-to-edge images, zero gaps, 90s speed */
 		.slider {
 			width: 100%;
 			background-color: #042522;
@@ -30,17 +30,12 @@
 			animation: slide-infinite 90s linear infinite; 
 		}
 		.slider li { 
-			position: relative; 
 			height: 100%; 
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			overflow: hidden; 
+			flex: 0 0 auto; /* Forces the box to shrink-wrap exactly to the image */
 		}
 		.slide-fg { 
-			position: relative; 
 			height: 100%; 
-			width: auto; /* Forces the image to keep its exact shape without adding empty space */
+			width: auto; /* Keeps image shape perfect without adding blank space */
 			display: block; 
 		}
 		@keyframes slide-infinite {
