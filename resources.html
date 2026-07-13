@@ -6,6 +6,287 @@
 	<title>Resources — The Belize Project</title>
 	<meta name="description" content="Brochures, sponsorship materials, and printable letters for The Belize Project and the Hope Gala.">
 	<link rel="stylesheet" href="assets/css/main.css">
+
+	<!-- ==========================================================================
+	     RESOURCES-ONLY STYLES
+	     ==========================================================================
+	     Moved out of main.css because these rules are used by this page only.
+	     main.css keeps only what's genuinely shared: .container, .divider, and
+	     the base sidebar shell (.sidebar-overlay, .premium-sidebar, .sidebar-
+	     header, .sidebar-content, .close-sidebar-btn), since Gallery's
+	     openAlbum() reuses that same shell. Everything below — the tiles, the
+	     sidebar list rows, and the white-theme override — exists only here.
+	     ========================================================================== -->
+	<style>
+		.resources-hero {
+			text-align: center;
+			padding: 60px 24px 10px;
+		}
+		.resources-hero h1 {
+			font-family: var(--font-display);
+			font-size: clamp(34px, 5vw, 50px);
+			font-weight: 500;
+			color: var(--ink);
+			line-height: 1.1;
+		}
+		.resources-hero p {
+			max-width: 620px;
+			margin: 20px auto 0;
+			color: #444;
+			font-size: 16px;
+			line-height: 1.7;
+		}
+
+		.resources-section {
+			padding: 20px 24px 80px;
+		}
+
+		/* ---------- Category Tiles (mirrors .album-tile visual language) ---------- */
+		.resource-tile-grid {
+			max-width: 1100px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 25px;
+		}
+
+		.resource-tile {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			background: var(--dark-bg);
+			border: 1px solid rgba(212, 175, 55, 0.3);
+			border-radius: 4px;
+			padding: 50px 30px;
+			cursor: pointer;
+			overflow: hidden;
+			transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+			box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+		}
+		.resource-tile::before, .resource-tile::after {
+			content: '';
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			border: 2px solid var(--gold-premium);
+			z-index: 2;
+			opacity: 0.6;
+			transition: all 0.4s ease;
+		}
+		.resource-tile::before { top: 5px; left: 5px; border-right: 0; border-bottom: 0; }
+		.resource-tile::after { bottom: 5px; right: 5px; border-left: 0; border-top: 0; }
+		.resource-tile:hover {
+			transform: translateY(-4px);
+			border-color: var(--gold-premium);
+			box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+		}
+		.resource-tile:hover::before, .resource-tile:hover::after {
+			opacity: 1;
+			width: 14px;
+			height: 14px;
+		}
+		.resource-tile:focus-visible {
+			outline: 2px solid var(--gold-premium);
+			outline-offset: 4px;
+		}
+
+		.resource-tile-icon {
+			width: 64px;
+			height: 64px;
+			border-radius: 50%;
+			background: rgba(212, 175, 55, 0.1);
+			color: var(--gold-premium);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 20px;
+			transition: background 0.3s ease, transform 0.3s ease;
+		}
+		.resource-tile-icon svg { width: 30px; height: 30px; }
+		.resource-tile:hover .resource-tile-icon {
+			background: var(--gold-premium);
+			color: var(--dark-bg);
+			transform: scale(1.05);
+		}
+
+		.resource-tile h3 {
+			font-family: var(--font-display);
+			font-size: 1.4rem;
+			font-weight: 500;
+			color: #ffffff;
+			margin-bottom: 8px;
+		}
+		.resource-tile p {
+			font-size: 0.85rem;
+			color: #aaa;
+			line-height: 1.5;
+			max-width: 240px;
+		}
+		.resource-tile-count {
+			margin-top: 16px;
+			font-family: var(--font-body);
+			font-size: 0.75rem;
+			font-weight: 600;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--gold-premium);
+			opacity: 0.85;
+		}
+
+		/* ---------- Sidebar Link List (populates the shared .premium-sidebar) ---------- */
+		.resource-link-list {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.resource-link-item {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			width: 100%;
+			background: rgba(255,255,255,0.03);
+			border: 1px solid rgba(255,255,255,0.08);
+			border-radius: 8px;
+			padding: 14px 16px;
+			text-align: left;
+			cursor: pointer;
+			transition: all 0.25s ease;
+		}
+		.resource-link-item:hover {
+			background: rgba(212, 175, 55, 0.08);
+			border-color: rgba(212, 175, 55, 0.35);
+			transform: translateX(3px);
+		}
+		.resource-link-item:focus-visible {
+			outline: 2px solid var(--gold-premium);
+			outline-offset: 2px;
+		}
+
+		.resource-link-icon {
+			flex: 0 0 auto;
+			width: 38px;
+			height: 38px;
+			border-radius: 8px;
+			background: rgba(212, 175, 55, 0.12);
+			color: var(--gold-premium);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.resource-link-icon svg { width: 20px; height: 20px; }
+
+		.resource-link-text { flex: 1; min-width: 0; }
+		.resource-link-text h4 {
+			margin: 0 0 3px;
+			font-family: var(--font-display);
+			font-size: 1rem;
+			font-weight: 500;
+			color: #ffffff;
+		}
+		.resource-link-text p {
+			margin: 0;
+			font-size: 0.78rem;
+			color: #999;
+			line-height: 1.4;
+		}
+
+		.resource-link-filetype {
+			flex: 0 0 auto;
+			font-family: var(--font-body);
+			font-size: 0.65rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--gold-premium);
+			background: rgba(212, 175, 55, 0.1);
+			border: 1px solid rgba(212, 175, 55, 0.3);
+			border-radius: 4px;
+			padding: 3px 8px;
+		}
+
+		/* ---------- Resources Sidebar: White Theme Override ----------
+		   Applied only when .premium-sidebar carries .is-light (added by
+		   this page's own openResourceCategory()). Gallery's dark sidebar
+		   never gets this class, so it's unaffected — this only ever
+		   applies here. */
+		.premium-sidebar.is-light {
+			background: var(--white);
+			border-left: 1px solid rgba(199, 151, 63, 0.25);
+			box-shadow: -10px 0 35px rgba(0,0,0,0.15);
+		}
+		.premium-sidebar.is-light .sidebar-header {
+			background: var(--offwhite);
+			border-bottom: 1px solid rgba(0,0,0,0.06);
+		}
+		.premium-sidebar.is-light .sidebar-header h3 {
+			color: var(--ink);
+		}
+		.premium-sidebar.is-light .sidebar-header h3 span {
+			color: var(--gold);
+		}
+		.premium-sidebar.is-light .close-sidebar-btn {
+			color: var(--charcoal);
+		}
+		.premium-sidebar.is-light .close-sidebar-btn:hover {
+			color: var(--gold);
+		}
+		.premium-sidebar.is-light .sidebar-content::-webkit-scrollbar-thumb {
+			background: rgba(199, 151, 63, 0.3);
+		}
+
+		.premium-sidebar.is-light .resource-link-item {
+			background: var(--offwhite);
+			border: 1px solid rgba(199, 151, 63, 0.2);
+		}
+		.premium-sidebar.is-light .resource-link-item:hover {
+			background: var(--white);
+			border-color: var(--gold);
+			box-shadow: 0 6px 16px rgba(199, 151, 63, 0.12);
+		}
+		.premium-sidebar.is-light .resource-link-icon {
+			background: rgba(199, 151, 63, 0.12);
+			color: var(--gold);
+		}
+		.premium-sidebar.is-light .resource-link-text h4 {
+			color: var(--ink);
+		}
+		.premium-sidebar.is-light .resource-link-text p {
+			color: #666;
+		}
+		.premium-sidebar.is-light .resource-link-filetype {
+			color: var(--gold);
+			background: rgba(199, 151, 63, 0.1);
+			border: 1px solid rgba(199, 151, 63, 0.3);
+		}
+
+		@media (max-width: 768px) {
+			.resources-hero { padding: 40px 20px 5px; }
+			.resources-hero p { font-size: 15px; }
+
+			.resources-section { padding: 15px 20px 60px; }
+
+			.resource-tile-grid {
+				grid-template-columns: 1fr;
+				gap: 18px;
+			}
+			.resource-tile { padding: 40px 24px; }
+			.resource-tile-icon { width: 56px; height: 56px; margin-bottom: 16px; }
+			.resource-tile-icon svg { width: 26px; height: 26px; }
+			.resource-tile h3 { font-size: 1.2rem; }
+			.resource-tile p { font-size: 0.82rem; }
+
+			.resource-link-item { padding: 12px 14px; gap: 12px; }
+			.resource-link-icon { width: 34px; height: 34px; }
+			.resource-link-icon svg { width: 18px; height: 18px; }
+			.resource-link-text h4 { font-size: 0.92rem; }
+			.resource-link-text p { font-size: 0.74rem; }
+			.resource-link-filetype { font-size: 0.6rem; padding: 2px 6px; }
+		}
+	</style>
 </head>
 <body>
 
@@ -68,12 +349,13 @@
 		     RESOURCE DOCUMENTS — edit here, not in main.js
 		     ==================================================================
 		     Everything below this line is hidden (never shown to visitors).
-		     main.js reads it at page load to build the sidebar and preview
-		     modal. To add a document: copy one <div class="resource-item">
-		     block and change its four data- values. To add a whole new
-		     category, copy one <div class="resource-category"> block, give
-		     it a new data-category name, and add a matching tile + onclick
-		     above (see the three .resource-tile buttons in the section above).
+		     This page's own <script> block below reads it at page load to
+		     build the sidebar. To add a document: copy one
+		     <div class="resource-item"> block and change its four data-
+		     values. To add a whole new category, copy one
+		     <div class="resource-category"> block, give it a new
+		     data-category name, and add a matching tile + onclick above
+		     (see the three .resource-tile buttons in the section above).
 
 		     data-category   must exactly match the onclick value on its tile
 		                     button above (e.g. openResourceCategory('letters')
@@ -102,9 +384,9 @@
 				data-title-gold="">
 
 				<div class="resource-item"
-					data-filename="organization-overview.pdf"
-					data-title="Organization Overview"
-					data-description="A general introduction to our mission, ministries, and impact in Belize."
+					data-filename="2026sheet.pdf"
+					data-title="Hope Gala 2026 Ministry Sheet"
+					data-description="An overview of the ministries supported by this year's Hope Gala."
 					data-filetype="PDF"></div>
 
 				<div class="resource-item"
@@ -127,12 +409,6 @@
 					data-description="Our formal invitation to partner with the Hope Gala as a sponsor this year."
 					data-filetype="PDF"></div>
 
-				<div class="resource-item"
-					data-filename="donor-solicitation-letter.pdf"
-					data-title="Donor Solicitation Letter"
-					data-description="A direct appeal for individual giving and pledge support."
-					data-filetype="PDF"></div>
-
 			</div>
 
 			<div class="resource-category"
@@ -142,9 +418,9 @@
 				data-title-gold="Material">
 
 				<div class="resource-item"
-					data-filename="sponsorship-package-2026.pdf"
-					data-title="2026 Sponsorship Package"
-					data-description="Sponsorship tiers, benefits, and recognition levels for partners."
+					data-filename="pledge.pdf"
+					data-title="2026 Pledge Form"
+					data-description="Our official pledge form for the 2026 Hope Gala."
 					data-filetype="PDF"></div>
 
 			</div>
@@ -165,25 +441,155 @@
 		</div>
 	</div>
 
-	<!-- Preview modal: shown when a sidebar link is clicked -->
-	<div class="resource-preview-overlay" id="resourcePreviewOverlay">
-		<div class="resource-preview-card">
-			<button type="button" class="resource-preview-close" onclick="closeResourcePreview()" aria-label="Close">&times;</button>
-			<div class="resource-preview-icon" id="resourcePreviewIcon" aria-hidden="true"></div>
-			<h3 id="resourcePreviewTitle"></h3>
-			<p id="resourcePreviewDescription"></p>
-			<a href="#" id="resourcePreviewLink" class="resource-preview-open" target="_blank" rel="noopener">
-				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M14 3h7v7M21 3l-9 9M19 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
-				Open Full Preview
-			</a>
-		</div>
-	</div>
-
 	<div id="site-footer"></div>
 	<div id="site-modal"></div>
 
 	<script src="assets/js/main.js"></script>
+
+	<!-- ==========================================================================
+	     RESOURCES-ONLY SCRIPT
+	     ==========================================================================
+	     Moved out of main.js because this logic is used by this page only.
+	     main.js stays universal: header/footer/modal injection, the contact
+	     form, the countdown-page hooks, and Gallery's openAlbum()/lightbox/
+	     closeAlbum() (which this page's sidebar shell reuses). Everything
+	     below — reading #resource-data, building the tiles and sidebar list,
+	     and the white-theme toggle — exists only here, and has zero
+	     knowledge of any specific brochure, letter, or filename; it only
+	     knows how to read whatever categories/documents currently exist in
+	     the #resource-data block above.
+	     ========================================================================== -->
+	<script>
+		function readResourceDataFromPage() {
+			const categories = {};
+			const dataRoot = document.getElementById('resource-data');
+			if (!dataRoot) return categories; // this page has no resource data — nothing to read
+
+			const categoryEls = dataRoot.querySelectorAll('.resource-category');
+			categoryEls.forEach(function(categoryEl) {
+				const key = categoryEl.dataset.category;
+				if (!key) return; // malformed block missing data-category — skip rather than crash
+
+				const items = [];
+				const itemEls = categoryEl.querySelectorAll('.resource-item');
+				itemEls.forEach(function(itemEl) {
+					items.push({
+						filename: itemEl.dataset.filename || '',
+						title: itemEl.dataset.title || '',
+						description: itemEl.dataset.description || '',
+						fileType: itemEl.dataset.filetype || ''
+					});
+				});
+
+				categories[key] = {
+					titleFirst: categoryEl.dataset.titleFirst || '',
+					titleGold: categoryEl.dataset.titleGold || '',
+					folderPath: categoryEl.dataset.folder || '',
+					items: items
+				};
+			});
+
+			return categories;
+		}
+
+		// Two small inline icon sets, reused for both the sidebar link rows and
+		// keeping every PDF-type item visually consistent with the icon
+		// already used on the tile it came from.
+		const RESOURCE_ICON_DOCUMENT = `
+			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+				<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+				<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+			</svg>
+		`;
+
+		const RESOURCE_ICON_IMAGE = `
+			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+				<circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+				<path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		`;
+
+		// State memory for the currently open Resources category (parallels the
+		// currentAlbumList / currentFolderPath pattern used by Gallery in
+		// main.js). resourceCategories itself is populated once, from the
+		// HTML, the moment the page finishes loading.
+		let currentResourceCategory = null;
+		let resourceCategories = {};
+
+		function getResourceIcon(item) {
+			const ext = item.filename.split('.').pop().toLowerCase();
+			const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext);
+			return isImage ? RESOURCE_ICON_IMAGE : RESOURCE_ICON_DOCUMENT;
+		}
+
+		function openResourceCategory(categoryKey) {
+			const category = resourceCategories[categoryKey];
+			if (!category) return;
+
+			currentResourceCategory = categoryKey;
+
+			const overlay = document.getElementById('sidebarOverlay');
+			const sidebarPanel = overlay.querySelector('.premium-sidebar');
+			const titleContainer = document.getElementById('sidebarTitle');
+			const listContainer = document.getElementById('sidebarGalleryItems');
+
+			// White theme for Resources only — Gallery's openAlbum() (in
+			// main.js) never adds this class, so the dark sidebar used there
+			// is untouched.
+			sidebarPanel.classList.add('is-light');
+
+			titleContainer.innerHTML = category.titleGold
+				? `${category.titleFirst} <span>${category.titleGold}</span>`
+				: category.titleFirst;
+
+			listContainer.innerHTML = '';
+
+			category.items.forEach((item, index) => {
+				const btn = document.createElement('button');
+				btn.type = 'button';
+				btn.className = 'resource-link-item';
+				btn.innerHTML = `
+					<div class="resource-link-icon" aria-hidden="true">${getResourceIcon(item)}</div>
+					<div class="resource-link-text">
+						<h4>${item.title}</h4>
+						<p>${item.description}</p>
+					</div>
+					<span class="resource-link-filetype">${item.fileType}</span>
+				`;
+				btn.onclick = function() {
+					const url = `${category.folderPath}/${item.filename}`;
+					window.open(url, '_blank', 'noopener');
+				};
+				listContainer.appendChild(btn);
+			});
+
+			overlay.classList.add('active');
+			document.body.style.overflow = 'hidden';
+		}
+
+		// Resources reuses the exact close behavior Gallery already uses (in
+		// main.js) for this same sidebar shell (hide overlay, restore body
+		// scroll) — no need for a second implementation of identical logic.
+		// closeAlbum() is defined in main.js, which this page loads via
+		// <script src="assets/js/main.js"> above.
+		function closeResourceSidebar() {
+			closeAlbum();
+		}
+
+		// Read the resource data from the page, then populate each tile's item
+		// count — both need to happen once the page and its data blocks exist.
+		document.addEventListener('DOMContentLoaded', function() {
+			resourceCategories = readResourceDataFromPage();
+
+			Object.keys(resourceCategories).forEach(function(key) {
+				const countEl = document.getElementById(`count-${key}`);
+				if (!countEl) return; // this page has no Resources tiles — nothing to do
+				const count = resourceCategories[key].items.length;
+				countEl.textContent = `${count} ${count === 1 ? 'Document' : 'Documents'}`;
+			});
+		});
+	</script>
 </body>
 </html>
