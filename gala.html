@@ -17,153 +17,172 @@
 	     page's content belongs in that page, not in the shared stylesheet.
 	     ========================================================================== -->
 	<style>
-		/* ---------- Dynamic Countdown Card ---------- */
-		@keyframes pulse-glow {
-			0% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 15px 35px rgba(0,0,0,0.3); }
-			50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 15px 35px rgba(0,0,0,0.3); }
-			100% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 15px 35px rgba(0,0,0,0.3); }
-		}
-
-		@keyframes slow-spin-streamer {
-			from { transform: rotate(0deg); }
-			to { transform: rotate(360deg); }
-		}
-
-		.std-card {
-			position: absolute;
-			top: -230px;
-			left: calc(50% - 600px);
-			width: 260px;
-			height: 260px; /* Perfect Circle */
-			z-index: 2;
-			border-radius: 50%;
-			padding: 6px; /* Metallic Gold Border Thickness */
-			background: linear-gradient(135deg, #c7973f 0%, #f9f295 40%, #d4af37 60%, #8a6327 100%);
-			/* THE NEW GLOWING "SMUDGE" AURA */
-			animation: pulse-glow 3.5s infinite ease-in-out;
-		}
-
-		.std-card-inner {
-			background: radial-gradient(circle at bottom right, #02201d 0%, #05403a 60%, #08554d 100%); /* Deep Teal matching image */
-			border-radius: 50%;
+		/* ---------- Flip-Calendar Countdown ---------- */
+		.flip-countdown {
+			position: relative;
 			width: 100%;
-			height: 100%;
+			max-width: 800px;
+			margin: 0 auto 50px;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			gap: 12px;
+			flex-wrap: wrap;
+		}
+
+		/* Same soft gold glow used behind the bubble cluster (.bubble-cluster::before),
+		   reused here so the countdown has the same atmospheric warmth instead of
+		   sitting flat against the white section background. */
+		.flip-countdown::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 130%;
+			height: 220%;
+			transform: translate(-50%, -50%);
+			background: radial-gradient(circle, rgba(199, 151, 63, 0.65) 0%, rgba(199, 151, 63, 0.35) 35%, rgba(199, 151, 63, 0) 70%);
+			filter: blur(60px);
+			z-index: -1;
+			pointer-events: none;
+		}
+
+		.flip-unit {
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
 			align-items: center;
-			padding: 20px;
-			text-align: center;
-			position: relative;
-			overflow: hidden;
-			box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
 		}
 
-		/* Golden Streamer Swoosh 1 - Now Animated */
-		.std-card-inner::before {
-			content: '';
-			position: absolute;
-			width: 130%;
-			height: 130%;
-			border-radius: 50%;
-			border-bottom: 5px solid rgba(212, 175, 55, 0.9);
-			border-left: 5px solid transparent;
-			border-right: 5px solid transparent;
-			border-top: 5px solid transparent;
-			top: -15%;
-			left: -15%;
-			pointer-events: none;
-			animation: slow-spin-streamer 20s linear infinite;
-		}
-
-		/* Golden Streamer Swoosh 2 - Now Animated */
-		.std-card-inner::after {
-			content: '';
-			position: absolute;
-			width: 140%;
-			height: 140%;
-			border-radius: 50%;
-			border-top: 3px solid rgba(199, 151, 63, 0.7);
-			border-left: 3px solid transparent;
-			border-right: 3px solid transparent;
-			border-bottom: 3px solid transparent;
-			bottom: -20%;
-			right: -20%;
-			pointer-events: none;
-			animation: slow-spin-streamer 15s linear infinite reverse;
-		}
-
-		.std-flourish-line {
-			width: 60px;
-			height: 2px;
-			background: linear-gradient(90deg, transparent, var(--gold-premium), transparent);
-			margin: 0 auto;
-			position: relative;
-			z-index: 1;
-		}
-		.std-label-top {
-			margin: 14px 0 0;
+		.flip-unit-label {
 			font-family: var(--font-body);
 			font-size: 12px;
 			font-weight: 700;
 			letter-spacing: 0.25em;
 			text-transform: uppercase;
-			color: var(--gold-premium);
-			position: relative;
-			z-index: 1;
-			text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-		}
-		.std-label-bottom {
-			margin: -2px 0 12px;
-			font-family: var(--font-display);
-			font-size: 34px;
-			font-style: italic;
-			font-weight: 600;
-			color: var(--white);
-			position: relative;
-			z-index: 1;
-			text-shadow: 0 3px 8px rgba(0,0,0,0.6);
-		}
-		.std-countdown-row {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 18px;
-			margin-top: 10px;
-			position: relative;
-			z-index: 1;
-		}
-		.std-countdown-unit { text-align: center; }
-		.std-countdown-number {
-			display: block;
-			font-family: var(--font-display);
-			font-size: 42px;
-			font-weight: 600;
-			color: var(--gold-premium);
-			line-height: 1;
-			text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
-		}
-		.std-countdown-unit-label {
-			display: block;
-			font-family: var(--font-body);
-			font-size: 11px;
-			font-weight: 600;
-			letter-spacing: 0.15em;
-			text-transform: uppercase;
-			color: #e0e0e0;
-			margin-top: 6px;
-		}
-		.std-countdown-divider {
-			width: 2px;
-			height: 40px;
-			background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.6), transparent);
+			color: var(--gold);
+			margin-bottom: 12px;
 		}
 
-		@media (max-width: 1024px) {
-			.std-card {
-				position: static;
-				margin: 0 auto 40px;
-			}
+		.flip-card {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			border-radius: 12px;
+			background: linear-gradient(135deg, #c7973f 0%, #d4af37 100%);
+			padding: 3px; /* thin gold frame around the teal face, echoing the site's existing gold-bordered card style */
+			box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+		}
+
+		.flip-card-face {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			border-radius: 10px;
+			background:
+				/* gold sparkle speckles, scattered at varied sizes/positions/brightness */
+				radial-gradient(circle at 15% 20%, rgba(249, 242, 149, 0.9) 0%, rgba(249, 242, 149, 0) 2%),
+				radial-gradient(circle at 78% 15%, rgba(212, 175, 55, 0.8) 0%, rgba(212, 175, 55, 0) 1.5%),
+				radial-gradient(circle at 45% 35%, rgba(249, 242, 149, 0.7) 0%, rgba(249, 242, 149, 0) 1.2%),
+				radial-gradient(circle at 25% 70%, rgba(212, 175, 55, 0.85) 0%, rgba(212, 175, 55, 0) 1.8%),
+				radial-gradient(circle at 85% 60%, rgba(249, 242, 149, 0.6) 0%, rgba(249, 242, 149, 0) 1.3%),
+				radial-gradient(circle at 60% 80%, rgba(212, 175, 55, 0.75) 0%, rgba(212, 175, 55, 0) 1.6%),
+				radial-gradient(circle at 8% 45%, rgba(249, 242, 149, 0.55) 0%, rgba(249, 242, 149, 0) 1%),
+				/* original teal gradient, unchanged, sitting underneath the sparkle */
+				radial-gradient(circle at bottom right, #02201d 0%, #05403a 60%, #08554d 100%);
+			overflow: hidden;
+		}
+
+		/* The horizontal seam splitting the card into a top and bottom half —
+		   the core visual cue that reads as "flip calendar" rather than a
+		   plain digital counter. */
+		.flip-card-face::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: rgba(0,0,0,0.5);
+			z-index: 3;
+			transform: translateY(-1px);
+		}
+
+		/* Small tick marks on either edge of the seam, matching the bracket
+		   details in the reference image. */
+		.flip-card-face::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: -3px;
+			right: -3px;
+			height: 8px;
+			transform: translateY(-4px);
+			border-left: 2px solid var(--gold-premium);
+			border-right: 2px solid var(--gold-premium);
+			z-index: 4;
+			pointer-events: none;
+			opacity: 0.7;
+		}
+
+		.flip-card-number {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: var(--font-display);
+			font-size: 46px;
+			font-weight: 600;
+			color: var(--gold-premium);
+			text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+		}
+
+		/* The animated top half. On a digit change, JS adds .is-flipping to
+		   trigger the rotateX flip-down motion; the bottom half (static,
+		   underneath) is what the flip reveals as it settles. */
+		.flip-card-top {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 50%;
+			overflow: hidden;
+			border-radius: 10px 10px 0 0;
+			background:
+				/* same sparkle treatment as .flip-card-face, positioned so the
+				   speckles actually fall within this element's visible half */
+				radial-gradient(circle at 20% 30%, rgba(249, 242, 149, 0.9) 0%, rgba(249, 242, 149, 0) 4%),
+				radial-gradient(circle at 75% 20%, rgba(212, 175, 55, 0.8) 0%, rgba(212, 175, 55, 0) 3%),
+				radial-gradient(circle at 50% 60%, rgba(249, 242, 149, 0.7) 0%, rgba(249, 242, 149, 0) 2.4%),
+				radial-gradient(circle at 12% 75%, rgba(212, 175, 55, 0.85) 0%, rgba(212, 175, 55, 0) 3.6%),
+				radial-gradient(circle at 88% 65%, rgba(249, 242, 149, 0.6) 0%, rgba(249, 242, 149, 0) 2.6%),
+				/* original teal gradient for this slice, unchanged */
+				radial-gradient(circle at bottom right, #05403a 0%, #08554d 100%);
+			transform-origin: bottom center;
+			transform-style: preserve-3d;
+			backface-visibility: hidden;
+			z-index: 2;
+			transition: transform 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+		}
+		.flip-card-top .flip-card-number {
+			top: 0;
+			height: 200%; /* full card height, clipped by the half-height wrapper, so the numeral is vertically centered on the whole card, not squashed into the half */
+		}
+
+		.flip-card.is-flipping .flip-card-top {
+			transform: rotateX(-90deg);
+		}
+
+		@media (max-width: 700px) {
+			.flip-countdown { gap: 8px; }
+			.flip-card { width: 70px; height: 70px; }
+			.flip-card-number { font-size: 32px; }
+			.flip-unit-label { font-size: 10px; }
+		}
+		@media (max-width: 420px) {
+			.flip-countdown { gap: 5px; }
+			.flip-card { width: 58px; height: 58px; }
+			.flip-card-number { font-size: 26px; }
 		}
 
 		/* ---------- Gala Bubble Cluster (Massive Hub & Spoke Perfect Circle) ---------- */
@@ -240,21 +259,48 @@
 
 	<section class="ministry-section bg-white" style="padding: 50px 24px; position: relative;">
 		
-		<div class="std-card" aria-hidden="true">
-			<div class="std-card-inner">
-				<div class="std-flourish-line"></div>
-				<p class="std-label-top">Countdown to</p>
-				<p class="std-label-bottom">Hope Gala</p>
-				<div class="std-flourish-line"></div>
-				<div class="std-countdown-row">
-					<div class="std-countdown-unit">
-						<span class="std-countdown-number" id="std-days">—</span>
-						<span class="std-countdown-unit-label">Days</span>
+		<div class="flip-countdown" aria-label="Countdown to the Hope Gala">
+			<div class="flip-unit">
+				<span class="flip-unit-label">Days</span>
+				<div class="flip-card" id="flip-days">
+					<div class="flip-card-face">
+						<span class="flip-card-number" id="flip-days-bottom">—</span>
+						<div class="flip-card-top">
+							<span class="flip-card-number" id="flip-days-top">—</span>
+						</div>
 					</div>
-					<div class="std-countdown-divider"></div>
-					<div class="std-countdown-unit">
-						<span class="std-countdown-number" id="std-hours">—</span>
-						<span class="std-countdown-unit-label">Hrs</span>
+				</div>
+			</div>
+			<div class="flip-unit">
+				<span class="flip-unit-label">Hours</span>
+				<div class="flip-card" id="flip-hours">
+					<div class="flip-card-face">
+						<span class="flip-card-number" id="flip-hours-bottom">—</span>
+						<div class="flip-card-top">
+							<span class="flip-card-number" id="flip-hours-top">—</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flip-unit">
+				<span class="flip-unit-label">Minutes</span>
+				<div class="flip-card" id="flip-minutes">
+					<div class="flip-card-face">
+						<span class="flip-card-number" id="flip-minutes-bottom">—</span>
+						<div class="flip-card-top">
+							<span class="flip-card-number" id="flip-minutes-top">—</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flip-unit">
+				<span class="flip-unit-label">Seconds</span>
+				<div class="flip-card" id="flip-seconds">
+					<div class="flip-card-face">
+						<span class="flip-card-number" id="flip-seconds-bottom">—</span>
+						<div class="flip-card-top">
+							<span class="flip-card-number" id="flip-seconds-top">—</span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -492,6 +538,42 @@
 	</script>
 	
 	<script>
+		// Tracks the last-rendered value for each unit so we only trigger a
+		// flip animation on the units that actually changed this tick —
+		// otherwise every card would flip every second, which isn't how a
+		// real flip calendar behaves (the Days card should only flip once
+		// a day, Hours once an hour, and so on).
+		const flipCountdownState = { days: null, hours: null, minutes: null, seconds: null };
+
+		function setFlipUnit(unitKey, newValue) {
+			const displayValue = String(newValue).padStart(2, '0');
+			const card = document.getElementById(`flip-${unitKey}`);
+			const topEl = document.getElementById(`flip-${unitKey}-top`);
+			const bottomEl = document.getElementById(`flip-${unitKey}-bottom`);
+			if (!card || !topEl || !bottomEl) return; // this page has no flip countdown — nothing to do
+
+			if (flipCountdownState[unitKey] === newValue) return; // unchanged — no flip needed
+
+			// The top half still shows the OLD value as it starts to flip down...
+			topEl.textContent = flipCountdownState[unitKey] === null
+				? displayValue
+				: String(flipCountdownState[unitKey]).padStart(2, '0');
+
+			// ...while the bottom half is updated to the NEW value immediately,
+			// since that's what the flip reveals once it settles.
+			bottomEl.textContent = displayValue;
+
+			flipCountdownState[unitKey] = newValue;
+
+			// Trigger the flip, then remove the class once the animation
+			// finishes so the next change can trigger it again from a clean
+			// state (matches the .5s transition duration set in the CSS).
+			card.classList.remove('is-flipping');
+			void card.offsetWidth; // force reflow so re-adding the class restarts the animation
+			card.classList.add('is-flipping');
+			setTimeout(() => card.classList.remove('is-flipping'), 500);
+		}
+
 		function updateGalaCountdown() {
 			// Set the target date here (October 17, 2026 at 6:00 PM)
 			const targetDate = new Date("October 17, 2026 18:00:00").getTime();
@@ -500,18 +582,23 @@
 
 			// If the event has passed, stop the countdown at zero
 			if (timeDifference < 0) {
-				document.getElementById("std-days").innerText = "0";
-				document.getElementById("std-hours").innerText = "0";
+				setFlipUnit('days', 0);
+				setFlipUnit('hours', 0);
+				setFlipUnit('minutes', 0);
+				setFlipUnit('seconds', 0);
 				return;
 			}
 
-			// Calculate days and hours remaining
+			// Calculate days, hours, minutes, and seconds remaining
 			const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 			const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+			const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-			// Inject the numbers into the HTML
-			document.getElementById("std-days").innerText = days;
-			document.getElementById("std-hours").innerText = hours;
+			setFlipUnit('days', days);
+			setFlipUnit('hours', hours);
+			setFlipUnit('minutes', minutes);
+			setFlipUnit('seconds', seconds);
 		}
 
 		// Run immediately so there's no delay on page load
