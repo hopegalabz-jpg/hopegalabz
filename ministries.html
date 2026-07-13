@@ -7,6 +7,26 @@
 	<title>Ministries | The Belize Project</title>
 	
 	<link rel="stylesheet" href="assets/css/main.css">
+
+	<!-- Page-specific styling for the second ministry directory grid
+	     (Kolbe Foundation, Hope Center, Flourish 31) — forces exactly three
+	     columns on wider screens so all three sit in one row, while still
+	     respecting the same mobile breakpoint main.css already uses for
+	     .ministry-nav-grid, so this doesn't force a cramped 3-column layout
+	     on small screens. -->
+	<style>
+		.ministry-nav-grid-secondary {
+			grid-template-columns: repeat(3, 1fr) !important;
+			max-width: 780px;
+			margin: 30px auto 0;
+		}
+		@media (max-width: 768px) {
+			.ministry-nav-grid-secondary {
+				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+				max-width: 100%;
+			}
+		}
+	</style>
 </head>
 <body>
 	<!-- Hook for Main Navigation -->
@@ -46,7 +66,7 @@
 		     Width-constrained and centered so it reads as its own smaller
 		     group sitting beneath the original four, not a continuation of
 		     the same full-width row. -->
-		<div class="ministry-nav-grid" style="max-width: 700px; margin: 30px auto 0;">
+		<div class="ministry-nav-grid ministry-nav-grid-secondary">
 			<a href="#kolbe" class="ministry-nav-tile">
 				<img src="assets/images/logos/kolbe-logo.jpg" alt="Kolbe Foundation Logo" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Kolbe+Logo'">
 				<h4>Kolbe Foundation</h4>
