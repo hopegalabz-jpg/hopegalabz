@@ -30,9 +30,6 @@
 			flex-wrap: wrap;
 		}
 
-		/* Same soft gold glow used behind the bubble cluster (.bubble-cluster::before),
-		   reused here so the countdown has the same atmospheric warmth instead of
-		   sitting flat against the white section background. */
 		.flip-countdown::before {
 			content: '';
 			position: absolute;
@@ -69,7 +66,7 @@
 			height: 100px;
 			border-radius: 12px;
 			background: linear-gradient(135deg, #c7973f 0%, #d4af37 100%);
-			padding: 3px; /* thin gold frame around the teal face, echoing the site's existing gold-bordered card style */
+			padding: 3px;
 			box-shadow: 0 15px 35px rgba(0,0,0,0.35);
 		}
 
@@ -79,7 +76,6 @@
 			height: 100%;
 			border-radius: 10px;
 			background:
-				/* gold sparkle speckles, scattered at varied sizes/positions/brightness */
 				radial-gradient(circle at 15% 20%, rgba(249, 242, 149, 0.9) 0%, rgba(249, 242, 149, 0) 2%),
 				radial-gradient(circle at 78% 15%, rgba(212, 175, 55, 0.8) 0%, rgba(212, 175, 55, 0) 1.5%),
 				radial-gradient(circle at 45% 35%, rgba(249, 242, 149, 0.7) 0%, rgba(249, 242, 149, 0) 1.2%),
@@ -87,14 +83,10 @@
 				radial-gradient(circle at 85% 60%, rgba(249, 242, 149, 0.6) 0%, rgba(249, 242, 149, 0) 1.3%),
 				radial-gradient(circle at 60% 80%, rgba(212, 175, 55, 0.75) 0%, rgba(212, 175, 55, 0) 1.6%),
 				radial-gradient(circle at 8% 45%, rgba(249, 242, 149, 0.55) 0%, rgba(249, 242, 149, 0) 1%),
-				/* original teal gradient, unchanged, sitting underneath the sparkle */
 				radial-gradient(circle at bottom right, #02201d 0%, #05403a 60%, #08554d 100%);
 			overflow: hidden;
 		}
 
-		/* The horizontal seam splitting the card into a top and bottom half —
-		   the core visual cue that reads as "flip calendar" rather than a
-		   plain digital counter. */
 		.flip-card-face::before {
 			content: '';
 			position: absolute;
@@ -107,8 +99,6 @@
 			transform: translateY(-1px);
 		}
 
-		/* Small tick marks on either edge of the seam, matching the bracket
-		   details in the reference image. */
 		.flip-card-face::after {
 			content: '';
 			position: absolute;
@@ -137,9 +127,6 @@
 			text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 		}
 
-		/* The animated top half. On a digit change, JS adds .is-flipping to
-		   trigger the rotateX flip-down motion; the bottom half (static,
-		   underneath) is what the flip reveals as it settles. */
 		.flip-card-top {
 			position: absolute;
 			top: 0;
@@ -149,14 +136,11 @@
 			overflow: hidden;
 			border-radius: 10px 10px 0 0;
 			background:
-				/* same sparkle treatment as .flip-card-face, positioned so the
-				   speckles actually fall within this element's visible half */
 				radial-gradient(circle at 20% 30%, rgba(249, 242, 149, 0.9) 0%, rgba(249, 242, 149, 0) 4%),
 				radial-gradient(circle at 75% 20%, rgba(212, 175, 55, 0.8) 0%, rgba(212, 175, 55, 0) 3%),
 				radial-gradient(circle at 50% 60%, rgba(249, 242, 149, 0.7) 0%, rgba(249, 242, 149, 0) 2.4%),
 				radial-gradient(circle at 12% 75%, rgba(212, 175, 55, 0.85) 0%, rgba(212, 175, 55, 0) 3.6%),
 				radial-gradient(circle at 88% 65%, rgba(249, 242, 149, 0.6) 0%, rgba(249, 242, 149, 0) 2.6%),
-				/* original teal gradient for this slice, unchanged */
 				radial-gradient(circle at bottom right, #05403a 0%, #08554d 100%);
 			transform-origin: bottom center;
 			transform-style: preserve-3d;
@@ -166,7 +150,7 @@
 		}
 		.flip-card-top .flip-card-number {
 			top: 0;
-			height: 200%; /* full card height, clipped by the half-height wrapper, so the numeral is vertically centered on the whole card, not squashed into the half */
+			height: 200%;
 		}
 
 		.flip-card.is-flipping .flip-card-top {
@@ -233,17 +217,11 @@
 			display: block;
 		}
 
-		/* 0 degrees (3 o'clock - Right) */
 		.bubble-3 { width: 50%; top: 50%; left: 84%; z-index: 5; }
-		/* 72 degrees (Top Right) */
 		.bubble-1 { width: 38%; top: 16.7%; left: 61%; z-index: 4; }
-		/* 144 degrees (Top Left) */
 		.bubble-4 { width: 44%; top: 29.4%; left: 22%; z-index: 3; }
-		/* 216 degrees (Bottom Left) */
 		.bubble-5 { width: 44%; top: 70.6%; left: 22%; z-index: 2; }
-		/* 288 degrees (Bottom Right) */
 		.bubble-2 { width: 38%; top: 83.3%; left: 61%; z-index: 1; }
-		/* Center Piece */
 		.bubble-6 { width: 44%; top: 50%; left: 50%; z-index: 6; }
 	</style>
 </head>
@@ -448,9 +426,6 @@
 				</div>
 			</div>
 			
-			<div style="margin-top: 30px;">
-				<button class="modal-submit" style="width: auto; display: inline-block; padding: 14px 40px; font-size: 15px;" onclick="openPledge()">Make a Pledge</button>
-			</div>
 		</div>
 	</section>
 
@@ -475,6 +450,9 @@
 				<a href="ministries.html#dorcas" class="ministry-nav-tile"><img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas"><h4>House of Dorcas</h4></a>
 				<a href="ministries.html#restore" class="ministry-nav-tile"><img src="assets/images/logos/restore-logo.png" alt="Restore Small Groups"><h4>Restore Groups</h4></a>
 				<a href="ministries.html#bit" class="ministry-nav-tile"><img src="assets/images/logos/bit-logo.jpg" alt="Believe In Them"><h4>Believe In Them</h4></a>
+				<a href="ministries.html#kolbe" class="ministry-nav-tile"><img src="assets/images/logos/kolbe-logo.jpg" alt="Kolbe Foundation"><h4>Kolbe Foundation</h4></a>
+				<a href="ministries.html#hope-center" class="ministry-nav-tile"><img src="assets/images/logos/hope-logo.jpg" alt="Hope Center"><h4>Hope Center</h4></a>
+				<a href="ministries.html#flourish31" class="ministry-nav-tile"><img src="assets/images/logos/florish-logo.png" alt="Flourish 31"><h4>Flourish 31</h4></a>
 			</div>
 		</div>
 	</section>
@@ -538,11 +516,6 @@
 	</script>
 	
 	<script>
-		// Tracks the last-rendered value for each unit so we only trigger a
-		// flip animation on the units that actually changed this tick —
-		// otherwise every card would flip every second, which isn't how a
-		// real flip calendar behaves (the Days card should only flip once
-		// a day, Hours once an hour, and so on).
 		const flipCountdownState = { days: null, hours: null, minutes: null, seconds: null };
 
 		function setFlipUnit(unitKey, newValue) {
@@ -550,37 +523,29 @@
 			const card = document.getElementById(`flip-${unitKey}`);
 			const topEl = document.getElementById(`flip-${unitKey}-top`);
 			const bottomEl = document.getElementById(`flip-${unitKey}-bottom`);
-			if (!card || !topEl || !bottomEl) return; // this page has no flip countdown — nothing to do
+			if (!card || !topEl || !bottomEl) return;
 
-			if (flipCountdownState[unitKey] === newValue) return; // unchanged — no flip needed
+			if (flipCountdownState[unitKey] === newValue) return;
 
-			// The top half still shows the OLD value as it starts to flip down...
 			topEl.textContent = flipCountdownState[unitKey] === null
 				? displayValue
 				: String(flipCountdownState[unitKey]).padStart(2, '0');
 
-			// ...while the bottom half is updated to the NEW value immediately,
-			// since that's what the flip reveals once it settles.
 			bottomEl.textContent = displayValue;
 
 			flipCountdownState[unitKey] = newValue;
 
-			// Trigger the flip, then remove the class once the animation
-			// finishes so the next change can trigger it again from a clean
-			// state (matches the .5s transition duration set in the CSS).
 			card.classList.remove('is-flipping');
-			void card.offsetWidth; // force reflow so re-adding the class restarts the animation
+			void card.offsetWidth;
 			card.classList.add('is-flipping');
 			setTimeout(() => card.classList.remove('is-flipping'), 500);
 		}
 
 		function updateGalaCountdown() {
-			// Set the target date here (October 17, 2026 at 6:00 PM)
 			const targetDate = new Date("October 17, 2026 18:00:00").getTime();
 			const now = new Date().getTime();
 			const timeDifference = targetDate - now;
 
-			// If the event has passed, stop the countdown at zero
 			if (timeDifference < 0) {
 				setFlipUnit('days', 0);
 				setFlipUnit('hours', 0);
@@ -589,7 +554,6 @@
 				return;
 			}
 
-			// Calculate days, hours, minutes, and seconds remaining
 			const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 			const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 			const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
@@ -601,10 +565,7 @@
 			setFlipUnit('seconds', seconds);
 		}
 
-		// Run immediately so there's no delay on page load
 		updateGalaCountdown();
-
-		// Update the numbers every 1 second
 		setInterval(updateGalaCountdown, 1000);
 	</script>
 
