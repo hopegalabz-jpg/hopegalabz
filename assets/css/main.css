@@ -121,6 +121,15 @@ footer {
 	margin: 0 auto 30px;
 	padding-bottom: 25px;
 	border-bottom: 1px solid rgba(255,255,255,0.15);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 28px;
+}
+.footer-contact-divider {
+	width: 1px;
+	height: 22px;
+	background: rgba(199, 151, 63, 0.4);
 }
 .footer-contact-trigger {
 	background: none;
@@ -552,6 +561,66 @@ footer {
 .email-line {
 	font-size: 13px;
 	color: var(--ink);
+}
+
+/* ==========================================================================
+   DONATION CARD (single-panel "Make a Donation" modal)
+   ========================================================================== */
+.donation-card {
+	position: relative;
+	width: 100%;
+	max-width: 480px;
+	max-height: 90vh;
+	overflow-y: auto;
+	background: #ffffff;
+	border-radius: 16px;
+	padding: 50px 42px 42px;
+	box-shadow: 0 25px 55px rgba(0,0,0,0.35);
+	opacity: 0;
+	transform: translateY(20px) scale(0.98);
+	transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.is-open .donation-card {
+	opacity: 1;
+	transform: translateY(0) scale(1);
+}
+
+.donation-card-close {
+	position: absolute;
+	top: 18px;
+	right: 22px;
+	background: none;
+	border: none;
+	font-size: 30px;
+	color: var(--charcoal);
+	cursor: pointer;
+	line-height: 1;
+	transition: color 0.2s ease;
+}
+.donation-card-close:hover { color: var(--gold); }
+
+.donation-card h3 {
+	font-family: var(--font-display);
+	color: var(--ink);
+	font-size: 26px;
+	font-weight: 400;
+	font-style: italic;
+	letter-spacing: 0.01em;
+	margin-bottom: 14px;
+}
+.donation-intro {
+	font-size: 15px;
+	color: #666;
+	line-height: 1.75;
+	margin-bottom: 28px;
+	font-weight: 300;
+}
+
+.donation-contact-footer {
+	border-top: 1px solid #eee;
+	padding-top: 22px;
+	margin-top: 4px;
+	text-align: left;
 }
 
 /* ==========================================================================
