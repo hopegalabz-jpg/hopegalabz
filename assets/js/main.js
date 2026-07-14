@@ -129,7 +129,7 @@ const SITE_GIVE_MODAL = `
 			</div>
 
 			<div class="donation-contact-footer">
-				<p class="contact-title">If you have any questions about how to give, we're happy to help:</p>
+				<p class="contact-title">Thank you for your generosity. To confirm your gift or arrange another way to give, please contact:</p>
 				<div class="contact-grid">
 					<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
 					<p><strong>Mrs. Ruth Williams</strong><br>+501-636-8147</p>
