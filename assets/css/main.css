@@ -137,6 +137,27 @@ footer {
 
 .foot { margin-bottom: 15px; }
 .foot img { height: 75px; width: auto; opacity: 0.95; }
+
+.footer-social {
+	margin-bottom: 20px;
+}
+.footer-social a {
+	display: inline-block;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.footer-social a:hover {
+	transform: translateY(-3px);
+}
+.footer-social img {
+	height: 48px;
+	width: 48px;
+	opacity: 0.9;
+	transition: opacity 0.3s ease;
+}
+.footer-social a:hover img {
+	opacity: 1;
+}
+
 .footer-text { opacity: 0.7; line-height: 1.8; }
 
 /* ---------- BASE CONTACT MODAL ---------- */
