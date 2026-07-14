@@ -35,7 +35,7 @@ const SITE_FOOTER = `
 			<img src="assets/images/logos/hplogo.png" alt="Hope Gala">
 		</div>
 		<div class="footer-social">
-			<a href="#" target="_blank" rel="noopener" aria-label="The Belize Project on Facebook">
+			<a href="https://www.facebook.com/profile.php?id=100083154105759" target="_blank" rel="noopener" aria-label="The Belize Project on Facebook">
 				<img src="assets/images/logos/fb.png" alt="Facebook">
 			</a>
 		</div>
