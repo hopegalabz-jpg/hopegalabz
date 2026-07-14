@@ -30,6 +30,7 @@ const SITE_FOOTER = `
 	<footer>
 		<div class="footer-contact">
 			<button type="button" class="footer-contact-trigger" id="open-contact-modal" aria-haspopup="dialog" aria-expanded="false">Contact Us</button>
+			<button type="button" class="footer-contact-trigger" id="open-give-modal" aria-haspopup="dialog" aria-expanded="false">Give Now</button>
 		</div>
 		<div class="foot">
 			<img src="assets/images/logos/hplogo.png" alt="Hope Gala">
@@ -103,6 +104,46 @@ const SITE_MODAL = `
 	</div>
 `;
 
+const SITE_GIVE_MODAL = `
+	<div class="modal-overlay" id="give-modal-overlay">
+		<div class="pledge-leaflet" role="dialog" aria-modal="true" aria-labelledby="give-modal-title">
+			<button type="button" class="pledge-leaflet-close" id="close-give-modal" aria-label="Close">&times;</button>
+
+			<div class="pledge-side-panel">
+				<div class="pledge-dove-wrapper">
+					<img src="assets/images/dove.png" alt="Peace Dove">
+				</div>
+				<div class="pledge-verse">
+					<p class="verse-text">"Carry each other's burdens, and in this way you will fulfill the law of Christ."</p>
+					<p class="verse-ref">Galatians 6:2</p>
+				</div>
+			</div>
+
+			<div class="pledge-main-panel">
+				<h3 id="give-modal-title">Make a Pledge</h3>
+				<p class="pledge-thanks">We thank you for your generous heart. Every contribution, no matter the size, helps us bring hope and restoration to communities in Belize.</p>
+
+				<div class="bank-details-card">
+					<h5>Atlantic Bank Electronic Transfer</h5>
+					<p>Account Name: <strong>The Belize Project</strong></p>
+					<p>Account Number: <strong>100279146</strong></p>
+				</div>
+
+				<p class="check-instruction">Checks can also be made payable directly to <strong>The Belize Project</strong> and mailed to our main office.</p>
+
+				<div class="pledge-contact-footer">
+					<p class="contact-title">For pledge confirmations or inquiries:</p>
+					<div class="contact-grid">
+						<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
+						<p><strong>Mrs. Ruth Williams</strong><br>+501-636-8147</p>
+					</div>
+					<p class="email-line"><strong>Email:</strong> thebelizeproject2@gmail.com</p>
+				</div>
+			</div>
+		</div>
+	</div>
+`;
+
 /* ---------- Inject shared markup and Global Head Elements ---------- */
 document.addEventListener('DOMContentLoaded', () => {
 	// 1. Inject UI Elements (Header, Footer, Modal)
@@ -113,8 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (headerSlot) headerSlot.innerHTML = SITE_HEADER;
 	if (footerSlot) footerSlot.innerHTML = SITE_FOOTER;
 	if (modalSlot) {
-		modalSlot.innerHTML = SITE_MODAL;
+		modalSlot.innerHTML = SITE_MODAL + SITE_GIVE_MODAL;
 		initContactModal();
+		initGiveModal();
 	}
 
 	// 2. Inject Favicon Globally
@@ -250,6 +292,48 @@ function initContactModal() {
 				statusEl.classList.add('is-error');
 				console.error('EmailJS error:', err);
 			});
+	});
+}
+
+function initGiveModal() {
+	const overlay = document.getElementById('give-modal-overlay');
+	const openBtn = document.getElementById('open-give-modal');
+	const closeBtn = document.getElementById('close-give-modal');
+
+	if (!overlay || !openBtn) return;
+
+	let lastFocusedEl = null;
+
+	function openModal() {
+		lastFocusedEl = document.activeElement;
+		overlay.classList.add('is-visible');
+		void overlay.offsetHeight;
+		overlay.classList.add('is-open');
+		document.body.classList.add('modal-open');
+		openBtn.setAttribute('aria-expanded', 'true');
+		document.addEventListener('keydown', onKeydownGive);
+		closeBtn.focus();
+	}
+
+	function closeModal() {
+		overlay.classList.remove('is-open');
+		document.body.classList.remove('modal-open');
+		openBtn.setAttribute('aria-expanded', 'false');
+		document.removeEventListener('keydown', onKeydownGive);
+		setTimeout(() => {
+			overlay.classList.remove('is-visible');
+		}, 250);
+		if (lastFocusedEl) lastFocusedEl.focus();
+	}
+
+	function onKeydownGive(e) {
+		if (e.key === 'Escape') closeModal();
+	}
+
+	openBtn.addEventListener('click', openModal);
+	closeBtn.addEventListener('click', closeModal);
+	overlay.addEventListener('click', (e) => {
+		if (e.target === overlay) closeModal();
 	});
 }
 
