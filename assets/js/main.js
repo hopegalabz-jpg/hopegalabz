@@ -111,18 +111,25 @@ const SITE_GIVE_MODAL = `
 			<button type="button" class="donation-card-close" id="close-give-modal" aria-label="Close">&times;</button>
 
 			<h3 id="give-modal-title">Make a Donation</h3>
-			<p class="donation-intro">Your generosity helps us bring hope and restoration to communities in Belize. Here's how you can give, and who to reach if you have any questions.</p>
+			<p class="donation-intro">Your generosity helps us bring hope and restoration to communities in Belize. Below are the two easiest ways to give.</p>
 
+			<p class="donation-method-label">Electronic Transfer</p>
 			<div class="bank-details-card">
 				<h5>Atlantic Bank Electronic Transfer</h5>
 				<p>Account Name: <strong>The Belize Project</strong></p>
 				<p>Account Number: <strong>100279146</strong></p>
 			</div>
 
-			<p class="check-instruction">Checks can also be made payable directly to <strong>The Belize Project</strong> and mailed to our main office.</p>
+			<p class="donation-method-label">By Check or Mail</p>
+			<p class="check-instruction">Checks can be made payable to <strong>The Belize Project</strong> and mailed to:</p>
+			<div class="mailing-address-card">
+				<p>The Belize Project</p>
+				<p>PO Box 119</p>
+				<p>Corozal Town, Belize</p>
+			</div>
 
 			<div class="donation-contact-footer">
-				<p class="contact-title">For donation confirmations or questions:</p>
+				<p class="contact-title">If you have any questions about how to give, we're happy to help:</p>
 				<div class="contact-grid">
 					<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
 					<p><strong>Mrs. Ruth Williams</strong><br>+501-636-8147</p>
