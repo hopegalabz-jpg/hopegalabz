@@ -572,8 +572,9 @@ footer {
 	max-width: 560px;
 	max-height: 90vh;
 	overflow-y: auto;
-	background: #ffffff;
-	border-radius: 16px;
+	background: var(--offwhite);
+	border-top: 4px solid var(--gold);
+	border-radius: 12px;
 	padding: 50px 46px 42px;
 	box-shadow: 0 25px 55px rgba(0,0,0,0.35);
 	opacity: 0;
@@ -610,7 +611,7 @@ footer {
 }
 .donation-intro {
 	font-size: 15px;
-	color: #666;
+	color: var(--charcoal);
 	line-height: 1.75;
 	margin-bottom: 28px;
 	font-weight: 300;
@@ -621,17 +622,19 @@ footer {
 	font-size: 12px;
 	font-weight: 600;
 	text-transform: uppercase;
-	letter-spacing: 0.1em;
+	letter-spacing: 0.12em;
 	color: var(--gold);
 	margin-bottom: 10px;
+	padding-left: 12px;
+	border-left: 3px solid var(--gold);
 }
 .donation-method-label:not(:first-of-type) {
 	margin-top: 26px;
 }
 
 .mailing-address-card {
-	background: rgba(199, 151, 63, 0.04);
-	border: 1px solid rgba(199, 151, 63, 0.2);
+	background: var(--white);
+	border: 1px solid rgba(199, 151, 63, 0.25);
 	border-radius: 8px;
 	padding: 14px 20px;
 	margin-top: 10px;
@@ -645,10 +648,14 @@ footer {
 }
 
 .donation-contact-footer {
-	border-top: 1px solid #eee;
+	border-top: 1px solid rgba(199, 151, 63, 0.25);
 	padding-top: 22px;
 	margin-top: 30px;
 	text-align: left;
+}
+.donation-contact-footer .contact-title {
+	color: var(--ink);
+	font-weight: 500;
 }
 
 /* ==========================================================================
