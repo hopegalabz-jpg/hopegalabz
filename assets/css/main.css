@@ -149,8 +149,8 @@ footer {
 	transform: translateY(-3px);
 }
 .footer-social img {
-	height: 48px;
-	width: 48px;
+	height: 96px;
+	width: 96px;
 	opacity: 0.9;
 	transition: opacity 0.3s ease;
 }
