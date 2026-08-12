@@ -96,99 +96,10 @@
 			<h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--ink);">The Belize Project <span style="color: var(--gold);">Media Galleries</span></h3>
 		</div>
 
-		<!-- ELEGANT ALBUM TILE GRID -->
-		<div class="album-grid">
-			
-			<!-- Tile 2025 -->
-			<div class="album-tile" onclick="openAlbum('Hope Gala', '2025', 'assets/images/gala-night-2025', gala2025)">
-				<div class="album-cover-wrapper">
-					<img src="assets/images/gala-night-2025/1.jpg" alt="Hope Gala 2025 Cover" loading="lazy">
-				</div>
-				<div class="album-info">
-					<h4>Hope Gala <span>2025</span></h4>
-					<p>Fundraising Event</p>
-				</div>
-			</div>
+		<!-- ELEGANT ALBUM TILE GRID — built by JavaScript from gallery.json.
+		     See the render script near the bottom of this file. -->
+		<div class="album-grid" id="album-grid"></div>
 
-			<!-- Tile 2024 -->
-			<div class="album-tile" onclick="openAlbum('Hope Gala', '2024', 'assets/images/gala-night-2024', gala2024)">
-				<div class="album-cover-wrapper">
-					<img src="assets/images/gala-night-2024/1.jpg" alt="Hope Gala 2024 Cover" loading="lazy">
-				</div>
-				<div class="album-info">
-					<h4>Hope Gala <span>2024</span></h4>
-					<p>Fundraising Event</p>
-				</div>
-			</div>
-
-			<!-- Tile 2023 -->
-			<div class="album-tile" onclick="openAlbum('Hope Gala', '2023', 'assets/images/gala-night-2023', gala2023)">
-				<div class="album-cover-wrapper">
-					<img src="assets/images/gala-night-2023/3 (1).png" alt="Hope Gala 2023 Cover" loading="lazy">
-				</div>
-				<div class="album-info">
-					<h4>Hope Gala <span>2023</span></h4>
-					<p>Fundraising Event</p>
-				</div>
-			</div>
-
-			<!-- Tile 2022 -->
-			<div class="album-tile" onclick="openAlbum('Hope Gala', '2022', 'assets/images/hope-gala-2022', gala2022)">
-				<div class="album-cover-wrapper">
-					<img src="assets/images/hope-gala-2022/HopeGala22-1.png" alt="Hope Gala 2022 Cover" loading="lazy">
-				</div>
-				<div class="album-info">
-					<h4>Hope Gala <span>2022</span></h4>
-					<p>Fundraising Event</p>
-				</div>
-			</div>
-
-			<!-- Tile Jacob's Farm -->
-			<div class="album-tile" onclick="openAlbum('Jacob\'s Rehabilitation', 'Farm Center', 'assets/images/ministries/jacobsfarm', jacobsFarm)">
-				<div class="album-cover-wrapper">
-					<img src="assets/images/ministries/jacobsfarm/1000037511.jpg" alt="Jacob's Farm Cover" loading="lazy">
-				</div>
-				<div class="album-info">
-					<h4>Jacob's Rehabilitation <span>Farm Center</span></h4>
-					<p>Ministries</p>
-				</div>
-			</div>
-
-			<!-- Tile House of Dorcas -->
-			<div class="album-tile" onclick="openAlbum('House of', 'Dorcas', 'assets/images/ministries/Dorcas', dorcas)">
-				<div class="album-cover-wrapper">
-					<img src="assets/images/ministries/Dorcas/1.jpg" alt="House of Dorcas Cover" loading="lazy">
-				</div>
-				<div class="album-info">
-					<h4>House of <span>Dorcas</span></h4>
-					<p>Ministries</p>
-				</div>
-			</div>
-
-<!-- Tile Restore Small Group -->
-			<div class="album-tile" onclick="openAlbum('Restore', 'Small Group', 'assets/images/ministries/restore', restore)">
-				<div class="album-cover-wrapper">
-					<img src="assets/images/ministries/restore/4.jpg" alt="Restore Cover" loading="lazy">
-				</div>
-				<div class="album-info">
-					<h4>Restore <span>Small Group</span></h4>
-					<p>Ministries</p>
-				</div>
-			</div>
-
-<!-- Tile Believe in Them -->
-        <div class="album-tile" onclick="openAlbum('Believe in', 'Them', 'assets/images/ministries/bit', bit)">
-    		<div class="album-cover-wrapper">
-     	   <!-- Change the .png to .jpg right here 👇 -->
-      		  <img src="assets/images/ministries/bit/1.jpg" alt="Believe in Them Cover" loading="lazy">
-   		 </div>
- 	     <div class="album-info">
-       		 <h4>Believe in <span>Them</span></h4>
-       		 <p>Ministries</p>
-   		 	</div>
-		</div>
-
-		</div> <!-- This closes the album-grid -->
 	</div> <!-- This closes the container -->
 
 	<!-- SLIDE OUT SIDEBAR OVERLAY COMPONENT -->
@@ -237,81 +148,115 @@
 	     exists only here.
 	     ========================================================================== -->
 	<script>
-		const gala2025 = [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg" ];
-		const gala2024 = [ "1.jpg", "IMG-20241020-WA0017.jpg", "20241019_163342.jpg", "20241019_210912.jpg", "IMG-20241020-WA0009.jpg", "20241019_163312.jpg", "IMG-20241020-WA0014.jpg", "IMG-20241020-WA0002.jpg", "IMG-20241020-WA0019.jpg", "20241019_185200.jpg", "20241019_210925.jpg", "IMG-20241020-WA0012.jpg", "20241019_163306.jpg", "20241019_210822.jpg", "IMG-20241020-WA0024.jpg", "IMG-20241020-WA0010.jpg", "IMG-20241020-WA0007.jpg", "2.jpg", "IMG-20241020-WA0004.jpg", "IMG-20241020-WA0018.jpg", "20241019_185219.jpg", "IMG-20241020-WA0011.jpg", "IMG-20241020-WA0005.jpg" ];
-		const gala2023 = [ "3 (1).png", "3 (2).png", "3 (3).png", "3 (4).png", "3 (5).png", "3 (6).png", "3 (7).png", "3 (8).png", "3 (9).png", "3 (10).png", "3 (11).png", "3 (12).png", "3 (13).png", "3 (14).png", "3 (15).png", "3 (16).png", "3 (17).png", "3 (18).png", "3 (19).png", "3 (20).png", "3 (21).png", "3 (22).png", "3 (23).png", "3 (24).png", "3 (25).png", "3 (26).png", "3 (27).png", "3 (28).png", "3 (29).png", "3 (30).png", "3 (31).png", "3 (32).png", "3 (33).png", "3 (34).png", "3 (35).png", "3 (36).png", "3 (37).png", "3 (38).png", "3 (39).png", "3 (40).png", "3 (41).png", "3 (42).png", "3 (43).png", "3 (44).png", "3 (45).png", "3 (46).png", "3 (47).png", "3 (48).png", "3 (49).png", "3 (50).png", "3 (51).png", "3 (52).png", "3 (53).png", "3 (54).png", "3 (55).png", "3 (56).png", "3 (57).png", "3 (58).png", "3 (59).png", "3 (60).png", "3 (61).png", "3 (62).png", "3 (63).png", "3 (64).png", "3 (65).png", "3 (66).png", "3 (67).png", "3 (68).png", "3 (69).png", "3 (70).png", "3 (71).png", "3 (72).png", "3 (73).png", "3 (74).png", "3 (75).png", "3 (76).png", "3 (77).png", "3 (78).png", "3 (79).png", "3 (80).png" ];
-		const gala2022 = [ "HopeGala22-1.png", "HopeGala22-10.png", "HopeGala22-15.png", "HopeGala22-16.png", "HopeGala22-17.png", "HopeGala22-19.png", "HopeGala22-20.png", "HopeGala22-21.png", "HopeGala22-22.png", "HopeGala22-24.png", "HopeGala22-25.png", "HopeGala22-28.png", "HopeGala22-29.png", "HopeGala22-3.png", "HopeGala22-30.png", "HopeGala22-31.png", "HopeGala22-32.jpg", "HopeGala22-33.png", "HopeGala22-35.png", "HopeGala22-36.png", "HopeGala22-37.jpg", "HopeGala22-38.png", "HopeGala22-4.png", "HopeGala22-40.png", "HopeGala22-41.png", "HopeGala22-42.png", "HopeGala22-43.png", "HopeGala22-44.png", "HopeGala22-45.png", "HopeGala22-46.png", "HopeGala22-47.png", "HopeGala22-48.png", "HopeGala22-49.png", "HopeGala22-5.png", "HopeGala22-50.png", "HopeGala22-51.png", "HopeGala22-52.png", "HopeGala22-53.png", "HopeGala22-54.png", "HopeGala22-55.png", "HopeGala22-57.png", "HopeGala22-58.png", "HopeGala22-59.png", "HopeGala22-6.png", "HopeGala22-60.png", "HopeGala22-61.png", "HopeGala22-63.png", "HopeGala22-64.png", "HopeGala22-65.png", "HopeGala22-67.png", "HopeGala22-68.png", "HopeGala22-69.png", "HopeGala22-7.png", "HopeGala22-70.png", "HopeGala22-71.png", "HopeGala22-72.png", "HopeGala22-73.png", "HopeGala22-74.png", "HopeGala22-75.png", "HopeGala22-76.png", "HopeGala22-78.png", "HopeGala22-79.png", "HopeGala22-8.png", "HopeGala22-80.png", "HopeGala22-81.png", "HopeGala22-82.png", "HopeGala22-83.png", "HopeGala22-84.png", "HopeGala22-85.png", "HopeGala22-86.png", "HopeGala22-87.jpg", "HopeGala22-89.jpg", "HopeGala22-9.png", "HopeGala22-90.jpg" ];
-		const jacobsFarm = [ "1000037511.jpg", "1000037513.jpg", "IMG-20250701-WA0036.jpg", "IMG-20250701-WA0037.jpg", "IMG-20250701-WA0040.jpg", "IMG-20250701-WA0041.jpg", "IMG-20250701-WA0042.jpg" ];
-		const dorcas = [ "1.jpg", "2.jpg", "3.png", "IMG-20250701-WA0038.jpg", "IMG-20250701-WA0039.jpg" ];
-		const restore = [ "4.jpg", "5.jpg", "6.jpg", "1000037531.jpg", "1000000215.jpg", "1000000356.jpg", "1000037529.jpg", "IMG-20250701-WA0043.jpg", "IMG-20250701-WA0044.jpg" ];
-		const bit = [ "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "7.jpg", "11.jpg", "33.jpg", "55.jpg", "77.jpg" ];
+		// ==========================================================================
+		// GALLERY CONTENT LOADER
+		// ==========================================================================
+		// Albums and photos come from gallery.json — see the fetch call at the
+		// bottom of this script. Every image path in that file is a full path
+		// (e.g. "assets/images/gala-night-2025/1.jpg"), so these functions use
+		// paths directly rather than combining a separate folder + filename.
 
-		// State memory for Gallery Navigation
-		let currentAlbumList = [];
-		let currentFolderPath = '';
+		let currentAlbumList = [];   // full image paths for whichever album is open
 		let currentImageIndex = 0;
 
-		function openAlbum(titleFirst, titleGold, folderPath, imageList) {
-			currentAlbumList = imageList;
-			currentFolderPath = folderPath;
-			
+		function buildAlbumTile(album) {
+			const tile = document.createElement('div');
+			tile.className = 'album-tile';
+			tile.onclick = function () { openAlbum(album); };
+
+			const coverWrapper = document.createElement('div');
+			coverWrapper.className = 'album-cover-wrapper';
+			const coverImg = document.createElement('img');
+			coverImg.src = album.coverImage;
+			coverImg.alt = album.year + ' Cover';
+			coverImg.loading = 'lazy';
+			coverWrapper.appendChild(coverImg);
+
+			const info = document.createElement('div');
+			info.className = 'album-info';
+			const h4 = document.createElement('h4');
+			h4.textContent = album.year;
+			const p = document.createElement('p');
+			p.textContent = album.category === 'ministry' ? 'Ministries' : 'Fundraising Event';
+			info.appendChild(h4);
+			info.appendChild(p);
+
+			tile.appendChild(coverWrapper);
+			tile.appendChild(info);
+			return tile;
+		}
+
+		function renderGalleryPage(data) {
+			const grid = document.getElementById('album-grid');
+			if (!grid || !data || !Array.isArray(data.albums)) return;
+
+			grid.innerHTML = '';
+			data.albums.forEach(album => {
+				grid.appendChild(buildAlbumTile(album));
+			});
+		}
+
+		function openAlbum(album) {
+			// album.images is a list of { image: "full/path.jpg" } objects
+			currentAlbumList = album.images.map(item => item.image);
+
 			const overlay = document.getElementById('sidebarOverlay');
 			const titleContainer = document.getElementById('sidebarTitle');
 			const galleryContainer = document.getElementById('sidebarGalleryItems');
-			
-			titleContainer.innerHTML = `${titleFirst} <span>${titleGold}</span>`;
+
+			titleContainer.textContent = album.year;
 			galleryContainer.innerHTML = '';
-			
-			imageList.forEach((filename, index) => {
+
+			currentAlbumList.forEach((path, index) => {
 				const img = document.createElement('img');
-				img.src = `${folderPath}/${filename}`;
-				img.loading = "lazy";
-				img.alt = "Gala Media File";
-				
-				img.onclick = function() {
+				img.src = path;
+				img.loading = 'lazy';
+				img.alt = 'Gala Media File';
+
+				img.onclick = function () {
 					openLightbox(index);
 				};
-				
+
 				galleryContainer.appendChild(img);
 			});
-			
+
 			overlay.classList.add('active');
-			document.body.style.overflow = 'hidden'; 
+			document.body.style.overflow = 'hidden';
 		}
 
 		function openLightbox(index) {
 			currentImageIndex = index;
 			const lightboxImg = document.getElementById('lightboxImg');
-			
+
 			// Set the initial image immediately upon opening without fade
-			lightboxImg.src = `${currentFolderPath}/${currentAlbumList[currentImageIndex]}`;
+			lightboxImg.src = currentAlbumList[currentImageIndex];
 			lightboxImg.classList.remove('fade-out');
-			
+
 			document.getElementById('lightbox').classList.add('active');
 		}
 
 		function updateLightboxImage() {
 			const lightboxImg = document.getElementById('lightboxImg');
-			
+
 			lightboxImg.classList.add('fade-out');
-			
+
 			setTimeout(() => {
-				lightboxImg.src = `${currentFolderPath}/${currentAlbumList[currentImageIndex]}`;
+				lightboxImg.src = currentAlbumList[currentImageIndex];
 				lightboxImg.classList.remove('fade-out');
 			}, 200);
 		}
 
 		function changeImage(direction, event) {
-			if (event) event.stopPropagation(); 
-			
+			if (event) event.stopPropagation();
+
 			currentImageIndex += direction;
-			
+
 			if (currentImageIndex < 0) {
 				currentImageIndex = currentAlbumList.length - 1;
 			} else if (currentImageIndex >= currentAlbumList.length) {
 				currentImageIndex = 0;
 			}
-			
+
 			updateLightboxImage();
 		}
 
@@ -368,6 +313,19 @@
 				}
 			}
 		});
+
+		// Fetch the album/photo data and render the tile grid. If this fails,
+		// the grid stays empty rather than showing stale or broken content —
+		// a clear sign to check gallery.json rather than a silently broken page.
+		fetch('assets/content/gallery.json')
+			.then(response => {
+				if (!response.ok) throw new Error('gallery.json not found');
+				return response.json();
+			})
+			.then(data => renderGalleryPage(data))
+			.catch(error => {
+				console.warn('Could not load gallery.json — no albums will display:', error);
+			});
 	</script>
 </body>
 </html>
