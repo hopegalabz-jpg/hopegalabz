@@ -169,50 +169,17 @@
 		<ul id="slider-list"></ul>
 	</div>
 	
-	<script>
-		// Add or remove filenames here to change the slideshow.
-		const slides = ["gala2026banner1.png", "gala2026banner2.png", "11.jpg", "3.jpg", "6.jpg", "12.jpg"];
-		const list = document.getElementById("slider-list");
-
-		// Helper function to build a single slide
-		function createSlide(filename, isClone) {
-			const path = "assets/images/slideshow/" + filename;
-			const li = document.createElement("li");
-			
-			// Hide the cloned set from screen readers for accessibility
-			if (isClone) li.setAttribute("aria-hidden", "true");
-
-			const img = document.createElement("img");
-			img.className = "slide-fg";
-			img.src = path;
-			img.alt = isClone ? "" : "The Belize Project";
-
-			li.appendChild(img);
-			return li;
-		}
-
-		// 1. Build the ORIGINAL set of images
-		slides.forEach(filename => {
-			list.appendChild(createSlide(filename, false));
-		});
-
-		// 2. Build the CLONED set of images to create the infinite loop
-		slides.forEach(filename => {
-			list.appendChild(createSlide(filename, true));
-		});
-	</script>
-
 	<div class="hero-intro">
-		<h1>The Belize Project</h1>
-		<p>Loving People, Places, and Things to Life</p>
+		<h1 id="hero-heading">The Belize Project</h1>
+		<p id="hero-subheading">Loving People, Places, and Things to Life</p>
 	</div>
 
 	<div class="divider"></div>
 
-	<section class="story">
-		<h2>Watch Our Story</h2>
+	<section class="story" id="video-section">
+		<h2 id="video-heading">Watch Our Story</h2>
 		<div class="video-wrap">
-			<iframe
+			<iframe id="video-iframe"
 				src="https://www.youtube.com/embed/trWomaffddI?autoplay=1&mute=1&loop=1&playlist=trWomaffddI&controls=1&rel=0&modestbranding=1"
 				title="The Belize Project Story"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -229,22 +196,133 @@
 			</div>
 
 			<div class="text2">
-				<h2>Why Belize?</h2>
-				<p class="drop-cap">
-					The Belize Project is a ministry that serves other ministries' efforts, NGOs, and NPOs in Belize that are like-minded in our mission. Our mission statement is loving people, places, and things to life through Jesus Christ.
-				</p>
-				<p>
-					We engage in many projects supporting spiritual goodwill efforts, directly engaging in rehabilitation and reintegration, education, youth intervention, economic development, and entrepreneurship.
-				</p>
-				<p>
-					We support in diverse ways: materials, prayer, resources, finance, mentoring, training, encouragement, and much more. The vision of The Belize Project is to find those in Belize who are making a difference, and we walk alongside them. Our ministry focuses on rehabilitation farms, halfway houses, safe homes, prisons, schools, churches, and micro-lending.
-				</p>
-				<p>
-					We are bringing awareness and partnering with others to cultivate more healing communities in Belize.
-				</p>
+				<h2 id="why-belize-heading">Why Belize?</h2>
+				<div id="why-belize-paragraphs">
+					<p class="drop-cap">
+						The Belize Project is a ministry that serves other ministries' efforts, NGOs, and NPOs in Belize that are like-minded in our mission. Our mission statement is loving people, places, and things to life through Jesus Christ.
+					</p>
+					<p>
+						We engage in many projects supporting spiritual goodwill efforts, directly engaging in rehabilitation and reintegration, education, youth intervention, economic development, and entrepreneurship.
+					</p>
+					<p>
+						We support in diverse ways: materials, prayer, resources, finance, mentoring, training, encouragement, and much more. The vision of The Belize Project is to find those in Belize who are making a difference, and we walk alongside them. Our ministry focuses on rehabilitation farms, halfway houses, safe homes, prisons, schools, churches, and micro-lending.
+					</p>
+					<p>
+						We are bringing awareness and partnering with others to cultivate more healing communities in Belize.
+					</p>
+				</div>
 			</div>
 		</div>
 	</section>
+
+	<script>
+		// ==========================================================================
+		// HOMEPAGE CONTENT LOADER
+		// ==========================================================================
+		// Everything above (hero text, video, Why Belize text) ships baked into
+		// this HTML as a fallback, so the page is never blank — even if
+		// home.json fails to load, is missing, or hasn't been created yet.
+		// This script then fetches home.json and, if successful, overwrites
+		// that fallback content with whatever is currently set there. This is
+		// the only script on this page that needs to change if new fields are
+		// ever added to home.json.
+
+		function buildSlide(path, altText, isClone) {
+			const li = document.createElement("li");
+			if (isClone) li.setAttribute("aria-hidden", "true");
+			const img = document.createElement("img");
+			img.className = "slide-fg";
+			img.src = path;
+			img.alt = isClone ? "" : altText;
+			li.appendChild(img);
+			return li;
+		}
+
+		function renderSlideshow(images) {
+			const list = document.getElementById("slider-list");
+			if (!list || !Array.isArray(images) || images.length === 0) return;
+
+			list.innerHTML = "";
+			const paths = images.map(item => item.image);
+
+			// Original set, then a cloned set appended after it, so the CSS
+			// animation can scroll continuously without a visible jump/reset.
+			paths.forEach(path => list.appendChild(buildSlide(path, "The Belize Project", false)));
+			paths.forEach(path => list.appendChild(buildSlide(path, "The Belize Project", true)));
+		}
+
+		function renderHomePage(data) {
+			if (!data) return;
+
+			if (data.hero) {
+				const headingEl = document.getElementById("hero-heading");
+				const subheadingEl = document.getElementById("hero-subheading");
+				if (headingEl && data.hero.heading) headingEl.textContent = data.hero.heading;
+				if (subheadingEl && data.hero.subheading) subheadingEl.textContent = data.hero.subheading;
+			}
+
+			if (data.slideshow_images) {
+				renderSlideshow(data.slideshow_images);
+			}
+
+			if (data.video) {
+				const section = document.getElementById("video-section");
+				if (data.video.show === false) {
+					// Removes the section entirely, not just visually hides it —
+					// matches how the person described wanting sections to work.
+					if (section) section.remove();
+				} else {
+					const headingEl = document.getElementById("video-heading");
+					const iframeEl = document.getElementById("video-iframe");
+					if (headingEl && data.video.heading) headingEl.textContent = data.video.heading;
+					if (iframeEl && data.video.youtubeId) {
+						iframeEl.src = `https://www.youtube.com/embed/${data.video.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${data.video.youtubeId}&controls=1&rel=0&modestbranding=1`;
+					}
+				}
+			}
+
+			if (data.whyBelize) {
+				const headingEl = document.getElementById("why-belize-heading");
+				const paraContainer = document.getElementById("why-belize-paragraphs");
+				if (headingEl && data.whyBelize.heading) headingEl.textContent = data.whyBelize.heading;
+
+				if (paraContainer && Array.isArray(data.whyBelize.paragraphs) && data.whyBelize.paragraphs.length > 0) {
+					paraContainer.innerHTML = "";
+					data.whyBelize.paragraphs.forEach((para, index) => {
+						const p = document.createElement("p");
+						if (index === 0) p.className = "drop-cap";
+						p.textContent = para.text;
+						paraContainer.appendChild(p);
+					});
+				}
+			}
+		}
+
+		// Render the fallback slideshow immediately (it isn't baked into the
+		// HTML like the other sections, since it's built by JS either way),
+		// then attempt to fetch home.json and override everything with live
+		// content. If the fetch fails for any reason, the page simply keeps
+		// showing the fallback content already sitting in the HTML above.
+		renderSlideshow([
+			{ image: "assets/images/slideshow/gala2026banner1.png" },
+			{ image: "assets/images/slideshow/gala2026banner2.png" },
+			{ image: "assets/images/slideshow/11.jpg" },
+			{ image: "assets/images/slideshow/3.jpg" },
+			{ image: "assets/images/slideshow/6.jpg" },
+			{ image: "assets/images/slideshow/12.jpg" }
+		]);
+
+		fetch("assets/content/home.json")
+			.then(response => {
+				if (!response.ok) throw new Error("home.json not found");
+				return response.json();
+			})
+			.then(data => renderHomePage(data))
+			.catch(error => {
+				// Fallback content already on the page remains untouched.
+				console.warn("Could not load home.json, showing default content:", error);
+			});
+	</script>
 
 	<div id="site-footer"></div>
 
