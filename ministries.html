@@ -39,10 +39,6 @@
 			<div class="divider" style="margin-top: 20px; margin-bottom: 40px;"></div>
 		</div>
 
-		<!-- Nav tile grids and content sections below are built by JavaScript
-		     from ministries.json (see the render script near the bottom of
-		     this file). The markup here is a fallback shown only until that
-		     script runs or if ministries.json can't be loaded for any reason. -->
 		<div class="ministry-nav-grid" id="ministry-nav-grid-primary">
 			<a href="#jacob" class="ministry-nav-tile">
 				<img src="assets/images/logos/jacob-logo.jpg" alt="Jacob's Farm Logo" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Jacob+Logo'">
@@ -78,10 +74,8 @@
 		</div>
 	</div>
 
-	<!-- THE EXCERPTS — filled in by JavaScript from ministries.json -->
 	<div id="ministry-sections"></div>
 
-	<!-- Programs Header -->
 	<div class="container">
 		<div class="heading" style="text-align: center; margin-top: 60px; margin-bottom: 40px;">
 			<h3 style="font-family: var(--font-display); font-size: 3rem; color: var(--ink);">Our <span style="color: var(--gold);">Programs</span></h3>
@@ -92,59 +86,40 @@
 	<div id="program-sections"></div>
 
 	<script>
-		// ==========================================================================
-		// MINISTRIES + PROGRAMS CONTENT LOADER
-		// ==========================================================================
-		// The nav tile grids above ship with the current 7 ministries baked in
-		// as a fallback. This script fetches ministries.json and, if it loads
-		// successfully, replaces the nav tiles, content sections, and program
-		// sections with whatever is currently in that file — supporting any
-		// number of ministries or programs, not just the original 7 and 2.
-
 		function buildNavTile(ministry) {
 			const a = document.createElement("a");
 			a.href = "#" + ministry.id;
 			a.className = "ministry-nav-tile";
-
 			const img = document.createElement("img");
 			img.src = ministry.logo;
-			img.alt = ministry.name + " Logo";
+			img.alt = ministry.shortName + " Logo";
 			img.onerror = function () {
-				this.src = "https://placehold.co/150x150/f4f4f4/c7973f?text=" + encodeURIComponent(ministry.name);
+				this.src = "https://placehold.co/150x150/f4f4f4/c7973f?text=" + encodeURIComponent(ministry.shortName);
 			};
-
 			const h4 = document.createElement("h4");
-			h4.textContent = ministry.name;
-
+			h4.textContent = ministry.shortName;
 			a.appendChild(img);
 			a.appendChild(h4);
 			return a;
 		}
 
-		function buildContentSection(entry, index, bgClass) {
+		function buildContentSection(entry, nameKey, subtitleKey, bgClass) {
 			const section = document.createElement("section");
 			section.id = entry.id;
 			section.className = "ministry-section " + bgClass;
-
 			const row = document.createElement("div");
 			row.className = "ministry-row";
-
 			const content = document.createElement("div");
 			content.className = "ministry-content";
-
 			const h2 = document.createElement("h2");
-			h2.textContent = entry.name;
+			h2.textContent = entry[nameKey];
 			content.appendChild(h2);
-
-			if (entry.subtitle) {
+			if (entry[subtitleKey]) {
 				const h4 = document.createElement("h4");
 				h4.style.cssText = "color: var(--gold); font-weight: 600; margin-top: -15px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;";
-				h4.textContent = entry.subtitle;
+				h4.textContent = entry[subtitleKey];
 				content.appendChild(h4);
 			}
-
-			// body text uses blank lines to separate paragraphs, same as how
-			// the original hardcoded sections used separate <p> tags
 			const paragraphs = (entry.body || "").split(/\n\s*\n/);
 			paragraphs.forEach(paraText => {
 				if (!paraText.trim()) return;
@@ -152,7 +127,6 @@
 				p.textContent = paraText.trim();
 				content.appendChild(p);
 			});
-
 			row.appendChild(content);
 			section.appendChild(row);
 			return section;
@@ -163,15 +137,9 @@
 
 			if (Array.isArray(data.ministries) && data.ministries.length > 0) {
 				const ministries = data.ministries;
-
-				// First 4 ministries form the primary (wide) grid row, the rest
-				// form the secondary (narrower, centered) row — matches the
-				// original page's visual split. If there are fewer than 4
-				// ministries total, the secondary grid is simply left empty.
 				const primaryGrid = document.getElementById("ministry-nav-grid-primary");
 				const secondaryGrid = document.getElementById("ministry-nav-grid-secondary");
 				const sectionsContainer = document.getElementById("ministry-sections");
-
 				if (primaryGrid) primaryGrid.innerHTML = "";
 				if (secondaryGrid) secondaryGrid.innerHTML = "";
 				if (sectionsContainer) sectionsContainer.innerHTML = "";
@@ -183,10 +151,9 @@
 					} else {
 						if (secondaryGrid) secondaryGrid.appendChild(tile);
 					}
-
 					const bgClass = index % 2 === 0 ? "bg-white" : "bg-offwhite";
 					if (sectionsContainer) {
-						sectionsContainer.appendChild(buildContentSection(ministry, index, bgClass));
+						sectionsContainer.appendChild(buildContentSection(ministry, "ministryName", "ministrySubtitle", bgClass));
 					}
 				});
 			}
@@ -197,7 +164,7 @@
 					programsContainer.innerHTML = "";
 					data.programs.forEach((program, index) => {
 						const bgClass = index % 2 === 0 ? "bg-offwhite" : "bg-white";
-						programsContainer.appendChild(buildContentSection(program, index, bgClass));
+						programsContainer.appendChild(buildContentSection(program, "programName", "programSubtitle", bgClass));
 					});
 				}
 			}
@@ -210,12 +177,7 @@
 			})
 			.then(data => renderMinistriesPage(data))
 			.catch(error => {
-				// Fallback markup already on the page (nav tiles) remains as-is.
-				// Note: the fallback markup does not include the content
-				// sections or programs sections, since those were moved into
-				// JS-only rendering — if the fetch fails, only the nav tiles
-				// will show, which is why this is logged clearly for debugging.
-				console.warn("Could not load ministries.json — ministry and program sections will not display:", error);
+				console.warn("Could not load ministries.json:", error);
 			});
 	</script>
 
