@@ -14,10 +14,10 @@
   "video": {
     "show": true,
     "youtubeId": "trWomaffddI",
-    "heading": "Watch Our Story"
+    "videoSectionHeading": "Watch Our Story"
   },
   "whyBelize": {
-    "heading": "Why Belize?",
+    "whyBelizeSectionHeading": "Why Belize?",
     "paragraphs": [
       { "text": "The Belize Project is a ministry that serves other ministries' efforts, NGOs, and NPOs in Belize that are like-minded in our mission. Our mission statement is loving people, places, and things to life through Jesus Christ." },
       { "text": "We engage in many projects supporting spiritual goodwill efforts, directly engaging in rehabilitation and reintegration, education, youth intervention, economic development, and entrepreneurship." },
