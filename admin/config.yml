@@ -52,7 +52,16 @@ collections:
             summary: "{{fields.name}}"
             fields:
               - { label: "Ministry Name", name: "name", widget: "string" }
+              - { label: "Subtitle (optional)", name: "subtitle", widget: "string", required: false }
               - { label: "Logo Image", name: "logo", widget: "image" }
+              - { label: "Description", name: "body", widget: "text" }
+          - label: "Programs"
+            name: "programs"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Program Name", name: "name", widget: "string" }
+              - { label: "Subtitle (optional)", name: "subtitle", widget: "string", required: false }
               - { label: "Description", name: "body", widget: "text" }
 
   # ---------- RESOURCES ----------
@@ -86,12 +95,18 @@ collections:
         label: "Gallery Albums"
         name: "gallery"
         fields:
-          - label: "Albums by Year"
+          - label: "Albums"
             name: "albums"
             widget: "list"
             summary: "{{fields.year}}"
             fields:
-              - { label: "Year / Event Name", name: "year", widget: "string" }
+              - { label: "Album Name (e.g. 'Hope Gala 2027' or a ministry name)", name: "year", widget: "string" }
+              - label: "Album Type"
+                name: "category"
+                widget: "select"
+                options: [ { label: "Gala Night", value: "gala" }, { label: "Ministry", value: "ministry" } ]
+                default: "gala"
+              - { label: "Folder Name (no spaces, e.g. 'gala-night-2027')", name: "folder", widget: "string", hint: "This becomes a folder under assets/images/. Only change this when creating a brand-new album." }
               - { label: "Cover Photo", name: "coverImage", widget: "image" }
               - label: "Photos"
                 name: "images"
@@ -128,3 +143,19 @@ collections:
                     name: "perks"
                     widget: "list"
                     field: { label: "Perk", name: "perk", widget: "string" }
+          - label: "Pledge / Donation Info"
+            name: "pledge"
+            widget: "object"
+            fields:
+              - { label: "Bank Name / Transfer Method", name: "bankName", widget: "string" }
+              - { label: "Bank Account Name", name: "bankAccountName", widget: "string" }
+              - { label: "Bank Account Number", name: "bankAccountNumber", widget: "string" }
+              - { label: "Check Payment Instructions", name: "checkInstruction", widget: "text" }
+              - label: "Contact People"
+                name: "contacts"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Contact Email", name: "email", widget: "string" }
