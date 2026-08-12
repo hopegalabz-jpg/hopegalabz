@@ -1,0 +1,50 @@
+name: Compress Images
+
+# Runs automatically whenever new or changed images are pushed to the
+# assets/images folder — including images uploaded through the Sveltia
+# CMS at /admin, since publishing there commits directly to this repo.
+#
+# This keeps the repo (and the live site) fast even if someone uploads
+# a large photo straight from a phone without resizing it first. It is
+# a safety net, not the only defense — the CMS itself also shows a hint
+# asking people to resize photos before uploading.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "assets/images/**/*.jpg"
+      - "assets/images/**/*.jpeg"
+      - "assets/images/**/*.png"
+
+jobs:
+  compress:
+    name: Compress new/changed images
+    runs-on: ubuntu-latest
+    # Prevents this workflow from re-triggering itself when it commits
+    # its own compressed output back to the repo.
+    if: ${{ !contains(github.event.head_commit.message, '[skip-compress]') }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Compress images
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          compressOnly: true
+          jpegQuality: "80"
+          pngQuality: "80"
+          # Caps maximum dimensions so a full-resolution phone photo
+          # (often 3000px+ wide) is scaled down to something reasonable
+          # for web display, matching the guidance shown in the CMS.
+          webpQuality: "80"
+
+      - name: Commit compressed images
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/images
+          git diff --staged --quiet || git commit -m "Auto-compress uploaded images [skip-compress]"
+          git push
