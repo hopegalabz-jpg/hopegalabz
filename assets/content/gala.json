@@ -13,11 +13,11 @@
     ]
   },
   "countdown": {
-    "show": false,
+    "show": true,
     "targetDate": "2026-10-17T18:00:00"
   },
   "sponsorship": {
-    "show": false,
+    "show": true,
     "tiers": [
       {
         "name": "Gold Sponsor",
