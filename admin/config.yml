@@ -21,8 +21,13 @@ collections:
             widget: "text"
             readonly: true
             default: "This page controls the TOP of your website (hopegala.bz) — the big title, the photo slideshow, the video, and the 'Why Belize?' text. Scroll down, fill in each box, then click the blue Save button at the top right when you're done."
-          - { label: "Big Title (top of homepage)", name: "heading", widget: "string", hint: "This is the large text at the very top of the site. Example: The Belize Project" }
-          - { label: "Small Text Under the Title", name: "subheading", widget: "string", hint: "The short line right under the big title. Example: Loving People, Places, and Things to Life" }
+          - label: "Hero (Title & Subtitle)"
+            name: "hero"
+            widget: "object"
+            hint: "The big title and small text at the very top of the homepage."
+            fields:
+              - { label: "Big Title (top of homepage)", name: "heading", widget: "string", hint: "This is the large text at the very top of the site. Example: The Belize Project" }
+              - { label: "Small Text Under the Title", name: "subheading", widget: "string", hint: "The short line right under the big title. Example: Loving People, Places, and Things to Life" }
           - label: "Photo Slideshow"
             name: "slideshow_images"
             widget: "list"
