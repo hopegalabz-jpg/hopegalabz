@@ -411,8 +411,8 @@
 
 	<section class="ministry-section bg-offwhite" style="padding: 50px 24px;">
 		<div class="container">
-			<h2 style="font-family: var(--font-display); font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 35px;">Ministries You Support</h2>
-			<div class="ministry-nav-grid" style="margin-bottom: 0;">
+			<h2 id="ministries-support-heading" style="font-family: var(--font-display); font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 35px;">Ministries You Support</h2>
+			<div class="ministry-nav-grid" style="margin-bottom: 0;" id="ministries-support-grid">
 				<a href="ministries.html#jacob" class="ministry-nav-tile"><img src="assets/images/logos/jacob-logo.jpg" alt="Jacob's Farm"><h4>Jacob's Farm</h4></a>
 				<a href="ministries.html#dorcas" class="ministry-nav-tile"><img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas"><h4>House of Dorcas</h4></a>
 				<a href="ministries.html#restore" class="ministry-nav-tile"><img src="assets/images/logos/restore-logo.png" alt="Restore Small Groups"><h4>Restore Groups</h4></a>
@@ -668,12 +668,40 @@
 			}
 		}
 
+		function buildMinistrySupportTile(ministry) {
+			const a = document.createElement('a');
+			a.href = 'ministries.html#' + ministry.id;
+			a.className = 'ministry-nav-tile';
+			const img = document.createElement('img');
+			img.src = ministry.logo;
+			img.alt = ministry.shortName;
+			img.onerror = function () {
+				this.src = 'https://placehold.co/150x150/f4f4f4/c7973f?text=' + encodeURIComponent(ministry.shortName);
+			};
+			const h4 = document.createElement('h4');
+			h4.textContent = ministry.shortName;
+			a.appendChild(img);
+			a.appendChild(h4);
+			return a;
+		}
+
+		function renderMinistriesSupport(ministriesData) {
+			if (!ministriesData || !Array.isArray(ministriesData.ministries)) return;
+			const grid = document.getElementById('ministries-support-grid');
+			if (!grid) return;
+			grid.innerHTML = '';
+			ministriesData.ministries.forEach(ministry => {
+				grid.appendChild(buildMinistrySupportTile(ministry));
+			});
+		}
+
 		fetch('assets/content/gala.json')
 			.then(response => {
 				if (!response.ok) throw new Error('gala.json not found');
 				return response.json();
 			})
 			.then(data => {
+				setTextIfPresent('ministries-support-heading', data.ministriesSupportHeading);
 				renderHero(data.hero);
 				renderPurposeSection(data.purposeSection);
 				renderCountdown(data.countdown);
@@ -688,6 +716,20 @@
 				console.warn('Could not load gala.json — showing default gala page content:', error);
 				updateGalaCountdown('October 17, 2026 18:00:00');
 				countdownIntervalId = setInterval(() => updateGalaCountdown('October 17, 2026 18:00:00'), 1000);
+			});
+
+		// Fetched independently from gala.json so that a problem loading one
+		// never prevents the other from displaying — the "Ministries You
+		// Support" tiles just fall back to the names/logos already baked
+		// into the HTML above if this fetch fails for any reason.
+		fetch('assets/content/ministries.json')
+			.then(response => {
+				if (!response.ok) throw new Error('ministries.json not found');
+				return response.json();
+			})
+			.then(data => renderMinistriesSupport(data))
+			.catch(error => {
+				console.warn('Could not load ministries.json for the Ministries You Support section:', error);
 			});
 	</script>
 
