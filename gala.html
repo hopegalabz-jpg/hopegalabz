@@ -229,10 +229,10 @@
 	<div id="site-header"></div>
 
 	<div class="hero-intro">
-		<h1>The 2026 Hope Gala</h1>
-		<p style="font-size: 1.2rem; margin-top: 10px; color: var(--gold);">October 17th, 2026 | Belize City</p>
+		<h1 id="gala-hero-title">The 2026 Hope Gala</h1>
+		<p id="gala-hero-date-location" style="font-size: 1.2rem; margin-top: 10px; color: var(--gold);">October 17th, 2026 | Belize City</p>
 		<div class="divider" style="margin-top: 25px;"></div>
-		<button class="modal-submit" style="width: auto; display: inline-block; padding: 12px 35px;" onclick="openPledge()">Make a Pledge</button>
+		<button class="modal-submit" id="gala-pledge-button" style="width: auto; display: inline-block; padding: 12px 35px;" onclick="openPledge()">Make a Pledge</button>
 	</div>
 
 	<section class="ministry-section bg-white" style="padding: 50px 24px; position: relative;">
@@ -288,10 +288,12 @@
 
 		<div class="ministry-row">
 			<div class="ministry-content">
-				<h2>An Evening of Purpose & Praise</h2>
-				<p>The Hope Gala is much more than a premier fundraising event; it is a celebration of the miraculous work God is doing across Belize. This elegant evening brings together compassionate hearts to support the transformative missions of The Belize Project and our dedicated ministry partners.</p>
-				<p>Through your faithful generosity, we are empowered to be the hands and feet of Christ—bringing healing to the broken, shelter to the vulnerable, and a renewed sense of dignity to those seeking a second chance. Every ticket purchased and every pledge made ripples into eternity, funding critical resources, education, and life-changing rehabilitation programs.</p>
-				<p>Join us in witnessing how faith, community, and stewardship can rewrite stories and build a brighter, God-honoring future for Belize.</p>
+				<h2 id="purpose-heading">An Evening of Purpose & Praise</h2>
+				<div id="purpose-paragraphs">
+					<p>The Hope Gala is much more than a premier fundraising event; it is a celebration of the miraculous work God is doing across Belize. This elegant evening brings together compassionate hearts to support the transformative missions of The Belize Project and our dedicated ministry partners.</p>
+					<p>Through your faithful generosity, we are empowered to be the hands and feet of Christ—bringing healing to the broken, shelter to the vulnerable, and a renewed sense of dignity to those seeking a second chance. Every ticket purchased and every pledge made ripples into eternity, funding critical resources, education, and life-changing rehabilitation programs.</p>
+					<p>Join us in witnessing how faith, community, and stewardship can rewrite stories and build a brighter, God-honoring future for Belize.</p>
+				</div>
 			</div>
 			
 			<div class="ministry-visual">
@@ -387,8 +389,6 @@
 				}
 			</style>
 			
-			<!-- Sponsor tier cards are built by JavaScript from gala.json.
-			     See the render script near the bottom of this file. -->
 			<div class="sponsor-inline-grid" id="sponsor-tier-grid"></div>
 			
 		</div>
@@ -397,9 +397,11 @@
 	<section class="ministry-section bg-white" style="padding: 50px 24px;">
 		<div class="ministry-row reverse">
 			<div class="ministry-content">
-				<h2>Faithful Stewardship</h2>
-				<p>Transparency and stewardship are at the core of our ministry. We believe in honoring God with every gift received, ensuring that your generosity is carefully and intentionally allocated.</p>
-				<p>As illustrated in our distribution model, <strong>50%</strong> of all funds directly support <strong>Rehabilitation and Reintegration</strong> programs. We powerfully invest <strong>20%</strong> into <strong>Education and Youth Intervention</strong>, and another <strong>20%</strong> into <strong>Economic Development and Entrepreneurship</strong>, equipping the next generation and local leaders with the tools they need to thrive. With only <strong>10%</strong> dedicated to <strong>Administration</strong>, you can be confident that your giving translates directly into tangible, life-changing impact on the ground.</p>
+				<h2 id="stewardship-heading">Faithful Stewardship</h2>
+				<div id="stewardship-paragraphs">
+					<p>Transparency and stewardship are at the core of our ministry. We believe in honoring God with every gift received, ensuring that your generosity is carefully and intentionally allocated.</p>
+					<p>As illustrated in our distribution model, <strong>50%</strong> of all funds directly support <strong>Rehabilitation and Reintegration</strong> programs. We powerfully invest <strong>20%</strong> into <strong>Education and Youth Intervention</strong>, and another <strong>20%</strong> into <strong>Economic Development and Entrepreneurship</strong>, equipping the next generation and local leaders with the tools they need to thrive. With only <strong>10%</strong> dedicated to <strong>Administration</strong>, you can be confident that your giving translates directly into tangible, life-changing impact on the ground.</p>
+				</div>
 			</div>
 			<div class="ministry-visual">
 				<img class="ministry-main-img" style="border: none; box-shadow: none; object-fit: contain; max-height: 400px;" src="assets/images/chart.png" alt="Budget Distribution Chart">
@@ -431,14 +433,14 @@
 					<img src="assets/images/dove.png" alt="Peace Dove">
 				</div>
 				<div class="pledge-verse">
-					<p class="verse-text">"Carry each other's burdens, and in this way you will fulfill the law of Christ."</p>
-					<p class="verse-ref">Galatians 6:2</p>
+					<p class="verse-text" id="pledge-verse-text">"Carry each other's burdens, and in this way you will fulfill the law of Christ."</p>
+					<p class="verse-ref" id="pledge-verse-ref">Galatians 6:2</p>
 				</div>
 			</div>
 			
 			<div class="pledge-main-panel">
-				<h3>Make a Pledge</h3>
-				<p class="pledge-thanks">We thank you for your generous heart. Every contribution, no matter the size, helps us bring hope and restoration to communities in Belize.</p>
+				<h3 id="pledge-modal-title">Make a Pledge</h3>
+				<p class="pledge-thanks" id="pledge-thanks-text">We thank you for your generous heart. Every contribution, no matter the size, helps us bring hope and restoration to communities in Belize.</p>
 				
 				<div class="bank-details-card">
 					<h5 id="pledge-bank-name">Atlantic Bank Electronic Transfer</h5>
@@ -449,7 +451,7 @@
 				<p class="check-instruction" id="pledge-check-instruction">Checks can also be made payable directly to <strong>The Belize Project</strong> and mailed to our main office.</p>
 				
 				<div class="pledge-contact-footer">
-					<p class="contact-title">For pledge confirmations or inquiries:</p>
+					<p class="contact-title" id="pledge-contacts-intro">For pledge confirmations or inquiries:</p>
 					<div class="contact-grid" id="pledge-contact-grid">
 						<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
 						<p><strong>Mrs. Ruth Williams</strong><br>+501-636-8147</p>
@@ -479,19 +481,9 @@
 			}, 250);
 		}
 	</script>
-
+	
 	<script>
-		// ==========================================================================
-		// GALA PAGE CONTENT LOADER
-		// ==========================================================================
-		// Countdown target date, sponsorship tiers, and pledge/donation details
-		// all come from gala.json. The countdown and sponsorship sections are
-		// each fully removed from the page (not just visually hidden) when
-		// their "show" flag is false in gala.json — matching how the person
-		// asked for these to work once the gala date has passed.
-
 		const flipCountdownState = { days: null, hours: null, minutes: null, seconds: null };
-		let countdownIntervalId = null;
 
 		function setFlipUnit(unitKey, newValue) {
 			const displayValue = String(newValue).padStart(2, '0');
@@ -539,6 +531,54 @@
 			setFlipUnit('minutes', minutes);
 			setFlipUnit('seconds', seconds);
 		}
+	</script>
+
+	<!-- ==========================================================================
+	     GALA PAGE CONTENT LOADER
+	     ==========================================================================
+	     Every piece of text on this page — hero title, the "Purpose & Praise"
+	     text, the countdown, sponsorship tiers, "Faithful Stewardship" text,
+	     and the pledge modal — comes from gala.json. Everything above ships
+	     with the current real text baked in as a fallback, so the page never
+	     shows blank if gala.json fails to load for any reason.
+	     ========================================================================== -->
+	<script>
+		let countdownIntervalId = null;
+
+		function setTextIfPresent(id, value) {
+			const el = document.getElementById(id);
+			if (el && value !== undefined && value !== null) el.textContent = value;
+		}
+
+		function renderParagraphs(containerId, paragraphs) {
+			const container = document.getElementById(containerId);
+			if (!container || !Array.isArray(paragraphs) || paragraphs.length === 0) return;
+			container.innerHTML = '';
+			paragraphs.forEach(p => {
+				const el = document.createElement('p');
+				el.textContent = p.text;
+				container.appendChild(el);
+			});
+		}
+
+		function renderHero(hero) {
+			if (!hero) return;
+			setTextIfPresent('gala-hero-title', hero.title);
+			setTextIfPresent('gala-hero-date-location', hero.dateLocation);
+			setTextIfPresent('gala-pledge-button', hero.pledgeButtonText);
+		}
+
+		function renderPurposeSection(purposeSection) {
+			if (!purposeSection) return;
+			setTextIfPresent('purpose-heading', purposeSection.purposeHeading);
+			renderParagraphs('purpose-paragraphs', purposeSection.purposeParagraphs);
+		}
+
+		function renderStewardshipSection(stewardshipSection) {
+			if (!stewardshipSection) return;
+			setTextIfPresent('stewardship-heading', stewardshipSection.stewardshipHeading);
+			renderParagraphs('stewardship-paragraphs', stewardshipSection.stewardshipParagraphs);
+		}
 
 		function renderCountdown(countdown) {
 			const container = document.getElementById('countdown-container');
@@ -549,10 +589,7 @@
 				return;
 			}
 
-			// Stop any previously running interval before starting a new one,
-			// in case this function is ever called more than once.
 			if (countdownIntervalId) clearInterval(countdownIntervalId);
-
 			updateGalaCountdown(countdown.targetDate);
 			countdownIntervalId = setInterval(() => updateGalaCountdown(countdown.targetDate), 1000);
 		}
@@ -609,20 +646,16 @@
 		function renderPledge(pledge) {
 			if (!pledge) return;
 
-			const setText = (id, value) => {
-				const el = document.getElementById(id);
-				if (el && value !== undefined) el.textContent = value;
-			};
-
-			setText('pledge-bank-name', pledge.bankName);
-			setText('pledge-account-name', pledge.bankAccountName);
-			setText('pledge-account-number', pledge.bankAccountNumber);
-			setText('pledge-email', pledge.email);
-
-			const checkInstructionEl = document.getElementById('pledge-check-instruction');
-			if (checkInstructionEl && pledge.checkInstruction) {
-				checkInstructionEl.textContent = pledge.checkInstruction;
-			}
+			setTextIfPresent('pledge-verse-text', pledge.verseText ? `"${pledge.verseText}"` : undefined);
+			setTextIfPresent('pledge-verse-ref', pledge.verseReference);
+			setTextIfPresent('pledge-modal-title', pledge.modalTitle);
+			setTextIfPresent('pledge-thanks-text', pledge.thanksText);
+			setTextIfPresent('pledge-bank-name', pledge.bankName);
+			setTextIfPresent('pledge-account-name', pledge.bankAccountName);
+			setTextIfPresent('pledge-account-number', pledge.bankAccountNumber);
+			setTextIfPresent('pledge-check-instruction', pledge.checkInstruction);
+			setTextIfPresent('pledge-contacts-intro', pledge.contactsIntro);
+			setTextIfPresent('pledge-email', pledge.email);
 
 			const contactGrid = document.getElementById('pledge-contact-grid');
 			if (contactGrid && Array.isArray(pledge.contacts)) {
@@ -641,15 +674,17 @@
 				return response.json();
 			})
 			.then(data => {
+				renderHero(data.hero);
+				renderPurposeSection(data.purposeSection);
 				renderCountdown(data.countdown);
 				renderSponsorship(data.sponsorship);
+				renderStewardshipSection(data.stewardshipSection);
 				renderPledge(data.pledge);
 			})
 			.catch(error => {
-				// If gala.json can't be loaded, the countdown and sponsorship
-				// sections stay exactly as they shipped in this HTML (visible,
-				// with the current hardcoded date/tiers), and the pledge modal
-				// keeps its hardcoded fallback details too.
+				// All fallback content already baked into the HTML above stays
+				// exactly as it is — including the original countdown date —
+				// so the page never breaks even if gala.json can't be loaded.
 				console.warn('Could not load gala.json — showing default gala page content:', error);
 				updateGalaCountdown('October 17, 2026 18:00:00');
 				countdownIntervalId = setInterval(() => updateGalaCountdown('October 17, 2026 18:00:00'), 1000);
