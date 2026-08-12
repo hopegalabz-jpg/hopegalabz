@@ -40,13 +40,13 @@ collections:
             fields:
               - { label: "Show this video on the website?", name: "show", widget: "boolean", default: true, hint: "Turn this OFF (slide to the left) if you want to remove the video from the homepage completely. Turn it back ON anytime." }
               - { label: "YouTube Video Code", name: "youtubeId", widget: "string", hint: "Go to the YouTube video, copy its web address, and paste just the code at the end. Example: if the address is youtube.com/watch?v=trWomaffddI, the code is trWomaffddI" }
-              - { label: "Title Above the Video", name: "heading", widget: "string", hint: "Example: Watch Our Story" }
+              - { label: "Title Above the Video", name: "videoSectionHeading", widget: "string", hint: "Example: Watch Our Story" }
           - label: "'Why Belize?' Section"
             name: "whyBelize"
             widget: "object"
             hint: "This is the text block next to the map of Belize, further down the homepage."
             fields:
-              - { label: "Section Title", name: "heading", widget: "string", hint: "Example: Why Belize?" }
+              - { label: "Section Title", name: "whyBelizeSectionHeading", widget: "string", hint: "Example: Why Belize?" }
               - label: "Paragraphs (one box per paragraph)"
                 name: "paragraphs"
                 widget: "list"
