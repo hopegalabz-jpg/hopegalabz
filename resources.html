@@ -303,129 +303,11 @@
 
 		<section class="resources-section">
 			<div class="container">
-				<div class="resource-tile-grid">
-
-					<button type="button" class="resource-tile" onclick="openResourceCategory('brochures')">
-						<div class="resource-tile-icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-								<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-								<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-							</svg>
-						</div>
-						<h3>Brochures</h3>
-						<p>General overviews of our mission and programs.</p>
-						<span class="resource-tile-count" id="count-brochures"></span>
-					</button>
-
-					<button type="button" class="resource-tile" onclick="openResourceCategory('letters')">
-						<div class="resource-tile-icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-								<path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-							</svg>
-						</div>
-						<h3>Printable Letters</h3>
-						<p>Solicitation and donor appeal letters, ready to print.</p>
-						<span class="resource-tile-count" id="count-letters"></span>
-					</button>
-
-					<button type="button" class="resource-tile" onclick="openResourceCategory('sponsorship')">
-						<div class="resource-tile-icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M12 2l2.6 6.6L21 9.3l-5 4.6L17.4 21 12 17.3 6.6 21 8 13.9l-5-4.6 6.4-.7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-							</svg>
-						</div>
-						<h3>Sponsorship Material</h3>
-						<p>Packages and materials for partners and sponsors.</p>
-						<span class="resource-tile-count" id="count-sponsorship"></span>
-					</button>
-
-				</div>
+				<!-- Category tiles are built by JavaScript from resources.json.
+				     See the render script near the bottom of this file. -->
+				<div class="resource-tile-grid" id="resource-tile-grid"></div>
 			</div>
 		</section>
-
-		<!-- ==================================================================
-		     RESOURCE DOCUMENTS — edit here, not in main.js
-		     ==================================================================
-		     Everything below this line is hidden (never shown to visitors).
-		     This page's own <script> block below reads it at page load to
-		     build the sidebar. To add a document: copy one
-		     <div class="resource-item"> block and change its four data-
-		     values. To add a whole new category, copy one
-		     <div class="resource-category"> block, give it a new
-		     data-category name, and add a matching tile + onclick above
-		     (see the three .resource-tile buttons in the section above).
-
-		     data-category   must exactly match the onclick value on its tile
-		                     button above (e.g. openResourceCategory('letters')
-		                     needs a data-category="letters" block below).
-		     data-folder     the folder these files live in, e.g. "docs" or
-		                     "docs/brochures" — whatever matches your repo.
-		     data-title-first / data-title-gold
-		                     the sidebar heading. title-gold is the part shown
-		                     in gold; leave title-gold empty for a plain
-		                     single-color heading.
-
-		     Each document needs:
-		     data-filename     exact filename in that folder, incl. extension
-		     data-title        shown as the document's heading
-		     data-description  shown as the document's short description
-		     data-filetype     badge text only (e.g. "PDF", "JPG") — the icon
-		                       shown is chosen automatically from the file
-		                       extension in data-filename, not from this field
-		-->
-		<div id="resource-data" hidden>
-
-			<div class="resource-category"
-				data-category="brochures"
-				data-folder="docs"
-				data-title-first="Brochures"
-				data-title-gold="">
-
-				<div class="resource-item"
-					data-filename="2026sheet.pdf"
-					data-title="Hope Gala 2026 Ministry Sheet"
-					data-description="An overview of the ministries supported by this year's Hope Gala."
-					data-filetype="PDF"></div>
-
-			</div>
-
-			<div class="resource-category"
-				data-category="letters"
-				data-folder="docs"
-				data-title-first="Printable"
-				data-title-gold="Letters">
-
-				<div class="resource-item"
-					data-filename="sl2026.pdf"
-					data-title="2026 Sponsorship Letter"
-					data-description="Our formal invitation to partner with the Hope Gala as a sponsor this year."
-					data-filetype="PDF"></div>
-
-			</div>
-
-			<div class="resource-category"
-				data-category="sponsorship"
-				data-folder="docs"
-				data-title-first="Sponsorship"
-				data-title-gold="Material">
-
-				<div class="resource-item"
-					data-filename="pledge.pdf"
-					data-title="2026 Pledge Form"
-					data-description="Our official pledge form for the 2026 Hope Gala."
-					data-filetype="PDF"></div>
-
-				<div class="resource-item"
-					data-filename="2026flyer.pdf"
-					data-title="2026 Event Flyer"
-					data-description="The official 2026 Hope Gala flyer."
-					data-filetype="PDF"></div>
-
-			</div>
-
-		</div>
 	</main>
 
 	<!-- Shared sidebar shell (same IDs/structure as the Gallery sidebar; content is swapped by openResourceCategory) -->
@@ -447,51 +329,15 @@
 	<script src="assets/js/main.js"></script>
 
 	<!-- ==========================================================================
-	     RESOURCES-ONLY SCRIPT
+	     RESOURCES CONTENT LOADER
 	     ==========================================================================
-	     Moved out of main.js because this logic is used by this page only.
-	     main.js stays universal: header/footer/modal injection, the contact
-	     form, the countdown-page hooks, and Gallery's openAlbum()/lightbox/
-	     closeAlbum() (which this page's sidebar shell reuses). Everything
-	     below — reading #resource-data, building the tiles and sidebar list,
-	     and the white-theme toggle — exists only here, and has zero
-	     knowledge of any specific brochure, letter, or filename; it only
-	     knows how to read whatever categories/documents currently exist in
-	     the #resource-data block above.
+	     Categories and documents come from resources.json — see the fetch
+	     call at the bottom of this script. Category tiles are generated
+	     dynamically, so adding or removing a whole category (not just a
+	     document within one) needs no HTML changes, only an edit in
+	     resources.json (via the /admin editor).
 	     ========================================================================== -->
 	<script>
-		function readResourceDataFromPage() {
-			const categories = {};
-			const dataRoot = document.getElementById('resource-data');
-			if (!dataRoot) return categories; // this page has no resource data — nothing to read
-
-			const categoryEls = dataRoot.querySelectorAll('.resource-category');
-			categoryEls.forEach(function(categoryEl) {
-				const key = categoryEl.dataset.category;
-				if (!key) return; // malformed block missing data-category — skip rather than crash
-
-				const items = [];
-				const itemEls = categoryEl.querySelectorAll('.resource-item');
-				itemEls.forEach(function(itemEl) {
-					items.push({
-						filename: itemEl.dataset.filename || '',
-						title: itemEl.dataset.title || '',
-						description: itemEl.dataset.description || '',
-						fileType: itemEl.dataset.filetype || ''
-					});
-				});
-
-				categories[key] = {
-					titleFirst: categoryEl.dataset.titleFirst || '',
-					titleGold: categoryEl.dataset.titleGold || '',
-					folderPath: categoryEl.dataset.folder || '',
-					items: items
-				};
-			});
-
-			return categories;
-		}
-
 		// Two small inline icon sets, reused for both the sidebar link rows and
 		// keeping every PDF-type item visually consistent with the icon
 		// already used on the tile it came from.
@@ -511,24 +357,80 @@
 			</svg>
 		`;
 
-		// State memory for the currently open Resources category (parallels the
-		// currentAlbumList / currentFolderPath pattern used by Gallery in
-		// main.js). resourceCategories itself is populated once, from the
-		// HTML, the moment the page finishes loading.
-		let currentResourceCategory = null;
-		let resourceCategories = {};
+		// Same tile icon for every category — a document/list glyph. Keeps
+		// the CMS simple (no icon picker needed to add a new category)
+		// while still looking intentional, since every tile already shares
+		// the same circular icon background regardless of which SVG is used.
+		const RESOURCE_TILE_ICON = `
+			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+				<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+				<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+			</svg>
+		`;
 
-		function getResourceIcon(item) {
-			const ext = item.filename.split('.').pop().toLowerCase();
+		// State memory for the currently open Resources category.
+		// resourceCategories is populated once, from resources.json, after
+		// the fetch below succeeds.
+		let currentResourceIndex = null;
+		let resourceCategories = [];
+
+		function getResourceIcon(filePath) {
+			const ext = filePath.split('.').pop().toLowerCase();
 			const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext);
 			return isImage ? RESOURCE_ICON_IMAGE : RESOURCE_ICON_DOCUMENT;
 		}
 
-		function openResourceCategory(categoryKey) {
-			const category = resourceCategories[categoryKey];
+		function getFileTypeLabel(filePath) {
+			return filePath.split('.').pop().toUpperCase();
+		}
+
+		function buildResourceTile(category, index) {
+			const btn = document.createElement('button');
+			btn.type = 'button';
+			btn.className = 'resource-tile';
+			btn.onclick = function () { openResourceCategory(index); };
+
+			const iconWrap = document.createElement('div');
+			iconWrap.className = 'resource-tile-icon';
+			iconWrap.setAttribute('aria-hidden', 'true');
+			iconWrap.innerHTML = RESOURCE_TILE_ICON;
+
+			const h3 = document.createElement('h3');
+			h3.textContent = category.title;
+
+			const p = document.createElement('p');
+			p.textContent = category.description || '';
+
+			const count = document.createElement('span');
+			count.className = 'resource-tile-count';
+			const itemCount = Array.isArray(category.items) ? category.items.length : 0;
+			count.textContent = `${itemCount} ${itemCount === 1 ? 'Document' : 'Documents'}`;
+
+			btn.appendChild(iconWrap);
+			btn.appendChild(h3);
+			btn.appendChild(p);
+			btn.appendChild(count);
+			return btn;
+		}
+
+		function renderResourcesPage(data) {
+			const grid = document.getElementById('resource-tile-grid');
+			if (!grid || !data || !Array.isArray(data.categories)) return;
+
+			resourceCategories = data.categories;
+
+			grid.innerHTML = '';
+			resourceCategories.forEach((category, index) => {
+				grid.appendChild(buildResourceTile(category, index));
+			});
+		}
+
+		function openResourceCategory(index) {
+			const category = resourceCategories[index];
 			if (!category) return;
 
-			currentResourceCategory = categoryKey;
+			currentResourceIndex = index;
 
 			const overlay = document.getElementById('sidebarOverlay');
 			const sidebarPanel = overlay.querySelector('.premium-sidebar');
@@ -540,27 +442,23 @@
 			// is untouched.
 			sidebarPanel.classList.add('is-light');
 
-			titleContainer.innerHTML = category.titleGold
-				? `${category.titleFirst} <span>${category.titleGold}</span>`
-				: category.titleFirst;
-
+			titleContainer.textContent = category.title;
 			listContainer.innerHTML = '';
 
-			category.items.forEach((item, index) => {
+			(category.items || []).forEach((item) => {
 				const btn = document.createElement('button');
 				btn.type = 'button';
 				btn.className = 'resource-link-item';
 				btn.innerHTML = `
-					<div class="resource-link-icon" aria-hidden="true">${getResourceIcon(item)}</div>
+					<div class="resource-link-icon" aria-hidden="true">${getResourceIcon(item.file)}</div>
 					<div class="resource-link-text">
 						<h4>${item.title}</h4>
 						<p>${item.description}</p>
 					</div>
-					<span class="resource-link-filetype">${item.fileType}</span>
+					<span class="resource-link-filetype">${getFileTypeLabel(item.file)}</span>
 				`;
-				btn.onclick = function() {
-					const url = `${category.folderPath}/${item.filename}`;
-					window.open(url, '_blank', 'noopener');
+				btn.onclick = function () {
+					window.open(item.file, '_blank', 'noopener');
 				};
 				listContainer.appendChild(btn);
 			});
@@ -578,18 +476,15 @@
 			closeAlbum();
 		}
 
-		// Read the resource data from the page, then populate each tile's item
-		// count — both need to happen once the page and its data blocks exist.
-		document.addEventListener('DOMContentLoaded', function() {
-			resourceCategories = readResourceDataFromPage();
-
-			Object.keys(resourceCategories).forEach(function(key) {
-				const countEl = document.getElementById(`count-${key}`);
-				if (!countEl) return; // this page has no Resources tiles — nothing to do
-				const count = resourceCategories[key].items.length;
-				countEl.textContent = `${count} ${count === 1 ? 'Document' : 'Documents'}`;
+		fetch('assets/content/resources.json')
+			.then(response => {
+				if (!response.ok) throw new Error('resources.json not found');
+				return response.json();
+			})
+			.then(data => renderResourcesPage(data))
+			.catch(error => {
+				console.warn('Could not load resources.json — no resource categories will display:', error);
 			});
-		});
 	</script>
 </body>
 </html>
