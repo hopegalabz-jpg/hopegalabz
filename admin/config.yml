@@ -24,7 +24,8 @@ collections:
           - label: "Photo Slideshow"
             name: "slideshow_images"
             widget: "list"
-            field: { label: "Photo", name: "image", widget: "image" }
+            fields:
+              - { label: "Photo", name: "image", widget: "image" }
           - label: "Story Video"
             name: "video"
             widget: "object"
@@ -40,7 +41,8 @@ collections:
               - label: "Paragraphs"
                 name: "paragraphs"
                 widget: "list"
-                field: { label: "Paragraph", name: "text", widget: "text" }
+                fields:
+                  - { label: "Paragraph", name: "text", widget: "text" }
 
   # ---------- MINISTRIES ----------
   - name: "ministries"
@@ -119,7 +121,8 @@ collections:
               - label: "Photos"
                 name: "images"
                 widget: "list"
-                field: { label: "Photo", name: "image", widget: "image", hint: "Tip: resize photos under 2MB before uploading." }
+                fields:
+                  - { label: "Photo", name: "image", widget: "image", hint: "Tip: resize photos under 2MB before uploading." }
 
   # ---------- GALA PAGE ----------
   - name: "gala"
@@ -145,7 +148,8 @@ collections:
               - label: "Paragraphs"
                 name: "purposeParagraphs"
                 widget: "list"
-                field: { label: "Paragraph", name: "text", widget: "text" }
+                fields:
+                  - { label: "Paragraph", name: "text", widget: "text" }
           - label: "Countdown"
             name: "countdown"
             widget: "object"
@@ -167,7 +171,8 @@ collections:
                   - label: "Perks"
                     name: "perks"
                     widget: "list"
-                    field: { label: "Perk", name: "perk", widget: "string" }
+                    fields:
+                      - { label: "Perk", name: "perk", widget: "string" }
           - label: "Faithful Stewardship Section"
             name: "stewardshipSection"
             widget: "object"
@@ -176,7 +181,8 @@ collections:
               - label: "Paragraphs"
                 name: "stewardshipParagraphs"
                 widget: "list"
-                field: { label: "Paragraph", name: "text", widget: "text" }
+                fields:
+                  - { label: "Paragraph", name: "text", widget: "text" }
           - label: "Pledge / Donation Info"
             name: "pledge"
             widget: "object"
