@@ -1,0 +1,49 @@
+{
+  "countdown": {
+    "show": false,
+    "targetDate": "2026-10-17T18:00:00"
+  },
+  "sponsorship": {
+    "show": false,
+    "tiers": [
+      {
+        "name": "Gold Sponsor",
+        "price": "$5000",
+        "perks": [
+          { "perk": "8 Hope Gala Tickets" },
+          { "perk": "Large Print on Promo Materials" },
+          { "perk": "Name Mentioned on Night of Event" },
+          { "perk": "Award of Appreciation" }
+        ]
+      },
+      {
+        "name": "Silver Sponsor",
+        "price": "$2500",
+        "perks": [
+          { "perk": "6 Hope Gala Tickets" },
+          { "perk": "Medium Print on Promo Materials" },
+          { "perk": "Name Mentioned on Night of Event" }
+        ]
+      },
+      {
+        "name": "Bronze Sponsor",
+        "price": "$1000",
+        "perks": [
+          { "perk": "4 Hope Gala Tickets" },
+          { "perk": "Small Print on Promo Materials" }
+        ]
+      }
+    ]
+  },
+  "pledge": {
+    "bankName": "Atlantic Bank Electronic Transfer",
+    "bankAccountName": "The Belize Project",
+    "bankAccountNumber": "100279146",
+    "checkInstruction": "Checks can also be made payable directly to The Belize Project and mailed to our main office.",
+    "contacts": [
+      { "name": "Mr. Mario Castellanos", "phone": "+501-610-9345" },
+      { "name": "Mrs. Ruth Williams", "phone": "+501-636-8147" }
+    ],
+    "email": "thebelizeproject2@gmail.com"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {
+      "title": "Brochures",
+      "items": [
+        {
+          "title": "Hope Gala 2026 Ministry Sheet",
+          "description": "An overview of the ministries supported by this year's Hope Gala.",
+          "file": "docs/2026sheet.pdf"
+        }
+      ]
+    },
+    {
+      "title": "Printable Letters",
+      "items": [
+        {
+          "title": "2026 Sponsorship Letter",
+          "description": "Our formal invitation to partner with the Hope Gala as a sponsor this year.",
+          "file": "docs/sl2026.pdf"
+        }
+      ]
+    },
+    {
+      "title": "Sponsorship Material",
+      "items": [
+        {
+          "title": "2026 Pledge Form",
+          "description": "Our official pledge form for the 2026 Hope Gala.",
+          "file": "docs/pledge.pdf"
+        },
+        {
+          "title": "2026 Event Flyer",
+          "description": "The official 2026 Hope Gala flyer.",
+          "file": "docs/2026flyer.pdf"
+        }
+      ]
+    }
+  ]
+}

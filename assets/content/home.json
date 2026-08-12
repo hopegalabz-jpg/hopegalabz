@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "heading": "The Belize Project",
+    "subheading": "Loving People, Places, and Things to Life"
+  },
+  "slideshow_images": [
+    { "image": "gala2026banner1.png" },
+    { "image": "gala2026banner2.png" },
+    { "image": "11.jpg" },
+    { "image": "3.jpg" },
+    { "image": "6.jpg" },
+    { "image": "12.jpg" }
+  ],
+  "video": {
+    "show": true,
+    "youtubeId": "trWomaffddI",
+    "heading": "Watch Our Story"
+  },
+  "whyBelize": {
+    "heading": "Why Belize?",
+    "paragraphs": [
+      { "text": "The Belize Project is a ministry that serves other ministries' efforts, NGOs, and NPOs in Belize that are like-minded in our mission. Our mission statement is loving people, places, and things to life through Jesus Christ." },
+      { "text": "We engage in many projects supporting spiritual goodwill efforts, directly engaging in rehabilitation and reintegration, education, youth intervention, economic development, and entrepreneurship." },
+      { "text": "We support in diverse ways: materials, prayer, resources, finance, mentoring, training, encouragement, and much more. The vision of The Belize Project is to find those in Belize who are making a difference, and we walk alongside them. Our ministry focuses on rehabilitation farms, halfway houses, safe homes, prisons, schools, churches, and micro-lending." },
+      { "text": "We are bringing awareness and partnering with others to cultivate more healing communities in Belize." }
+    ]
+  }
+}

@@ -1,0 +1,713 @@
+{
+  "albums": [
+    {
+      "year": "Hope Gala 2025",
+      "category": "gala",
+      "folder": "gala-night-2025",
+      "coverImage": "assets/images/gala-night-2025/1.jpg",
+      "images": [
+        {
+          "image": "assets/images/gala-night-2025/1.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2025/2.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2025/3.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2025/4.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2025/5.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2025/6.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2025/7.jpg"
+        }
+      ]
+    },
+    {
+      "year": "Hope Gala 2024",
+      "category": "gala",
+      "folder": "gala-night-2024",
+      "coverImage": "assets/images/gala-night-2024/1.jpg",
+      "images": [
+        {
+          "image": "assets/images/gala-night-2024/1.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0017.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/20241019_163342.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/20241019_210912.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0009.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/20241019_163312.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0014.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0002.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0019.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/20241019_185200.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/20241019_210925.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0012.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/20241019_163306.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/20241019_210822.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0024.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0010.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0007.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/2.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0004.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0018.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/20241019_185219.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0011.jpg"
+        },
+        {
+          "image": "assets/images/gala-night-2024/IMG-20241020-WA0005.jpg"
+        }
+      ]
+    },
+    {
+      "year": "Hope Gala 2023",
+      "category": "gala",
+      "folder": "gala-night-2023",
+      "coverImage": "assets/images/gala-night-2023/3 (1).png",
+      "images": [
+        {
+          "image": "assets/images/gala-night-2023/3 (1).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (2).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (3).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (4).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (5).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (6).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (7).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (8).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (9).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (10).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (11).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (12).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (13).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (14).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (15).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (16).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (17).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (18).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (19).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (20).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (21).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (22).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (23).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (24).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (25).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (26).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (27).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (28).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (29).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (30).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (31).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (32).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (33).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (34).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (35).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (36).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (37).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (38).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (39).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (40).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (41).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (42).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (43).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (44).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (45).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (46).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (47).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (48).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (49).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (50).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (51).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (52).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (53).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (54).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (55).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (56).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (57).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (58).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (59).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (60).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (61).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (62).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (63).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (64).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (65).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (66).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (67).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (68).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (69).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (70).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (71).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (72).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (73).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (74).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (75).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (76).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (77).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (78).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (79).png"
+        },
+        {
+          "image": "assets/images/gala-night-2023/3 (80).png"
+        }
+      ]
+    },
+    {
+      "year": "Hope Gala 2022",
+      "category": "gala",
+      "folder": "hope-gala-2022",
+      "coverImage": "assets/images/hope-gala-2022/HopeGala22-1.png",
+      "images": [
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-1.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-10.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-15.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-16.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-17.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-19.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-20.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-21.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-22.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-24.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-25.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-28.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-29.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-3.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-30.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-31.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-32.jpg"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-33.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-35.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-36.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-37.jpg"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-38.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-4.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-40.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-41.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-42.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-43.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-44.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-45.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-46.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-47.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-48.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-49.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-5.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-50.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-51.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-52.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-53.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-54.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-55.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-57.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-58.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-59.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-6.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-60.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-61.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-63.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-64.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-65.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-67.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-68.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-69.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-7.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-70.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-71.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-72.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-73.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-74.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-75.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-76.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-78.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-79.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-8.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-80.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-81.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-82.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-83.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-84.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-85.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-86.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-87.jpg"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-89.jpg"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-9.png"
+        },
+        {
+          "image": "assets/images/hope-gala-2022/HopeGala22-90.jpg"
+        }
+      ]
+    },
+    {
+      "year": "Jacob's Rehabilitation Farm Center",
+      "category": "ministry",
+      "folder": "ministries/jacobsfarm",
+      "coverImage": "assets/images/ministries/jacobsfarm/1000037511.jpg",
+      "images": [
+        {
+          "image": "assets/images/ministries/jacobsfarm/1000037511.jpg"
+        },
+        {
+          "image": "assets/images/ministries/jacobsfarm/1000037513.jpg"
+        },
+        {
+          "image": "assets/images/ministries/jacobsfarm/IMG-20250701-WA0036.jpg"
+        },
+        {
+          "image": "assets/images/ministries/jacobsfarm/IMG-20250701-WA0037.jpg"
+        },
+        {
+          "image": "assets/images/ministries/jacobsfarm/IMG-20250701-WA0040.jpg"
+        },
+        {
+          "image": "assets/images/ministries/jacobsfarm/IMG-20250701-WA0041.jpg"
+        },
+        {
+          "image": "assets/images/ministries/jacobsfarm/IMG-20250701-WA0042.jpg"
+        }
+      ]
+    },
+    {
+      "year": "House of Dorcas",
+      "category": "ministry",
+      "folder": "ministries/Dorcas",
+      "coverImage": "assets/images/ministries/Dorcas/1.jpg",
+      "images": [
+        {
+          "image": "assets/images/ministries/Dorcas/1.jpg"
+        },
+        {
+          "image": "assets/images/ministries/Dorcas/2.jpg"
+        },
+        {
+          "image": "assets/images/ministries/Dorcas/3.png"
+        },
+        {
+          "image": "assets/images/ministries/Dorcas/IMG-20250701-WA0038.jpg"
+        },
+        {
+          "image": "assets/images/ministries/Dorcas/IMG-20250701-WA0039.jpg"
+        }
+      ]
+    },
+    {
+      "year": "Restore Small Group",
+      "category": "ministry",
+      "folder": "ministries/restore",
+      "coverImage": "assets/images/ministries/restore/4.jpg",
+      "images": [
+        {
+          "image": "assets/images/ministries/restore/4.jpg"
+        },
+        {
+          "image": "assets/images/ministries/restore/5.jpg"
+        },
+        {
+          "image": "assets/images/ministries/restore/6.jpg"
+        },
+        {
+          "image": "assets/images/ministries/restore/1000037531.jpg"
+        },
+        {
+          "image": "assets/images/ministries/restore/1000000215.jpg"
+        },
+        {
+          "image": "assets/images/ministries/restore/1000000356.jpg"
+        },
+        {
+          "image": "assets/images/ministries/restore/1000037529.jpg"
+        },
+        {
+          "image": "assets/images/ministries/restore/IMG-20250701-WA0043.jpg"
+        },
+        {
+          "image": "assets/images/ministries/restore/IMG-20250701-WA0044.jpg"
+        }
+      ]
+    },
+    {
+      "year": "Believe in Them",
+      "category": "ministry",
+      "folder": "ministries/bit",
+      "coverImage": "assets/images/ministries/bit/1.jpg",
+      "images": [
+        {
+          "image": "assets/images/ministries/bit/1.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/2.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/3.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/4.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/5.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/7.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/11.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/33.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/55.jpg"
+        },
+        {
+          "image": "assets/images/ministries/bit/77.jpg"
+        }
+      ]
+    }
+  ]
+}
