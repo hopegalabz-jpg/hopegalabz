@@ -9,206 +9,188 @@ public_folder: "/assets/images/uploads"
 collections:
   # ---------- HOMEPAGE ----------
   - name: "home"
-    label: "① Homepage"
-    icon: "home"
+    label: "Homepage"
     files:
       - file: "assets/content/home.json"
         label: "Homepage Content"
         name: "home"
         fields:
-          - label: "📖 How This Page Works (read only — instructions)"
-            name: "_guide_home"
-            widget: "text"
-            readonly: true
-            default: "This page controls the TOP of your website (hopegala.bz) — the big title, the photo slideshow, the video, and the 'Why Belize?' text. Scroll down, fill in each box, then click the blue Save button at the top right when you're done."
           - label: "Hero (Title & Subtitle)"
             name: "hero"
             widget: "object"
-            hint: "The big title and small text at the very top of the homepage."
             fields:
-              - { label: "Big Title (top of homepage)", name: "heading", widget: "string", hint: "This is the large text at the very top of the site. Example: The Belize Project" }
-              - { label: "Small Text Under the Title", name: "subheading", widget: "string", hint: "The short line right under the big title. Example: Loving People, Places, and Things to Life" }
-          - label: "Photo Slideshow"
+              - { label: "Hero Heading", name: "heading", widget: "string" }
+              - { label: "Hero Subheading", name: "subheading", widget: "string" }
+          - label: "Slideshow Images"
             name: "slideshow_images"
             widget: "list"
-            hint: "These photos scroll across the very top of the homepage automatically. Click 'Add Slideshow Images' to add a new one, or click the X to remove one. Drag the ⋮⋮ handle to reorder."
-            field: { label: "Photo", name: "image", widget: "image", hint: "Click 'Browse' to upload a photo from your computer or phone." }
+            field: { label: "Image", name: "image", widget: "image" }
           - label: "Story Video"
             name: "video"
             widget: "object"
-            hint: "This is the YouTube video shown in the 'Watch Our Story' section."
             fields:
-              - { label: "Show this video on the website?", name: "show", widget: "boolean", default: true, hint: "Turn this OFF (slide to the left) if you want to remove the video from the homepage completely. Turn it back ON anytime." }
-              - { label: "YouTube Video Code", name: "youtubeId", widget: "string", hint: "Go to the YouTube video, copy its web address, and paste just the code at the end. Example: if the address is youtube.com/watch?v=trWomaffddI, the code is trWomaffddI" }
-              - { label: "Title Above the Video", name: "videoSectionHeading", widget: "string", hint: "Example: Watch Our Story" }
-          - label: "'Why Belize?' Section"
+              - { label: "Show Video Section?", name: "show", widget: "boolean", default: true }
+              - { label: "YouTube Video ID", name: "youtubeId", widget: "string", hint: "The part of the YouTube URL after 'v=' or 'youtu.be/'" }
+              - { label: "Section Heading", name: "heading", widget: "string" }
+          - label: "Why Belize Section"
             name: "whyBelize"
             widget: "object"
-            hint: "This is the text block next to the map of Belize, further down the homepage."
             fields:
-              - { label: "Section Title", name: "whyBelizeSectionHeading", widget: "string", hint: "Example: Why Belize?" }
-              - label: "Paragraphs (one box per paragraph)"
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Paragraphs"
                 name: "paragraphs"
                 widget: "list"
-                hint: "Each box below becomes one paragraph on the website, in this same order. Click 'Add Paragraphs' for a new one, or the X to delete one."
-                field: { label: "Paragraph Text", name: "text", widget: "text" }
+                field: { label: "Paragraph", name: "text", widget: "text" }
 
   # ---------- MINISTRIES ----------
   - name: "ministries"
-    label: "② Ministries"
-    icon: "volunteer_activism"
+    label: "Ministries"
     files:
       - file: "assets/content/ministries.json"
         label: "Ministries List"
         name: "ministries"
         fields:
-          - label: "📖 How This Page Works (read only — instructions)"
-            name: "_guide_ministries"
-            widget: "text"
-            readonly: true
-            default: "This page controls the Ministries page on your website. Each ministry below shows up as its own photo tile and its own paragraph section on the site. To ADD a new ministry, click 'Add Ministries' at the bottom of that list and fill in the boxes. To REMOVE one, click the X on that ministry's box. The order here is the order they appear on the website."
           - label: "Ministries"
             name: "ministries"
             widget: "list"
             summary: "{{fields.name}}"
-            hint: "Each box below is one ministry (like Jacob's Farm or House of Dorcas)."
             fields:
-              - { label: "Ministry Name", name: "name", widget: "string", hint: "This shows up as the heading. Example: House of Dorcas" }
-              - { label: "Small Text Under the Name (optional)", name: "subtitle", widget: "string", required: false, hint: "Only fill this in if the ministry needs a subtitle. Most don't — it's fine to leave blank." }
-              - { label: "Logo Photo", name: "logo", widget: "image", hint: "Click 'Browse' to upload this ministry's logo." }
-              - { label: "Description", name: "body", widget: "text", hint: "The paragraph(s) describing this ministry. Press Enter twice to start a new paragraph." }
+              - { label: "Ministry Name", name: "name", widget: "string" }
+              - { label: "Subtitle (optional)", name: "subtitle", widget: "string", required: false }
+              - { label: "Logo Image", name: "logo", widget: "image" }
+              - { label: "Description", name: "body", widget: "text" }
           - label: "Programs"
             name: "programs"
             widget: "list"
             summary: "{{fields.name}}"
-            hint: "These appear under the 'Our Programs' heading, below all the ministries."
             fields:
               - { label: "Program Name", name: "name", widget: "string" }
-              - { label: "Small Text Under the Name (optional)", name: "subtitle", widget: "string", required: false }
+              - { label: "Subtitle (optional)", name: "subtitle", widget: "string", required: false }
               - { label: "Description", name: "body", widget: "text" }
 
   # ---------- RESOURCES ----------
   - name: "resources"
-    label: "③ Resources & Documents"
-    icon: "folder_open"
+    label: "Resources & Documents"
     files:
       - file: "assets/content/resources.json"
         label: "Resource Categories"
         name: "resources"
         fields:
-          - label: "📖 How This Page Works (read only — instructions)"
-            name: "_guide_resources"
-            widget: "text"
-            readonly: true
-            default: "This page controls the Resources page — the brochures, letters, and sponsorship PDFs people can download. Documents are grouped into Categories (like 'Brochures' or 'Sponsorship Material'). To add a brand new category, click 'Add Categories' at the bottom. To add a document inside a category, open that category and click 'Add Documents'."
           - label: "Categories"
             name: "categories"
             widget: "list"
             summary: "{{fields.title}}"
-            hint: "Each box below is one category tile shown on the Resources page."
             fields:
-              - { label: "Category Name", name: "title", widget: "string", hint: "Example: Brochures" }
-              - { label: "Short Description (shown on the tile)", name: "description", widget: "string", hint: "One short sentence describing what's in this category." }
-              - label: "Documents in this Category"
+              - { label: "Category Title", name: "title", widget: "string" }
+              - { label: "Category Short Description (shown on the tile)", name: "description", widget: "string" }
+              - label: "Documents"
                 name: "items"
                 widget: "list"
                 summary: "{{fields.title}}"
-                hint: "Each box is one downloadable file."
                 fields:
-                  - { label: "Document Title", name: "title", widget: "string", hint: "The name people will see. Example: 2026 Pledge Form" }
-                  - { label: "Short Description", name: "description", widget: "string", hint: "One sentence about this document." }
-                  - { label: "Upload the File", name: "file", widget: "file", hint: "Click 'Browse' to upload a PDF, image, or other file from your computer." }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+                  - { label: "File (PDF, image, etc.)", name: "file", widget: "file" }
 
   # ---------- GALLERY ----------
   - name: "gallery"
-    label: "④ Gala Photo Galleries"
-    icon: "photo_library"
+    label: "Gala Photo Galleries"
     files:
       - file: "assets/content/gallery.json"
         label: "Gallery Albums"
         name: "gallery"
         fields:
-          - label: "📖 How This Page Works (read only — instructions)"
-            name: "_guide_gallery"
-            widget: "text"
-            readonly: true
-            default: "This page controls the Gallery page — the photo albums people can click through. EVERY YEAR: click 'Add Albums' at the bottom to create a new album for that year's gala. Give it a name (like 'Hope Gala 2027'), pick a Cover Photo, then upload all the event photos into the Photos list. Tip: try to resize photos to under 2MB each before uploading so the website stays fast — most phones let you pick 'Medium' size when sharing or exporting a photo."
           - label: "Albums"
             name: "albums"
             widget: "list"
             summary: "{{fields.year}}"
-            hint: "Each box below is one photo album (one gala year, or one ministry's photos)."
             fields:
-              - { label: "Album Name", name: "year", widget: "string", hint: "What shows up on the tile. Example: Hope Gala 2027" }
+              - { label: "Album Name (e.g. 'Hope Gala 2027' or a ministry name)", name: "year", widget: "string" }
               - label: "Album Type"
                 name: "category"
                 widget: "select"
                 options: [ { label: "Gala Night", value: "gala" }, { label: "Ministry", value: "ministry" } ]
                 default: "gala"
-                hint: "Pick 'Gala Night' for a yearly event album, or 'Ministry' for a ministry's photo album."
-              - { label: "Folder Name (only for brand-new albums)", name: "folder", widget: "string", hint: "Leave this alone when editing an existing album. Only set this once, when first creating a new album — use lowercase letters, numbers, and dashes only, no spaces. Example: gala-night-2027" }
-              - { label: "Cover Photo", name: "coverImage", widget: "image", hint: "The one photo shown on the album tile before it's opened." }
-              - label: "Photos in This Album"
+              - { label: "Folder Name (only for brand-new albums)", name: "folder", widget: "string", hint: "Leave this alone when editing an existing album." }
+              - { label: "Cover Photo", name: "coverImage", widget: "image" }
+              - label: "Photos"
                 name: "images"
                 widget: "list"
-                hint: "Click 'Add Photos' to upload each photo. Tip: resize photos under 2MB before uploading for best results."
-                field: { label: "Photo", name: "image", widget: "image" }
+                field: { label: "Photo", name: "image", widget: "image", hint: "Tip: resize photos under 2MB before uploading for best results." }
 
   # ---------- GALA PAGE ----------
   - name: "gala"
-    label: "⑤ Gala Event Page"
-    icon: "celebration"
+    label: "Gala Event Page"
     files:
       - file: "assets/content/gala.json"
         label: "Gala Page Settings"
         name: "gala"
         fields:
-          - label: "📖 How This Page Works (read only — instructions)"
-            name: "_guide_gala"
-            widget: "text"
-            readonly: true
-            default: "This page controls the Gala event page — the countdown clock, the sponsorship pricing, and the donation/pledge details. IMPORTANT: The Countdown and Sponsorship sections each have a 'Show' switch. Turn a switch OFF to completely remove that section from the website (for example, after this year's gala has passed). Turn it back ON next year and update the date/pricing to bring it back."
-          - label: "Countdown Clock"
+          - label: "Hero (Top of Page)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date & Location Line", name: "dateLocation", widget: "string" }
+              - { label: "Pledge Button Text", name: "pledgeButtonText", widget: "string" }
+          - label: "'An Evening of Purpose & Praise' Section"
+            name: "purposeSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "purposeHeading", widget: "string" }
+              - label: "Paragraphs"
+                name: "purposeParagraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "text", widget: "text" }
+          - label: "Countdown"
             name: "countdown"
             widget: "object"
-            hint: "The flip-clock counting down to the gala date."
             fields:
-              - { label: "Show the countdown on the website?", name: "show", widget: "boolean", default: false, hint: "Turn ON before the gala, turn OFF after it has passed." }
-              - { label: "Gala Date & Time", name: "targetDate", widget: "datetime", hint: "The exact date and time the countdown counts down to." }
+              - { label: "Show Countdown?", name: "show", widget: "boolean", default: false }
+              - { label: "Event Date & Time", name: "targetDate", widget: "datetime" }
           - label: "Sponsorship Section"
             name: "sponsorship"
             widget: "object"
-            hint: "The Gold/Silver/Bronze sponsorship pricing cards."
             fields:
-              - { label: "Show sponsorship pricing on the website?", name: "show", widget: "boolean", default: false, hint: "Turn ON while accepting sponsors, turn OFF once the gala has passed or sponsorship is closed for the year." }
-              - label: "Sponsorship Tiers"
+              - { label: "Show Sponsorship Section?", name: "show", widget: "boolean", default: false }
+              - label: "Tiers"
                 name: "tiers"
                 widget: "list"
                 summary: "{{fields.name}}"
-                hint: "Each box is one sponsorship level (like Gold, Silver, or Bronze). Click 'Add Sponsorship Tiers' to create a new level, or the X to remove one."
                 fields:
-                  - { label: "Tier Name", name: "name", widget: "string", hint: "Example: Gold Sponsor" }
-                  - { label: "Price", name: "price", widget: "string", hint: "Example: $5000" }
-                  - label: "What's Included (Perks)"
+                  - { label: "Tier Name", name: "name", widget: "string" }
+                  - { label: "Price", name: "price", widget: "string" }
+                  - label: "Perks"
                     name: "perks"
                     widget: "list"
-                    hint: "One line per benefit. Example: 8 Hope Gala Tickets"
                     field: { label: "Perk", name: "perk", widget: "string" }
+          - label: "'Faithful Stewardship' Section"
+            name: "stewardshipSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "stewardshipHeading", widget: "string" }
+              - label: "Paragraphs"
+                name: "stewardshipParagraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "text", widget: "text" }
           - label: "Pledge / Donation Info"
             name: "pledge"
             widget: "object"
-            hint: "The bank details and contact people shown in the 'Make a Pledge' popup. This always stays visible, regardless of the Countdown or Sponsorship switches above."
             fields:
-              - { label: "Bank / Transfer Method Name", name: "bankName", widget: "string", hint: "Example: Atlantic Bank Electronic Transfer" }
+              - { label: "Bible Verse Text", name: "verseText", widget: "string" }
+              - { label: "Bible Verse Reference", name: "verseReference", widget: "string" }
+              - { label: "Pledge Modal Title", name: "modalTitle", widget: "string" }
+              - { label: "Thank You Message", name: "thanksText", widget: "text" }
+              - { label: "Bank Name / Transfer Method", name: "bankName", widget: "string" }
               - { label: "Bank Account Name", name: "bankAccountName", widget: "string" }
               - { label: "Bank Account Number", name: "bankAccountNumber", widget: "string" }
-              - { label: "Check Payment Instructions", name: "checkInstruction", widget: "text", hint: "The sentence explaining how to pay by check." }
+              - { label: "Check Payment Instructions", name: "checkInstruction", widget: "text" }
+              - { label: "Contacts Section Intro Text", name: "contactsIntro", widget: "string" }
               - label: "Contact People"
                 name: "contacts"
                 widget: "list"
                 summary: "{{fields.name}}"
-                hint: "The names and phone numbers shown for pledge questions. Click 'Add Contact People' to add someone new."
                 fields:
-                  - { label: "Name", name: "name", widget: "string", hint: "Example: Mrs. Ruth Williams" }
-                  - { label: "Phone Number", name: "phone", widget: "string", hint: "Example: +501-636-8147" }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Phone", name: "phone", widget: "string" }
               - { label: "Contact Email", name: "email", widget: "string" }
