@@ -1,4 +1,17 @@
 {
+  "hero": {
+    "title": "The 2026 Hope Gala",
+    "dateLocation": "October 17th, 2026 | Belize City",
+    "pledgeButtonText": "Make a Pledge"
+  },
+  "purposeSection": {
+    "purposeHeading": "An Evening of Purpose & Praise",
+    "purposeParagraphs": [
+      { "text": "The Hope Gala is much more than a premier fundraising event; it is a celebration of the miraculous work God is doing across Belize. This elegant evening brings together compassionate hearts to support the transformative missions of The Belize Project and our dedicated ministry partners." },
+      { "text": "Through your faithful generosity, we are empowered to be the hands and feet of Christ—bringing healing to the broken, shelter to the vulnerable, and a renewed sense of dignity to those seeking a second chance. Every ticket purchased and every pledge made ripples into eternity, funding critical resources, education, and life-changing rehabilitation programs." },
+      { "text": "Join us in witnessing how faith, community, and stewardship can rewrite stories and build a brighter, God-honoring future for Belize." }
+    ]
+  },
   "countdown": {
     "show": false,
     "targetDate": "2026-10-17T18:00:00"
@@ -35,11 +48,23 @@
       }
     ]
   },
+  "stewardshipSection": {
+    "stewardshipHeading": "Faithful Stewardship",
+    "stewardshipParagraphs": [
+      { "text": "Transparency and stewardship are at the core of our ministry. We believe in honoring God with every gift received, ensuring that your generosity is carefully and intentionally allocated." },
+      { "text": "As illustrated in our distribution model, 50% of all funds directly support Rehabilitation and Reintegration programs. We powerfully invest 20% into Education and Youth Intervention, and another 20% into Economic Development and Entrepreneurship, equipping the next generation and local leaders with the tools they need to thrive. With only 10% dedicated to Administration, you can be confident that your giving translates directly into tangible, life-changing impact on the ground." }
+    ]
+  },
   "pledge": {
+    "verseText": "Carry each other's burdens, and in this way you will fulfill the law of Christ.",
+    "verseReference": "Galatians 6:2",
+    "modalTitle": "Make a Pledge",
+    "thanksText": "We thank you for your generous heart. Every contribution, no matter the size, helps us bring hope and restoration to communities in Belize.",
     "bankName": "Atlantic Bank Electronic Transfer",
     "bankAccountName": "The Belize Project",
     "bankAccountNumber": "100279146",
     "checkInstruction": "Checks can also be made payable directly to The Belize Project and mailed to our main office.",
+    "contactsIntro": "For pledge confirmations or inquiries:",
     "contacts": [
       { "name": "Mr. Mario Castellanos", "phone": "+501-610-9345" },
       { "name": "Mrs. Ruth Williams", "phone": "+501-636-8147" }
