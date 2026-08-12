@@ -19,24 +19,24 @@ collections:
             name: "hero"
             widget: "object"
             fields:
-              - { label: "Hero Heading", name: "heading", widget: "string" }
-              - { label: "Hero Subheading", name: "subheading", widget: "string" }
-          - label: "Slideshow Images"
+              - { label: "Big Title", name: "heroHeading", widget: "string" }
+              - { label: "Small Text Under Title", name: "heroSubheading", widget: "string" }
+          - label: "Photo Slideshow"
             name: "slideshow_images"
             widget: "list"
-            field: { label: "Image", name: "image", widget: "image" }
+            field: { label: "Photo", name: "image", widget: "image" }
           - label: "Story Video"
             name: "video"
             widget: "object"
             fields:
-              - { label: "Show Video Section?", name: "show", widget: "boolean", default: true }
+              - { label: "Show Video?", name: "show", widget: "boolean", default: true }
               - { label: "YouTube Video ID", name: "youtubeId", widget: "string", hint: "The part of the YouTube URL after 'v=' or 'youtu.be/'" }
-              - { label: "Section Heading", name: "heading", widget: "string" }
+              - { label: "Title Above Video", name: "videoHeading", widget: "string" }
           - label: "Why Belize Section"
             name: "whyBelize"
             widget: "object"
             fields:
-              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Section Heading", name: "whyBelizeHeading", widget: "string" }
               - label: "Paragraphs"
                 name: "paragraphs"
                 widget: "list"
@@ -47,25 +47,28 @@ collections:
     label: "Ministries"
     files:
       - file: "assets/content/ministries.json"
-        label: "Ministries List"
+        label: "Ministries Page"
         name: "ministries"
         fields:
+          - { label: "Top Page Heading", name: "pageHeading", widget: "string" }
+          - { label: "Programs Section Heading", name: "programsPageHeading", widget: "string" }
           - label: "Ministries"
             name: "ministries"
             widget: "list"
-            summary: "{{fields.name}}"
+            summary: "{{fields.ministryName}}"
             fields:
-              - { label: "Ministry Name", name: "name", widget: "string" }
-              - { label: "Subtitle (optional)", name: "subtitle", widget: "string", required: false }
+              - { label: "Ministry Name", name: "ministryName", widget: "string" }
+              - { label: "Short Name (used on nav tiles)", name: "shortName", widget: "string", hint: "The shorter name shown on the small tile links, e.g. 'Jacob's Farm' instead of the full 'Jacob's Rehabilitation Farm Center'." }
+              - { label: "Subtitle (optional)", name: "ministrySubtitle", widget: "string", required: false }
               - { label: "Logo Image", name: "logo", widget: "image" }
               - { label: "Description", name: "body", widget: "text" }
           - label: "Programs"
             name: "programs"
             widget: "list"
-            summary: "{{fields.name}}"
+            summary: "{{fields.programName}}"
             fields:
-              - { label: "Program Name", name: "name", widget: "string" }
-              - { label: "Subtitle (optional)", name: "subtitle", widget: "string", required: false }
+              - { label: "Program Name", name: "programName", widget: "string" }
+              - { label: "Subtitle (optional)", name: "programSubtitle", widget: "string", required: false }
               - { label: "Description", name: "body", widget: "text" }
 
   # ---------- RESOURCES ----------
@@ -82,15 +85,15 @@ collections:
             summary: "{{fields.title}}"
             fields:
               - { label: "Category Title", name: "title", widget: "string" }
-              - { label: "Category Short Description (shown on the tile)", name: "description", widget: "string" }
+              - { label: "Category Short Description", name: "description", widget: "string" }
               - label: "Documents"
                 name: "items"
                 widget: "list"
                 summary: "{{fields.title}}"
                 fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Description", name: "description", widget: "string" }
-                  - { label: "File (PDF, image, etc.)", name: "file", widget: "file" }
+                  - { label: "Document Title", name: "title", widget: "string" }
+                  - { label: "Document Description", name: "description", widget: "string" }
+                  - { label: "File", name: "file", widget: "file" }
 
   # ---------- GALLERY ----------
   - name: "gallery"
@@ -105,18 +108,18 @@ collections:
             widget: "list"
             summary: "{{fields.year}}"
             fields:
-              - { label: "Album Name (e.g. 'Hope Gala 2027' or a ministry name)", name: "year", widget: "string" }
+              - { label: "Album Name", name: "year", widget: "string" }
               - label: "Album Type"
                 name: "category"
                 widget: "select"
                 options: [ { label: "Gala Night", value: "gala" }, { label: "Ministry", value: "ministry" } ]
                 default: "gala"
-              - { label: "Folder Name (only for brand-new albums)", name: "folder", widget: "string", hint: "Leave this alone when editing an existing album." }
+              - { label: "Folder Name", name: "folder", widget: "string", hint: "Only set this when creating a brand-new album." }
               - { label: "Cover Photo", name: "coverImage", widget: "image" }
               - label: "Photos"
                 name: "images"
                 widget: "list"
-                field: { label: "Photo", name: "image", widget: "image", hint: "Tip: resize photos under 2MB before uploading for best results." }
+                field: { label: "Photo", name: "image", widget: "image", hint: "Tip: resize photos under 2MB before uploading." }
 
   # ---------- GALA PAGE ----------
   - name: "gala"
@@ -126,6 +129,7 @@ collections:
         label: "Gala Page Settings"
         name: "gala"
         fields:
+          - { label: "'Ministries You Support' Heading", name: "ministriesSupportHeading", widget: "string", hint: "The tiles below this automatically show whatever ministries are set up on the Ministries page — edit them there, not here." }
           - label: "Hero (Top of Page)"
             name: "hero"
             widget: "object"
@@ -133,7 +137,7 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Date & Location Line", name: "dateLocation", widget: "string" }
               - { label: "Pledge Button Text", name: "pledgeButtonText", widget: "string" }
-          - label: "'An Evening of Purpose & Praise' Section"
+          - label: "Purpose & Praise Section"
             name: "purposeSection"
             widget: "object"
             fields:
@@ -152,7 +156,7 @@ collections:
             name: "sponsorship"
             widget: "object"
             fields:
-              - { label: "Show Sponsorship Section?", name: "show", widget: "boolean", default: false }
+              - { label: "Show Sponsorship?", name: "show", widget: "boolean", default: false }
               - label: "Tiers"
                 name: "tiers"
                 widget: "list"
@@ -164,7 +168,7 @@ collections:
                     name: "perks"
                     widget: "list"
                     field: { label: "Perk", name: "perk", widget: "string" }
-          - label: "'Faithful Stewardship' Section"
+          - label: "Faithful Stewardship Section"
             name: "stewardshipSection"
             widget: "object"
             fields:
@@ -181,11 +185,11 @@ collections:
               - { label: "Bible Verse Reference", name: "verseReference", widget: "string" }
               - { label: "Pledge Modal Title", name: "modalTitle", widget: "string" }
               - { label: "Thank You Message", name: "thanksText", widget: "text" }
-              - { label: "Bank Name / Transfer Method", name: "bankName", widget: "string" }
+              - { label: "Bank Name", name: "bankName", widget: "string" }
               - { label: "Bank Account Name", name: "bankAccountName", widget: "string" }
               - { label: "Bank Account Number", name: "bankAccountNumber", widget: "string" }
-              - { label: "Check Payment Instructions", name: "checkInstruction", widget: "text" }
-              - { label: "Contacts Section Intro Text", name: "contactsIntro", widget: "string" }
+              - { label: "Check Instructions", name: "checkInstruction", widget: "text" }
+              - { label: "Contacts Intro Text", name: "contactsIntro", widget: "string" }
               - label: "Contact People"
                 name: "contacts"
                 widget: "list"
