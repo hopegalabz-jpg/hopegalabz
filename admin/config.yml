@@ -1,0 +1,130 @@
+backend:
+  name: github
+  repo: hopegalabz-jpg/hopegalabz
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  # ---------- HOMEPAGE ----------
+  - name: "home"
+    label: "Homepage"
+    files:
+      - file: "assets/content/home.json"
+        label: "Homepage Content"
+        name: "home"
+        fields:
+          - { label: "Hero Heading", name: "heading", widget: "string" }
+          - { label: "Hero Subheading", name: "subheading", widget: "string" }
+          - label: "Slideshow Images"
+            name: "slideshow_images"
+            widget: "list"
+            field: { label: "Image", name: "image", widget: "image" }
+          - label: "Story Video"
+            name: "video"
+            widget: "object"
+            fields:
+              - { label: "Show Video Section?", name: "show", widget: "boolean", default: true }
+              - { label: "YouTube Video ID", name: "youtubeId", widget: "string", hint: "The part of the YouTube URL after 'v=' or 'youtu.be/'" }
+              - { label: "Section Heading", name: "heading", widget: "string" }
+          - label: "Why Belize Section"
+            name: "whyBelize"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "text", widget: "text" }
+
+  # ---------- MINISTRIES ----------
+  - name: "ministries"
+    label: "Ministries"
+    files:
+      - file: "assets/content/ministries.json"
+        label: "Ministries List"
+        name: "ministries"
+        fields:
+          - label: "Ministries"
+            name: "ministries"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Ministry Name", name: "name", widget: "string" }
+              - { label: "Logo Image", name: "logo", widget: "image" }
+              - { label: "Description", name: "body", widget: "text" }
+
+  # ---------- RESOURCES ----------
+  - name: "resources"
+    label: "Resources & Documents"
+    files:
+      - file: "assets/content/resources.json"
+        label: "Resource Categories"
+        name: "resources"
+        fields:
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Category Title", name: "title", widget: "string" }
+              - label: "Documents"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+                  - { label: "File (PDF, image, etc.)", name: "file", widget: "file" }
+
+  # ---------- GALLERY ----------
+  - name: "gallery"
+    label: "Gala Photo Galleries"
+    files:
+      - file: "assets/content/gallery.json"
+        label: "Gallery Albums"
+        name: "gallery"
+        fields:
+          - label: "Albums by Year"
+            name: "albums"
+            widget: "list"
+            summary: "{{fields.year}}"
+            fields:
+              - { label: "Year / Event Name", name: "year", widget: "string" }
+              - { label: "Cover Photo", name: "coverImage", widget: "image" }
+              - label: "Photos"
+                name: "images"
+                widget: "list"
+                field: { label: "Photo", name: "image", widget: "image", hint: "Tip: resize photos under 2MB before uploading for best results." }
+
+  # ---------- GALA PAGE ----------
+  - name: "gala"
+    label: "Gala Event Page"
+    files:
+      - file: "assets/content/gala.json"
+        label: "Gala Page Settings"
+        name: "gala"
+        fields:
+          - label: "Countdown"
+            name: "countdown"
+            widget: "object"
+            fields:
+              - { label: "Show Countdown?", name: "show", widget: "boolean", default: false }
+              - { label: "Event Date & Time", name: "targetDate", widget: "datetime" }
+          - label: "Sponsorship Section"
+            name: "sponsorship"
+            widget: "object"
+            fields:
+              - { label: "Show Sponsorship Section?", name: "show", widget: "boolean", default: false }
+              - label: "Tiers"
+                name: "tiers"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: "Tier Name", name: "name", widget: "string" }
+                  - { label: "Price", name: "price", widget: "string" }
+                  - label: "Perks"
+                    name: "perks"
+                    widget: "list"
+                    field: { label: "Perk", name: "perk", widget: "string" }
