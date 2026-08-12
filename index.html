@@ -274,7 +274,7 @@
 				} else {
 					const headingEl = document.getElementById("video-heading");
 					const iframeEl = document.getElementById("video-iframe");
-					if (headingEl && data.video.heading) headingEl.textContent = data.video.heading;
+					if (headingEl && data.video.videoSectionHeading) headingEl.textContent = data.video.videoSectionHeading;
 					if (iframeEl && data.video.youtubeId) {
 						iframeEl.src = `https://www.youtube.com/embed/${data.video.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${data.video.youtubeId}&controls=1&rel=0&modestbranding=1`;
 					}
@@ -284,7 +284,7 @@
 			if (data.whyBelize) {
 				const headingEl = document.getElementById("why-belize-heading");
 				const paraContainer = document.getElementById("why-belize-paragraphs");
-				if (headingEl && data.whyBelize.heading) headingEl.textContent = data.whyBelize.heading;
+				if (headingEl && data.whyBelize.whyBelizeSectionHeading) headingEl.textContent = data.whyBelize.whyBelizeSectionHeading;
 
 				if (paraContainer && Array.isArray(data.whyBelize.paragraphs) && data.whyBelize.paragraphs.length > 0) {
 					paraContainer.innerHTML = "";
