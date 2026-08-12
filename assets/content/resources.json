@@ -2,6 +2,7 @@
   "categories": [
     {
       "title": "Brochures",
+      "description": "General overviews of our mission and programs.",
       "items": [
         {
           "title": "Hope Gala 2026 Ministry Sheet",
@@ -12,6 +13,7 @@
     },
     {
       "title": "Printable Letters",
+      "description": "Solicitation and donor appeal letters, ready to print.",
       "items": [
         {
           "title": "2026 Sponsorship Letter",
@@ -22,6 +24,7 @@
     },
     {
       "title": "Sponsorship Material",
+      "description": "Packages and materials for partners and sponsors.",
       "items": [
         {
           "title": "2026 Pledge Form",
@@ -36,4 +39,4 @@
       ]
     }
   ]
-}
+} 
