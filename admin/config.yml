@@ -78,6 +78,7 @@ collections:
             summary: "{{fields.title}}"
             fields:
               - { label: "Category Title", name: "title", widget: "string" }
+              - { label: "Category Short Description (shown on the tile)", name: "description", widget: "string" }
               - label: "Documents"
                 name: "items"
                 widget: "list"
