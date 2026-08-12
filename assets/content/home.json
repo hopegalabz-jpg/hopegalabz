@@ -4,12 +4,12 @@
     "subheading": "Loving People, Places, and Things to Life"
   },
   "slideshow_images": [
-    { "image": "gala2026banner1.png" },
-    { "image": "gala2026banner2.png" },
-    { "image": "11.jpg" },
-    { "image": "3.jpg" },
-    { "image": "6.jpg" },
-    { "image": "12.jpg" }
+    { "image": "assets/images/slideshow/gala2026banner1.png" },
+    { "image": "assets/images/slideshow/gala2026banner2.png" },
+    { "image": "assets/images/slideshow/11.jpg" },
+    { "image": "assets/images/slideshow/3.jpg" },
+    { "image": "assets/images/slideshow/6.jpg" },
+    { "image": "assets/images/slideshow/12.jpg" }
   ],
   "video": {
     "show": true,
