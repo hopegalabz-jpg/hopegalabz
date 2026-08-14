@@ -37,5 +37,13 @@
     to complete OAuth login.
   -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <!--
+    Registers custom preview templates (below in this same admin folder)
+    that make the editor's preview pane visually match the real site —
+    same fonts, colors, and layout — instead of Decap's plain default
+    text-only preview. Must load after decap-cms.js above, since it uses
+    the CMS/h/createClass globals that script creates.
+  -->
+  <script src="https://hopegala.bz/admin/preview-templates.js"></script>
 </body>
 </html>
