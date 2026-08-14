@@ -39,12 +39,12 @@ CMS.registerPreviewStyle(`
   .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
   .belize-section { background-color: var(--offwhite); padding: 90px 24px; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05); }
   .container2 { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
-  .map-container { position: relative; }
-  .map-container img { width: 100%; height: 420px; border-radius: 16px; box-shadow: 0 12px 35px rgba(0,0,0,0.1); object-fit: cover; display: block; }
+  .map-container { position: relative; text-align: center; }
+  .map-container img { max-width: 100%; max-height: 420px; width: auto; height: auto; border-radius: 16px; box-shadow: 0 12px 35px rgba(0,0,0,0.1); display: block; margin: 0 auto; }
   .text2 h2 { font-family: var(--font-display); color: var(--ink); font-size: 40px; font-weight: 500; margin-bottom: 24px; }
   .text2 p { font-size: 17px; color: #4a4a4a; margin-bottom: 20px; }
   .text2 p:last-child { margin-bottom: 0; font-weight: 600; color: var(--ink); }
-  @media (max-width: 768px) { .container2 { grid-template-columns: 1fr; gap: 40px; } .text2 { text-align: center; } .slider { height: 280px; } .map-container img { height: 280px; } }
+  @media (max-width: 768px) { .container2 { grid-template-columns: 1fr; gap: 40px; } .text2 { text-align: center; } .slider { height: 280px; } .map-container img { max-height: 280px; } }
   /* The preview pane is narrower than a real browser window, so this nudges
      the two-column "Why Belize" section to stack sooner than it would on
      the live site, keeping it readable at typical preview widths. */
@@ -123,6 +123,16 @@ var HomePreview = createClass({
         h(
           "div",
           { className: "container2" },
+          // The map graphic is a fixed site image (not a field in this
+          // entry — there's no "map photo" box in the editor for it), so
+          // it's shown here exactly as it appears on the live page rather
+          // than pulled from CMS data. This was missing before, which is
+          // why the map never appeared in this preview at all.
+          h(
+            "div",
+            { className: "map-container" },
+            h("img", { src: "https://hopegala.bz/assets/images/map.png", alt: "Map of Belize" })
+          ),
           h(
             "div",
             { className: "text2" },
