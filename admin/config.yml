@@ -2,6 +2,8 @@ backend:
   name: github
   repo: hopegalabz-jpg/hopegalabz
   branch: main
+  base_url: https://hopegala-decap-proxy.hopegala.workers.dev
+  auth_endpoint: /auth
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"

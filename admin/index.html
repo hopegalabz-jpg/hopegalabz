@@ -8,14 +8,16 @@
 </head>
 <body>
   <!--
-    Sveltia CMS — a free, open-source, Git-based content editor.
+    Decap CMS — a free, open-source, Git-based content editor.
     It reads config.yml (in this same folder) to know what content
     can be edited, then commits changes directly to the GitHub repo
     when someone clicks "Publish."
- 
-    Login uses a GitHub personal access token — no separate server,
-    no OAuth app, nothing else to host or maintain.
+
+    Login uses GitHub OAuth, handled by a small proxy Worker hosted
+    at hopegala-decap-proxy.hopegala.workers.dev (see config.yml's
+    base_url/auth_endpoint) since GitHub requires a server-side step
+    to complete OAuth login.
   -->
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
