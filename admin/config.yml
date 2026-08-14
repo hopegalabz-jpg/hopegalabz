@@ -22,8 +22,8 @@ collections:
             widget: "object"
             hint: "This is the big welcome text at the very top of the homepage, just under the scrolling banner photos."
             fields:
-              - { label: "Big Title", name: "heroHeading", widget: "string", hint: "The large heading. Currently: The Belize Project" }
-              - { label: "Small Text Under Title", name: "heroSubheading", widget: "string", hint: "The one-line motto under the big title. Currently: Loving People, Places, and Things to Life" }
+              - { label: "Big Title", name: "heading", widget: "string", hint: "The large heading. Currently: The Belize Project" }
+              - { label: "Small Text Under Title", name: "subheading", widget: "string", hint: "The one-line motto under the big title. Currently: Loving People, Places, and Things to Life" }
           - label: "Photo Slideshow"
             name: "slideshow_images"
             widget: "list"
@@ -37,13 +37,13 @@ collections:
             fields:
               - { label: "Show Video?", name: "show", widget: "boolean", default: true, hint: "Leave this ON to keep the video on the website. Slide it OFF only if you want the whole video section to disappear from the homepage. You can turn it back ON anytime." }
               - { label: "YouTube Video ID", name: "youtubeId", widget: "string", hint: "Just the short code from the YouTube link, not the whole address. Example: if the link is youtube.com/watch?v=trWomaffddI then you type only trWomaffddI" }
-              - { label: "Title Above Video", name: "videoHeading", widget: "string", hint: "The heading shown above the video. Currently: Watch Our Story" }
+              - { label: "Title Above Video", name: "videoSectionHeading", widget: "string", hint: "The heading shown above the video. Currently: Watch Our Story" }
           - label: "Why Belize Section"
             name: "whyBelize"
             widget: "object"
             hint: "The block of text that sits beside the map of Belize, further down the homepage."
             fields:
-              - { label: "Section Heading", name: "whyBelizeHeading", widget: "string", hint: "The heading for this section. Currently: Why Belize?" }
+              - { label: "Section Heading", name: "whyBelizeSectionHeading", widget: "string", hint: "The heading for this section. Currently: Why Belize?" }
               - label: "Paragraphs"
                 name: "paragraphs"
                 widget: "list"

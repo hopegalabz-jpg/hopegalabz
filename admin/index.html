@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Content Manager — The Belize Project</title>
+  <!--
+    This page lives at hopegala.bz/admin/, but image paths stored in the
+    content files (like "assets/images/logos/jacob-logo.jpg") are written
+    relative to the SITE ROOT, not this /admin/ subfolder. Without this
+    <base> tag, the editor tries to load images from
+    hopegala.bz/admin/assets/images/... (404) instead of
+    hopegala.bz/assets/images/... (the real location). This line fixes
+    every image preview in the editor at once.
+  -->
+  <base href="https://hopegala.bz/">
 </head>
 <body>
   <!--
