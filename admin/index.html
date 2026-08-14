@@ -15,6 +15,14 @@
     every image preview in the editor at once.
   -->
   <base href="https://hopegala.bz/">
+  <!--
+    Decap CMS normally looks for "config.yml" next to this page
+    (hopegala.bz/admin/config.yml). The <base> tag above changes what
+    "relative" means on this page, which would otherwise send that
+    lookup to hopegala.bz/config.yml instead (404). This line pins the
+    config file to its real, full address so it keeps loading correctly.
+  -->
+  <link href="https://hopegala.bz/admin/config.yml" type="text/yaml" rel="cms-config-url">
 </head>
 <body>
   <!--
