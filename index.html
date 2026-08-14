@@ -117,22 +117,14 @@
 			align-items: center;
 			gap: 60px;
 		}
-		.map-container{ position: relative; text-align: center; }
+		.map-container{ position: relative; }
 		.map-container img {
-			/* max-width/max-height (not a fixed width+height+object-fit:cover)
-			   so the ENTIRE map.png (1414 x 2000px, a tall portrait shape)
-			   always shows uncropped, scaled down to fit beside the text
-			   column instead of stretching ~800px tall and overlapping the
-			   footer below. object-fit: cover was cropping large parts of
-			   the map off — this shows the whole image instead. */
-			max-width: 100%;
-			max-height: 420px;
-			width: auto;
+			width: 100%;
 			height: auto;
 			border-radius: 16px;
 			box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+			object-fit: cover;
 			display: block;
-			margin: 0 auto;
 		}
 		.flag-badge{
 			position: absolute;
@@ -167,7 +159,6 @@
 			.container2 { grid-template-columns: 1fr; gap: 40px; }
 			.text2 { text-align: center; }
 			.slider { height: 280px; }
-			.map-container img { max-height: 280px; }
 		}
 	</style>
 </head>
