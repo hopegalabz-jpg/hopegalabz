@@ -120,7 +120,12 @@
 		.map-container{ position: relative; }
 		.map-container img {
 			width: 100%;
-			height: auto;
+			/* Fixed height (not "auto") so object-fit: cover can crop the tall,
+			   portrait-shaped map.png (1414 x 2000px) down to a normal size that
+			   matches the text column beside it, instead of stretching ~800px
+			   tall and overlapping the footer below. Same 420px convention used
+			   for .ministry-main-img elsewhere on the site. */
+			height: 420px;
 			border-radius: 16px;
 			box-shadow: 0 12px 35px rgba(0,0,0,0.1);
 			object-fit: cover;
@@ -159,6 +164,7 @@
 			.container2 { grid-template-columns: 1fr; gap: 40px; }
 			.text2 { text-align: center; }
 			.slider { height: 280px; }
+			.map-container img { height: 280px; }
 		}
 	</style>
 </head>
