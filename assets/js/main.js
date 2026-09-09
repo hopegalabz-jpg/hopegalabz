@@ -41,7 +41,7 @@ const SITE_FOOTER = `
 		</div>
 		<div class="footer-credit">
 			<img src="assets/images/logos/webbuild.png" alt="Kismet Code Digital">
-			Powered by <a href="https://kismetcodedigital.com/" target="_blank" rel="noopener">Kismet Code Digital</a>.
+			Built by Kismet Code Digital.
 		</div>
 		<div class="footer-social">
 			<a href="https://www.facebook.com/profile.php?id=100083154105759" target="_blank" rel="noopener" aria-label="The Belize Project on Facebook">
