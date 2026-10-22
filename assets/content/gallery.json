@@ -4,6 +4,12 @@
   },
   "albums": [
     {
+      "category": "gala",
+      "year": "Hope Gala 2026",
+      "coverImage": "/assets/images/uploads/hope_gala_square_gallery_cover.jpg",
+      "folder": "Hope Gala 2026"
+    },
+    {
       "year": "Hope Gala 2025",
       "category": "gala",
       "folder": "gala-night-2025",
