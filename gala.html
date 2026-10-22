@@ -3,10 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Join us for the 2026 Hope Gala in Belize. A premier fundraising event supporting local ministries.">
+	<!--cms-block:head-->
+	<meta name="description" content="Join us for the 2027 Hope Gala in Belize. A premier fundraising event supporting local ministries.">
 	<title>Hope Gala | The Belize Project</title>
+	<meta property="og:title" content="Hope Gala | The Belize Project">
+	<meta property="og:description" content="Join us for the 2027 Hope Gala in Belize. A premier fundraising event supporting local ministries.">
+	<meta property="og:type" content="website">
+	<!--/cms-block:head-->
 	
 	<link rel="stylesheet" href="assets/css/main.css">
+	<!--cms-block:visibility-->
+	<style>
+		#countdown-container { display: none !important; }
+	</style>
+	<!--/cms-block:visibility-->
 
 	<!-- ==========================================================================
 	     GALA-ONLY STYLES — Save the Date countdown card & bubble cluster
@@ -229,14 +239,17 @@
 	<div id="site-header"></div>
 
 	<div class="hero-intro">
-		<h1 id="gala-hero-title">The 2026 Hope Gala</h1>
-		<p id="gala-hero-date-location" style="font-size: 1.2rem; margin-top: 10px; color: var(--gold);">October 17th, 2026 | Belize City</p>
+		<h1 id="gala-hero-title"><!--cms:hero.title-->The 2027 Hope Gala<!--/cms--></h1>
+		<p id="gala-hero-date-location" style="font-size: 1.2rem; margin-top: 10px; color: var(--gold);"><!--cms:hero.dateLocation-->Coming Soon | Belize City<!--/cms--></p>
 		<div class="divider" style="margin-top: 25px;"></div>
-		<button class="modal-submit" id="gala-pledge-button" style="width: auto; display: inline-block; padding: 12px 35px;" onclick="openPledge()">Make a Pledge</button>
+		<button class="modal-submit" id="gala-pledge-button" style="width: auto; display: inline-block; padding: 12px 35px;" onclick="openPledge()"><!--cms:hero.pledgeButtonText-->Make a Pledge<!--/cms--></button>
 	</div>
 
 	<section class="ministry-section bg-white" style="padding: 50px 24px; position: relative;">
 
+		<!--cms-block:countdown-config-->
+		<script type="application/json" id="countdown-config">{"show":false,"targetDate":"2026-10-17T18:00:00"}</script>
+		<!--/cms-block:countdown-config-->
 		<div id="countdown-container">
 			<div class="flip-countdown" aria-label="Countdown to the Hope Gala">
 				<div class="flip-unit">
@@ -288,11 +301,13 @@
 
 		<div class="ministry-row">
 			<div class="ministry-content">
-				<h2 id="purpose-heading">An Evening of Purpose & Praise</h2>
+				<h2 id="purpose-heading"><!--cms:purposeSection.purposeHeading-->An Evening of Purpose &amp; Praise<!--/cms--></h2>
 				<div id="purpose-paragraphs">
+					<!--cms-block:purpose-paragraphs-->
 					<p>The Hope Gala is much more than a premier fundraising event; it is a celebration of the miraculous work God is doing across Belize. This elegant evening brings together compassionate hearts to support the transformative missions of The Belize Project and our dedicated ministry partners.</p>
 					<p>Through your faithful generosity, we are empowered to be the hands and feet of Christ—bringing healing to the broken, shelter to the vulnerable, and a renewed sense of dignity to those seeking a second chance. Every ticket purchased and every pledge made ripples into eternity, funding critical resources, education, and life-changing rehabilitation programs.</p>
 					<p>Join us in witnessing how faith, community, and stewardship can rewrite stories and build a brighter, God-honoring future for Belize.</p>
+					<!--/cms-block:purpose-paragraphs-->
 				</div>
 			</div>
 			
@@ -389,7 +404,46 @@
 				}
 			</style>
 			
-			<div class="sponsor-inline-grid" id="sponsor-tier-grid"></div>
+			<div class="sponsor-inline-grid" id="sponsor-tier-grid">
+				<!--cms-block:sponsor-tiers-->
+				<div class="sponsor-inline-card">
+					<div class="sponsor-inline-header">
+						<div class="sponsor-inline-badge"></div>
+						<h3>Gold Sponsor</h3>
+					</div>
+					<div class="sponsor-inline-price">$5000</div>
+					<ul class="sponsor-inline-list">
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> 8 Hope Gala Tickets</li>
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Large Print on Promo Materials</li>
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Name Mentioned on Night of Event</li>
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Award of Appreciation</li>
+					</ul>
+				</div>
+				<div class="sponsor-inline-card">
+					<div class="sponsor-inline-header">
+						<div class="sponsor-inline-badge"></div>
+						<h3>Silver Sponsor</h3>
+					</div>
+					<div class="sponsor-inline-price">$2500</div>
+					<ul class="sponsor-inline-list">
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> 6 Hope Gala Tickets</li>
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Medium Print on Promo Materials</li>
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Name Mentioned on Night of Event</li>
+					</ul>
+				</div>
+				<div class="sponsor-inline-card">
+					<div class="sponsor-inline-header">
+						<div class="sponsor-inline-badge"></div>
+						<h3>Bronze Sponsor</h3>
+					</div>
+					<div class="sponsor-inline-price">$1000</div>
+					<ul class="sponsor-inline-list">
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> 4 Hope Gala Tickets</li>
+						<li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Small Print on Promo Materials</li>
+					</ul>
+				</div>
+				<!--/cms-block:sponsor-tiers-->
+			</div>
 			
 		</div>
 	</section>
@@ -397,10 +451,12 @@
 	<section class="ministry-section bg-white" style="padding: 50px 24px;">
 		<div class="ministry-row reverse">
 			<div class="ministry-content">
-				<h2 id="stewardship-heading">Faithful Stewardship</h2>
+				<h2 id="stewardship-heading"><!--cms:stewardshipSection.stewardshipHeading-->Faithful Stewardship<!--/cms--></h2>
 				<div id="stewardship-paragraphs">
+					<!--cms-block:stewardship-paragraphs-->
 					<p>Transparency and stewardship are at the core of our ministry. We believe in honoring God with every gift received, ensuring that your generosity is carefully and intentionally allocated.</p>
-					<p>As illustrated in our distribution model, <strong>50%</strong> of all funds directly support <strong>Rehabilitation and Reintegration</strong> programs. We powerfully invest <strong>20%</strong> into <strong>Education and Youth Intervention</strong>, and another <strong>20%</strong> into <strong>Economic Development and Entrepreneurship</strong>, equipping the next generation and local leaders with the tools they need to thrive. With only <strong>10%</strong> dedicated to <strong>Administration</strong>, you can be confident that your giving translates directly into tangible, life-changing impact on the ground.</p>
+					<p>As illustrated in our distribution model, 50% of all funds directly support Rehabilitation and Reintegration programs. We powerfully invest 20% into Education and Youth Intervention, and another 20% into Economic Development and Entrepreneurship, equipping the next generation and local leaders with the tools they need to thrive. With only 10% dedicated to Administration, you can be confident that your giving translates directly into tangible, life-changing impact on the ground.</p>
+					<!--/cms-block:stewardship-paragraphs-->
 				</div>
 			</div>
 			<div class="ministry-visual">
@@ -411,15 +467,38 @@
 
 	<section class="ministry-section bg-offwhite" style="padding: 50px 24px;">
 		<div class="container">
-			<h2 id="ministries-support-heading" style="font-family: var(--font-display); font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 35px;">Ministries You Support</h2>
+			<h2 id="ministries-support-heading" style="font-family: var(--font-display); font-size: 2rem; color: var(--ink); text-align: center; margin-bottom: 35px;"><!--cms:ministriesSupportHeading-->Ministries You Support<!--/cms--></h2>
 			<div class="ministry-nav-grid" style="margin-bottom: 0;" id="ministries-support-grid">
-				<a href="ministries.html#jacob" class="ministry-nav-tile"><img src="assets/images/logos/jacob-logo.jpg" alt="Jacob's Farm"><h4>Jacob's Farm</h4></a>
-				<a href="ministries.html#dorcas" class="ministry-nav-tile"><img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas"><h4>House of Dorcas</h4></a>
-				<a href="ministries.html#restore" class="ministry-nav-tile"><img src="assets/images/logos/restore-logo.png" alt="Restore Small Groups"><h4>Restore Groups</h4></a>
-				<a href="ministries.html#bit" class="ministry-nav-tile"><img src="assets/images/logos/bit-logo.jpg" alt="Believe In Them"><h4>Believe In Them</h4></a>
-				<a href="ministries.html#kolbe" class="ministry-nav-tile"><img src="assets/images/logos/kolbe-logo.jpg" alt="Kolbe Foundation"><h4>Kolbe Foundation</h4></a>
-				<a href="ministries.html#hope-center" class="ministry-nav-tile"><img src="assets/images/logos/hope-logo.jpg" alt="Hope Center"><h4>Hope Center</h4></a>
-				<a href="ministries.html#flourish31" class="ministry-nav-tile"><img src="assets/images/logos/florish-logo.png" alt="Flourish 31"><h4>Flourish 31</h4></a>
+				<!--cms-block:ministries-support-->
+				<a href="ministries.html#jacob" class="ministry-nav-tile">
+					<img src="assets/images/logos/jacob-logo.jpg" alt="Jacob's Farm" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Jacob%27s%20Farm'">
+					<h4>Jacob's Farm</h4>
+				</a>
+				<a href="ministries.html#dorcas" class="ministry-nav-tile">
+					<img src="assets/images/logos/dorcas-logo.png" alt="House of Dorcas" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=House%20of%20Dorcas'">
+					<h4>House of Dorcas</h4>
+				</a>
+				<a href="ministries.html#restore" class="ministry-nav-tile">
+					<img src="assets/images/logos/restore-logo.png" alt="Restore Groups" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Restore%20Groups'">
+					<h4>Restore Groups</h4>
+				</a>
+				<a href="ministries.html#bit" class="ministry-nav-tile">
+					<img src="assets/images/logos/bit-logo.jpg" alt="Believe In Them" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Believe%20In%20Them'">
+					<h4>Believe In Them</h4>
+				</a>
+				<a href="ministries.html#kolbe" class="ministry-nav-tile">
+					<img src="assets/images/logos/kolbe-logo.jpg" alt="Kolbe Foundation" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Kolbe%20Foundation'">
+					<h4>Kolbe Foundation</h4>
+				</a>
+				<a href="ministries.html#hope-center" class="ministry-nav-tile">
+					<img src="assets/images/logos/hope-logo.jpg" alt="Hope Center" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Hope%20Center'">
+					<h4>Hope Center</h4>
+				</a>
+				<a href="ministries.html#flourish31" class="ministry-nav-tile">
+					<img src="assets/images/logos/florish-logo.png" alt="Flourish 31" onerror="this.src='https://placehold.co/150x150/f4f4f4/c7973f?text=Flourish%2031'">
+					<h4>Flourish 31</h4>
+				</a>
+				<!--/cms-block:ministries-support-->
 			</div>
 		</div>
 	</section>
@@ -433,30 +512,32 @@
 					<img src="assets/images/dove.png" alt="Peace Dove">
 				</div>
 				<div class="pledge-verse">
-					<p class="verse-text" id="pledge-verse-text">"Carry each other's burdens, and in this way you will fulfill the law of Christ."</p>
-					<p class="verse-ref" id="pledge-verse-ref">Galatians 6:2</p>
+					<p class="verse-text" id="pledge-verse-text"><!--cms:pledge.verseText|quote-->"Carry each other's burdens, and in this way you will fulfill the law of Christ."<!--/cms--></p>
+					<p class="verse-ref" id="pledge-verse-ref"><!--cms:pledge.verseReference-->Galatians 6:2<!--/cms--></p>
 				</div>
 			</div>
 			
 			<div class="pledge-main-panel">
-				<h3 id="pledge-modal-title">Make a Pledge</h3>
-				<p class="pledge-thanks" id="pledge-thanks-text">We thank you for your generous heart. Every contribution, no matter the size, helps us bring hope and restoration to communities in Belize.</p>
+				<h3 id="pledge-modal-title"><!--cms:pledge.modalTitle-->Make a Pledge<!--/cms--></h3>
+				<p class="pledge-thanks" id="pledge-thanks-text"><!--cms:pledge.thanksText-->We thank you for your generous heart. Every contribution, no matter the size, helps us bring hope and restoration to communities in Belize.<!--/cms--></p>
 				
 				<div class="bank-details-card">
-					<h5 id="pledge-bank-name">Atlantic Bank Electronic Transfer</h5>
-					<p>Account Name: <strong id="pledge-account-name">The Belize Project</strong></p>
-					<p>Account Number: <strong id="pledge-account-number">100279146</strong></p>
+					<h5 id="pledge-bank-name"><!--cms:pledge.bankName-->Atlantic Bank Electronic Transfer<!--/cms--></h5>
+					<p>Account Name: <strong id="pledge-account-name"><!--cms:pledge.bankAccountName-->The Belize Project<!--/cms--></strong></p>
+					<p>Account Number: <strong id="pledge-account-number"><!--cms:pledge.bankAccountNumber-->100279146<!--/cms--></strong></p>
 				</div>
 				
-				<p class="check-instruction" id="pledge-check-instruction">Checks can also be made payable directly to <strong>The Belize Project</strong> and mailed to our main office.</p>
+				<p class="check-instruction" id="pledge-check-instruction"><!--cms:pledge.checkInstruction-->Checks can also be made payable directly to The Belize Project and mailed to our main office.<!--/cms--></p>
 				
 				<div class="pledge-contact-footer">
-					<p class="contact-title" id="pledge-contacts-intro">For pledge confirmations or inquiries:</p>
+					<p class="contact-title" id="pledge-contacts-intro"><!--cms:pledge.contactsIntro-->For pledge confirmations or inquiries:<!--/cms--></p>
 					<div class="contact-grid" id="pledge-contact-grid">
+						<!--cms-block:pledge-contacts-->
 						<p><strong>Mr. Mario Castellanos</strong><br>+501-610-9345</p>
 						<p><strong>Mrs. Ruth Williams</strong><br>+501-636-8147</p>
+						<!--/cms-block:pledge-contacts-->
 					</div>
-					<p class="email-line"><strong>Email:</strong> <span id="pledge-email">thebelizeproject2@gmail.com</span></p>
+					<p class="email-line"><strong>Email:</strong> <span id="pledge-email"><!--cms:pledge.email-->thebelizeproject2@gmail.com<!--/cms--></span></p>
 				</div>
 			</div>
 		</div>
@@ -534,203 +615,22 @@
 	</script>
 
 	<!-- ==========================================================================
-	     GALA PAGE CONTENT LOADER
+	     GALA PAGE CONTENT
 	     ==========================================================================
-	     Every piece of text on this page — hero title, the "Purpose & Praise"
-	     text, the countdown, sponsorship tiers, "Faithful Stewardship" text,
-	     and the pledge modal — comes from gala.json. Everything above ships
-	     with the current real text baked in as a fallback, so the page never
-	     shows blank if gala.json fails to load for any reason.
+	     All text on this page comes from assets/content/gala.json (edited in the
+	     /admin Content Manager) and is written into this HTML by
+	     scripts/build.js (see the cms markers above). Nothing is
+	     fetched in the browser, so there is no flash of old text.
+	     The only thing left to do here is start the live countdown clock.
 	     ========================================================================== -->
 	<script>
-		let countdownIntervalId = null;
-
-		function setTextIfPresent(id, value) {
-			const el = document.getElementById(id);
-			if (el && value !== undefined && value !== null) el.textContent = value;
-		}
-
-		function renderParagraphs(containerId, paragraphs) {
-			const container = document.getElementById(containerId);
-			if (!container || !Array.isArray(paragraphs) || paragraphs.length === 0) return;
-			container.innerHTML = '';
-			paragraphs.forEach(p => {
-				const el = document.createElement('p');
-				el.textContent = p.text;
-				container.appendChild(el);
-			});
-		}
-
-		function renderHero(hero) {
-			if (!hero) return;
-			setTextIfPresent('gala-hero-title', hero.title);
-			setTextIfPresent('gala-hero-date-location', hero.dateLocation);
-			setTextIfPresent('gala-pledge-button', hero.pledgeButtonText);
-		}
-
-		function renderPurposeSection(purposeSection) {
-			if (!purposeSection) return;
-			setTextIfPresent('purpose-heading', purposeSection.purposeHeading);
-			renderParagraphs('purpose-paragraphs', purposeSection.purposeParagraphs);
-		}
-
-		function renderStewardshipSection(stewardshipSection) {
-			if (!stewardshipSection) return;
-			setTextIfPresent('stewardship-heading', stewardshipSection.stewardshipHeading);
-			renderParagraphs('stewardship-paragraphs', stewardshipSection.stewardshipParagraphs);
-		}
-
-		function renderCountdown(countdown) {
-			const container = document.getElementById('countdown-container');
-			if (!container) return;
-
-			if (!countdown || countdown.show === false) {
-				container.remove();
-				return;
-			}
-
-			if (countdownIntervalId) clearInterval(countdownIntervalId);
-			updateGalaCountdown(countdown.targetDate);
-			countdownIntervalId = setInterval(() => updateGalaCountdown(countdown.targetDate), 1000);
-		}
-
-		function buildSponsorTierCard(tier) {
-			const card = document.createElement('div');
-			card.className = 'sponsor-inline-card';
-
-			const header = document.createElement('div');
-			header.className = 'sponsor-inline-header';
-			const badge = document.createElement('div');
-			badge.className = 'sponsor-inline-badge';
-			const h3 = document.createElement('h3');
-			h3.textContent = tier.name;
-			header.appendChild(badge);
-			header.appendChild(h3);
-
-			const price = document.createElement('div');
-			price.className = 'sponsor-inline-price';
-			price.textContent = tier.price;
-
-			const ul = document.createElement('ul');
-			ul.className = 'sponsor-inline-list';
-			(tier.perks || []).forEach(perkObj => {
-				const li = document.createElement('li');
-				li.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> ${perkObj.perk}`;
-				ul.appendChild(li);
-			});
-
-			card.appendChild(header);
-			card.appendChild(price);
-			card.appendChild(ul);
-			return card;
-		}
-
-		function renderSponsorship(sponsorship) {
-			const section = document.getElementById('sponsorship-section');
-			if (!section) return;
-
-			if (!sponsorship || sponsorship.show === false) {
-				section.remove();
-				return;
-			}
-
-			const grid = document.getElementById('sponsor-tier-grid');
-			if (!grid || !Array.isArray(sponsorship.tiers)) return;
-
-			grid.innerHTML = '';
-			sponsorship.tiers.forEach(tier => {
-				grid.appendChild(buildSponsorTierCard(tier));
-			});
-		}
-
-		function renderPledge(pledge) {
-			if (!pledge) return;
-
-			setTextIfPresent('pledge-verse-text', pledge.verseText ? `"${pledge.verseText}"` : undefined);
-			setTextIfPresent('pledge-verse-ref', pledge.verseReference);
-			setTextIfPresent('pledge-modal-title', pledge.modalTitle);
-			setTextIfPresent('pledge-thanks-text', pledge.thanksText);
-			setTextIfPresent('pledge-bank-name', pledge.bankName);
-			setTextIfPresent('pledge-account-name', pledge.bankAccountName);
-			setTextIfPresent('pledge-account-number', pledge.bankAccountNumber);
-			setTextIfPresent('pledge-check-instruction', pledge.checkInstruction);
-			setTextIfPresent('pledge-contacts-intro', pledge.contactsIntro);
-			setTextIfPresent('pledge-email', pledge.email);
-
-			const contactGrid = document.getElementById('pledge-contact-grid');
-			if (contactGrid && Array.isArray(pledge.contacts)) {
-				contactGrid.innerHTML = '';
-				pledge.contacts.forEach(contact => {
-					const p = document.createElement('p');
-					p.innerHTML = `<strong>${contact.name}</strong><br>${contact.phone}`;
-					contactGrid.appendChild(p);
-				});
-			}
-		}
-
-		function buildMinistrySupportTile(ministry) {
-			const a = document.createElement('a');
-			a.href = 'ministries.html#' + ministry.id;
-			a.className = 'ministry-nav-tile';
-			const img = document.createElement('img');
-			img.src = ministry.logo;
-			img.alt = ministry.shortName;
-			img.onerror = function () {
-				this.src = 'https://placehold.co/150x150/f4f4f4/c7973f?text=' + encodeURIComponent(ministry.shortName);
-			};
-			const h4 = document.createElement('h4');
-			h4.textContent = ministry.shortName;
-			a.appendChild(img);
-			a.appendChild(h4);
-			return a;
-		}
-
-		function renderMinistriesSupport(ministriesData) {
-			if (!ministriesData || !Array.isArray(ministriesData.ministries)) return;
-			const grid = document.getElementById('ministries-support-grid');
-			if (!grid) return;
-			grid.innerHTML = '';
-			ministriesData.ministries.forEach(ministry => {
-				grid.appendChild(buildMinistrySupportTile(ministry));
-			});
-		}
-
-		fetch('assets/content/gala.json')
-			.then(response => {
-				if (!response.ok) throw new Error('gala.json not found');
-				return response.json();
-			})
-			.then(data => {
-				setTextIfPresent('ministries-support-heading', data.ministriesSupportHeading);
-				renderHero(data.hero);
-				renderPurposeSection(data.purposeSection);
-				renderCountdown(data.countdown);
-				renderSponsorship(data.sponsorship);
-				renderStewardshipSection(data.stewardshipSection);
-				renderPledge(data.pledge);
-			})
-			.catch(error => {
-				// All fallback content already baked into the HTML above stays
-				// exactly as it is — including the original countdown date —
-				// so the page never breaks even if gala.json can't be loaded.
-				console.warn('Could not load gala.json — showing default gala page content:', error);
-				updateGalaCountdown('October 17, 2026 18:00:00');
-				countdownIntervalId = setInterval(() => updateGalaCountdown('October 17, 2026 18:00:00'), 1000);
-			});
-
-		// Fetched independently from gala.json so that a problem loading one
-		// never prevents the other from displaying — the "Ministries You
-		// Support" tiles just fall back to the names/logos already baked
-		// into the HTML above if this fetch fails for any reason.
-		fetch('assets/content/ministries.json')
-			.then(response => {
-				if (!response.ok) throw new Error('ministries.json not found');
-				return response.json();
-			})
-			.then(data => renderMinistriesSupport(data))
-			.catch(error => {
-				console.warn('Could not load ministries.json for the Ministries You Support section:', error);
-			});
+		(function () {
+			var cfg;
+			try { cfg = JSON.parse(document.getElementById('countdown-config').textContent); } catch (e) { return; }
+			if (!cfg || cfg.show === false || !cfg.targetDate) return;
+			updateGalaCountdown(cfg.targetDate);
+			setInterval(function () { updateGalaCountdown(cfg.targetDate); }, 1000);
+		})();
 	</script>
 
 	<script src="assets/js/main.js"></script>

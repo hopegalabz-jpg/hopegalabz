@@ -17,6 +17,13 @@ collections:
         label: "Homepage Content"
         name: "home"
         fields:
+          - label: "Page Title & Search Description"
+            name: "seo"
+            widget: "object"
+            hint: "How this page appears in browser tabs, Google search results and link previews when shared. It does not change anything you see on the page itself."
+            fields:
+              - { label: "Page Title", name: "title", widget: "string", hint: "The text shown on the browser tab and as the blue link title in Google. Keep it short, e.g. Hope Gala | The Belize Project." }
+              - { label: "Search Description", name: "description", widget: "text", required: false, hint: "The one or two sentences Google shows under the link, and that appear when this page is shared on social media or in messages. Aim for under 160 characters. Optional." }
           - label: "Hero (Title & Subtitle)"
             name: "hero"
             widget: "object"
@@ -59,6 +66,13 @@ collections:
         label: "Ministries Page"
         name: "ministries"
         fields:
+          - label: "Page Title & Search Description"
+            name: "seo"
+            widget: "object"
+            hint: "How this page appears in browser tabs, Google search results and link previews when shared. It does not change anything you see on the page itself."
+            fields:
+              - { label: "Page Title", name: "title", widget: "string", hint: "The text shown on the browser tab and as the blue link title in Google. Keep it short, e.g. Hope Gala | The Belize Project." }
+              - { label: "Search Description", name: "description", widget: "text", required: false, hint: "The one or two sentences Google shows under the link, and that appear when this page is shared on social media or in messages. Aim for under 160 characters. Optional." }
           - { label: "Top Page Heading", name: "pageHeading", widget: "string", hint: "The heading at the very top of the Ministries page." }
           - { label: "Programs Section Heading", name: "programsPageHeading", widget: "string", hint: "The heading that appears further down, above the Programs section." }
           - label: "Ministries"
@@ -90,6 +104,13 @@ collections:
         label: "Resource Categories"
         name: "resources"
         fields:
+          - label: "Page Title & Search Description"
+            name: "seo"
+            widget: "object"
+            hint: "How this page appears in browser tabs, Google search results and link previews when shared. It does not change anything you see on the page itself."
+            fields:
+              - { label: "Page Title", name: "title", widget: "string", hint: "The text shown on the browser tab and as the blue link title in Google. Keep it short, e.g. Hope Gala | The Belize Project." }
+              - { label: "Search Description", name: "description", widget: "text", required: false, hint: "The one or two sentences Google shows under the link, and that appear when this page is shared on social media or in messages. Aim for under 160 characters. Optional." }
           - label: "Categories"
             name: "categories"
             widget: "list"
@@ -116,6 +137,13 @@ collections:
         label: "Gallery Albums"
         name: "gallery"
         fields:
+          - label: "Page Title & Search Description"
+            name: "seo"
+            widget: "object"
+            hint: "How this page appears in browser tabs, Google search results and link previews when shared. It does not change anything you see on the page itself."
+            fields:
+              - { label: "Page Title", name: "title", widget: "string", hint: "The text shown on the browser tab and as the blue link title in Google. Keep it short, e.g. Hope Gala | The Belize Project." }
+              - { label: "Search Description", name: "description", widget: "text", required: false, hint: "The one or two sentences Google shows under the link, and that appear when this page is shared on social media or in messages. Aim for under 160 characters. Optional." }
           - label: "Albums"
             name: "albums"
             widget: "list"
@@ -146,6 +174,13 @@ collections:
         label: "Gala Page Settings"
         name: "gala"
         fields:
+          - label: "Page Title & Search Description"
+            name: "seo"
+            widget: "object"
+            hint: "How this page appears in browser tabs, Google search results and link previews when shared. It does not change anything you see on the page itself."
+            fields:
+              - { label: "Page Title", name: "title", widget: "string", hint: "The text shown on the browser tab and as the blue link title in Google. Keep it short, e.g. Hope Gala | The Belize Project." }
+              - { label: "Search Description", name: "description", widget: "text", required: false, hint: "The one or two sentences Google shows under the link, and that appear when this page is shared on social media or in messages. Aim for under 160 characters. Optional." }
           - { label: "'Ministries You Support' Heading", name: "ministriesSupportHeading", widget: "string", hint: "The heading above the row of ministry logos near the bottom of the Gala page. The logos themselves come automatically from the Ministries page — change them there, not here." }
           - label: "Hero (Top of Page)"
             name: "hero"

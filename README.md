@@ -2,7 +2,7 @@
 
 Source for **[hopegala.bz](https://hopegala.bz)**, the website for The Belize Project and its annual Hope Gala fundraiser.
 
-It's a static site (plain HTML, CSS and JavaScript — no build step, no framework) hosted on GitHub Pages. Day-to-day text, photo and document updates are made through a browser-based Content Manager (CMS) at **[hopegala.bz/admin](https://hopegala.bz/admin/#/collections/home)**, so most edits never require touching code.
+It's a static site (plain HTML, CSS and JavaScript — no framework, no dependencies) hosted on GitHub Pages. A tiny build script copies the CMS content into the HTML pages automatically on every push. Day-to-day text, photo and document updates are made through a browser-based Content Manager (CMS) at **[hopegala.bz/admin](https://hopegala.bz/admin/#/collections/home)**, so most edits never require touching code.
 
 ---
 
@@ -10,11 +10,12 @@ It's a static site (plain HTML, CSS and JavaScript — no build step, no framewo
 
 | Piece | What it does | Where it lives |
 |---|---|---|
-| **Website pages** | Five HTML pages that read their editable content from JSON files at load time | Repo root (`*.html`) |
-| **Content files** | All editable text, image paths, sponsorship tiers, gallery albums, etc. | `assets/content/*.json` |
+| **Website pages** | Five HTML pages. Their editable text is written into the HTML by the build script (nothing is fetched in the browser) | Repo root (`*.html`) |
+| **Content files** | All editable text, image paths, sponsorship tiers, gallery albums, page titles/descriptions, etc. — the single source of truth | `assets/content/*.json` |
+| **Build script** | Writes the content files into the HTML pages (`node scripts/build.js`) | `scripts/build.js` |
 | **Content Manager (CMS)** | [Decap CMS](https://decapcms.org) — a form-based editor that commits changes straight to this repo | `admin/` → [hopegala.bz/admin](https://hopegala.bz/admin/#/collections/home) |
 | **CMS login proxy** | A Cloudflare Worker that completes GitHub OAuth for the Content Manager | `hopegala-decap-proxy.hopegala.workers.dev` (Cloudflare account, not in this repo) |
-| **Hosting** | GitHub Pages, deployed automatically on every push to `main` | `.github/workflows/static.yml` |
+| **Hosting** | GitHub Pages. On every push to `main` the workflow runs the build script, commits any updated HTML, then deploys | `.github/workflows/static.yml` |
 | **Domain** | `hopegala.bz` points at GitHub Pages | `CNAME` file + DNS at the domain registrar |
 | **Contact form** | Sends "Contact Us" messages via [EmailJS](https://www.emailjs.com) | IDs at the top of `assets/js/main.js` |
 | **Story video** | Embedded from YouTube (video ID is editable in the CMS) | YouTube |
@@ -28,17 +29,17 @@ It's a static site (plain HTML, CSS and JavaScript — no build step, no framewo
 1. Open the link above and click **Login with GitHub**. Use a GitHub account that has write access to this repository.
 2. Pick a section from the left-hand menu (direct links below).
 3. Click the page entry, make your changes, and watch the preview on the right — it looks like the real site. Every field has a hint underneath explaining exactly what it controls and what size photos should be.
-4. Click **Publish** (top of the editor) → **Publish now**. The live site updates in about 1–2 minutes.
+4. Click **Publish** (top of the editor) → **Publish now**. Your change is committed to GitHub right away; a second commit ("Build pages from CMS content") follows within a minute with the updated HTML, and the live site updates about 1–2 minutes after you publish.
 
 ### CMS sections
 
 | Section | Direct link | What you can change |
 |---|---|---|
-| **Homepage** | [/admin/#/collections/home](https://hopegala.bz/admin/#/collections/home) | Banner slideshow photos, big title and motto, YouTube story video (ID, heading, show/hide), "Why Belize?" paragraphs |
-| **Ministries** | [/admin/#/collections/ministries](https://hopegala.bz/admin/#/collections/ministries) | Page headings; add/remove/reorder ministries (name, short name, subtitle, logo, write-up); add/remove programs |
-| **Resources & Documents** | [/admin/#/collections/resources](https://hopegala.bz/admin/#/collections/resources) | Download categories (tiles) and the PDFs/images inside each one |
-| **Gala Photo Galleries** | [/admin/#/collections/gallery](https://hopegala.bz/admin/#/collections/gallery) | Photo albums: name, type (Gala Night / Ministry), cover photo, photos |
-| **Gala Event Page** | [/admin/#/collections/gala](https://hopegala.bz/admin/#/collections/gala) | Title, date/location line, pledge button text, countdown (on/off + date/time), sponsorship tiers/prices/perks (on/off), "Purpose & Praise" and "Faithful Stewardship" text, and the **Make a Pledge** pop-up (verse, thank-you text, bank details, contact people, email) |
+| **Homepage** | [/admin/#/collections/home](https://hopegala.bz/admin/#/collections/home) | Page title & search description, banner slideshow photos, big title and motto, YouTube story video (ID, heading, show/hide), "Why Belize?" paragraphs |
+| **Ministries** | [/admin/#/collections/ministries](https://hopegala.bz/admin/#/collections/ministries) | Page title & search description; page headings; add/remove/reorder ministries (name, short name, subtitle, logo, write-up); add/remove programs |
+| **Resources & Documents** | [/admin/#/collections/resources](https://hopegala.bz/admin/#/collections/resources) | Page title & search description; download categories (tiles) and the PDFs/images inside each one |
+| **Gala Photo Galleries** | [/admin/#/collections/gallery](https://hopegala.bz/admin/#/collections/gallery) | Page title & search description; photo albums: name, type (Gala Night / Ministry), cover photo, photos |
+| **Gala Event Page** | [/admin/#/collections/gala](https://hopegala.bz/admin/#/collections/gala) | Page title & search description; title, date/location line, pledge button text, countdown (on/off + date/time), sponsorship tiers/prices/perks (on/off), "Purpose & Praise" and "Faithful Stewardship" text, and the **Make a Pledge** pop-up (verse, thank-you text, bank details, contact people, email) |
 
 The ministry logos on the Gala page come automatically from the **Ministries** section — change them there.
 
@@ -85,6 +86,8 @@ hopegalabz/
 ├── ministries.html       Ministries & programs     ← ministries.json
 ├── gallery.html          Photo albums              ← gallery.json
 ├── resources.html        Downloadable documents    ← resources.json
+├── scripts/build.js      Writes assets/content/*.json into the HTML pages (run by the workflow)
+├── package.json          Convenience scripts only: npm run build / npm run check
 ├── CNAME                 Custom domain (hopegala.bz)
 ├── .nojekyll             Tells GitHub Pages not to run Jekyll
 │
@@ -109,13 +112,31 @@ hopegalabz/
 ├── docs/                 PDFs linked from the Resources page (flyer, pledge form, sponsorship sheets)
 │
 └── .github/workflows/
-    ├── static.yml          Deploys the site to GitHub Pages on push to main
+    ├── static.yml          Builds pages from the content files, commits them, deploys to GitHub Pages (on push to main)
     └── compress-images.yml Compresses any new/changed .jpg/.png on push
 ```
 
-### How pages load content
+### How pages get their content
 
-Each page ships with default HTML content, then fetches its JSON file from `assets/content/` and fills in the editable parts. If a JSON file fails to load, the page still renders with its built-in defaults rather than breaking.
+`assets/content/*.json` is the single source of truth. `scripts/build.js` copies it into the HTML pages, so each page arrives with the correct text already in it (no flash of old text, and search engines/link previews see the real content). The HTML in GitHub always matches what was published in the CMS.
+
+```
+CMS Publish → commit to assets/content/*.json
+            → GitHub Action runs scripts/build.js
+            → updated HTML is committed to main ("Build pages from CMS content")
+            → site is deployed to hopegala.bz
+```
+
+**Markers.** The HTML files contain marker comments; everything between a pair is generated, everything else is hand-written:
+
+- Inline text: `<!--cms:hero.title-->Some text<!--/cms-->` is replaced with the value at that path in the page's JSON file (HTML-escaped).
+- Block of markup: `<!--cms-block:sponsor-tiers-->` … `<!--/cms-block:sponsor-tiers-->` is replaced by the function of the same name in the `BLOCKS` table in `scripts/build.js`.
+
+Don't edit between the markers by hand — the next build overwrites it. To change generated markup, edit its function in `scripts/build.js`; to change content, use the CMS (or the JSON file).
+
+**Safe by design.** The build is idempotent (running it twice changes nothing) and all-or-nothing: if a content file is invalid JSON or a marker is broken, the build fails, no page is touched, and the deploy is skipped, so the live site stays as it was. Resources and Gallery also embed their data in the page (`<script type="application/json" id="page-data">`) for the click-to-open sidebars; nothing is fetched at runtime.
+
+**Version history / rollback.** Every CMS Publish is a Git commit. To roll back, `git revert <commit>` the content commit (or re-publish the old value in the CMS) and push — the workflow rebuilds the HTML and redeploys.
 
 The shared header, footer, Contact Us modal and Make a Donation modal are injected by `assets/js/main.js` into placeholder `<div>`s (`#site-header`, `#site-footer`, `#site-modal`) on every page. Change navigation or footer content there, once, rather than in each HTML file.
 
@@ -123,18 +144,22 @@ The shared header, footer, Contact Us modal and Make a Donation modal are inject
 
 1. Add the field to the relevant collection in `admin/config.yml` (keep the `hint` text plain-English — it's what editors see).
 2. Add the matching key to the JSON file in `assets/content/`.
-3. Read and render it in the page's fetch script (and in `admin/preview-templates.js` if you want it to show in the editor preview).
+3. In the page's HTML, add a `<!--cms:path.to.field-->…<!--/cms-->` slot where the text should appear (for lists or custom markup, add a block marker and a matching function in `scripts/build.js`). Run `node scripts/build.js` to regenerate the pages, and update `admin/preview-templates.js` if you want it to show in the editor preview.
 
 ---
 
 ## Local development
 
-No build tools are needed — just serve the folder over HTTP (opening the files directly with `file://` will block the JSON fetches):
+Needs only Node 18+ (no `npm install` — the build script has no dependencies). After editing a content file or a marker, regenerate the pages and serve the folder:
 
 ```bash
+node scripts/build.js          # or: npm run build   (writes the HTML pages)
+node scripts/build.js --check  # or: npm run check   (exits 1 if any page is stale; changes nothing)
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
+
+Pull before editing locally (`git pull`): the CMS and the build workflow both commit to `main`.
 
 The CMS at `/admin` is wired to the live site and repo (it uses absolute `https://hopegala.bz/` URLs and commits to `main`), so anything published there goes live.
 

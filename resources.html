@@ -3,8 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Resources — The Belize Project</title>
+	<!--cms-block:head-->
 	<meta name="description" content="Brochures, sponsorship materials, and printable letters for The Belize Project and the Hope Gala.">
+	<title>Resources — The Belize Project</title>
+	<meta property="og:title" content="Resources — The Belize Project">
+	<meta property="og:description" content="Brochures, sponsorship materials, and printable letters for The Belize Project and the Hope Gala.">
+	<meta property="og:type" content="website">
+	<!--/cms-block:head-->
 	<link rel="stylesheet" href="assets/css/main.css">
 
 	<!-- ==========================================================================
@@ -303,9 +308,48 @@
 
 		<section class="resources-section">
 			<div class="container">
-				<!-- Category tiles are built by JavaScript from resources.json.
-				     See the render script near the bottom of this file. -->
-				<div class="resource-tile-grid" id="resource-tile-grid"></div>
+				<!-- Category tiles come from assets/content/resources.json and are
+				     written into this HTML by scripts/build.js. -->
+				<div class="resource-tile-grid" id="resource-tile-grid">
+					<!--cms-block:resource-tiles-->
+					<button type="button" class="resource-tile" data-index="0">
+						<div class="resource-tile-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+							</svg>
+						</div>
+						<h3>Brochures</h3>
+						<p>General overviews of our mission and programs.</p>
+						<span class="resource-tile-count">1 Document</span>
+					</button>
+					<button type="button" class="resource-tile" data-index="1">
+						<div class="resource-tile-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+							</svg>
+						</div>
+						<h3>Printable Letters</h3>
+						<p>Solicitation and donor appeal letters, ready to print.</p>
+						<span class="resource-tile-count">1 Document</span>
+					</button>
+					<button type="button" class="resource-tile" data-index="2">
+						<div class="resource-tile-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+								<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+							</svg>
+						</div>
+						<h3>Sponsorship Material</h3>
+						<p>Packages and materials for partners and sponsors.</p>
+						<span class="resource-tile-count">2 Documents</span>
+					</button>
+					<!--/cms-block:resource-tiles-->
+				</div>
 			</div>
 		</section>
 	</main>
@@ -328,14 +372,17 @@
 
 	<script src="assets/js/main.js"></script>
 
+	<!--cms-block:page-data-->
+	<script type="application/json" id="page-data">{"seo":{"title":"Resources — The Belize Project","description":"Brochures, sponsorship materials, and printable letters for The Belize Project and the Hope Gala."},"categories":[{"title":"Brochures","description":"General overviews of our mission and programs.","items":[{"title":"Hope Gala 2026 Ministry Sheet","description":"An overview of the ministries supported by this year's Hope Gala.","file":"docs/2026sheet.pdf"}]},{"title":"Printable Letters","description":"Solicitation and donor appeal letters, ready to print.","items":[{"title":"2026 Sponsorship Letter","description":"Our formal invitation to partner with the Hope Gala as a sponsor this year.","file":"docs/sl2026.pdf"}]},{"title":"Sponsorship Material","description":"Packages and materials for partners and sponsors.","items":[{"title":"2026 Pledge Form","description":"Our official pledge form for the 2026 Hope Gala.","file":"docs/pledge.pdf"},{"title":"2026 Event Flyer","description":"The official 2026 Hope Gala flyer.","file":"docs/2026flyer.pdf"}]}]}</script>
+	<!--/cms-block:page-data-->
+
 	<!-- ==========================================================================
 	     RESOURCES CONTENT LOADER
 	     ==========================================================================
-	     Categories and documents come from resources.json — see the fetch
-	     call at the bottom of this script. Category tiles are generated
-	     dynamically, so adding or removing a whole category (not just a
-	     document within one) needs no HTML changes, only an edit in
-	     resources.json (via the /admin editor).
+	     Categories and documents come from resources.json (edited in the
+	     /admin editor). scripts/build.js writes the category tiles into this
+	     HTML and embeds the same data in the page-data block above, which the
+	     sidebar below reads when a tile is clicked. Nothing is fetched.
 	     ========================================================================== -->
 	<script>
 		// Two small inline icon sets, reused for both the sidebar link rows and
@@ -357,23 +404,10 @@
 			</svg>
 		`;
 
-		// Same tile icon for every category — a document/list glyph. Keeps
-		// the CMS simple (no icon picker needed to add a new category)
-		// while still looking intentional, since every tile already shares
-		// the same circular icon background regardless of which SVG is used.
-		const RESOURCE_TILE_ICON = `
-			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-				<path d="M15 2v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-				<path d="M8 13h8M8 17h8M8 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-			</svg>
-		`;
-
 		// State memory for the currently open Resources category.
-		// resourceCategories is populated once, from resources.json, after
-		// the fetch below succeeds.
+		// resourceCategories comes from the page-data block (resources.json).
 		let currentResourceIndex = null;
-		let resourceCategories = [];
+		let resourceCategories = (JSON.parse(document.getElementById('page-data').textContent).categories) || [];
 
 		function getResourceIcon(filePath) {
 			const ext = filePath.split('.').pop().toLowerCase();
@@ -385,46 +419,12 @@
 			return filePath.split('.').pop().toUpperCase();
 		}
 
-		function buildResourceTile(category, index) {
-			const btn = document.createElement('button');
-			btn.type = 'button';
-			btn.className = 'resource-tile';
-			btn.onclick = function () { openResourceCategory(index); };
-
-			const iconWrap = document.createElement('div');
-			iconWrap.className = 'resource-tile-icon';
-			iconWrap.setAttribute('aria-hidden', 'true');
-			iconWrap.innerHTML = RESOURCE_TILE_ICON;
-
-			const h3 = document.createElement('h3');
-			h3.textContent = category.title;
-
-			const p = document.createElement('p');
-			p.textContent = category.description || '';
-
-			const count = document.createElement('span');
-			count.className = 'resource-tile-count';
-			const itemCount = Array.isArray(category.items) ? category.items.length : 0;
-			count.textContent = `${itemCount} ${itemCount === 1 ? 'Document' : 'Documents'}`;
-
-			btn.appendChild(iconWrap);
-			btn.appendChild(h3);
-			btn.appendChild(p);
-			btn.appendChild(count);
-			return btn;
-		}
-
-		function renderResourcesPage(data) {
-			const grid = document.getElementById('resource-tile-grid');
-			if (!grid || !data || !Array.isArray(data.categories)) return;
-
-			resourceCategories = data.categories;
-
-			grid.innerHTML = '';
-			resourceCategories.forEach((category, index) => {
-				grid.appendChild(buildResourceTile(category, index));
-			});
-		}
+		// Tiles are already in the HTML (written by scripts/build.js);
+		// clicking one opens its category in the sidebar.
+		document.getElementById('resource-tile-grid').addEventListener('click', function (event) {
+			const tile = event.target.closest('.resource-tile');
+			if (tile) openResourceCategory(Number(tile.dataset.index));
+		});
 
 		function openResourceCategory(index) {
 			const category = resourceCategories[index];
@@ -475,16 +475,6 @@
 		function closeResourceSidebar() {
 			closeAlbum();
 		}
-
-		fetch('assets/content/resources.json')
-			.then(response => {
-				if (!response.ok) throw new Error('resources.json not found');
-				return response.json();
-			})
-			.then(data => renderResourcesPage(data))
-			.catch(error => {
-				console.warn('Could not load resources.json — no resource categories will display:', error);
-			});
 	</script>
 </body>
 </html>

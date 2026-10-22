@@ -1,0 +1,12 @@
+{
+  "name": "hopegalabz",
+  "private": true,
+  "description": "Hope Gala website (hopegala.bz). Static site; scripts/build.js bakes the CMS content into the HTML pages.",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "check": "node scripts/build.js --check"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
