@@ -6,6 +6,11 @@
 #      so GitHub always shows the same text the live site shows
 #   3. the site is deployed
 # If a content file is invalid, step 1 fails and the live site is left as-is.
+#
+# Publishing several times in a row is safe: only the newest run keeps going
+# (older ones show as "Cancelled" - that is expected, not an error), and each
+# run builds from ALL the content on main, so nothing a cancelled run was
+# carrying is lost.
 name: Build and deploy to Pages
 
 on:
@@ -22,8 +27,8 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Only one deployment at a time; a newer push cancels the older run so the
+# newest content goes live as fast as possible.
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -38,29 +43,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Build pages from CMS content
-        run: node scripts/build.js
-
-      # Commits made with the built-in token do not start another workflow run,
-      # so this cannot loop. The message makes these commits easy to spot.
-      - name: Commit updated pages
+      # Node is preinstalled on GitHub's runners; scripts/build.js has no
+      # dependencies and needs Node 18 or newer.
+      - name: Build pages from CMS content and commit them
         run: |
+          set -e
+          node --version
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html gala.html ministries.html resources.html gallery.html
-          if git diff --cached --quiet; then
-            echo "Pages already match the content files."
-          else
+          pushed=false
+          for attempt in 1 2 3 4 5; do
+            node scripts/build.js
+            git add index.html gala.html ministries.html resources.html gallery.html
+            if git diff --cached --quiet; then
+              echo "Pages already match the content files."
+              pushed=true
+              break
+            fi
             git commit -m "Build pages from CMS content"
-            # If the push is refused (for example by a branch-protection rule),
-            # deploy anyway: the live site is built from this working copy.
-            git push || echo "::warning::Could not push the updated pages to main; the live site is still deployed correctly."
+            if git push origin HEAD:main; then
+              pushed=true
+              break
+            fi
+            # Someone published again while this run was building. Start over
+            # from the newest main (the build is deterministic, so this always
+            # converges) instead of failing.
+            echo "::notice::main moved on (attempt $attempt); rebuilding on top of the newest content."
+            git fetch origin main
+            git reset --hard FETCH_HEAD
+          done
+          if [ "$pushed" != "true" ]; then
+            echo "::warning::Could not push the updated pages to main; the live site is still deployed correctly."
           fi
+          # Whatever happened above, deploy pages built from the newest content.
+          node scripts/build.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
