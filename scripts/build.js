@@ -80,7 +80,7 @@ const PAGES = {
 /* ------------------------------------------------------------------ */
 
 // Text inside an element: only & < > need escaping.
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 // Inside a "double-quoted" attribute: quotes too.
 const attr = (s) => esc(s).replace(/"/g, '&quot;');
 // JSON safe to drop inside <script type="application/json">.

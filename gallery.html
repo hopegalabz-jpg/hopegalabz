@@ -262,6 +262,10 @@
 		});
 
 		function openAlbum(album) {
+			// An album with no photos yet (for example one just created in the
+			// CMS) has nothing to open, so a click on its tile does nothing.
+			if (!album || !Array.isArray(album.images) || album.images.length === 0) return;
+
 			// album.images is a list of { image: "full/path.jpg" } objects
 			currentAlbumList = album.images.map(item => item.image);
 
