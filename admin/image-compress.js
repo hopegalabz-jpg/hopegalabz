@@ -18,6 +18,7 @@
   var MAX_DIMENSION = 1600; // longest side, in pixels — matches the largest size any field's hint recommends
   var JPEG_QUALITY = 0.82; // sharp, not visibly compressed, while still shrinking a lot
   var SKIP_IF_UNDER_BYTES = 400 * 1024; // already-small files aren't worth re-compressing
+  var refiring = false; // true only while our own re-fired change event is being delivered
 
   // Checks whether an image actually uses transparency. PNGs with real
   // transparency (like a logo on a see-through background) are kept as PNG;
@@ -89,11 +90,6 @@
                 type: outputType,
                 lastModified: Date.now(),
               });
-              // Marks this file as already processed, so when the
-              // synthetic "change" event below re-fires this same
-              // handler, it's recognized and passed straight through
-              // instead of being resized a second time.
-              newFile.__isCompressed = true;
               resolve(newFile);
             },
             outputType,
@@ -126,9 +122,12 @@
     // uses this same input type but a different `accept` value).
     if ((input.accept || "").indexOf("image") === -1) return;
 
-    // Already-compressed marker present means this is our own synthetic
-    // re-fire below — let it pass through normally instead of looping.
-    if (files[0].__isCompressed) return;
+    // This is our own synthetic re-fire (see below) — let it pass through to
+    // Decap untouched. A flag is used instead of marking the file itself,
+    // because files that don't need shrinking (anything under 400 KB, SVGs,
+    // GIFs) are passed along unchanged and carry no marker, which used to
+    // make this handler re-intercept them forever and freeze the page.
+    if (refiring) return;
 
     // Stop this event here, in the capture phase, before Decap's own
     // upload handler ever sees it. We'll re-fire a normal "change" event
@@ -142,7 +141,12 @@
         dataTransfer.items.add(f);
       });
       input.files = dataTransfer.files;
-      input.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
+      refiring = true;
+      try {
+        input.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
+      } finally {
+        refiring = false;
+      }
     });
   }
 
